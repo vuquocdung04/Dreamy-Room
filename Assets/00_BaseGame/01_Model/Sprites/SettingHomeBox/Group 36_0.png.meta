@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 885e86e5b0993a34b8d9c3dc4df9ecf0
+guid: aeef31fb8fa0a224ca75e3e0af184d5f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,8 +37,8 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
@@ -52,7 +52,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Panel3_0
+      name: Group 36_0_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 612
-        height: 622
+        width: 103
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 160, y: 211, z: 179, w: 222}
+      border: {x: 13, y: 0, z: 12, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d51f209210b0c944924b69f049241e1
-      internalID: -73678488
+      spriteID: 55e9800e2fa8cd14b9b4f6cd228b4a2f
+      internalID: 1324043022
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Panel3_0: -73678488
+      Group 36_0_0: 1324043022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
