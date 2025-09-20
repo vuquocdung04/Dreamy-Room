@@ -1,3 +1,5 @@
+using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class HomeBox : BoxSingleton<HomeBox>
@@ -6,7 +8,6 @@ public class HomeBox : BoxSingleton<HomeBox>
     {
         return Setup(PathPrefabs.HOME_BOX);
     }
-
     protected override void Init()
     {
         

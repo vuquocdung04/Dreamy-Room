@@ -19,15 +19,6 @@ public class NavButton : MonoBehaviour
     private Vector2 originalBackgroundSize;
     private Vector2 targetBackgroundSize;
     private Sprite backgroundSelected;
-
-
-    public void HandleOnClicked(System.Action callback = null)
-    {
-        btnMain.onClick.AddListener(delegate
-        {
-            callback?.Invoke();
-        });
-    }
     public void Init(float inOriginalYPosition, float inTargetYPosition, float inOriginalScale, float inTargetScale,
         Vector2 inOriginalBackgroundSize, Vector2 inTargetBackgroundSize, Sprite inBackgroundSelected)
     {
@@ -39,7 +30,14 @@ public class NavButton : MonoBehaviour
         this.targetBackgroundSize = inTargetBackgroundSize;
         this.backgroundSelected = inBackgroundSelected;
     }
-
+    
+    public void HandleOnClicked(System.Action callback = null)
+    {
+        btnMain.onClick.AddListener(delegate
+        {
+            callback?.Invoke();
+        });
+    }
     public void HandleIconActive()
     {
         icon.transform.localPosition = new Vector3(0,targetYPosition,0);
