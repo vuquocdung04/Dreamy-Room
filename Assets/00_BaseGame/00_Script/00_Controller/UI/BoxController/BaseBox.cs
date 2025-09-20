@@ -1,30 +1,47 @@
 
+using DG.Tweening;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public abstract class BaseBox : MonoBehaviour
 {
     [SerializeField] protected RectTransform mainPanel;
     [SerializeField] protected bool isAnim = true;
-
+    [SerializeField] protected bool hasAppearedBefore;
+    [SerializeField] protected float durationAppeared = 0.2f;
     protected virtual void OnEnable()
     {
-        if(isAnim)
-            mainPanel.localScale = Vector3.zero;
+        if (!hasAppearedBefore)
+        {
+            DoFirstAppear();
+            hasAppearedBefore = true;
+        }
+        else
+        {
+            DoAppear();
+        }
+    }
+
+    //Ghi de de chay anim ban dau
+    protected virtual void DoFirstAppear()
+    {
         DoAppear();
-        OnStart();
     }
 
     protected virtual void DoAppear()
     {
-        // Hieu ung xuat hien
+        if (isAnim)
+        {
+            mainPanel.localScale = Vector3.zero;
+            OnStart();
+        }
+        else mainPanel.localScale = Vector3.one;
     }
 
     protected virtual void OnStart()
     {
-        // Code chay bat dau hien thi
+        mainPanel.DOScale(Vector3.one, durationAppeared);
     }
-
-
     public virtual void Show()
     {
         gameObject.SetActive(true);

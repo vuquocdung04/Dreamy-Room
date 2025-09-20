@@ -19,7 +19,7 @@ public class NavController : MonoBehaviour
 
     public void Init()
     {
-        
+        HomeBox.Setup().Show();
         foreach (var btn in this.lsButtons)
         {
             btn.Init(originalYPosition, targetYPosition, originalScale, targetScale, originalBackgroundSize, targetBackgroundSize,backgroundSelected);
@@ -28,7 +28,6 @@ public class NavController : MonoBehaviour
             {
                 OnButtonSelected(btn);
             });
-            
         }
     }
     

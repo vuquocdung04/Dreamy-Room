@@ -19,6 +19,7 @@ public class SceneName
 public class PathPrefabs
 {
     public const string MENU_BOX = "UI/Popups/MenuBox";
+    public const string HOME_BOX = "UI/Popups/HomeBox";
     public const string WIN_BOX = "UI/Popups/WinBox";
     public const string SETTING_BOX = "UI/Popups/SettingBox";
     public const string SETTING_GAME_BOX = "UI/Popups/SettingGameBox";
