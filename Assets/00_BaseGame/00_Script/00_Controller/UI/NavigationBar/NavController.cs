@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -37,7 +38,19 @@ public class NavController : MonoBehaviour
             });
         }
     }
+
     
+    // Short Cut
+    public void GoToScreen(ENavType targetType)
+    {
+        NavButton targetButton = lsButtons.FirstOrDefault(btn => btn.navType == targetType);
+        if (targetButton != null && targetButton != currentNavButton)
+        {
+            OnButtonSelected(targetButton);
+
+        }
+    }
+
     private void OnButtonSelected(NavButton clickedButton)
     {
         if (clickedButton == currentNavButton)

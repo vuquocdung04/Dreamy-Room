@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class NavButton : MonoBehaviour
 {
     public ENavType navType;
@@ -30,6 +29,7 @@ public class NavButton : MonoBehaviour
         this.targetBackgroundSize = inTargetBackgroundSize;
         this.backgroundSelected = inBackgroundSelected;
     }
+
     
     public void HandleOnClicked(System.Action callback = null)
     {
