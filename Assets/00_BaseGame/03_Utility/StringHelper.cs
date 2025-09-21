@@ -2,14 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class StringHelper
+public class StringHelper
 {
+    public const string COIN = "COIN";
+    public const string HEART = "HEART";
+    
+    public const string FIRST_TIME_OPEN_GAME = "FIRST_TIME_OPEN_GAME";
+    
     public const string MAX_UNLOCK_LEVEL = "MAX_UNLOCK_LEVEL";
     public const string CURRENT_LEVEL = "CURRENT_LEVEL";
     public const string ONOFF_MUSIC = "ONOFF_MUSIC";
     public const string ONOFF_SOUND = "ONOFF_SOUND";
     public const string REMOVE_ADS = "REMOVE_ADS";
     public const string PAUSE_GAME = "PAUSE_GAME";
+    
+    //Booster
+    public const string BOOSTER_BOXBUFFER = "BOOSTER_BOXBUFFER";
+    public const string BOOSTER_COMPASS =  "BOOSTER_COMPASS";
+    public const string BOOSTER_FROZETIME =  "BOOSTER_FROZETIME";
+    public const string BOOSTER_HINT =   "BOOSTER_HINT";
+    public const string BOOSTER_MAGICWAND =  "BOOSTER_MAGICWAND";
+    public const string BOOSTER_MAGNET =  "BOOSTER_MAGNET";
+    public const string BOOSTER_MAGNIFIER =  "BOOSTER_MAGNIFIER";
+    public const string BOOSTER_TIMEBUFFER =   "BOOSTER_TIMEBUFFER";
+    public const string BOOSTER_X2STAR =   "BOOSTER_X2STAR";
+    
 }
 public class SceneName
 {

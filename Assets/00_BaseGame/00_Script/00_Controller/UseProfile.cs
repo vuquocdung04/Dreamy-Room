@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class UseProfile : MonoBehaviour
@@ -69,5 +70,144 @@ public class UseProfile : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
+    public static int Coin
+    {
+        get => PlayerPrefs.GetInt(StringHelper.COIN, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.COIN, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Heart
+    {
+        get =>  PlayerPrefs.GetInt(StringHelper.HEART, 5);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.HEART, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static DateTime FirstTimeOpenGame
+    {
+        get
+        {
+            if (PlayerPrefs.HasKey(StringHelper.FIRST_TIME_OPEN_GAME))
+            {
+                var temp = Convert.ToInt64(PlayerPrefs.GetString(StringHelper.FIRST_TIME_OPEN_GAME));
+                return DateTime.FromBinary(temp);
+            }
+            else
+            {
+                var newDateTime = DateTime.Now.AddDays(-1);
+                PlayerPrefs.SetString(StringHelper.FIRST_TIME_OPEN_GAME, newDateTime.ToBinary().ToString());
+                PlayerPrefs.Save();
+                return newDateTime;
+            }
+        }
+        set
+        {
+            PlayerPrefs.SetString(StringHelper.FIRST_TIME_OPEN_GAME, value.ToBinary().ToString());
+            PlayerPrefs.Save();
+        }
+    }
     
+
+    #region Booster
+
+    public static int Booster_BoxBuffer
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_BOXBUFFER, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_BOXBUFFER, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_Compass
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_COMPASS, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_COMPASS, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_FrozeTime
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_FROZETIME, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_FROZETIME, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_Hint
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_HINT, 3);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_HINT, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_MagicWand
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGICWAND, 3);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGNET, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_Maget
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGNET, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGNET, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_Magnifier
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGNIFIER, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGNIFIER, value);
+            PlayerPrefs.Save();
+        }
+    }
+    
+    public static int Booster_TimeBuffer
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_TIMEBUFFER, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_TIMEBUFFER, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int Booster_X2Star
+    {
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_X2STAR, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_X2STAR, value);
+            PlayerPrefs.Save();
+        }
+    }
+    
+
+    #endregion
 }
