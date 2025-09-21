@@ -24273,9 +24273,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPanel: {fileID: 6820241440516279419}
   isAnim: 0
-  hasAppearedBefore: 0
   durationAppeared: 0.2
-  durationDisappeared: 0.1
+  hasAppearedBefore: 1
+  durationSlideOpen: 0.2
+  durationSildeClose: 0.1
 --- !u!223 &8801204397338223535
 Canvas:
   m_ObjectHideFlags: 0

@@ -16,12 +16,7 @@ public abstract class BaseBox : MonoBehaviour
     [ShowIf("hasAppearedBefore")]
     [BoxGroup("Sliding Durations")]
     [SerializeField] 
-    protected float durationSlideOpen = 0.2f;
-    
-    [ShowIf("hasAppearedBefore")]
-    [BoxGroup("Sliding Durations")]
-    [SerializeField] 
-    protected float durationSildeClose = 0.2f;
+    protected float durationSlide = 0.2f;
     protected virtual void OnEnable()
     {
         if (hasAppearedBefore)
@@ -65,17 +60,17 @@ public abstract class BaseBox : MonoBehaviour
         gameObject.SetActive(false);
     }
     
-    public void ShowSliding(bool slideInFromLeft)
+    public Tween ShowSliding(bool slideInFromLeft)
     {
         Show();
         Vector2 startPos = new Vector2(slideInFromLeft ? -mainPanel.rect.width : mainPanel.rect.width, 0);
         mainPanel.anchoredPosition = startPos;
-        mainPanel.DOAnchorPos(Vector2.zero, durationSlideOpen).SetEase(Ease.OutCubic);
+        return mainPanel.DOAnchorPos(Vector2.zero, durationSlide).SetEase(Ease.OutCubic);
     }
-    public void CloseSliding(bool slideOutToLeft)
+    public Tween CloseSliding(bool slideOutToLeft)
     {
         Vector2 endPos = new Vector2(slideOutToLeft ? -mainPanel.rect.width : mainPanel.rect.width, 0);
-        mainPanel.DOAnchorPos(endPos, durationSildeClose).SetEase(Ease.InCubic)
+        return mainPanel.DOAnchorPos(endPos, durationSlide/2).SetEase(Ease.InCubic)
             .OnComplete(() =>
             {
                 Close();

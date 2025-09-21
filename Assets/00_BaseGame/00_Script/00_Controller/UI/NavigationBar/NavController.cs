@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,74 +16,113 @@ public class NavController : MonoBehaviour
     [Header("Debug"),Space(6)]
     [SerializeField] private NavButton currentNavButton;
     [SerializeField] private NavButton prevNavButton;
-    
+    [SerializeField] bool isBusy = false;
     public List<NavButton> lsButtons;
     private Dictionary<ENavType, BaseBox> boxInstances = new();
+
     public void Init()
     {
-        var homeBox = GetBoxInstance(ENavType.Home);
-        homeBox.Show();
+        GetBoxInstance(ENavType.Home).Show();
         
         foreach (var btn in this.lsButtons)
         {
-            btn.Init(originalYPosition, targetYPosition, originalScale, targetScale, originalBackgroundSize, targetBackgroundSize,backgroundSelected);
+            btn.Init(originalYPosition, targetYPosition, originalScale, targetScale, originalBackgroundSize, targetBackgroundSize, backgroundSelected);
             
             if (btn.navType == ENavType.Home)
             {
                 currentNavButton = btn;
                 currentNavButton.HandleIconActive();
             }
-            btn.HandleOnClicked(delegate
-            {
-                OnButtonSelected(btn);
-            });
+
+            btn.HandleOnClicked(() => OnNavButtonClicked(btn));
         }
     }
 
-    
-    // shortcut
+    private void OnNavButtonClicked(NavButton clickedButton)
+    {
+        if (isBusy || clickedButton == currentNavButton) return;
+        
+        OnButtonSelected(clickedButton);
+    }
+
     public void GoToScreen(ENavType targetType)
     {
         NavButton targetButton = lsButtons.FirstOrDefault(btn => btn.navType == targetType);
         if (targetButton != null && targetButton != currentNavButton)
         {
-            OnButtonSelected(targetButton);
-
+            OnNavButtonClicked(targetButton);
         }
     }
 
     private void OnButtonSelected(NavButton clickedButton)
     {
-        if (clickedButton == currentNavButton)
-            return;
+        isBusy = true;
         
+        HandleScreenTransition(clickedButton);
+        UpdateNavButtonStates(clickedButton);
+    }
+
+    /// <summary>
+    /// Xử lý hiệu ứng chuyển đổi giữa các màn hình (Box).
+    /// </summary>
+    private void HandleScreenTransition(NavButton clickedButton)
+    {
         int prevIndex = lsButtons.IndexOf(currentNavButton);
         int currentIndex = lsButtons.IndexOf(clickedButton);
         
         BaseBox prevBox = GetBoxInstance(currentNavButton.navType);
         BaseBox currentBox = GetBoxInstance(clickedButton.navType);
-        
-        // --- Logic quyết định hướng di chuyển ---
-        if (currentIndex > prevIndex) // Di chuyển sang phải
+
+        bool slideToLeft = currentIndex < prevIndex;
+
+        if (prevBox != null)
         {
-            if (prevBox != null) prevBox.CloseSliding(slideOutToLeft: true);
-            if (currentBox != null) currentBox.ShowSliding(slideInFromLeft: false);
+            // Nếu box mới trượt từ phải sang, box cũ trượt sang trái (slideOutToLeft = true)
+            // Nếu box mới trượt từ trái sang, box cũ trượt sang phải (slideOutToLeft = false)
+            prevBox.CloseSliding(slideOutToLeft: !slideToLeft);
         }
-        else // Di chuyển sang trái
+
+        Tween showTween = null;
+        if (currentBox != null)
         {
-            if (prevBox != null) prevBox.CloseSliding(slideOutToLeft: false);
-            if (currentBox != null) currentBox.ShowSliding(slideInFromLeft: true);
+            // slideInFromLeft = true nếu box mới ở bên trái box cũ
+            showTween = currentBox.ShowSliding(slideInFromLeft: slideToLeft);
         }
-        
-        // cap nhat trang thai button
-        prevNavButton = currentNavButton;      
-        currentNavButton = clickedButton;      
+
+        // Mở khóa isBusy sau khi animation hoàn tất
+        HandleAnimationCompletion(showTween);
+    }
+
+    /// <summary>
+    /// Đặt callback để set isBusy = false khi animation hoàn thành.
+    /// </summary>
+    private void HandleAnimationCompletion(Tween tween)
+    {
+        if (tween != null)
+        {
+            tween.OnComplete(() => isBusy = false);
+        }
+        else
+        {
+            isBusy = false; // Mở khóa ngay lập tức nếu không có animation
+        }
+    }
+
+    /// <summary>
+    /// Cập nhật trạng thái active/inactive cho các button điều hướng.
+    /// </summary>
+    private void UpdateNavButtonStates(NavButton clickedButton)
+    {
+        prevNavButton = currentNavButton;
+        currentNavButton = clickedButton;
+
         if (prevNavButton != null)
             prevNavButton.HandleIconInactive();
+
         if (currentNavButton != null)
             currentNavButton.HandleIconActive();
     }
-
+    
     private BaseBox GetBoxInstance(ENavType type)
     {
         if (boxInstances.ContainsKey(type) && boxInstances[type] != null)
@@ -93,21 +133,11 @@ public class NavController : MonoBehaviour
         BaseBox newBox = null;
         switch (type)
         {
-            case ENavType.Home:
-                newBox = HomeBox.Setup();
-                break;
-            case ENavType.Shop:
-                newBox =  ShopBox.Setup();
-                break;
-            case ENavType.Rank:
-                newBox =  RankBox.Setup();
-                break;
-            case ENavType.Team:
-                newBox =  TeamBox.Setup();
-                break;
-            case ENavType.Collection:
-                newBox =  CollectionBox.Setup();
-                break;
+            case ENavType.Home: newBox = HomeBox.Setup(); break;
+            case ENavType.Shop: newBox = ShopBox.Setup(); break;
+            case ENavType.Rank: newBox = RankBox.Setup(); break;
+            case ENavType.Team: newBox = TeamBox.Setup(); break;
+            case ENavType.Collection: newBox = CollectionBox.Setup(); break;
         }
 
         if (newBox != null)
@@ -116,8 +146,7 @@ public class NavController : MonoBehaviour
         }
         return newBox;
     }
-    
-    
+
     [Button("Setup Btn", ButtonSizes.Large)]
     void SetupBtn()
     {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ClamSuccessBox : BoxSingleton<ClamSuccessBox>
+public class ClaimSuccessBox : BoxSingleton<ClaimSuccessBox>
 {
-    public static ClamSuccessBox Setup()
+    public static ClaimSuccessBox Setup()
     {
         return Path(PathPrefabs.CLAIM_SUCCESS_BOX);
     }
