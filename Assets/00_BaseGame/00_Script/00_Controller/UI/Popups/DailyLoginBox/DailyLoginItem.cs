@@ -25,4 +25,12 @@ public class DailyLoginItem : MonoBehaviour
         claimedCheckmark.gameObject.SetActive(true);
     }
 
+    // Odin
+    public void SetupOdin()
+    {
+        backgroundImage = GetComponent<Image>();
+        rewardDisplayGroup = transform.Find("info").GetComponent<Transform>();
+        claimedCheckmark = transform.Find("tick");
+    }
+
 }
