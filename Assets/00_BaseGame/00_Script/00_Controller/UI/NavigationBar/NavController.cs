@@ -40,7 +40,7 @@ public class NavController : MonoBehaviour
     }
 
     
-    // Short Cut
+    // shortcut
     public void GoToScreen(ENavType targetType)
     {
         NavButton targetButton = lsButtons.FirstOrDefault(btn => btn.navType == targetType);

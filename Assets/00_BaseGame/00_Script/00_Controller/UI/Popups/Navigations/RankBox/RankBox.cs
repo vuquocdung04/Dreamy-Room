@@ -4,7 +4,7 @@ public class RankBox : BoxSingleton<RankBox>
 {
     public static RankBox Setup()
     {
-        return Setup(PathPrefabs.RANK_BOX);
+        return Path(PathPrefabs.RANK_BOX);
     }
     protected override void Init()
     {

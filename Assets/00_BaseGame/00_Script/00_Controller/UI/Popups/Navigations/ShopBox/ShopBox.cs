@@ -4,7 +4,7 @@ public class ShopBox : BoxSingleton<ShopBox>
 {
     public static ShopBox Setup()
     {
-        return Setup(PathPrefabs.SHOP_BOX);
+        return Path(PathPrefabs.SHOP_BOX);
     }
     protected override void Init()
     {

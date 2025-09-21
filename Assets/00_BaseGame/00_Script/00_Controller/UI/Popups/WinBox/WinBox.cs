@@ -1,19 +1,18 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TeamBox : BoxSingleton<TeamBox>
+public class WinBox : BoxSingleton<WinBox>
 {
-    public static TeamBox Setup()
+    public static WinBox Setup()
     {
-         return Path(PathPrefabs.TEAM_BOX);
+        return Path(PathPrefabs.WIN_BOX);
     }
     protected override void Init()
     {
-        
     }
 
     protected override void InitState()
     {
-        
     }
 }

@@ -18040,9 +18040,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPanel: {fileID: 2438045052580852556}
   isAnim: 0
-  hasAppearedBefore: 1
   durationAppeared: 0.2
-  durationDisappeared: 0.1
+  hasAppearedBefore: 1
+  durationSlideOpen: 0.2
+  durationSildeClose: 0.2
+  btnDailylogin: {fileID: 3849885213788960852}
 --- !u!223 &1798053855515241446
 Canvas:
   m_ObjectHideFlags: 0

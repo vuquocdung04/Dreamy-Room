@@ -4,7 +4,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 {
     public static CollectionBox Setup()
     {
-        return Setup(PathPrefabs.COLLECTION_BOX);
+        return Path(PathPrefabs.COLLECTION_BOX);
     }
     
     protected override void Init()

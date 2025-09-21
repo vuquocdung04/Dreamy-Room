@@ -1,5 +1,6 @@
 
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -7,12 +8,23 @@ public abstract class BaseBox : MonoBehaviour
 {
     [SerializeField] protected RectTransform mainPanel;
     [SerializeField] protected bool isAnim = true;
+    [SerializeField]
+    [ShowIf("isAnim")]
+    protected float durationAppeared = 0.3f;
     [SerializeField] protected bool hasAppearedBefore;
-    [SerializeField] protected float durationAppeared = 0.2f;
-    [SerializeField] protected float durationDisappeared = 0.2f;
+    
+    [ShowIf("hasAppearedBefore")]
+    [BoxGroup("Sliding Durations")]
+    [SerializeField] 
+    protected float durationSlideOpen = 0.2f;
+    
+    [ShowIf("hasAppearedBefore")]
+    [BoxGroup("Sliding Durations")]
+    [SerializeField] 
+    protected float durationSildeClose = 0.2f;
     protected virtual void OnEnable()
     {
-        if (!hasAppearedBefore)
+        if (hasAppearedBefore)
         {
             DoFirstAppear();
             hasAppearedBefore = true;
@@ -58,12 +70,12 @@ public abstract class BaseBox : MonoBehaviour
         Show();
         Vector2 startPos = new Vector2(slideInFromLeft ? -mainPanel.rect.width : mainPanel.rect.width, 0);
         mainPanel.anchoredPosition = startPos;
-        mainPanel.DOAnchorPos(Vector2.zero, durationAppeared).SetEase(Ease.OutCubic);
+        mainPanel.DOAnchorPos(Vector2.zero, durationSlideOpen).SetEase(Ease.OutCubic);
     }
     public void CloseSliding(bool slideOutToLeft)
     {
         Vector2 endPos = new Vector2(slideOutToLeft ? -mainPanel.rect.width : mainPanel.rect.width, 0);
-        mainPanel.DOAnchorPos(endPos, durationDisappeared).SetEase(Ease.InCubic)
+        mainPanel.DOAnchorPos(endPos, durationSildeClose).SetEase(Ease.InCubic)
             .OnComplete(() =>
             {
                 Close();

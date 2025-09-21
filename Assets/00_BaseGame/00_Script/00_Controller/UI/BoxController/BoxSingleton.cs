@@ -4,7 +4,7 @@ public abstract class BoxSingleton<T> : BaseBox where T : BoxSingleton<T>
 {
     private static T instance;
 
-    public static T Setup(string prefabPath)
+    public static T Path(string prefabPath)
     {
         if (instance == null)
         {
