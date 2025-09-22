@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EventDispatcher;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
 {
     public static DailyLoginBox Setup()
     {
-        return Path(PathPrefabs.DAILY_LOGIN_BOX); 
+        return Path(PathPrefabs.DAILY_LOGIN_BOX);
     }
 
     public Sprite claimedSprite;
@@ -15,39 +16,34 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
     public Button btnClose;
     public Button btnClaim;
     public Image imgClaim;
-
-    private bool hasUpdated;
     public List<DailyLoginItem> lsItems = new();
+
     protected override void Init()
     {
         UpdateState();
-        
+
         btnClose.onClick.AddListener(Close);
-        btnClaim.onClick.AddListener(delegate
-        {
-            OnClaim();
-        });
+        btnClaim.onClick.AddListener(delegate { OnClaim(); });
     }
 
     protected override void InitState()
     {
-        
     }
 
     private void UpdateState()
     {
-        if(hasUpdated) return;
+        Debug.LogError("DailyLoginBox");
         UpdateClaimButtonState();
-        
+
         bool canClaimToDay = GameController.Instance.dataContains.dataDaily.HasClaimedDay();
         int nextDayToClaimIndex = GameController.Instance.dataContains.dataDaily.GetClaimedDay();
 
         int lastItemIndex = lsItems.Count - 1;
-        
+
         for (int i = 0; i < lsItems.Count; i++)
         {
             DailyLoginItem item = lsItems[i];
-            
+
             if (i < nextDayToClaimIndex)
             {
                 if (i != lastItemIndex)
@@ -56,32 +52,33 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
             }
             else if (i == nextDayToClaimIndex && canClaimToDay)
             {
-                if (i != lastItemIndex)
-                    item.UpdateBackground(claimableSprite);
                 item.SetAsClaimable();
             }
         }
     }
-    
-    
+
+
     private void OnClaim()
     {
         GameController.Instance.dataContains.dataDaily.HandleClaimed();
+        int lastItem = lsItems.Count - 1;
         // 2. Cập nhật chỉ item vừa nhận
         int claimedDayIndex = GameController.Instance.dataContains.dataDaily.GetClaimedDay() - 1;
         if (claimedDayIndex >= 0 && claimedDayIndex < lsItems.Count)
         {
-            lsItems[claimedDayIndex].UpdateBackground(claimedSprite);
+            if (claimedDayIndex != lastItem)
+                lsItems[claimedDayIndex].UpdateBackground(claimedSprite);
             lsItems[claimedDayIndex].SetAsClaimed();
         }
 
         // 3. Gọi hàm chung để cập nhật trạng thái nút Claim
         UpdateClaimButtonState();
+        this.PostEvent(EventID.UPDATE_NOTIFY_DAILYLOGIN);
     }
 
     private void UpdateClaimButtonState()
     {
-        bool canClaimToday =  !GameController.Instance.dataContains.dataDaily.HasClaimedDay();
+        bool canClaimToday = !GameController.Instance.dataContains.dataDaily.HasClaimedDay();
         btnClaim.interactable = canClaimToday;
         imgClaim.color = canClaimToday ? Color.white : new Color(1, 1, 1, 0.5f);
     }
@@ -94,5 +91,4 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
             item.SetupOdin();
         }
     }
-    
 }

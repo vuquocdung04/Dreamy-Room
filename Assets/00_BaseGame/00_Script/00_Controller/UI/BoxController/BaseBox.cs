@@ -48,7 +48,7 @@ public abstract class BaseBox : MonoBehaviour
 
     protected virtual void DoAppearAnimation()
     {
-        mainPanel.DOScale(Vector3.one, durationAppeared);
+        mainPanel.DOScale(Vector3.one, durationAppeared).SetEase(Ease.OutBack);
     }
     public void Show()
     {

@@ -12,6 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f36dd9e0eb4914a3976984dcb5b54c, type: 3}
   m_Name: DataDailySO
   m_EditorClassIdentifier: 
-  playerClaimedDay: 0
+  playerClaimedDay: 1
   totalDaysInCycle: 7
   hasClaimedDay: 1
+  lsRewards:
+  - day: 1
+    amount: 50
+    giftType: 2
+  - day: 2
+    amount: 1
+    giftType: 22
+  - day: 3
+    amount: 100
+    giftType: 2
+  - day: 4
+    amount: 1
+    giftType: 21
+  - day: 5
+    amount: 250
+    giftType: 2
+  - day: 6
+    amount: 1
+    giftType: 20
+  - day: 7
+    amount: 500
+    giftType: 2

@@ -10,11 +10,11 @@ public class DataContains : MonoBehaviour
         HasPassedDay();
     }
 
-    public void HasPassedDay()
+    private void HasPassedDay()
     {
         if (TimeManager.HasDayPassed(UseProfile.FirstTimeOpenGame, TimeManager.GetCurrentTime()))
         {
-            dataDaily.ResetProgress();
+            dataDaily.PrepareForNewDay();
             UseProfile.FirstTimeOpenGame = TimeManager.GetCurrentTime();
         }
     }

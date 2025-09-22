@@ -16,7 +16,7 @@ public class GameController : Singleton<GameController>
 
     private void Init()
     {
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         startLoading.Init();
         admobController.Init();
         dataContains.Init();
