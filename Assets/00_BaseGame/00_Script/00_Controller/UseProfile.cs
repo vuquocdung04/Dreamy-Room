@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class UseProfile : MonoBehaviour
 {
+    public static int TargetFrameRate
+    {
+        get => PlayerPrefs.GetInt(StringHelper.TARGET_FRAME_RATE, 90);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.TARGET_FRAME_RATE, value);
+            PlayerPrefs.Save();
+        }
+    }
+    
     public static int MaxUnlockedLevel
     {
         get
@@ -46,10 +56,7 @@ public class UseProfile : MonoBehaviour
 
     public bool OnMusic
     {
-        get
-        {
-            return PlayerPrefs.GetInt(StringHelper.ONOFF_MUSIC,1) == 1;
-        }
+        get => PlayerPrefs.GetInt(StringHelper.ONOFF_MUSIC,1) == 1;
         set
         {
             PlayerPrefs.SetInt(StringHelper.ONOFF_MUSIC, value ? 1 : 0);
@@ -58,6 +65,16 @@ public class UseProfile : MonoBehaviour
         }
     }
 
+    public bool OnVib
+    {
+        get => PlayerPrefs.GetInt(StringHelper.ONOFF_VIB,1) == 1;
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.ONOFF_VIB, value ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+    }
+    
     public bool IsRemoveAds
     {
         get

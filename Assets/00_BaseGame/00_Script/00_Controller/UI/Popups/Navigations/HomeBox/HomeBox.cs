@@ -1,7 +1,5 @@
-using System;
-using DG.Tweening;
+
 using EventDispatcher;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +16,10 @@ public class HomeBox : BoxSingleton<HomeBox>
     [Header("Daily Reward"), Space(5)]
     public Button btnDailyreward;
     public Transform notifyDailyReward;
+    [Header("Setting"), Space(5)]
+    public Button btnSetting;
+    
+    
     
     protected override void Init()
     {
@@ -30,6 +32,12 @@ public class HomeBox : BoxSingleton<HomeBox>
         {
             DailyRewardBox.Setup().Show();
         });
+        
+        btnSetting.onClick.AddListener(delegate
+        {
+            SettingHomeBox.Setup().Show();
+        });
+        
         this.RegisterListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);
         UpdateNotifyDailyLogin();
     }
@@ -46,6 +54,13 @@ public class HomeBox : BoxSingleton<HomeBox>
         else notifyDailyLogin.gameObject.SetActive(true);
     }
 
+    private void UpdateNotifyDailyReward(object obj = null)
+    {
+        var allAdRewardsClaimed = GameController.Instance.dataContains.dataDaily.AllAdRewardsClaimed();
+        if(allAdRewardsClaimed)  notifyDailyReward.gameObject.SetActive(false);
+        else notifyDailyReward.gameObject.SetActive(true);
+    }
+    
     private void OnDestroy()
     {
         this.RemoveListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);

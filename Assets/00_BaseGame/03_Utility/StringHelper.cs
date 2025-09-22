@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StringHelper
 {
+    public const string TARGET_FRAME_RATE = "TARGET_FRAME_RATE";
+    
     public const string COIN = "COIN";
     public const string HEART = "HEART";
     public const string STAR = "STAR";
@@ -17,6 +19,8 @@ public class StringHelper
     public const string CURRENT_LEVEL = "CURRENT_LEVEL";
     public const string ONOFF_MUSIC = "ONOFF_MUSIC";
     public const string ONOFF_SOUND = "ONOFF_SOUND";
+    public const string ONOFF_VIB = "ONOFF_VIB";
+    
     public const string REMOVE_ADS = "REMOVE_ADS";
     public const string PAUSE_GAME = "PAUSE_GAME";
     
