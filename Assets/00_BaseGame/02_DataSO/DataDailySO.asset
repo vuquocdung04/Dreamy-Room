@@ -14,26 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerClaimedDay: 1
   totalDaysInCycle: 7
-  hasClaimedDay: 1
-  lsRewards:
+  hasClaimedStreakToday: 0
+  streakRewards:
   - day: 1
+    amount: 0
+    giftType: 0
+  - day: 1
+    amount: 0
+    giftType: 0
+  - day: 1
+    amount: 0
+    giftType: 0
+  - day: 1
+    amount: 0
+    giftType: 0
+  - day: 1
+    amount: 0
+    giftType: 0
+  - day: 1
+    amount: 0
+    giftType: 0
+  - day: 1
+    amount: 0
+    giftType: 0
+  isFreeClaimedToday: 1
+  freeDailyReward:
+    day: 1
     amount: 50
     giftType: 2
+  adRewardsClaimedCount: 0
+  adRewardsList:
+  - day: 1
+    amount: 150
+    giftType: 2
   - day: 2
-    amount: 1
-    giftType: 22
+    amount: 15
+    giftType: 3
   - day: 3
-    amount: 100
+    amount: 150
     giftType: 2
   - day: 4
-    amount: 1
-    giftType: 21
-  - day: 5
-    amount: 250
-    giftType: 2
-  - day: 6
-    amount: 1
-    giftType: 20
-  - day: 7
-    amount: 500
-    giftType: 2
+    amount: 20
+    giftType: 3

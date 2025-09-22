@@ -15,7 +15,6 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
     public Sprite claimableSprite;
     public Button btnClose;
     public Button btnClaim;
-    public Image imgClaim;
     public List<DailyLoginItem> lsItems = new();
 
     protected override void Init()
@@ -35,8 +34,8 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
         Debug.LogError("DailyLoginBox");
         UpdateClaimButtonState();
 
-        bool canClaimToDay = GameController.Instance.dataContains.dataDaily.HasClaimedDay();
-        int nextDayToClaimIndex = GameController.Instance.dataContains.dataDaily.GetClaimedDay();
+        bool canClaimToDay = GameController.Instance.dataContains.dataDaily.HasClaimStreakToday();
+        int nextDayToClaimIndex = GameController.Instance.dataContains.dataDaily.GetStreakDayIndex();
 
         int lastItemIndex = lsItems.Count - 1;
 
@@ -50,20 +49,23 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
                     item.UpdateBackground(claimedSprite);
                 item.SetAsClaimed();
             }
-            else if (i == nextDayToClaimIndex && canClaimToDay)
+            else if (i == nextDayToClaimIndex && !canClaimToDay)
             {
+                if (i != lastItemIndex)
+                    item.UpdateBackground(claimableSprite);
                 item.SetAsClaimable();
             }
+            
         }
     }
 
 
     private void OnClaim()
     {
-        GameController.Instance.dataContains.dataDaily.HandleClaimed();
+        GameController.Instance.dataContains.dataDaily.HandleStreakClaimed();
         int lastItem = lsItems.Count - 1;
         // 2. Cập nhật chỉ item vừa nhận
-        int claimedDayIndex = GameController.Instance.dataContains.dataDaily.GetClaimedDay() - 1;
+        int claimedDayIndex = GameController.Instance.dataContains.dataDaily.GetStreakDayIndex() - 1;
         if (claimedDayIndex >= 0 && claimedDayIndex < lsItems.Count)
         {
             if (claimedDayIndex != lastItem)
@@ -78,9 +80,8 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
 
     private void UpdateClaimButtonState()
     {
-        bool canClaimToday = !GameController.Instance.dataContains.dataDaily.HasClaimedDay();
+        bool canClaimToday = !GameController.Instance.dataContains.dataDaily.HasClaimStreakToday();
         btnClaim.interactable = canClaimToday;
-        imgClaim.color = canClaimToday ? Color.white : new Color(1, 1, 1, 0.5f);
     }
 
     [Button("Setup Item", ButtonSizes.Large)]

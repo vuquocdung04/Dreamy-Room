@@ -5,19 +5,57 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataDailySO", menuName = "DATA/DataDaily", order = 0)]
 public class DataDailySO : ScriptableObject
 {
+    
+    /// <summary>
+    /// Bien va logic Daily login
+    /// </summary>
     [SerializeField] private int playerClaimedDay;
     [SerializeField] private int totalDaysInCycle = 6;
-    [SerializeField] private bool hasClaimedDay;
-    [Header("gift"), Space(5)]
-    [SerializeField] List<DataDailyReward> lsRewards;
-    
-    public int GetClaimedDay() => playerClaimedDay;
-    public bool HasClaimedDay() => hasClaimedDay;
-    public void HandleClaimed()
+    [SerializeField] private bool hasClaimedStreakToday;
+    [Header("Conflic Gift Of The Week")]
+    [SerializeField] List<DataDailyReward> streakRewards;
+    public int GetStreakDayIndex() => playerClaimedDay;
+    public bool HasClaimStreakToday() => hasClaimedStreakToday;
+    public void HandleStreakClaimed()
     {
-        Claim();
+        var reward = streakRewards[playerClaimedDay];
+        GameController.Instance.dataContains.giftData.Claim(reward.giftType,reward.amount);
+        Debug.Log("Đã nhận quà STREAK Ngày: " + (playerClaimedDay + 1));
         playerClaimedDay++;
-        hasClaimedDay = true;
+        hasClaimedStreakToday = true;
+    }
+
+    /// <summary>
+    /// Bien va Logic che do tiered
+    /// </summary>
+    [Header("Conflic Gift Of The Day"), Space(15)]
+    [SerializeField] private bool isFreeClaimedToday;
+    [SerializeField] private DataDailyReward freeDailyReward;
+    [SerializeField] private int adRewardsClaimedCount;
+    [SerializeField] private List<DataDailyReward> adRewardsList;
+    
+    public bool IsFreeClaimedToday() => isFreeClaimedToday;
+
+    public void ClaimFreeReward()
+    {
+        GameController.Instance.dataContains.giftData.Claim(freeDailyReward.giftType,freeDailyReward.amount);
+        Debug.Log($"Đã nhận quà FREE hàng ngày: {freeDailyReward.giftType} - {freeDailyReward.amount}");
+        isFreeClaimedToday = true;
+    }
+    public int GetAdRewardsClaimedCount() => adRewardsClaimedCount;
+    public bool AllAdRewardsClaimed() =>adRewardsClaimedCount >= adRewardsList.Count;
+
+    public DataDailyReward GetNextAdRewardInfo()
+    {
+        if (AllAdRewardsClaimed()) return null;
+        return adRewardsList[adRewardsClaimedCount];
+    }
+
+    public void ClaimNextAdReward()
+    {
+        var reward = adRewardsList[adRewardsClaimedCount];
+        GameController.Instance.dataContains.giftData.Claim(reward.giftType,reward.amount);
+        adRewardsClaimedCount++;
     }
     
     public void PrepareForNewDay()
@@ -28,17 +66,13 @@ public class DataDailySO : ScriptableObject
             playerClaimedDay = 0;
         }
         // 2. Luôn cho phép nhận quà vào ngày mới
-        hasClaimedDay = false;
+        hasClaimedStreakToday = false;
+        isFreeClaimedToday  = false;
+        adRewardsClaimedCount = 0;
     }
 
-    private void Claim()
-    {
-        var reward = lsRewards[playerClaimedDay];
-        GameController.Instance.dataContains.giftData.Claim(reward.giftType,reward.amount);
-        Debug.Log("Da nhan qua ngay: " + playerClaimedDay +" " + reward.giftType + " " +  reward.amount);
-    }
     
-    [Button("ReDay", ButtonSizes.Large)]
+    [Button("ReDay (-1 Day)", ButtonSizes.Large)]
     void ReDay()
     {
         UseProfile.FirstTimeOpenGame = TimeManager.GetCurrentTime().AddDays(-1);
@@ -48,7 +82,7 @@ public class DataDailySO : ScriptableObject
 [System.Serializable]
 public class DataDailyReward
 {
-    [HorizontalGroup("RewardData", Width = 50)]
+    [HorizontalGroup("RewardData", Width = 70)]
     [LabelWidth(30)]
     public int day = 1;
     [HorizontalGroup("RewardData", Width = 90)] 
