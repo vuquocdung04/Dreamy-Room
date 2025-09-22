@@ -3,7 +3,6 @@
 public class HomeController : Singleton<HomeController>
 {
     public HomeScene homeScene;
-    public NavController navController;
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -16,6 +15,5 @@ public class HomeController : Singleton<HomeController>
     private void Init()
     {
         homeScene.Init();
-        navController.Init();
     }
 }

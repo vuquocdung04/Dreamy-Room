@@ -13,6 +13,6 @@ public class NavButtonShortCut : MonoBehaviour
 
         private void OnClick()
         {
-            HomeController.Instance.navController.GoToScreen(navType);
+            HomeController.Instance.homeScene.navController.GoToScreen(navType);
         }
     }

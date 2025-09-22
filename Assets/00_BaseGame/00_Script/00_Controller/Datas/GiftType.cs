@@ -4,6 +4,9 @@ public enum GiftType
     RemoveAds = 1,
     Coin = 2,
     Heart = 3,
+    Star = 4,
+    HeartUnlimit = 5,
+    
     BoosterBoxBuffet = 19,
     BoosterCompass = 20,
     BoosterFrozenTime = 21,

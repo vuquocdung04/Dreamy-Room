@@ -91,6 +91,51 @@ public class UseProfile : MonoBehaviour
         }
     }
 
+    public static int Star
+    {
+        get => PlayerPrefs.GetInt(StringHelper.STAR, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.STAR, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static DateTime TimeUnlimitedHeart
+    {
+        get
+        {
+            if (PlayerPrefs.HasKey(StringHelper.TIME_UNLIMITER_HEART))
+            {
+                var temp = Convert.ToInt64(PlayerPrefs.GetString(StringHelper.TIME_UNLIMITER_HEART));
+                return DateTime.FromBinary(temp);
+            }
+            else
+            {
+                var newDateTime = DateTime.Now.AddDays(-1);
+                PlayerPrefs.SetString(StringHelper.TIME_UNLIMITER_HEART, newDateTime.ToBinary().ToString());
+                PlayerPrefs.Save();
+                return newDateTime;
+            }
+        }
+        set
+        {
+            PlayerPrefs.SetString(StringHelper.TIME_UNLIMITER_HEART, value.ToBinary().ToString());
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static bool IsUnlimitedHeart
+    {
+        get => PlayerPrefs.GetInt(StringHelper.IS_UNLIMITER_HEART,0) == 1;
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.IS_UNLIMITER_HEART, value ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+    }
+    
+
     public static DateTime FirstTimeOpenGame
     {
         get

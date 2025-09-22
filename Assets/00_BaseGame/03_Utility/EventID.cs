@@ -3,6 +3,10 @@
   
     NONE,
     //HOME SCRENE
+    CHANGE_COIN = 50,
+    CHANGE_HEART = 51,
+    CHANGE_STAR = 52,
+    
     REFRESH_HOMESCENE = 100,
     
     ANTI_SPAM_NAVIGATION_BAR = 200,

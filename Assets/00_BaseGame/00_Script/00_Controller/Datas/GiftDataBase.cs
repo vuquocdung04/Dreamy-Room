@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,9 +28,14 @@ public class GiftDataBase : ScriptableObject
         {
             case GiftType.Coin:
                 UseProfile.Coin += amount;
+                EventDispatcher.EventDispatcher.Instance.PostEvent(EventID.CHANGE_COIN);
                 break;
             case GiftType.Heart:
                 UseProfile.Heart += amount;
+                break;
+            case GiftType.Star:
+                UseProfile.Star += amount;
+                EventDispatcher.EventDispatcher.Instance.PostEvent(EventID.CHANGE_STAR);
                 break;
             case GiftType.RemoveAds:
                 GameController.Instance.useProfile.IsRemoveAds = true;
@@ -60,6 +66,11 @@ public class GiftDataBase : ScriptableObject
                 break;
             case GiftType.BoosterX2Star:
                 UseProfile.Booster_X2Star += amount;
+                break;
+            case GiftType.HeartUnlimit:
+                UseProfile.TimeUnlimitedHeart = DateTime.Now.AddHours(1);
+                UseProfile.Heart = 5;
+                UseProfile.IsUnlimitedHeart = true;
                 break;
         }
     }
