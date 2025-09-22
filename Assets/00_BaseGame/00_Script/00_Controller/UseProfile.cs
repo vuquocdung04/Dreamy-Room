@@ -134,8 +134,32 @@ public class UseProfile : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-    
 
+    public static DateTime TimeLastOverHeart
+    {
+        get
+        {
+            if (PlayerPrefs.HasKey(StringHelper.TIME_LAST_OVER_HEART))
+            {
+                var temp = Convert.ToInt64(PlayerPrefs.GetString(StringHelper.TIME_LAST_OVER_HEART));
+                return DateTime.FromBinary(temp);
+            }
+            else
+            {
+                var newDateTime = DateTime.Now;
+                PlayerPrefs.SetString(StringHelper.TIME_LAST_OVER_HEART, newDateTime.ToBinary().ToString());
+                PlayerPrefs.Save();
+                return newDateTime;
+            }
+        }
+        set
+        {
+            PlayerPrefs.SetString(StringHelper.TIME_LAST_OVER_HEART, value.ToBinary().ToString());
+            PlayerPrefs.Save();
+        }
+    }
+    
+    
     public static DateTime FirstTimeOpenGame
     {
         get

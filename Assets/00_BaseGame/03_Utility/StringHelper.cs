@@ -9,7 +9,7 @@ public class StringHelper
     public const string STAR = "STAR";
     public const string IS_UNLIMITER_HEART = "IS_UNLIMITER_HEART";
     public const string TIME_UNLIMITER_HEART = "TIME_UNLIMITER_HEART";
-    
+    public const string TIME_LAST_OVER_HEART = "TIME_LAST_OVER_HEART";
     
     public const string FIRST_TIME_OPEN_GAME = "FIRST_TIME_OPEN_GAME";
     

@@ -27,4 +27,16 @@ public class TimeManager
         int diff = (7 + (int)date.DayOfWeek - (int)startOfWeek) % 7;
         return date.AddDays(-diff);
     }
+
+    public static System.DateTime GetStartOfDay(System.DateTime time)
+    {
+        return new  System.DateTime(time.Year, time.Month, time.Day);
+    }
+
+    public static long CaculateTime(System.DateTime oldTime, System.DateTime newTime)
+    {
+        System.TimeSpan diff = newTime - oldTime;
+        long result = diff.Days * 24 * 60 * 60 +  diff.Hours * 60 * 60 + diff.Minutes * 60 + diff.Seconds;
+        return result;
+    }
 }
