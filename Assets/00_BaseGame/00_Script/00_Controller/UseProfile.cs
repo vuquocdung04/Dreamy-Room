@@ -13,6 +13,39 @@ public class UseProfile : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+ 
+    // Profile
+
+    public static string UserName
+    {
+        get => PlayerPrefs.GetString(StringHelper.USER_NAME,"HNUE");
+        set
+        {
+            PlayerPrefs.SetString(StringHelper.USER_NAME, value);
+            PlayerPrefs.Save();
+        }
+    }
+    
+    public static int ProfileFrameDetail
+    {
+        get => PlayerPrefs.GetInt(StringHelper.FRAME_DETAIL, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.FRAME_DETAIL, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int ProfileAvatarDetail
+    {
+        get => PlayerPrefs.GetInt(StringHelper.AVATAR_DETAIL, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.AVATAR_DETAIL, value);
+            PlayerPrefs.Save();
+        }
+    }
+    
     
     public static int MaxUnlockedLevel
     {

@@ -24,6 +24,11 @@ public class StringHelper
     public const string REMOVE_ADS = "REMOVE_ADS";
     public const string PAUSE_GAME = "PAUSE_GAME";
     
+    // Profile USer
+    public const string USER_NAME =  "USER_NAME";
+    public const string FRAME_DETAIL =  "FRAME_DETAIL";
+    public const string AVATAR_DETAIL =  "AVATAR_DETAIL";
+    
     //Booster
     public const string BOOSTER_BOXBUFFER = "BOOSTER_BOXBUFFER";
     public const string BOOSTER_COMPASS =  "BOOSTER_COMPASS";
