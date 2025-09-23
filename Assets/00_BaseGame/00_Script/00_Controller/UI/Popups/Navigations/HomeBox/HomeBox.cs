@@ -56,6 +56,7 @@ public class HomeBox : BoxSingleton<HomeBox>
         this.RegisterListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);
         UpdateNotifyDailyLogin();
         UpdateProgressTreasure();
+        UpdateProgressPigBank();
     }
 
     protected override void InitState()
@@ -78,7 +79,14 @@ public class HomeBox : BoxSingleton<HomeBox>
         fillTreasure.fillAmount = progress;
         txtTreasure.text = star.ToString();
     }
-    
+
+    private void UpdateProgressPigBank()
+    {
+        var totalCompletedLevel = UseProfile.MaxUnlockedLevel;
+        var progress = (float)(totalCompletedLevel * 200) / 2400;
+        fillPigBank.fillAmount = progress;
+        txtPigBank.text = (totalCompletedLevel * 200).ToString();
+    }
     
     private void UpdateNotifyDailyLogin(object obj = null)
     {

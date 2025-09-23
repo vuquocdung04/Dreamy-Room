@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class RateBox : BoxSingleton<RateBox>
@@ -12,7 +11,7 @@ public class RateBox : BoxSingleton<RateBox>
     public Button  btnRate;
     public List<Button> lsBtnStars;
     public List<Image> lsImgStars;
-    private int currentStar = 0;
+    private int currentStar;
     protected override void Init()
     {
         btnClose.onClick.AddListener(Close);
