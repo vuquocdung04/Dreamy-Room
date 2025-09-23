@@ -1,5 +1,6 @@
 
 using EventDispatcher;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,30 +17,45 @@ public class HomeBox : BoxSingleton<HomeBox>
     [Header("Daily Reward"), Space(5)]
     public Button btnDailyreward;
     public Transform notifyDailyReward;
-    [Header("Setting"), Space(5)]
+    [Header("EditProfile"), Space(5)]
+    public Button btnEditProfile;
+    [Header("Setting")]
     public Button btnSetting;
-    
+    [Header("RemoveAds")]
+    public Button btnRemoveAds;
+    [Header("StartPack")]
+    public Button btnStartPack;
+    [Header("Treasure")]
+    public Button btnTreasure;
+    public TextMeshProUGUI txtTreasure;
+    public Image fillTreasure;
+    [Header("PigBank")]
+    public Button btnPigBank;
+    public TextMeshProUGUI txtPigBank;
+    public Image fillPigBank;
     
     
     protected override void Init()
     {
-        btnDailylogin.onClick.AddListener(delegate
+        SetupBtnOnClick(btnDailylogin, () => DailyLoginBox.Setup().Show());
+        SetupBtnOnClick(btnDailyreward, () => DailyRewardBox.Setup().Show());
+        SetupBtnOnClick(btnEditProfile, () => EditProfileBox.Setup().Show());
+        SetupBtnOnClick(btnSetting, () => SettingHomeBox.Setup().Show());
+        SetupBtnOnClick(btnRemoveAds, () => RemoveAdsBox.Setup().Show());
+        SetupBtnOnClick(btnPigBank, () => PigBankBox.Setup().Show());
+        SetupBtnOnClick(btnTreasure, delegate
         {
-            DailyLoginBox.Setup().Show();
+            TreasureBox.Setup().Show();
+        });
+        SetupBtnOnClick(btnStartPack, delegate
+        {
+            PigBankBox.Setup().Show();
         });
         
-        btnDailyreward.onClick.AddListener(delegate
-        {
-            DailyRewardBox.Setup().Show();
-        });
-        
-        btnSetting.onClick.AddListener(delegate
-        {
-            SettingHomeBox.Setup().Show();
-        });
         
         this.RegisterListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);
         UpdateNotifyDailyLogin();
+        UpdateProgressTreasure();
     }
 
     protected override void InitState()
@@ -47,6 +63,23 @@ public class HomeBox : BoxSingleton<HomeBox>
         
     }
 
+    private void SetupBtnOnClick(Button btn, System.Action callback = null)
+    {
+        btn.onClick.AddListener(delegate
+        {
+            callback?.Invoke();
+        });
+    }
+
+    private void UpdateProgressTreasure()
+    {
+        var star = UseProfile.Star;
+        var progress = (float)star / 400;
+        fillTreasure.fillAmount = progress;
+        txtTreasure.text = star.ToString();
+    }
+    
+    
     private void UpdateNotifyDailyLogin(object obj = null)
     {
         var claimed = GameController.Instance.dataContains.dataDaily.HasClaimStreakToday();

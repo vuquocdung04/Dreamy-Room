@@ -1,4 +1,5 @@
 
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class DataContains : MonoBehaviour
@@ -17,5 +18,12 @@ public class DataContains : MonoBehaviour
             dataDaily.PrepareForNewDay();
             UseProfile.FirstTimeOpenGame = TimeManager.GetCurrentTime();
         }
+    }
+
+
+    [Button("Buff Star 20", ButtonSizes.Large)]
+    void BuffStar20()
+    {
+        UseProfile.Star += 20;
     }
 }
