@@ -73,7 +73,7 @@ public abstract class BaseBox : MonoBehaviour
         return mainPanel.DOAnchorPos(endPos, durationSlide/2).SetEase(Ease.InCubic)
             .OnComplete(() =>
             {
-                Close();
+                gameObject.SetActive(false);
             });
     }
 }
