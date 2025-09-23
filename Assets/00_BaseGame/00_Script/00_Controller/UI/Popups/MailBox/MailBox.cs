@@ -1,4 +1,5 @@
-using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class MailBox : BoxSingleton<MailBox>
 {
@@ -6,6 +7,10 @@ public class MailBox : BoxSingleton<MailBox>
     {
         return Path(PathPrefabs.MAIL_BOX);
     }
+
+    public Button btnClose;
+    public List<MailRewardCollection>  lsCollections;
+    
     protected override void Init()
     {
     }
