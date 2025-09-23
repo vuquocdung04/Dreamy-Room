@@ -22,6 +22,7 @@ public class HomeController : Singleton<HomeController>
     [Button("Button Test")]
     void ButtonTest()
     {
-        SettingGameBox.Setup().Show();
+        //SettingGameBox.Setup().Show();
+        RateBox.Setup().Show();
     }
 }

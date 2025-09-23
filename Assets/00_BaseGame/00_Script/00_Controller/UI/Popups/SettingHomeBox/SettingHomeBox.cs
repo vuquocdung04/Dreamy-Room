@@ -86,6 +86,7 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
 
     protected override void InitState()
     {
+        
     }
 
     private bool ToggleSetting(bool currentValue, Image inactiveImage)
