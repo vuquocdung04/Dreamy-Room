@@ -7,6 +7,8 @@ public class DataContains : MonoBehaviour
     public DataDailySO dataDaily;
     public GiftDataBase giftData;
     public DataProfileSO dataProfile;
+    public DataLevelSO dataLevel;
+    public DataCollectionSO dataCollection;
     public void Init()
     {
         HasPassedDay();
