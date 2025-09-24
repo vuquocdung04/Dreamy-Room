@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataLevel", menuName = "DATA/DataLevelSO", order = 4)]
@@ -35,7 +36,13 @@ public class DataLevelSO : ScriptableObject
 [System.Serializable]
 public class LevelConflict
 {
+    [HorizontalGroup("Split",Width = 0.3f)]
     public int idLevel;
-    public Sprite thumbnailIcon;
+    
+    [HorizontalGroup("Split",Width = 0.5f)]
     public GameObject prefab;
+    
+    [HorizontalGroup("Split"),HideLabel]
+    [PreviewField(50, ObjectFieldAlignment.Right)]
+    public Sprite thumbnailIcon;
 }
