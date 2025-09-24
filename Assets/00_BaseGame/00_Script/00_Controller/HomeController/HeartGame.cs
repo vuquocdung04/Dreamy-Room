@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HeartGame : MonoBehaviour
 {
-    [SerializeField] private long timeUpHeartGame = 30;
+    //[SerializeField] private long timeUpHeartGame = 30;
     //[SerializeField] private bool wasCoolDown;
     //[SerializeField] float currentCoolDown;
 

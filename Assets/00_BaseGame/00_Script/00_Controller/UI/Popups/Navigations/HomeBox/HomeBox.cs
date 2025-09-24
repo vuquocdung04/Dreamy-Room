@@ -51,7 +51,7 @@ public class HomeBox : BoxSingleton<HomeBox>
         });
         SetupBtnOnClick(btnStartPack, delegate
         {
-            PigBankBox.Setup().Show();
+            StarterPackBox.Setup().Show();
         });
         
         this.RegisterListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);
