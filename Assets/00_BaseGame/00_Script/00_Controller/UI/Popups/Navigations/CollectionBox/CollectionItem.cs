@@ -12,7 +12,7 @@ public class CollectionItem : MonoBehaviour
     private int curAmountProgress;
 
 
-    public CollectionType GetType() => type;
+    public CollectionType GetCollectionType() => type;
     public void AddClickListener(System.Action<CollectionItem> callback = null )
     {
         btn.onClick.AddListener(delegate { callback?.Invoke(this); });
@@ -24,7 +24,7 @@ public class CollectionItem : MonoBehaviour
         var dataCollection = GameController.Instance.dataContains.dataCollection;
         var dataCollectionConfict = dataCollection.GetCollectionByType(type);
         var lsCollection = new List<int>(dataCollectionConfict.lsIdCards);
-        
+        curAmountProgress = 0;
         
         foreach (var t in lsCollection)
         {

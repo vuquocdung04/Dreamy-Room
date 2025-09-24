@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 public class CollectionBox : BoxSingleton<CollectionBox>
 {
@@ -16,7 +15,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
         OnClick(lsItems, (item) => HanleSelection(delegate
         {
-            GameController.Instance.dataContains.dataCollection.SetCollectionType(item.GetType());
+            GameController.Instance.dataContains.dataCollection.SetCollectionType(item.GetCollectionType());
             CollectionDetailBox.Setup().Show();
         }));
         
@@ -44,7 +43,9 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
     private void OnClick(List<CollectionItem> lstItems, System.Action<CollectionItem> callback = null)
     {
-        foreach(var item in lstItems) item.AddClickListener(callback);
+        
+        foreach (var t in lstItems)
+            t.AddClickListener(callback);
     }
 
     [Button("Setup Item")]

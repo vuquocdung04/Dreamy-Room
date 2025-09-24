@@ -28,10 +28,10 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     protected override void Init()
     {
         var dataCollection = GameController.Instance.dataContains.dataCollection;
-        type = dataCollection.GetType();
+        type = dataCollection.GetCollectionType();
         btnClose.onClick.AddListener(Close);
 
-        OnClick(lsItemClones, (item) => HandleSelection(delegate
+        OnClick(lsItems, (item) => HandleSelection(delegate
         {
             //NOTE: PLAY LEVEL
             
@@ -49,13 +49,13 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     {
         var dataCollection = GameController.Instance.dataContains.dataCollection;
         var collectionConflict = dataCollection.GetCollectionByType(type);
+        currentLevelCompleted = 0;
         
         lsItemClones.Clear();
         txtTitle.text = collectionConflict.txtTitle;
         txtDescription.text = collectionConflict.txtDescription;
         imgReward.sprite = collectionConflict.sprReward;
         txtReward.text = collectionConflict.amountReward.ToString();
-        
         for (int i = 0; i < collectionConflict.GetCount(); i++)
         {
             if(collectionConflict.lsIdCards[i] > UseProfile.MaxUnlockedLevel) continue;

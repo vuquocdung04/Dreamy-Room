@@ -6,16 +6,18 @@ using UnityEngine;
 public class DataCollectionSO : ScriptableObject
 {
     [SerializeField] private CollectionType currentCollectionType;
-    public CollectionType GetType() => currentCollectionType;
+    public CollectionType GetCollectionType() => currentCollectionType;
     public void SetCollectionType(CollectionType collectionType) => currentCollectionType = collectionType;
-    
+
     public List<CollectionConflict> lstCollectionConflict;
 
     public int GetListCollectionCount() => lstCollectionConflict.Count;
+
     public CollectionConflict GetCollectionByType(CollectionType type)
     {
-        foreach(var collection in lstCollectionConflict)
-            if (collection.type == type)  return collection;
+        foreach (var collection in lstCollectionConflict)
+            if (collection.type == type)
+                return collection;
         return null;
     }
 }
@@ -23,26 +25,29 @@ public class DataCollectionSO : ScriptableObject
 [System.Serializable]
 public class CollectionConflict
 {
-    [Title("Type")]
-    [HorizontalGroup("GeneralInfo", Width = 0.3f, LabelWidth = 40)]
-    [HideLabel]
+    [HorizontalGroup("Split", 0.5f, LabelWidth = 80)]
+    [VerticalGroup("Split/Left")]
+    [BoxGroup("Split/Left/General Info"), Title("Type"), HideLabel]
     public CollectionType type;
-    [Title("Total")]
-    [HorizontalGroup("GeneralInfo", Width = 0.2f, LabelWidth = 80)]
-    [HideLabel]
+
+    [BoxGroup("Split/Left/General Info"), Title("Total Amount"), HideLabel]
     public int totalAmount;
-    [Title("Title")]
-    [HorizontalGroup("GeneralInfo", LabelWidth = 40)]
-    [HideLabel]
+
+    [BoxGroup("Split/Left/General Info"), Title("Title"), HideLabel]
     public string txtTitle;
-    
-    public string txtDescription;
+
+    [BoxGroup("Split/Left/General Info"), Title("Amount Reward"), HideLabel]
     public int amountReward;
-    [PreviewField(50)]
+
+    [BoxGroup("Split/Left/General Info")] [TextArea]
+    public string txtDescription;
+
+    [BoxGroup("Split/Left/General Info")] [PreviewField(50, ObjectFieldAlignment.Center), HideLabel]
     public Sprite sprReward;
-    
+
+    [HorizontalGroup("Split")] [BoxGroup("Split/Card IDs")]
     public List<int> lsIdCards;
-    
+
     public int GetCount() => lsIdCards.Count;
 }
 
@@ -67,7 +72,7 @@ public enum CollectionType
     Dream = 15,
     Future = 16,
     GreenVibes = 17,
-    Grand =18,
+    Grand = 18,
     FairytaleEcho = 19,
     ChildHood = 20,
     Fabulous = 21,
