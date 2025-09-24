@@ -6,6 +6,7 @@
     CHANGE_COIN = 50,
     CHANGE_HEART = 51,
     CHANGE_STAR = 52,
+    CHANGE_AVATAR = 53,
     
     REFRESH_HOMESCENE = 100,
     

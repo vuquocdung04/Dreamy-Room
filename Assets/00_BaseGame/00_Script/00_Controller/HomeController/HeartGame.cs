@@ -4,12 +4,12 @@ using UnityEngine;
 public class HeartGame : MonoBehaviour
 {
     [SerializeField] private long timeUpHeartGame = 30;
-    [SerializeField] private bool wasCoolDown;
-    [SerializeField] float currentCoolDown;
+    //[SerializeField] private bool wasCoolDown;
+    //[SerializeField] float currentCoolDown;
 
     public void Init()
     {
-        wasCoolDown = false;
+        //wasCoolDown = false;
         CheckHeart();
         CheckUnlimitHeart();
     }

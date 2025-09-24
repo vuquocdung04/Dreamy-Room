@@ -10,7 +10,9 @@ public class HomeBox : BoxSingleton<HomeBox>
     {
         return Path(PathPrefabs.HOME_BOX);
     }
-
+    [Header("Avatar")]
+    public AvatarHomeBox avatarHomeBox;
+    
     [Header("Daily Login"), Space(5)]
     public Button btnDailylogin;
     public Transform notifyDailyLogin;
@@ -52,8 +54,8 @@ public class HomeBox : BoxSingleton<HomeBox>
             PigBankBox.Setup().Show();
         });
         
-        
         this.RegisterListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);
+        avatarHomeBox.Init();
         UpdateNotifyDailyLogin();
         UpdateProgressTreasure();
         UpdateProgressPigBank();

@@ -15626,7 +15626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00014059276}
+  m_AnchoredPosition: {x: 0, y: -0.00020695497}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5457663298954663059
@@ -17967,6 +17967,7 @@ MonoBehaviour:
   durationAppeared: 0.2
   hasAppearedBefore: 1
   durationSlide: 0.2
+  avatarHomeBox: {fileID: 1408108111655952505}
   btnDailylogin: {fileID: 3849885213788960852}
   notifyDailyLogin: {fileID: 1220266628764967321}
   btnDailyreward: {fileID: 4010835954379568124}
@@ -22166,6 +22167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3562713203056625645}
+  - component: {fileID: 1408108111655952505}
   - component: {fileID: 5369770888204821127}
   - component: {fileID: 1694124038916138596}
   - component: {fileID: 720397043450543209}
@@ -22196,6 +22198,20 @@ RectTransform:
   m_AnchoredPosition: {x: 94.2, y: -81.2}
   m_SizeDelta: {x: 119.6235, y: 119.6235}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1408108111655952505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238775645320469599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa81118deac640f58f23b4e933f6bdc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imgAvatar: {fileID: 1694124038916138596}
+  imgFrame: {fileID: 7282388937641961992}
 --- !u!222 &5369770888204821127
 CanvasRenderer:
   m_ObjectHideFlags: 0
