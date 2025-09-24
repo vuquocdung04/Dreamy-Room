@@ -11,6 +11,8 @@ public class DataContains : MonoBehaviour
     public DataCollectionSO dataCollection;
     public void Init()
     {
+        dataLevel.Init();
+        
         HasPassedDay();
     }
 
@@ -28,5 +30,11 @@ public class DataContains : MonoBehaviour
     void BuffStar20()
     {
         UseProfile.Star += 20;
+    }
+
+    [Button("Buff Max Level", ButtonSizes.Large)]
+    void BuffLevel(int maxLevel)
+    {
+        UseProfile.MaxUnlockedLevel = maxLevel;
     }
 }

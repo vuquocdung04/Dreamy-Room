@@ -17,6 +17,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
         OnClick(lsItems, (item) => HanleSelection(delegate
         {
             GameController.Instance.dataContains.dataCollection.SetCollectionType(item.GetType());
+            CollectionDetailBox.Setup().Show();
         }));
         
     }
@@ -28,9 +29,11 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
     private void UpdateItemState()
     {
-        foreach (var item in lsItems)
+        var dataCollection = GameController.Instance.dataContains.dataCollection;
+
+        for (int i = 0; i < dataCollection.GetListCollectionCount(); i++)
         {
-            item.InitInfo();
+            lsItems[i].Init();
         }
     }
 
@@ -41,7 +44,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
     private void OnClick(List<CollectionItem> lstItems, System.Action<CollectionItem> callback = null)
     {
-        foreach(var item in lstItems) item.Init(callback);
+        foreach(var item in lstItems) item.AddClickListener(callback);
     }
 
     [Button("Setup Item")]

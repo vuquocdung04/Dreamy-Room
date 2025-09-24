@@ -508,9 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780bbe1dfe614cf08fc6c0ef0fa9e8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUpHeartGame: 30
-  wasCoolDown: 0
-  currentCoolDown: 0
 --- !u!1 &643601518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1135,8 @@ MonoBehaviour:
   dataDaily: {fileID: 11400000, guid: d7adb07856cb06947b01fc8e03725139, type: 2}
   giftData: {fileID: 11400000, guid: b6fa2811e24bb264d8677617099b355d, type: 2}
   dataProfile: {fileID: 11400000, guid: 5dbed4200ebf2b341971315c3f808c5e, type: 2}
+  dataLevel: {fileID: 11400000, guid: 544f1976e9fb5874e9570ae4f046f8e2, type: 2}
+  dataCollection: {fileID: 11400000, guid: 86cbe95e9645907499a3368dd2eb9b1b, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

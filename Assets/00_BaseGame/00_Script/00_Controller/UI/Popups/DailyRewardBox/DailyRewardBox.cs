@@ -26,7 +26,7 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
         {
             var item = adRewardItems[i];
             // Gọi hàm Init của item, và truyền vào hành động OnAdRewardClaim
-            item.Init(OnAdRewardClaim);
+            item.AddClickListener(OnAdRewardClaim);
         }
     }
 

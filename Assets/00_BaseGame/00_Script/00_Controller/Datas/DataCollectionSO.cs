@@ -11,6 +11,7 @@ public class DataCollectionSO : ScriptableObject
     
     public List<CollectionConflict> lstCollectionConflict;
 
+    public int GetListCollectionCount() => lstCollectionConflict.Count;
     public CollectionConflict GetCollectionByType(CollectionType type)
     {
         foreach(var collection in lstCollectionConflict)

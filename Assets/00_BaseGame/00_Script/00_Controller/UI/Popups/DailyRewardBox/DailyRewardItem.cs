@@ -10,7 +10,7 @@ public class DailyRewardItem : MonoBehaviour
     [SerializeField] private Transform fill;
     [SerializeField] private Transform iconAds;
 
-    public void Init(System.Action callback = null)
+    public void AddClickListener(System.Action callback = null)
     {
         btn.onClick.AddListener(delegate { callback?.Invoke(); });
     }

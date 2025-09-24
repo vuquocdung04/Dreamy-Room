@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,17 +13,18 @@ public class CollectionItem : MonoBehaviour
 
 
     public CollectionType GetType() => type;
-    public void Init(System.Action<CollectionItem> callback = null )
+    public void AddClickListener(System.Action<CollectionItem> callback = null )
     {
         btn.onClick.AddListener(delegate { callback?.Invoke(this); });
     }
     
-    public void InitInfo()
+    public void Init()
     {
+        Debug.LogError(gameObject.name + "/" + type);
         var dataCollection = GameController.Instance.dataContains.dataCollection;
         var dataCollectionConfict = dataCollection.GetCollectionByType(type);
-        var lsCollection = dataCollectionConfict.lsIdCards;
-
+        var lsCollection = new List<int>(dataCollectionConfict.lsIdCards);
+        
         
         foreach (var t in lsCollection)
         {
