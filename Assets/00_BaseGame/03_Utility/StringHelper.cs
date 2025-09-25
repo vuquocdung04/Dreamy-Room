@@ -57,7 +57,7 @@ public class PathPrefabs
     public const string MAIL_BOX = "UI/Popups/MailBox";
     public const string RATE_BOX = "UI/Popups/RateBox";
     public const string PIG_BANK_BOX = "UI/Popups/PigBankBox";
-    public const string QUIT_BOX = "UI/Popups/QuitBox";
+    public const string QUIT_LEVEL_BOX = "UI/Popups/QuitLevelBox";
     public const string TIME_OUT_BOX = "UI/Popups/TimeOutBox";
     public const string STARTER_PACK_BOX = "UI/Popups/StarterPackBox";
     public const string TREASURE_BOX = "UI/Popups/TreasureBox";
