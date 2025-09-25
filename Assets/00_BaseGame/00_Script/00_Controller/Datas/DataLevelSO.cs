@@ -9,6 +9,8 @@ public class DataLevelSO : ScriptableObject
 
     private Dictionary<int, LevelConflict> levelDictionary;
 
+    public int GetCountList() => lstLevelConflicts.Count;
+    
     public void Init()
     {
         levelDictionary = new Dictionary<int, LevelConflict>();

@@ -1,7 +1,4 @@
 
-
-using Sirenix.OdinInspector;
-
 public class HomeController : Singleton<HomeController>
 {
     public HomeScene homeScene;
@@ -11,18 +8,9 @@ public class HomeController : Singleton<HomeController>
         m_DontDestroyOnLoad = false;
         Init();
     }
-
-    
-    
     private void Init()
     {
         homeScene.Init();
     }
-
-    [Button("Button Test")]
-    void ButtonTest()
-    {
-        //SettingGameBox.Setup().Show();
-        RateBox.Setup().Show();
-    }
+    
 }

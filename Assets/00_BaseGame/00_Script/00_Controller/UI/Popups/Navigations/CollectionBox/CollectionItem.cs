@@ -35,6 +35,11 @@ public class CollectionItem : MonoBehaviour
         fill.fillAmount = (float)curAmountProgress / dataCollectionConfict.totalAmount;
     }
 
+    public void HandleInteractableBtn(bool isState)
+    {
+        btn.interactable = isState;
+    }
+    
     public void SetupOdin(int id)
     {
         btn =  GetComponent<Button>();

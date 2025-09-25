@@ -9,6 +9,7 @@ public class DataDailySO : ScriptableObject
     /// <summary>
     /// Bien va logic Daily login
     /// </summary>
+    
     [SerializeField] private int playerClaimedDay;
     [SerializeField] private int totalDaysInCycle = 6;
     [SerializeField] private bool hasClaimedStreakToday;
@@ -69,13 +70,6 @@ public class DataDailySO : ScriptableObject
         hasClaimedStreakToday = false;
         isFreeClaimedToday  = false;
         adRewardsClaimedCount = 0;
-    }
-
-    
-    [Button("ReDay (-1 Day)", ButtonSizes.Large)]
-    void ReDay()
-    {
-        UseProfile.FirstTimeOpenGame = TimeManager.GetCurrentTime().AddDays(-1);
     }
 }
 

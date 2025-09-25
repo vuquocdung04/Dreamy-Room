@@ -25,8 +25,6 @@ public class DataCollectionSO : ScriptableObject
 [System.Serializable]
 public class CollectionConflict
 {
-    [Title("Level $type")]
-    
     [HorizontalGroup("Split", 0.5f, LabelWidth = 80)]
     [VerticalGroup("Split/Left")]
     [BoxGroup("Split/Left/General Info"), Title("Type"), HideLabel]

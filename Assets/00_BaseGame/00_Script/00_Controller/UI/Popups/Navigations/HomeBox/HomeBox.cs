@@ -10,6 +10,8 @@ public class HomeBox : BoxSingleton<HomeBox>
     {
         return Path(PathPrefabs.HOME_BOX);
     }
+    public LevelHomeController levelHomeController;
+    
     [Header("Avatar")]
     public AvatarHomeBox avatarHomeBox;
     
@@ -39,6 +41,8 @@ public class HomeBox : BoxSingleton<HomeBox>
     
     protected override void Init()
     {
+        levelHomeController.Init();
+        
         SetupBtnOnClick(btnDailylogin, () => DailyLoginBox.Setup().Show());
         SetupBtnOnClick(btnDailyreward, () => DailyRewardBox.Setup().Show());
         SetupBtnOnClick(btnEditProfile, () => EditProfileBox.Setup().Show());

@@ -30,9 +30,12 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     {
         var dataCollection = GameController.Instance.dataContains.dataCollection;
 
+        foreach(var item in lsItems) item.HandleInteractableBtn(false);
+        
         for (int i = 0; i < dataCollection.GetListCollectionCount(); i++)
         {
             lsItems[i].Init();
+            lsItems[i].HandleInteractableBtn(true);
         }
     }
 
