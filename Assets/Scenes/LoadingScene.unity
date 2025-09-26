@@ -166,10 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de826710e62a6a4c9dee12c9b43750b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountIncreaseCoin: 0
-  amountIncreaseStar: 0
-  maxLevelUnlock: 0
+  amountIncrease: 10000
   isUnlimitHeart: 0
+  maxLevelUnlock: 0
 --- !u!1 &131854030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1185,7 @@ MonoBehaviour:
   dataProfile: {fileID: 11400000, guid: 5dbed4200ebf2b341971315c3f808c5e, type: 2}
   dataLevel: {fileID: 11400000, guid: 544f1976e9fb5874e9570ae4f046f8e2, type: 2}
   dataCollection: {fileID: 11400000, guid: 86cbe95e9645907499a3368dd2eb9b1b, type: 2}
+  dataBooster: {fileID: 11400000, guid: c7d4a4d5daf69d44eb41047fa5e6a050, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
