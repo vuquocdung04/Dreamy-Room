@@ -5,8 +5,7 @@ public class LevelHomeCategory : MonoBehaviour
 {
     public List<LevelHomeItem> lsItems;
 
-    public void Init(DataLevelSO dataLevel, int maxUnlockedLevel, Color unlockColor, Color lockIconColor,
-        Color lockBgColor, System.Action<LevelHomeItem> onItemClick)
+    public void Init(DataLevelSO dataLevel, int maxUnlockedLevel, Color colorLock, Sprite spriteLockBgSmall, Sprite spriteLockBgLarge, System.Action<LevelHomeItem> onItemClick)
     {
         foreach (var item in lsItems)
         {
@@ -15,14 +14,29 @@ public class LevelHomeCategory : MonoBehaviour
             item.InitInfo(spriteIcon);
             if (item.GetId() <= maxUnlockedLevel)
             {
-                item.UpdateState(unlockColor, unlockColor);
+                if(item.GetId() == maxUnlockedLevel)
+                    item.ActiveHighlight();
+                SetBgItem(item,colorLock, spriteLockBgSmall, spriteLockBgLarge);
             }
             else
             {
-                item.UpdateState(lockIconColor, lockBgColor);
+                SetBgItem(item,colorLock, spriteLockBgSmall, spriteLockBgLarge,true);
             }
 
             item.AddClickListener(onItemClick);
+        }
+    }
+
+    private void SetBgItem(LevelHomeItem item, Color colorLock, Sprite sprLockSmall, Sprite sprLockLarge, bool isLock = false)
+    {
+        switch (item.GetItemHomeType())
+        {
+            case ItemHomeType.Small:
+                item.UpdateState(colorLock,sprLockSmall,isLock);
+                break;
+            case ItemHomeType.Large:
+                item.UpdateState(colorLock, sprLockLarge,isLock);
+                break;
         }
     }
     public void SetupOdinItems(ref int startId)
@@ -31,6 +45,7 @@ public class LevelHomeCategory : MonoBehaviour
         {
             lsItems[i].SetId(startId);
             lsItems[i].SetupOdin();
+            if(i == lsItems.Count - 1) lsItems[i].SetItemHomeType(ItemHomeType.Large);
             startId++;
         }
     }

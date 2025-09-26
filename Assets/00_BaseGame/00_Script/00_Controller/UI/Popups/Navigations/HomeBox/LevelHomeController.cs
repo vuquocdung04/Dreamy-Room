@@ -2,12 +2,17 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+public enum ItemHomeType{
+    Small = 0,
+    Large = 1,
+}
+
+
 public class LevelHomeController : MonoBehaviour
 {
-    [Header("UI Colors")]
-    [SerializeField] private Color colorLockBg = new Color(0, 0, 0, 0.5f);
+    [SerializeField] private Sprite sprLockSmall;
+    [SerializeField] private Sprite sprLockLarge;
     [SerializeField] private Color colorLockIcon = new Color(1, 1, 1, 0.5f);
-    [SerializeField] private Color colorUnlock = Color.white;
 
     [Header("Categories")]
     public List<LevelHomeCategory> lsCategories;
@@ -20,9 +25,9 @@ public class LevelHomeController : MonoBehaviour
             category.Init(
                 dataLevel,
                 UseProfile.MaxUnlockedLevel,
-                colorUnlock,
                 colorLockIcon,
-                colorLockBg,
+                sprLockSmall,
+                sprLockLarge,
                 (item) => HandleSelection(item, delegate 
                 {
                     //NOTE: GO TO LEVEL
