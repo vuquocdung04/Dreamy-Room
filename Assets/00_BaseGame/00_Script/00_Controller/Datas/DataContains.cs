@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DataContains : MonoBehaviour
 {
-    public DataDailySO dataDaily;
+    public DataDailyBase dataDaily;
     public GiftDataBase giftData;
-    public DataProfileSO dataProfile;
-    public DataLevelSO dataLevel;
-    public DataCollectionSO dataCollection;
+    public DataProfileBase dataProfile;
+    public DataLevelBase dataLevel;
+    public DataCollectionBase dataCollection;
+    public DataBoosterBase dataBooster;
     public void Init()
     {
         dataLevel.Init();

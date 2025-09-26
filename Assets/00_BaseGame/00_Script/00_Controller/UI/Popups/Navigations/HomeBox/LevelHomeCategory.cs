@@ -5,7 +5,7 @@ public class LevelHomeCategory : MonoBehaviour
 {
     public List<LevelHomeItem> lsItems;
 
-    public void Init(DataLevelSO dataLevel, int maxUnlockedLevel, Color colorLock, Sprite spriteLockBgSmall, Sprite spriteLockBgLarge, System.Action<LevelHomeItem> onItemClick)
+    public void Init(DataLevelBase dataLevel, int maxUnlockedLevel, Color colorLock, Sprite spriteLockBgSmall, Sprite spriteLockBgLarge, System.Action<LevelHomeItem> onItemClick)
     {
         foreach (var item in lsItems)
         {

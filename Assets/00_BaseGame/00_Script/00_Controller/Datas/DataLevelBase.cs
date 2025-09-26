@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataLevel", menuName = "DATA/DataLevelSO", order = 4)]
-public class DataLevelSO : ScriptableObject
+public class DataLevelBase : ScriptableObject
 {
     [SerializeField] private List<LevelConflict> lstLevelConflicts;
 

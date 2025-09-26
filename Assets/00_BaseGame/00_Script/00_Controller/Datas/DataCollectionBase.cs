@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataCollection", menuName = "DATA/DataCollection", order = 6)]
-public class DataCollectionSO : ScriptableObject
+public class DataCollectionBase : ScriptableObject
 {
     [SerializeField] private CollectionType currentCollectionType;
     public CollectionType GetCollectionType() => currentCollectionType;

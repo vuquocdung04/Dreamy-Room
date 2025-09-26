@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataProfile", menuName = "DATA/DataProfile", order = 2)]
-public class DataProfileSO : ScriptableObject
+public class DataProfileBase : ScriptableObject
 {
     public string userName;
     public List<ProfileConflict> lsConflictFrames;

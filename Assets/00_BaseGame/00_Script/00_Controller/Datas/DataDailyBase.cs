@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataDailySO", menuName = "DATA/DataDaily", order = 0)]
-public class DataDailySO : ScriptableObject
+public class DataDailyBase : ScriptableObject
 {
     
     /// <summary>
