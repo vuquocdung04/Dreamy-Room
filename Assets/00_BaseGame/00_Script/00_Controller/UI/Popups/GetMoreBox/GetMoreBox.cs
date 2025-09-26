@@ -42,12 +42,12 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     private void UpdatePopupUI()
     {
         var typeSelected = dataBooster.boosterTypeSeleced;
-        
         if(!IsNewBoosterSelected(typeSelected)) return;
+        var boosterConflict = dataBooster.GetBoosterConflict(typeSelected);
 
-        var sprIcon = dataBooster.GetSpriteByType(typeSelected);
-        var priceInformation = dataBooster.GetPriceByType(typeSelected);
-        var descriptionInformation = dataBooster.GetDescriptionByType(typeSelected);
+        var sprIcon = boosterConflict.GetIcon();
+        var priceInformation = boosterConflict.GetPrice();
+        var descriptionInformation = boosterConflict.GetDescription();
 
         txtPrice.text = priceInformation.ToString();
         txtDescription.text = descriptionInformation;

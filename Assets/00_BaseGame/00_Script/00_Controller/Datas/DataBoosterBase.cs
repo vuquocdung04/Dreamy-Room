@@ -9,27 +9,11 @@ public class DataBoosterBase : ScriptableObject
     
     public List<BoosterConflict> lsBoosters;
 
-    public Sprite GetSpriteByType(GiftType bType)
+    public BoosterConflict GetBoosterConflict(GiftType bType)
     {
         foreach (var booster in lsBoosters)
             if (booster.type == bType)
-                return booster.icon;
-        return null;
-    }
-
-    public int GetPriceByType(GiftType bType)
-    {
-        foreach (var booster in lsBoosters)
-            if (booster.type == bType)
-                return booster.price;
-        return 0;
-    }
-
-    public string GetDescriptionByType(GiftType bType)
-    {
-        foreach (var booster in lsBoosters)
-            if (booster.type == bType)
-                return booster.description;
+                return booster;
         return null;
     }
     
@@ -42,13 +26,17 @@ public class BoosterConflict
     public GiftType type;
 
     [HorizontalGroup("TopRow"), LabelWidth(40)]
-    public int price = 800;
+    [SerializeField] private int price = 800;
     
     [HorizontalGroup("BottomRow")]
     [TextArea(3, 5), HideLabel] 
-    public string description;
+    [SerializeField] string description;
     
     [HorizontalGroup("BottomRow", Width = 60)]
     [PreviewField(57, ObjectFieldAlignment.Center), HideLabel]
-    public Sprite icon;
+    [SerializeField] Sprite icon;
+
+    public int GetPrice() => price;
+    public string GetDescription() => description;
+    public Sprite GetIcon() => icon;
 }
