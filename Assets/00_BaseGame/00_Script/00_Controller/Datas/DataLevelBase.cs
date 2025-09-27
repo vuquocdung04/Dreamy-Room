@@ -16,8 +16,8 @@ public class DataLevelBase : ScriptableObject
         levelDictionary = new Dictionary<int, LevelConflict>();
         foreach (var level in lstLevelConflicts)
         {
-            if (!levelDictionary.ContainsKey(level.idLevel)) levelDictionary.Add(level.idLevel, level);
-            else Debug.LogError("Duplicate");
+            if (!levelDictionary.TryAdd(level.idLevel, level))
+                Debug.LogError("Duplicate");
         }
     }
 

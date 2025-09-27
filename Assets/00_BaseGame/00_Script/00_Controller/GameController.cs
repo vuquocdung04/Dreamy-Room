@@ -17,10 +17,10 @@ public class GameController : Singleton<GameController>
     private void Init()
     {
         Application.targetFrameRate = UseProfile.TargetFrameRate;
-        startLoading.Init();
         admobController.Init();
         dataContains.Init();
         musicController.Init();
+        startLoading.Init();
     }
 
     public void SetTargetFrameRate(int  tgFrameRate)
