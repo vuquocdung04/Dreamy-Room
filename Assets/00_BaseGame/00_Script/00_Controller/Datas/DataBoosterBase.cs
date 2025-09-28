@@ -22,9 +22,11 @@ public class DataBoosterBase : ScriptableObject
 [System.Serializable]
 public class BoosterConflict
 {
-    [HorizontalGroup("TopRow", Width = 0.6f), HideLabel]
+    [HorizontalGroup("TopRow", Width = 0.4f), HideLabel]
     public GiftType type;
 
+    [HorizontalGroup("TopRow", Width = 0.3f)]
+    [SerializeField] private int levelUnlock;
     [HorizontalGroup("TopRow"), LabelWidth(40)]
     [SerializeField] private int price = 800;
     
@@ -36,7 +38,9 @@ public class BoosterConflict
     [PreviewField(57, ObjectFieldAlignment.Center), HideLabel]
     [SerializeField] Sprite icon;
 
+    public int GetLevelUnlock() => levelUnlock;
     public int GetPrice() => price;
     public string GetDescription() => description;
     public Sprite GetIcon() => icon;
+    
 }

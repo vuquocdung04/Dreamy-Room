@@ -240,7 +240,7 @@ public class UseProfile : MonoBehaviour
 
     public static int Booster_BoxBuffer
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_BOXBUFFER, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_BOXBUFFER, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_BOXBUFFER, value);
@@ -250,7 +250,7 @@ public class UseProfile : MonoBehaviour
 
     public static int Booster_Compass
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_COMPASS, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_COMPASS, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_COMPASS, value);
@@ -260,7 +260,7 @@ public class UseProfile : MonoBehaviour
 
     public static int Booster_FrozeTime
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_FROZETIME, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_FROZETIME, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_FROZETIME, value);
@@ -290,7 +290,7 @@ public class UseProfile : MonoBehaviour
 
     public static int Booster_Maget
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGNET, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGNET, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGNET, value);
@@ -300,7 +300,7 @@ public class UseProfile : MonoBehaviour
 
     public static int Booster_Magnifier
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGNIFIER, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGNIFIER, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGNIFIER, value);
@@ -310,7 +310,7 @@ public class UseProfile : MonoBehaviour
     
     public static int Booster_TimeBuffer
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_TIMEBUFFER, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_TIMEBUFFER, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_TIMEBUFFER, value);
@@ -320,7 +320,7 @@ public class UseProfile : MonoBehaviour
 
     public static int Booster_X2Star
     {
-        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_X2STAR, 0);
+        get => PlayerPrefs.GetInt(StringHelper.BOOSTER_X2STAR, 2);
         set
         {
             PlayerPrefs.SetInt(StringHelper.BOOSTER_X2STAR, value);

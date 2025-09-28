@@ -115,4 +115,11 @@ public class DEVTOOL : MonoBehaviour
             Debug.LogError("GameController.Instance hoặc useProfile chưa được khởi tạo!");
         }
     }
+
+    [TabGroup("DevToolTabs", "Other")]
+    [Button("Next Scene Game", ButtonSizes.Large)]
+    private void NextSceneGame()
+    {
+        GameController.Instance.effectChangeScene.FadeToScene(SceneName.GAME_PLAY);
+    }
 }
