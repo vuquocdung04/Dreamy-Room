@@ -150,7 +150,16 @@ public class UseProfile : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-    
+
+    public static bool IsFirstGameOpen
+    {
+        get => PlayerPrefs.GetInt(StringHelper.IS_FIRST_GAME_OPEN, 0) == 1;
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.IS_FIRST_GAME_OPEN, value ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+    }
 
     public static DateTime TimeUnlimitedHeart
     {

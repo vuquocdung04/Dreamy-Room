@@ -9,6 +9,9 @@ public class StringHelper
     public const string COIN = "COIN";
     public const string HEART = "HEART";
     public const string STAR = "STAR";
+    
+    public const string IS_FIRST_GAME_OPEN = "IS_FIRST_GAME_OPEN";
+    
     public const string IS_UNLIMITER_HEART = "IS_UNLIMITER_HEART";
     public const string TIME_UNLIMITER_HEART = "TIME_UNLIMITER_HEART";
     public const string TIME_LAST_OVER_HEART = "TIME_LAST_OVER_HEART";

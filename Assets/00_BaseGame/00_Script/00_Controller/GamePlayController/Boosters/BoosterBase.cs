@@ -17,6 +17,8 @@ public abstract class BoosterBase : MonoBehaviour
 
     private BoosterConflict cachedDataConflict;
     private int cachedMaxLevel;
+    protected abstract void OnBoosterUsed();
+    protected abstract void UpdateUseProfileAmount(int amount);
     public void AddClickListener(System.Action<BoosterBase> callback = null)
     {
         btn.onClick.AddListener(delegate
@@ -25,8 +27,18 @@ public abstract class BoosterBase : MonoBehaviour
         });
     }
 
-    protected abstract void OnBoosterUsed();
-    protected abstract void UpdateUseProfileAmount(int amount);
+    public void InActiveBtn()
+    {
+        if(!IsUnlocked()) return;
+        btn.interactable = false;
+    }
+
+    public void ActiveBtn()
+    {
+        if(!IsUnlocked()) return;
+        btn.interactable = true;
+    }
+
     public void HandleAction()
     {
         if(!IsUnlocked()) return;
@@ -40,7 +52,7 @@ public abstract class BoosterBase : MonoBehaviour
         OnBoosterUsed();
     }
     
-    public void UpdateStateUI(int curBoosterAmount,BoosterConflict dataBoosterConflict)
+    public void Init(int curBoosterAmount,BoosterConflict dataBoosterConflict)
     {
         cachedDataConflict = dataBoosterConflict;
         cachedMaxLevel = UseProfile.MaxUnlockedLevel;
