@@ -14,7 +14,7 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Sprite sprZoomOut;
     
     
-    private Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
     private readonly float defaultOrthographicSize = 10f;
     private readonly float zoomedOrthographicSize = 8f;
     private bool isZoomed;
@@ -34,9 +34,6 @@ public class GameScene : MonoBehaviour
 
     private void ToggleZoomInOut()
     {
-        if (mainCamera == null)
-            mainCamera = Camera.main;
-        
         float targetSize = isZoomed ? defaultOrthographicSize : zoomedOrthographicSize;
         imgZoom.sprite = isZoomed ? sprZoomIn : sprZoomOut;
         
