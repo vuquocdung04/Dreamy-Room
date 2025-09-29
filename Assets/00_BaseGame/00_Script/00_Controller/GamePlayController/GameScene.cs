@@ -13,13 +13,11 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Sprite sprZoomIn;
     [SerializeField] private Sprite sprZoomOut;
     
-    
-    [SerializeField] private Camera mainCamera;
-    private readonly float defaultOrthographicSize = 10f;
-    private readonly float zoomedOrthographicSize = 8f;
-    private bool isZoomed;
+    private CameraController cameraController;
     public void Init()
     {
+        cameraController = GamePlayController.Instance.playerContains.cameraController;
+        
         btnPause.onClick.AddListener(delegate
         {
             SettingGameBox.Setup().Show();
@@ -29,17 +27,14 @@ public class GameScene : MonoBehaviour
             RemoveAdsBox.Setup().Show();
         });
         
-        btnZoom.onClick.AddListener(ToggleZoomInOut);
+        btnZoom.onClick.AddListener(HandleToggleZoomInOut);
     }
 
-    private void ToggleZoomInOut()
+    private void HandleToggleZoomInOut()
     {
-        float targetSize = isZoomed ? defaultOrthographicSize : zoomedOrthographicSize;
-        imgZoom.sprite = isZoomed ? sprZoomIn : sprZoomOut;
-        
-        mainCamera.DOOrthoSize(targetSize, 0.2f);
-        isZoomed = !isZoomed;
+        cameraController.ToggleZoomInOut();
+        var isZoomed = cameraController.GetIsZoomed();
+        imgZoom.sprite = isZoomed ? sprZoomOut : sprZoomIn;
     }
-    
     
 }

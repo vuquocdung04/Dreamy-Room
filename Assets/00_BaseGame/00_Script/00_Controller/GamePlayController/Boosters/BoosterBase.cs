@@ -27,6 +27,11 @@ public abstract class BoosterBase : MonoBehaviour
         });
     }
 
+    public void SetBoosterConflict(BoosterConflict conflict)
+    {
+        cachedDataConflict = conflict;
+    }
+    
     public void InActiveBtn()
     {
         if(!IsUnlocked()) return;
@@ -52,9 +57,8 @@ public abstract class BoosterBase : MonoBehaviour
         OnBoosterUsed();
     }
     
-    public void Init(int curBoosterAmount,BoosterConflict dataBoosterConflict)
+    public void Init(int curBoosterAmount)
     {
-        cachedDataConflict = dataBoosterConflict;
         cachedMaxLevel = UseProfile.MaxUnlockedLevel;
         boosterAmount = curBoosterAmount;
         

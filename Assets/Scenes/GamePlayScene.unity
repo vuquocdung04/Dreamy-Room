@@ -1281,8 +1281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b85a68d980646f4986096ec93080965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1513039822}
-  itemmm: {fileID: 1513039823}
 --- !u!1 &300754390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,8 +2622,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 784520363}
+  - component: {fileID: 784520364}
   m_Layer: 0
-  m_Name: LevelData
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,6 +2645,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1411649487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &784520364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784520362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e66f3025e240f1825bad4ea124fa5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &884027363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,7 +3640,6 @@ MonoBehaviour:
   imgZoom: {fileID: 1664150550}
   sprZoomIn: {fileID: 21300000, guid: 375135801f2686d44a6355803290a4ec, type: 3}
   sprZoomOut: {fileID: 21300000, guid: 5feae828d10d92040bc412f27ba4f555, type: 3}
-  mainCamera: {fileID: 0}
 --- !u!1 &1316276017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,7 +3688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DontDestroyOnLoad: 0
   gameScene: {fileID: 1312233915}
-  boosterController: {fileID: 1260725003}
+  playerContains: {fileID: 1411649488}
 --- !u!1 &1325535029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,6 +3857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411649487}
+  - component: {fileID: 1411649488}
   m_Layer: 0
   m_Name: PlayerContain
   m_TagString: Untagged
@@ -3867,11 +3878,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1260725002}
   - {fileID: 281379355}
   - {fileID: 784520363}
+  - {fileID: 1260725002}
   m_Father: {fileID: 1316276018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1411649488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411649486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f72752a19654bbeb1d79eb9262bf830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1513039822}
+  cameraController: {fileID: 784520364}
+  inputManager: {fileID: 281379356}
+  boosterController: {fileID: 1260725003}
 --- !u!1 &1415384598
 GameObject:
   m_ObjectHideFlags: 0

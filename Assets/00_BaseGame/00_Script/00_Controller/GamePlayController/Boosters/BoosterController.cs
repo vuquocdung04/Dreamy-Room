@@ -11,14 +11,14 @@ public class BoosterController : MonoBehaviour
     public void Init()
     {
         HandleStateRectBoosters();
-        
         var dataBooster = GameController.Instance.dataContains.dataBooster;
+        foreach(var booster in lsBoosters) booster.SetBoosterConflict(dataBooster.GetBoosterConflict(booster.GetBoosterType()));
+        
         InActiveBtns();
         foreach (var booster in lsBoosters)
         {
             var boosterAmount = GetBoosterAmountByType(booster.GetBoosterType());
-            var dataConflict = dataBooster.GetBoosterConflict(booster.GetBoosterType());
-            booster.Init(boosterAmount, dataConflict);
+            booster.Init(boosterAmount);
         }
 
         foreach (var booster in lsBoosters)

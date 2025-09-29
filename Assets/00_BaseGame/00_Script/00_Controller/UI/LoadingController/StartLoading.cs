@@ -20,7 +20,7 @@ public class StartLoading : MonoBehaviour
     private IEnumerator LoadScene()
     {
         yield return null;
-        var asyncOperation = SceneManager.LoadSceneAsync(SceneName.HOME_SCENE);
+        var asyncOperation = SceneManager.LoadSceneAsync(SceneName.GAME_PLAY);
 
         yield return null;
         bool tweenComplete = false;

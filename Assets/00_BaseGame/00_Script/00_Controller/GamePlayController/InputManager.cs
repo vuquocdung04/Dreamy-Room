@@ -1,46 +1,62 @@
-
 using UnityEngine;
+
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
+
+    private Camera mainCamera;
+    private CameraController cameraController;
     
     private bool isDraggingCamera;
-    private Vector3 lastScreenPosition; // Dùng screen position thay vì world position
+
+    // Cho camera dragging (dùng screen space)
+    private Vector3 lastScreenPosition;
+
+    // Cho object dragging (dùng world space)
+    private Vector3 currentMousePosition;
+    private Vector3 prevMousePosition;
+
+    public void Init()
+    {
+        var playerContains = GamePlayController.Instance.playerContains;
+        mainCamera = playerContains.mainCamera;
+        cameraController = playerContains.cameraController;
+    }
     
     private void Update()
     {
+        if (cameraController == null)
+        {
+            Debug.Log("CameraController is null");
+            return;
+        }
+        currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        currentMousePosition.z = 0;
+
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
-            
+            RaycastHit2D hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
+
             if (hit.collider == null)
             {
                 isDraggingCamera = true;
-                lastScreenPosition = Input.mousePosition; // Lưu screen position
+                lastScreenPosition = Input.mousePosition;
             }
+            else
+            {
+            }
+
+            prevMousePosition = currentMousePosition;
         }
 
         if (isDraggingCamera)
         {
-            MoveCamera();
+            cameraController.MoveCamera(ref lastScreenPosition);
+            prevMousePosition = currentMousePosition;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             isDraggingCamera = false;
         }
-    }
-
-    private void MoveCamera()
-    {
-        Vector3 currentScreenPosition = Input.mousePosition;
-        Vector3 deltaScreen = currentScreenPosition - lastScreenPosition;
-        
-        // Chuyển đổi delta từ screen space sang world space
-        Vector3 deltaWorld = mainCamera.ScreenToWorldPoint(deltaScreen) - mainCamera.ScreenToWorldPoint(Vector3.zero);
-        
-        mainCamera.transform.position -= new Vector3(deltaWorld.x, 0, 0);
-        lastScreenPosition = currentScreenPosition;
     }
 }

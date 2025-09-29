@@ -2,7 +2,7 @@
 public class GamePlayController : Singleton<GamePlayController>
 {
     public GameScene gameScene;
-    public BoosterController boosterController;
+    public PlayerContains playerContains;
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -14,6 +14,6 @@ public class GamePlayController : Singleton<GamePlayController>
     private void Init()
     {
         gameScene.Init();
-        boosterController.Init();
+        playerContains.Init();
     }
 }
