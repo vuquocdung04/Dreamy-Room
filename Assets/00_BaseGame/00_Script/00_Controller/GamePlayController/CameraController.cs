@@ -3,15 +3,19 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private  Camera mainCamera;
+    private Camera mainCamera;
     private readonly float defaultOrthographicSize = 10f;
     private readonly float zoomedOrthographicSize = 8f;
     private float targetSize;
     private bool isZoomed;
+    
+    private Vector3 cameraPosition;
+    [SerializeField] private float limit = 6f;
 
     public void Init()
     {
         mainCamera = GamePlayController.Instance.playerContains.mainCamera;
+        cameraPosition = mainCamera.transform.position;
     }
     
     public bool GetIsZoomed() => isZoomed;
@@ -26,12 +30,16 @@ public class CameraController : MonoBehaviour
     public void MoveCamera(ref Vector3 lastScreenPosition)
     {
         Vector3 currentScreenPosition = Input.mousePosition;
-        Vector3 deltaScreen = currentScreenPosition - lastScreenPosition;
         
-        // Chuyển đổi delta từ screen space sang world space
-        Vector3 deltaWorld = mainCamera.ScreenToWorldPoint(deltaScreen) - mainCamera.ScreenToWorldPoint(Vector3.zero);
+        float deltaScreenX = currentScreenPosition.x - lastScreenPosition.x;
         
-        mainCamera.transform.position -= new Vector3(deltaWorld.x, deltaWorld.y, 0);
-        lastScreenPosition = currentScreenPosition;
+        float deltaWorldX = mainCamera.ScreenToWorldPoint(new Vector3(deltaScreenX, 0, 0)).x 
+                            - mainCamera.ScreenToWorldPoint(Vector3.zero).x;
+        
+        cameraPosition.x = Mathf.Clamp(cameraPosition.x - deltaWorldX, -limit, limit);
+        mainCamera.transform.position = cameraPosition;
+        
+        lastScreenPosition.x = currentScreenPosition.x;
+        lastScreenPosition.y = currentScreenPosition.y;
     }
 }
