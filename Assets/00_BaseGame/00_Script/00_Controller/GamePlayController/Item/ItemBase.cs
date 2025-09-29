@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-    [SerializeField] protected ItemState itemState;
-    [SerializeField] protected AudioClip sfxPickUp;
-    [SerializeField] protected AudioClip sfxDrop;
-
-    protected Vector3 velocity;
-
-
+    
+    [SerializeField] protected Collider2D coll2D;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected Sprite sprOriginal;
+    [SerializeField] protected Sprite sprAnim;
+    
     public virtual bool IsItemTrueSlot() => false;
+
+    public void StartJumping(float duration)
+    {
+        
+    }
 
     public virtual void OnEndDrag()
     {
@@ -25,6 +29,25 @@ public class ItemBase : MonoBehaviour
     {
         
     }
-    
+
+    protected virtual ItemSlot GetSlotToSort()
+    {
+        return null;
+    }
+
+    protected virtual ItemSlot GetSlotToShowShadow()
+    {
+        return null;
+    }
+
+    protected virtual ItemSlot GetConditionSlost()
+    {
+        return null;
+    }
+
+    protected virtual ItemSlot GetConditionSlotsShadow()
+    {
+        return null;
+    }
 
 }
