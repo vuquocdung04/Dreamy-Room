@@ -29,7 +29,9 @@ public class ItemBase : MonoBehaviour
     [SerializeField] protected Sprite sprAnim;
 
     private Tween idleTween;
-
+    private Vector3 newPosition;
+    private Vector3 dragStartPosition;
+    
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
 
 
@@ -107,7 +109,7 @@ public class ItemBase : MonoBehaviour
         targetSlot.Active();
         targetSlot.isFullSlot = true;
         transform.DOMove(targetSlot.transform.position, 0.5f);
-        this.PostEvent(EventID.UPDATE_UNLOCK_ITEM);
+        this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
     }
 
     private void OnFailSnap()
@@ -117,10 +119,13 @@ public class ItemBase : MonoBehaviour
         transform.DORotate(new Vector3(0,0,angle), 0.2f).OnComplete(PlayIdleTween);
     }
 
-    public void OnDrag(Vector3 delta)
+    
+    public void OnDrag(Vector3 delta, float left, float right, float bottom, float top)
     {
-        transform.position += delta;
-        transform.DORotate(Vector3.zero, 0.2f);
+        newPosition = dragStartPosition += delta;
+        newPosition.x = Mathf.Clamp(newPosition.x, left,right);
+        newPosition.y = Mathf.Clamp(newPosition.y, bottom,top);
+        transform.position = newPosition;
     }
 
     public void OnEndDrag(float threshold)
@@ -128,18 +133,24 @@ public class ItemBase : MonoBehaviour
         CheckItemPlacement(threshold);
     }
 
-    public void OnStartDrag()
+    public void OnStartDrag(float top)
     {
         spriteRenderer.sortingOrder = 100;
         StopIdleTween();
+        transform.DORotate(Vector3.zero, 0.2f);
         if (itemSize == ItemSize.Small)
         {
             Vector3 pos = transform.position;
             pos.y += 1f;
+            if (pos.y > top)
+            {
+                pos.y = top;
+            }
             transform.position = pos;
+            dragStartPosition = transform.position;
         }
     }
-
+    
     private void PlayIdleTween()
     {
         if (this == null || !gameObject.activeInHierarchy) return;

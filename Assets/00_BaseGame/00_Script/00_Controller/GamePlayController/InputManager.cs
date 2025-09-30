@@ -14,12 +14,19 @@ public class InputManager : MonoBehaviour
     // Cho object dragging (dùng world space)
     private Vector3 currentMousePosition;
     private Vector3 prevMousePosition;
-
+    private Vector3 delta;
+    
+    private float left,top,right,bottom;
     public void Init()
     {
         var playerContains = GamePlayController.Instance.playerContains;
         mainCamera = playerContains.mainCamera;
         cameraController = playerContains.cameraController;
+
+        left = playerContains.left.transform.localPosition.x;
+        top = playerContains.top.transform.localPosition.y;
+        right = playerContains.right.transform.localPosition.x;
+        bottom = playerContains.bottom.transform.localPosition.y;
     }
     
     private void Update()
@@ -56,7 +63,7 @@ public class InputManager : MonoBehaviour
                 if (item != null)
                 {
                     currentDraggingItem = item;
-                    currentDraggingItem.OnStartDrag();
+                    currentDraggingItem.OnStartDrag(top);
                 }
                 else
                 {
@@ -76,8 +83,8 @@ public class InputManager : MonoBehaviour
         }
         else if (currentDraggingItem != null)
         {
-            Vector3 delta = currentMousePosition - prevMousePosition;
-            currentDraggingItem.OnDrag(delta);
+            delta = currentMousePosition - prevMousePosition;
+            currentDraggingItem.OnDrag(delta,left,right,bottom,top);
         }
         
         prevMousePosition = currentMousePosition;

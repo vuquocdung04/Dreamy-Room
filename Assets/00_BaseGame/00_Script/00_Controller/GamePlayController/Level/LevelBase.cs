@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using EventDispatcher;
@@ -13,21 +12,24 @@ public class LevelBase : MonoBehaviour
     [SerializeField] private List<ItemBase> allItems;
     [SerializeField] private List<ItemBase> itemsOutOfBox;
 
-    [Header("Box Setting")]
-    [SerializeField] private Transform boxPosition;
-
-    [SerializeField] private Vector2 spawnOffset;
+    [Header("Box Setting")] 
+    [SerializeField] private Transform slots;
+    [SerializeField] private Transform items;
+    [SerializeField] private BoxGameBase box;
     
+    [Header("Game Setting")]
+    [SerializeField] private int totalItemsRequired;
+    [SerializeField] private int itemsPlacedCorrectly;
     public void Start()
     {
-        this.RegisterListener(EventID.UPDATE_UNLOCK_ITEM, UpdateStateUnlockItem);
-        this.RegisterListener(EventID.TAKE_OUT_ITEM, TakeItemOutOfBox);
+        this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
+        this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
     }
 
     private void OnDestroy()
     {
-        this.RemoveListener(EventID.UPDATE_UNLOCK_ITEM, UpdateStateUnlockItem);
-        this.RemoveListener(EventID.TAKE_OUT_ITEM, TakeItemOutOfBox);
+        this.RemoveListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
+        this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
     }
 
     private void TakeItemOutOfBox(object obj = null)
@@ -37,24 +39,18 @@ public class LevelBase : MonoBehaviour
             Debug.Log("items out of box full");
             return;
         }
-        
         if(itemsOutOfBox == null && itemsOutOfBox.Count == 0) return;
         ItemBase item = allItems[0];
         allItems.RemoveAt(0);
         AddItemToOutOfBox(item);
-
-        Vector2 spawnPos = boxPosition.position;
+        Vector2 spawnPos = box.transform.position;
         item.OutSideBox(spawnPos);
         
-    }
-    private void UpdateStateUnlockItem(object obj = null)
-    {
-        foreach (var item in itemsOutOfBox)
+        if (allItems.Count == 0)
         {
-            item.ValidateUnlockState();
+            box.ScaleToZero();
         }
     }
-    
     public void UseHintBooster()
     {
         foreach (var item in itemsOutOfBox)
@@ -95,18 +91,35 @@ public class LevelBase : MonoBehaviour
         }
     }
 
-    public void AddItemToOutOfBox(ItemBase item)
+    private void AddItemToOutOfBox(ItemBase item)
     {
         if(!itemsOutOfBox.Contains(item))
         {
             itemsOutOfBox.Add(item);
         }
     }
-    public void OnItemPlacedCorrectly(ItemBase placedItem)
+    private void OnItemPlacedCorrectly(object obj = null)
     {
-        if (itemsOutOfBox.Contains(placedItem))
+        if (obj is ItemBase placedItem)
         {
-            itemsOutOfBox.Remove(placedItem);
+            if (itemsOutOfBox.Contains(placedItem))
+            {
+                itemsOutOfBox.Remove(placedItem);
+                itemsPlacedCorrectly++;
+                CheckWin();
+            }
+            foreach (var item in itemsOutOfBox)
+            {
+                item.ValidateUnlockState();
+            }
+        }
+    }
+
+    private void CheckWin()
+    {
+        if (itemsPlacedCorrectly == totalItemsRequired)
+        {
+            Debug.Log("WIn Game");
         }
     }
 
@@ -114,7 +127,27 @@ public class LevelBase : MonoBehaviour
     [Button("Setup Item", ButtonSizes.Large)]
     public void SetupItem()
     {
-        boxPosition = transform.Find("Box").GetComponent<Transform>();
+        slots = transform.Find("Slots");
+        items = transform.Find("Items");
+        Transform boxTransform = transform.Find("Box");
+        if (boxTransform != null)
+        {
+            box = boxTransform.GetComponent<BoxGameBase>();
+            if (box == null)
+            {
+                box = boxTransform.gameObject.AddComponent<BoxGameBase>();
+            }
+        }
+        allItems.Clear();
+        allShadows.Clear();
+        ItemSlot[] slotComponents = slots.GetComponentsInChildren<ItemSlot>(true); 
+        allShadows.AddRange(slotComponents);
+        
+        ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true); 
+        allItems.AddRange(itemComponents);
+        
+        totalItemsRequired = allItems.Count;
+        
         foreach (var item in this.allItems)
         {
             item.SetupOdin();

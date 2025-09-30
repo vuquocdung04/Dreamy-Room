@@ -4,8 +4,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Camera mainCamera;
-    private readonly float defaultOrthographicSize = 10f;
-    private readonly float zoomedOrthographicSize = 8f;
+    private float defaultOrthographicSize;
+    private float zoomedOrthographicSize;
     private float targetSize;
     private bool isZoomed;
     
@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
     {
         mainCamera = GamePlayController.Instance.playerContains.mainCamera;
         cameraPosition = mainCamera.transform.position;
+        defaultOrthographicSize = mainCamera.orthographicSize;
+        zoomedOrthographicSize = defaultOrthographicSize - 2;
+
     }
     
     public bool GetIsZoomed() => isZoomed;
