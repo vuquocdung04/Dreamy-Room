@@ -30,7 +30,6 @@ public class ItemBase : MonoBehaviour
 
     private Tween idleTween;
     private Vector3 newPosition;
-    private Vector3 dragStartPosition;
     
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
 
@@ -79,9 +78,7 @@ public class ItemBase : MonoBehaviour
         foreach (var slot in slotsSnap)
         {
             if (slot == null || slot.isFullSlot)
-            {
                 continue;
-            }
 
             float distance = Vector2.Distance(transform.position, slot.transform.position);
             if (distance < minDistance)
@@ -93,13 +90,9 @@ public class ItemBase : MonoBehaviour
 
         // Kiểm tra xem slot tốt nhất tìm được có đủ gần không
         if (bestSlot != null && minDistance <= threshold)
-        {
             OnDoneSnap(bestSlot);
-        }
         else
-        {
             OnFailSnap();
-        }
     }
 
     public void OnDoneSnap(ItemSlot targetSlot)
@@ -108,6 +101,7 @@ public class ItemBase : MonoBehaviour
         coll2D.enabled = false;
         targetSlot.Active();
         targetSlot.isFullSlot = true;
+        spriteRenderer.sortingOrder = indexLayer;
         transform.DOMove(targetSlot.transform.position, 0.5f);
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
     }
@@ -119,10 +113,24 @@ public class ItemBase : MonoBehaviour
         transform.DORotate(new Vector3(0,0,angle), 0.2f).OnComplete(PlayIdleTween);
     }
 
-    
+    public void OnStartDrag(float top,Vector3 mousePosition)
+    {
+        spriteRenderer.sortingOrder = 100;
+        StopIdleTween();
+        transform.DORotate(Vector3.zero, 0.2f);
+        
+        if (itemSize == ItemSize.Small)
+        {
+            Vector3 pos = mousePosition;
+            pos.y += 1f;
+            if (pos.y > top)
+                pos.y = top;
+            transform.position = pos;
+        }
+    }
     public void OnDrag(Vector3 delta, float left, float right, float bottom, float top)
     {
-        newPosition = dragStartPosition += delta;
+        newPosition = transform.position + delta;
         newPosition.x = Mathf.Clamp(newPosition.x, left,right);
         newPosition.y = Mathf.Clamp(newPosition.y, bottom,top);
         transform.position = newPosition;
@@ -131,24 +139,6 @@ public class ItemBase : MonoBehaviour
     public void OnEndDrag(float threshold)
     {
         CheckItemPlacement(threshold);
-    }
-
-    public void OnStartDrag(float top)
-    {
-        spriteRenderer.sortingOrder = 100;
-        StopIdleTween();
-        transform.DORotate(Vector3.zero, 0.2f);
-        if (itemSize == ItemSize.Small)
-        {
-            Vector3 pos = transform.position;
-            pos.y += 1f;
-            if (pos.y > top)
-            {
-                pos.y = top;
-            }
-            transform.position = pos;
-            dragStartPosition = transform.position;
-        }
     }
     
     private void PlayIdleTween()

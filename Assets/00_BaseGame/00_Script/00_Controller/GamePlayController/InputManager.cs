@@ -26,7 +26,9 @@ public class InputManager : MonoBehaviour
         left = playerContains.left.transform.localPosition.x;
         top = playerContains.top.transform.localPosition.y;
         right = playerContains.right.transform.localPosition.x;
-        bottom = playerContains.bottom.transform.localPosition.y;
+        bottom = GameController.Instance.useProfile.IsRemoveAds ? playerContains.bottom.transform.localPosition.y :  playerContains.bottom.transform.localPosition.y + 2f;
+        
+        
     }
     
     private void Update()
@@ -63,7 +65,7 @@ public class InputManager : MonoBehaviour
                 if (item != null)
                 {
                     currentDraggingItem = item;
-                    currentDraggingItem.OnStartDrag(top);
+                    currentDraggingItem.OnStartDrag(top,currentMousePosition);
                 }
                 else
                 {

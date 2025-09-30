@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BoxGameBase : MonoBehaviour
 {
-
     public void ScaleToZero()
     {
         transform.DOScale(Vector3.zero, 0.2f).OnComplete(() =>
