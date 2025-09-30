@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using EventDispatcher;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour
@@ -32,8 +33,9 @@ public class ItemBase : MonoBehaviour
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
 
 
-    public void OutSideBox()
+    public void OutSideBox(Vector2 posSpawn)
     {
+        transform.position = posSpawn;
         transform.localScale = Vector3.zero;
         float angleZ = Random.Range(-40f, 40f);
         angle = angleZ;
@@ -102,9 +104,10 @@ public class ItemBase : MonoBehaviour
     {
         StopIdleTween();
         coll2D.enabled = false;
-        targetSlot.isFullSlot = true;
         targetSlot.Active();
+        targetSlot.isFullSlot = true;
         transform.DOMove(targetSlot.transform.position, 0.5f);
+        this.PostEvent(EventID.UPDATE_UNLOCK_ITEM);
     }
 
     private void OnFailSnap()

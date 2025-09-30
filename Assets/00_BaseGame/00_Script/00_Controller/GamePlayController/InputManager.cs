@@ -44,6 +44,13 @@ public class InputManager : MonoBehaviour
             }
             else
             {
+                BoxGameBase box = hit.collider.GetComponent<BoxGameBase>();
+                if (box != null)
+                {
+                    box.OnBoxClicked();
+                    return;
+                }
+                
                 // Kiểm tra xem có phải ItemBase không
                 ItemBase item = hit.collider.GetComponent<ItemBase>();
                 if (item != null)
