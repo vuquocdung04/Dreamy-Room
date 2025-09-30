@@ -90,15 +90,6 @@ public class ItemBase : MonoBehaviour
     public virtual void OnDrag(Vector3 delta)
     {
         transform.position += delta;
-        switch (itemSize)
-        {
-            case ItemSize.Small:
-                transform.position += new Vector3(delta.x, delta.y, 0);
-                break;
-            case ItemSize.Large:
-                transform.position += delta;
-                break;
-        }
     }
 
     public virtual void OnEndDrag(float threshold)
@@ -110,6 +101,12 @@ public class ItemBase : MonoBehaviour
     {
         spriteRenderer.sortingOrder = 100;
         StopIdleTween();
+        if (itemSize == ItemSize.Small)
+        {
+            Vector3 pos = transform.position;
+            pos.y += 1f;
+            transform.position = pos;
+        }
     }
 
     private void PlayIdleTween()
