@@ -1,46 +1,83 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-    [Header("Setting Tutorial")] [SerializeField]
-    protected bool isTut;
+    [Header("Behavior Settings")]
+    [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
+    [SerializeField]
+    protected bool isUnlocked = true;
 
-    [SerializeField] protected Vector2 tutSnapPosition;
-    [Space(5)] [SerializeField] protected ItemSize itemSize;
-    [SerializeField] protected bool isUnlocked = true;
-    [SerializeField] protected ItemSlot slotSnap;
+    [Tooltip("DANH SÁCH các slot mục tiêu mà vật này có thể snap vào")]
+    [SerializeField]
+    protected List<ItemSlot> slotsSnap;
+
+    [Space(5)]
+    [Header("Visuals & Physics")]
+    [SerializeField]
+    protected ItemSize itemSize;
     [SerializeField] protected int indexLayer;
     [SerializeField] protected float angle;
     [SerializeField] protected Collider2D coll2D;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected Sprite sprOriginal;
     [SerializeField] protected Sprite sprAnim;
+
     private Tween idleTween;
 
+    public List<ItemSlot> GetTargetSlot() => slotsSnap;
     private void CheckItemPlacement(float threshold)
     {
-        if (!isUnlocked) return;
-
-        Vector2 targetPosition;
-        if (isTut)
-            targetPosition = tutSnapPosition;
-        else
+        if (!isUnlocked)
         {
-            if (slotSnap == null)
-            {
-                OnFailSnap();
-                return;
-            }
-
-            targetPosition = slotSnap.transform.position;
+            OnFailSnap();
+            return;
         }
 
-        var distance = Vector2.Distance(this.transform.position, targetPosition);
-        if (distance <= threshold)
-            OnDoneSnap();
-        else
+        if (slotsSnap == null || slotsSnap.Count == 0)
+        {
             OnFailSnap();
+            return;
+        }
+
+        ItemSlot bestSlot = null;
+        float minDistance = float.MaxValue;
+
+        // Luôn lặp qua danh sách slot để tìm ra vị trí phù hợp nhất
+        foreach (var slot in slotsSnap)
+        {
+            if (slot == null || slot.isFullSlot)
+            {
+                continue;
+            }
+
+            float distance = Vector2.Distance(transform.position, slot.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                bestSlot = slot;
+            }
+        }
+
+        // Kiểm tra xem slot tốt nhất tìm được có đủ gần không
+        if (bestSlot != null && minDistance <= threshold)
+        {
+            OnDoneSnap(bestSlot);
+        }
+        else
+        {
+            OnFailSnap();
+        }
+    }
+
+    public void OnDoneSnap(ItemSlot targetSlot)
+    {
+        StopIdleTween();
+        coll2D.enabled = false;
+        targetSlot.isFullSlot = true;
+        targetSlot.Active();
+        transform.DOMove(targetSlot.transform.position, 0.5f);
     }
 
     private void OnFailSnap()
@@ -50,27 +87,21 @@ public class ItemBase : MonoBehaviour
         PlayIdleTween();
     }
 
-    private void OnDoneSnap()
+    public virtual void OnDrag(Vector3 delta)
     {
-        StopIdleTween();
-        coll2D.enabled = false;
-        Vector2 targetPosition = isTut ? tutSnapPosition : slotSnap.transform.position;
-        transform.DOMove(targetPosition, 0.5f);
+        transform.position += delta;
+        switch (itemSize)
+        {
+            case ItemSize.Small:
+                transform.position += new Vector3(delta.x, delta.y, 0);
+                break;
+            case ItemSize.Large:
+                transform.position += delta;
+                break;
+        }
     }
 
-    private void PlayIdleTween()
-    {
-        var posY = transform.position.y;
-        idleTween = transform.DOMoveY(posY + 3f, 0.2f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
-    }
-
-    private void StopIdleTween()
-    {
-        if (idleTween != null)
-            idleTween.Kill();
-    }
-
-    public virtual void OnEndDrag(int threshold)
+    public virtual void OnEndDrag(float threshold)
     {
         CheckItemPlacement(threshold);
     }
@@ -81,17 +112,16 @@ public class ItemBase : MonoBehaviour
         StopIdleTween();
     }
 
-    public virtual void OnDrag(Vector3 delta)
+    private void PlayIdleTween()
     {
-        transform.position += delta;
-        switch (itemSize)
-        {
-            case ItemSize.Small:
-                transform.position += new Vector3(delta.x, delta.y + 2, 0);
-                break;
-            case  ItemSize.Large:
-                transform.position += delta;
-                break;
-        }
+        if (this == null || !gameObject.activeInHierarchy) return;
+        var posY = transform.position.y;
+        idleTween = transform.DOMoveY(posY + 0.3f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    private void StopIdleTween()
+    {
+        if (idleTween != null)
+            idleTween.Kill();
     }
 }

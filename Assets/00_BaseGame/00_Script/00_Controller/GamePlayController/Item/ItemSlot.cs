@@ -1,7 +1,37 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ItemSlot : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer curSpriteRenderer;
+    public bool isFullSlot;
+    public bool isReadyShow = true;
+    public List<ItemSlot> conditionSlots;
+
+    public void Init()
+    {
+        isReadyShow = conditionSlots.Count <= 0;
+    }
+
+    public void ValidateReadyState()
+    {
+        bool allConditionsMet = conditionSlots.All(slot => slot.isFullSlot);
+        if (allConditionsMet)
+        {
+            isReadyShow = true;
+            Active();
+        }
+    }
+    
+    public void Active()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    private void DeActive()
+    {
+        this.gameObject.SetActive(false);
+    }
+    
     
 }

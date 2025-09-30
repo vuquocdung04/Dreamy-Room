@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-
     private Camera mainCamera;
     private CameraController cameraController;
     
     private bool isDraggingCamera;
+    private ItemBase currentDraggingItem; // Item đang được drag
 
     // Cho camera dragging (dùng screen space)
     private Vector3 lastScreenPosition;
@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("CameraController is null");
             return;
         }
+        
         currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         currentMousePosition.z = 0;
 
@@ -43,19 +44,46 @@ public class InputManager : MonoBehaviour
             }
             else
             {
+                // Kiểm tra xem có phải ItemBase không
+                ItemBase item = hit.collider.GetComponent<ItemBase>();
+                if (item != null)
+                {
+                    currentDraggingItem = item;
+                    currentDraggingItem.OnStartDrag();
+                }
+                else
+                {
+                    // Nếu click vào object khác (không phải item) thì vẫn drag camera
+                    isDraggingCamera = true;
+                    lastScreenPosition = Input.mousePosition;
+                }
             }
 
             prevMousePosition = currentMousePosition;
         }
 
+        // Xử lý drag
         if (isDraggingCamera)
         {
             cameraController.MoveCamera(ref lastScreenPosition);
-            prevMousePosition = currentMousePosition;
         }
+        else if (currentDraggingItem != null)
+        {
+            Vector3 delta = currentMousePosition - prevMousePosition;
+            currentDraggingItem.OnDrag(delta);
+        }
+        
+        prevMousePosition = currentMousePosition;
 
         if (Input.GetMouseButtonUp(0))
         {
+            if (currentDraggingItem != null)
+            {
+                float snapThreshold = 1f;
+                currentDraggingItem.OnEndDrag(snapThreshold);
+                currentDraggingItem = null;
+            }
+            
             isDraggingCamera = false;
         }
     }
