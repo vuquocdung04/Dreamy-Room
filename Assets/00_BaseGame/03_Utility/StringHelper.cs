@@ -78,5 +78,10 @@ public class PathPrefabs
     public const string HINT_BOX = "UI/Popups/HintBox";
     public const string REMOVE_ADS_BOX = "UI/Popups/RemoveAdsBox";
     public const string GET_MORE_BOX = "UI/Popups/GetMoreBox";
-    
+}
+
+public class LayerName
+{
+    public const string DEFAULT = "Default";
+    public const string ITEM_UNPLACED =  "ItemUnplaced";
 }
