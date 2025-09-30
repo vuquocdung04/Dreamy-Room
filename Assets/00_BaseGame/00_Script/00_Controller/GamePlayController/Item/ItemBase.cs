@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class ItemBase : MonoBehaviour
     protected List<ItemSlot> slotsSnap;
 
     [Space(5)]
+    [SerializeField] protected List<ItemSlot> conditionSlots;
+    [Space(5)]
     [Header("Visuals & Physics")]
     [SerializeField]
     protected ItemSize itemSize;
@@ -27,6 +30,30 @@ public class ItemBase : MonoBehaviour
     private Tween idleTween;
 
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
+
+
+    public void OutSideBox()
+    {
+        transform.localScale = Vector3.zero;
+        float angleZ = Random.Range(-40f, 40f);
+        angle = angleZ;
+        transform.localEulerAngles = new Vector3(0, 0, angle);
+        transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+        float randY = Random.Range(1.5f, 6f);
+        float randX = Random.Range(-3.5f, 3.5f);
+        transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(PlayIdleTween);
+    }
+    public void ValidateUnlockState()
+    {
+        if (isUnlocked) return;
+        
+        if (conditionSlots == null || conditionSlots.Count == 0) return;
+        
+        bool allConditionsMet = conditionSlots.All(slot => slot != null && slot.isFullSlot);
+        
+        if (allConditionsMet)
+            isUnlocked = true;
+    }
     private void CheckItemPlacement(float threshold)
     {
         if (!isUnlocked)
@@ -84,20 +111,21 @@ public class ItemBase : MonoBehaviour
     {
         spriteRenderer.sortingOrder = indexLayer;
         transform.eulerAngles = new Vector3(0, 0, angle);
-        PlayIdleTween();
+        transform.DORotate(new Vector3(0,0,angle), 0.2f).OnComplete(PlayIdleTween);
     }
 
-    public virtual void OnDrag(Vector3 delta)
+    public void OnDrag(Vector3 delta)
     {
         transform.position += delta;
+        transform.DORotate(Vector3.zero, 0.2f);
     }
 
-    public virtual void OnEndDrag(float threshold)
+    public void OnEndDrag(float threshold)
     {
         CheckItemPlacement(threshold);
     }
 
-    public virtual void OnStartDrag()
+    public void OnStartDrag()
     {
         spriteRenderer.sortingOrder = 100;
         StopIdleTween();
@@ -120,5 +148,16 @@ public class ItemBase : MonoBehaviour
     {
         if (idleTween != null)
             idleTween.Kill();
+    }
+
+    /// <summary>
+    ///  Setup
+    /// </summary>
+    public void SetupOdin()
+    {
+        spriteRenderer =  GetComponent<SpriteRenderer>();
+        coll2D = GetComponent<Collider2D>();
+        indexLayer = spriteRenderer.sortingOrder;
+        if (conditionSlots.Count > 0) isUnlocked = false;
     }
 }

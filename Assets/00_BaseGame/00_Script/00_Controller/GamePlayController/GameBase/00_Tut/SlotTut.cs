@@ -1,6 +1,5 @@
 using UnityEngine;
 
-    public class SlotTut : ItemSlot
-    {
-        
-    }
+public class SlotTut : ItemSlot
+{
+}

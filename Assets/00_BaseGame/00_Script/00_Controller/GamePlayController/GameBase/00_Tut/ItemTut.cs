@@ -1,6 +1,5 @@
 using UnityEngine;
 
-    public class ItemTut : ItemBase
-    {
-        
-    }
+public class ItemTut : ItemBase
+{
+}

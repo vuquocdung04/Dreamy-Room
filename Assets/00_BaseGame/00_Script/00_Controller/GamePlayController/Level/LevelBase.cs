@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class LevelBase : MonoBehaviour
 {
-    
+    [SerializeField] private int maxItemOutOfBox = 10;
     [SerializeField] private float snapThreshold;
     [SerializeField] private List<ItemSlot> allShadows;
     [SerializeField] private List<ItemBase> allItems;
     [SerializeField] private List<ItemBase> itemsOutOfBox;
 
-
+    public void UpdateStateUnlockItem()
+    {
+        foreach (var item in itemsOutOfBox)
+        {
+            item.ValidateUnlockState();
+        }
+    }
+    
     public void UseHintBooster()
     {
         foreach (var item in itemsOutOfBox)
