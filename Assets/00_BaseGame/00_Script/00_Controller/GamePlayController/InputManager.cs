@@ -4,9 +4,9 @@ public class InputManager : MonoBehaviour
 {
     private Camera mainCamera;
     private CameraController cameraController;
-    
+
     private bool isDraggingCamera;
-    private ItemBase currentDraggingItem; // Item đang được drag
+    private ItemBase currentDraggingItem;
 
     // Cho camera dragging (dùng screen space)
     private Vector3 lastScreenPosition;
@@ -15,30 +15,33 @@ public class InputManager : MonoBehaviour
     private Vector3 currentMousePosition;
     private Vector3 prevMousePosition;
     private Vector3 delta;
-    
-    private float left,top,right,bottom;
+    private float left, top, right, bottom;
+
+    private PlayerContains playerContains;
+
+    [SerializeField] private bool isWin, isLose, isPopupOpen, canMoveCamera;
+
     public void Init()
     {
-        var playerContains = GamePlayController.Instance.playerContains;
+        playerContains = GamePlayController.Instance.playerContains;
         mainCamera = playerContains.mainCamera;
         cameraController = playerContains.cameraController;
+        UpdateBonds();
 
-        left = playerContains.left.transform.localPosition.x;
-        top = playerContains.top.transform.localPosition.y;
-        right = playerContains.right.transform.localPosition.x;
-        bottom = GameController.Instance.useProfile.IsRemoveAds ? playerContains.bottom.transform.localPosition.y :  playerContains.bottom.transform.localPosition.y + 2f;
-        
-        
+        //canMoveCamera = UseProfile.MaxUnlockedLevel > 5;
     }
-    
+
     private void Update()
     {
+        if (isWin || isPopupOpen || isLose) return;
+
+
         if (cameraController == null)
         {
             Debug.Log("CameraController is null");
             return;
         }
-        
+
         currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         currentMousePosition.z = 0;
 
@@ -48,8 +51,11 @@ public class InputManager : MonoBehaviour
 
             if (hit.collider == null)
             {
-                isDraggingCamera = true;
-                lastScreenPosition = Input.mousePosition;
+                if (canMoveCamera)
+                {
+                    isDraggingCamera = true;
+                    lastScreenPosition = Input.mousePosition;
+                }
             }
             else
             {
@@ -59,19 +65,20 @@ public class InputManager : MonoBehaviour
                     box.OnBoxClicked();
                     return;
                 }
-                
-                // Kiểm tra xem có phải ItemBase không
+
                 ItemBase item = hit.collider.GetComponent<ItemBase>();
                 if (item != null)
                 {
                     currentDraggingItem = item;
-                    currentDraggingItem.OnStartDrag(top,currentMousePosition);
+                    currentDraggingItem.OnStartDrag(top, currentMousePosition);
                 }
                 else
                 {
-                    // Nếu click vào object khác (không phải item) thì vẫn drag camera
-                    isDraggingCamera = true;
-                    lastScreenPosition = Input.mousePosition;
+                    if (canMoveCamera)
+                    {
+                        isDraggingCamera = true;
+                        lastScreenPosition = Input.mousePosition;
+                    }
                 }
             }
 
@@ -86,10 +93,9 @@ public class InputManager : MonoBehaviour
         else if (currentDraggingItem != null)
         {
             delta = currentMousePosition - prevMousePosition;
-            currentDraggingItem.OnDrag(delta,left,right,bottom,top);
+            currentDraggingItem.OnDrag(delta, left, right, bottom, top);
+            prevMousePosition = currentMousePosition;
         }
-        
-        prevMousePosition = currentMousePosition;
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -99,8 +105,39 @@ public class InputManager : MonoBehaviour
                 currentDraggingItem.OnEndDrag(snapThreshold);
                 currentDraggingItem = null;
             }
-            
+
+            UpdateBonds();
             isDraggingCamera = false;
         }
+    }
+
+    private void UpdateBonds()
+    {
+        left = playerContains.left.transform.position.x;
+        top = playerContains.top.transform.position.y;
+        right = playerContains.right.transform.position.x;
+        bottom = GameController.Instance.useProfile.IsRemoveAds
+            ? playerContains.bottom.transform.position.y
+            : playerContains.bottom.transform.position.y + 2f;
+    }
+
+    public void SetWin(bool state)
+    {
+        isWin = state;
+    }
+
+    public void SetLose(bool state)
+    {
+        isLose = state;
+    }
+
+    public void SetPopupState(bool state)
+    {
+        isPopupOpen = state;
+    }
+
+    public void SetCanMoveCamera(bool state)
+    {
+        canMoveCamera = state;
     }
 }

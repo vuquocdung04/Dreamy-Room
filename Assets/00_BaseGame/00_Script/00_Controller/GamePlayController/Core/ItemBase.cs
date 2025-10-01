@@ -102,7 +102,7 @@ public class ItemBase : MonoBehaviour
         targetSlot.Active();
         targetSlot.isFullSlot = true;
         spriteRenderer.sortingOrder = indexLayer;
-        spriteRenderer.sortingLayerName = LayerName.DEFAULT;
+        spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
         transform.DOMove(targetSlot.transform.position, 0.5f);
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
     }
@@ -163,7 +163,7 @@ public class ItemBase : MonoBehaviour
         spriteRenderer =  GetComponent<SpriteRenderer>();
         coll2D = GetComponent<Collider2D>();
         indexLayer = spriteRenderer.sortingOrder;
-        spriteRenderer.sortingLayerName = LayerName.ITEM_UNPLACED;
+        spriteRenderer.sortingLayerName = SortingLayerName.ITEM_UNPLACED;
         if (conditionSlots.Count > 0) isUnlocked = false;
     }
 }

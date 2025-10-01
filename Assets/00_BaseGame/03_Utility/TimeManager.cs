@@ -33,7 +33,7 @@ public class TimeManager
         return new  System.DateTime(time.Year, time.Month, time.Day);
     }
 
-    public static long CaculateTime(System.DateTime oldTime, System.DateTime newTime)
+    public static long CalculateTime(System.DateTime oldTime, System.DateTime newTime)
     {
         System.TimeSpan diff = newTime - oldTime;
         long result = diff.Days * 24 * 60 * 60 +  diff.Hours * 60 * 60 + diff.Minutes * 60 + diff.Seconds;

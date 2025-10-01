@@ -18,20 +18,20 @@ public class HeartGame : MonoBehaviour
     {
         if (UseProfile.IsUnlimitedHeart)
         {
-            var temp = TimeManager.CaculateTime(DateTime.Now, UseProfile.TimeUnlimitedHeart);
+            var temp = TimeManager.CalculateTime(DateTime.Now, UseProfile.TimeUnlimitedHeart);
             if (temp < 0)
             {
                 UseProfile.IsUnlimitedHeart = false;
             }
         }
-        var tempTime = TimeManager.CaculateTime(DateTime.Now, UseProfile.TimeUnlimitedHeart);
+        var tempTime = TimeManager.CalculateTime(DateTime.Now, UseProfile.TimeUnlimitedHeart);
     }
 
     private void CheckHeart()
     {
         if (UseProfile.Heart < 5)
         {
-            var secondsSinceLastUpdate = TimeManager.CaculateTime(UseProfile.TimeLastOverHeart, DateTime.Now);
+            var secondsSinceLastUpdate = TimeManager.CalculateTime(UseProfile.TimeLastOverHeart, DateTime.Now);
             int minutesSinceLastUpdate = (int)secondsSinceLastUpdate / 60;
 
             if (minutesSinceLastUpdate >= 10)

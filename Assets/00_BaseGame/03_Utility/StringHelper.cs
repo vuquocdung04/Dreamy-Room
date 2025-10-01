@@ -80,7 +80,7 @@ public class PathPrefabs
     public const string GET_MORE_BOX = "UI/Popups/GetMoreBox";
 }
 
-public class LayerName
+public class SortingLayerName
 {
     public const string DEFAULT = "Default";
     public const string ITEM_UNPLACED =  "ItemUnplaced";
