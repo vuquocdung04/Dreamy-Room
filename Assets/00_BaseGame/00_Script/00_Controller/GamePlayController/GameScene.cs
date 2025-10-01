@@ -1,4 +1,4 @@
-using System;
+
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -19,7 +19,7 @@ public class GameScene : MonoBehaviour
 
     [SerializeField] private Image fillTimingBar;
     [SerializeField] private TextMeshProUGUI txtTiming;
-    [SerializeField] private Image frozeTiming;
+    [SerializeField] private Image imgFroze;
     private CameraController cameraController;
 
     [Header("Time Setting")]
@@ -27,6 +27,11 @@ public class GameScene : MonoBehaviour
     [SerializeField] private float currentTime;
     [SerializeField] private bool isTimerRunning;
 
+    [Header("Froze Setting")]
+    [SerializeField] private float frozeRemainingTime;
+
+    [SerializeField] private bool isFrozeActive;
+    [SerializeField] private float frozeDuration = 30f;
     public void Init()
     {
         cameraController = GamePlayController.Instance.playerContains.cameraController;
@@ -51,6 +56,14 @@ public class GameScene : MonoBehaviour
     
     private void Update()
     {
+        if (isFrozeActive)
+        {
+            frozeRemainingTime -= Time.deltaTime;
+            if (frozeRemainingTime <= 0)
+                EndFroze();
+            return;
+        }
+        
         if (isTimerRunning && currentTime > 0)
         {
             currentTime -= Time.deltaTime;
@@ -64,8 +77,21 @@ public class GameScene : MonoBehaviour
             UpdateFillBar();
         }
     }
+    [Button("Active Froze", ButtonSizes.Large)]
+    public void ActivateFrozeBooster()
+    {
+        isFrozeActive = true;
+        frozeRemainingTime = frozeDuration;
+        imgFroze.DOFillAmount(1f, 0.2f);
+    }
     
-
+    private void EndFroze()
+    {
+        isFrozeActive = false;
+        frozeRemainingTime = 0;
+        imgFroze.DOFillAmount(0f, 0.2f);
+        ResumeTimer();
+    }
     private void HandleToggleZoomInOut()
     {
         cameraController.ToggleZoomInOut();
@@ -79,7 +105,6 @@ public class GameScene : MonoBehaviour
     public void PauseTimer()
     {
         isTimerRunning = false;
-        frozeTiming.gameObject.SetActive(true);
     }
 
     public void ResumeTimer()
@@ -109,6 +134,5 @@ public class GameScene : MonoBehaviour
     private void OnTimerComplete()
     {
     }
-
     #endregion
 }

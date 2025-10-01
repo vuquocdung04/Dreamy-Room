@@ -3927,12 +3927,12 @@ GameObject:
   - component: {fileID: 1134661272}
   - component: {fileID: 1134661271}
   m_Layer: 5
-  m_Name: Image
+  m_Name: imgFroze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1134661270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3973,11 +3973,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 500550061, guid: 9c902fc3bc8ee764eb41dbcc4d33305a, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4466,9 +4466,12 @@ MonoBehaviour:
   topBar: {fileID: 300754391}
   fillTimingBar: {fileID: 1325535031}
   txtTiming: {fileID: 656707099}
-  frozeTiming: {fileID: 1134661271}
+  imgFroze: {fileID: 1134661271}
   currentTime: 0
   isTimerRunning: 0
+  frozeRemainingTime: 0
+  isFrozeActive: 0
+  frozeDuration: 10
 --- !u!1 &1316276017
 GameObject:
   m_ObjectHideFlags: 0
