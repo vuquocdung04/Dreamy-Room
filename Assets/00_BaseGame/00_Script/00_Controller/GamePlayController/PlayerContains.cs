@@ -21,6 +21,21 @@ public class PlayerContains : MonoBehaviour
         boosterController.Init();
     }
 
+    public void WinGame()
+    {
+        inputManager.SetWin(true);
+    }
+
+    public void LoseGame()
+    {
+        inputManager.SetLose(true);
+    }
+
+    public void PauseGame(bool isPaused)
+    {
+        inputManager.SetPopupState(isPaused);
+    }
+    
     private void AdjustCamera()
     {
         float baseHeight = mainCamera.orthographicSize * 2f;

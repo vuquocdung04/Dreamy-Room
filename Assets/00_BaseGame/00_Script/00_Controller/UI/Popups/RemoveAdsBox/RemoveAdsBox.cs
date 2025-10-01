@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,10 @@ public class RemoveAdsBox : BoxSingleton<RemoveAdsBox>
         btnClose.onClick.AddListener(delegate
         {
             Close();
+            if(GamePlayController.Instance)
+                GamePlayController.Instance.ResumeGame();
+            else
+                Debug.LogError("GamePlayController is null");
         });
     }
 

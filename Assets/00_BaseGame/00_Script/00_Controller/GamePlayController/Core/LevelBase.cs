@@ -51,6 +51,11 @@ public class LevelBase : MonoBehaviour
             box.ScaleToZero();
         }
     }
+
+    public void UseFrozeBooster()
+    {
+        
+    }
     public void UseHintBooster()
     {
         foreach (var item in itemsOutOfBox)

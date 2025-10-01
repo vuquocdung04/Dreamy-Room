@@ -9,11 +9,22 @@ public class GamePlayController : Singleton<GamePlayController>
         m_DontDestroyOnLoad = false;
         Init();
     }
-
-
+    
     private void Init()
     {
         gameScene.Init();
         playerContains.Init();
+    }
+    
+    public void PauseGame()
+    {
+        gameScene.PauseTime();   
+        playerContains.PauseGame(true);
+    }
+
+    public void ResumeGame()
+    {
+        gameScene.ResumeTime();
+        playerContains.PauseGame(false);
     }
 }

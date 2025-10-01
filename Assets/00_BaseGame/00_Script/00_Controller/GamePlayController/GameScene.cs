@@ -1,4 +1,3 @@
-
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -23,21 +22,32 @@ public class GameScene : MonoBehaviour
     private CameraController cameraController;
 
     [Header("Time Setting")]
-    private float totalTime;
+    [SerializeField] private float totalTime;
     [SerializeField] private float currentTime;
     [SerializeField] private bool isTimerRunning;
 
     [Header("Froze Setting")]
     [SerializeField] private float frozeRemainingTime;
-
     [SerializeField] private bool isFrozeActive;
     [SerializeField] private float frozeDuration = 30f;
+    
+    [Header("Pause Setting")]
+    [SerializeField] private bool isPaused; // Pause từ popup
+    
     public void Init()
     {
         cameraController = GamePlayController.Instance.playerContains.cameraController;
 
-        btnPause.onClick.AddListener(delegate { SettingGameBox.Setup().Show(); });
-        btnRemoveAds.onClick.AddListener(delegate { RemoveAdsBox.Setup().Show(); });
+        btnPause.onClick.AddListener(delegate
+        {
+            GamePlayController.Instance.PauseGame();
+            SettingGameBox.Setup().Show();
+        });
+        btnRemoveAds.onClick.AddListener(delegate
+        {
+            GamePlayController.Instance.PauseGame();
+            RemoveAdsBox.Setup().Show();
+        });
 
         btnZoom.onClick.AddListener(HandleToggleZoomInOut);
         
@@ -56,6 +66,9 @@ public class GameScene : MonoBehaviour
     
     private void Update()
     {
+        // Nếu đang pause thì không làm gì cả
+        if (isPaused) return;
+        
         if (isFrozeActive)
         {
             frozeRemainingTime -= Time.deltaTime;
@@ -64,6 +77,7 @@ public class GameScene : MonoBehaviour
             return;
         }
         
+        // Xử lý Main Timer
         if (isTimerRunning && currentTime > 0)
         {
             currentTime -= Time.deltaTime;
@@ -77,9 +91,12 @@ public class GameScene : MonoBehaviour
             UpdateFillBar();
         }
     }
+    
     [Button("Active Froze", ButtonSizes.Large)]
     public void ActivateFrozeBooster()
     {
+        if (isFrozeActive) return; // Đang froze rồi thì không cho dùng nữa
+        
         isFrozeActive = true;
         frozeRemainingTime = frozeDuration;
         imgFroze.DOFillAmount(1f, 0.2f);
@@ -90,8 +107,8 @@ public class GameScene : MonoBehaviour
         isFrozeActive = false;
         frozeRemainingTime = 0;
         imgFroze.DOFillAmount(0f, 0.2f);
-        ResumeTimer();
     }
+    
     private void HandleToggleZoomInOut()
     {
         cameraController.ToggleZoomInOut();
@@ -99,25 +116,25 @@ public class GameScene : MonoBehaviour
         imgZoom.sprite = isZoomed ? sprZoomOut : sprZoomIn;
     }
 
-    #region Time
+    #region Time Control
     
-    [Button("Test", ButtonSizes.Large)]
-    public void PauseTimer()
+    /// <summary>
+    /// Pause cả Main Timer và Froze Timer (dùng khi mở popup)
+    /// </summary>
+    [Button("Pause (Popup)", ButtonSizes.Large)]
+    public void PauseTime()
     {
-        isTimerRunning = false;
+        isPaused = true;
     }
 
-    public void ResumeTimer()
+    /// <summary>
+    /// Resume cả Main Timer và Froze Timer (dùng khi đóng popup)
+    /// </summary>
+    [Button("Resume (Close Popup)", ButtonSizes.Large)]
+    public void ResumeTime()
     {
-        isTimerRunning = true;
+        isPaused = false;
     }
-
-    public void StopTimer()
-    {
-        isTimerRunning = false;
-        currentTime = 0;
-    }
-
     private void UpdateTimerDisplay()
     {
         int minutes = Mathf.FloorToInt(currentTime / 60f);
@@ -131,8 +148,17 @@ public class GameScene : MonoBehaviour
         fillTimingBar.fillAmount = fillAmount;
     }
 
+    public void AddTime()
+    {
+        isTimerRunning = true;
+        currentTime = 60;
+    }
+    
     private void OnTimerComplete()
     {
+        TimeOutBox.Setup().Show();
+        GamePlayController.Instance.PauseGame();
     }
+    
     #endregion
 }

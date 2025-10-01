@@ -28,7 +28,11 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
     {
         UpdateStateVib_Music_Sound();
         
-        ActionBtnClick(btnClose, Close);
+        ActionBtnClick(btnClose, delegate
+        {
+            Close();
+            GamePlayController.Instance.ResumeGame();
+        });
         ActionBtnClick(btnGoHome, ()=> Debug.Log("Go Home"));
         ActionBtnClick(btnRetry, ()=> Debug.Log("Retry"));
         ActionBtnClick(btnVib, () =>
