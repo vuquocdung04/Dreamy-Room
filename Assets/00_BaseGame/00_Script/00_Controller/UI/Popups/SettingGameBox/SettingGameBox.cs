@@ -33,7 +33,7 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
             Close();
             GamePlayController.Instance.ResumeGame();
         });
-        ActionBtnClick(btnGoHome, ()=> Debug.Log("Go Home"));
+        ActionBtnClick(btnGoHome, ()=> QuitLevelBox.Setup().Show());
         ActionBtnClick(btnRetry, ()=> Debug.Log("Retry"));
         ActionBtnClick(btnVib, () =>
         {

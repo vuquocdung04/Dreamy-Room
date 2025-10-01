@@ -29,6 +29,17 @@ public class BoosterController : MonoBehaviour
             });
         }
     }
+
+    public void UpdateAmountBooster(GiftType type)
+    {
+        foreach(var booster in lsBoosters)
+            if (booster.GetBoosterType() == type)
+            {
+                var boosterAmount = GetBoosterAmountByType(booster.GetBoosterType());
+                booster.IncreaseAmount(boosterAmount);
+                booster.UpdateAmountUI();
+            }
+    }
     
     private int GetBoosterAmountByType(GiftType type)
     {

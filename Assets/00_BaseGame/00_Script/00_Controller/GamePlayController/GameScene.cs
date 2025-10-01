@@ -21,19 +21,23 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Image imgFroze;
     private CameraController cameraController;
 
-    [Header("Time Setting")]
-    [SerializeField] private float totalTime;
+    [Header("Time Setting")] [SerializeField]
+    private float totalTime;
+
     [SerializeField] private float currentTime;
     [SerializeField] private bool isTimerRunning;
 
-    [Header("Froze Setting")]
-    [SerializeField] private float frozeRemainingTime;
+    [Header("Froze Setting")] [SerializeField]
+    private float frozeRemainingTime;
+
     [SerializeField] private bool isFrozeActive;
     [SerializeField] private float frozeDuration = 30f;
-    
-    [Header("Pause Setting")]
-    [SerializeField] private bool isPaused; // Pause từ popup
-    
+
+    [Header("Pause Setting")] [SerializeField]
+    private bool isPaused; // Pause từ popup
+
+    private bool hasUsedTimeOffer = false;
+
     public void Init()
     {
         cameraController = GamePlayController.Instance.playerContains.cameraController;
@@ -50,7 +54,7 @@ public class GameScene : MonoBehaviour
         });
 
         btnZoom.onClick.AddListener(HandleToggleZoomInOut);
-        
+
         StartTimer(300);
     }
 
@@ -63,12 +67,12 @@ public class GameScene : MonoBehaviour
         fillTimingBar.fillAmount = 1f;
         UpdateTimerDisplay();
     }
-    
+
     private void Update()
     {
         // Nếu đang pause thì không làm gì cả
         if (isPaused) return;
-        
+
         if (isFrozeActive)
         {
             frozeRemainingTime -= Time.deltaTime;
@@ -76,7 +80,7 @@ public class GameScene : MonoBehaviour
                 EndFroze();
             return;
         }
-        
+
         // Xử lý Main Timer
         if (isTimerRunning && currentTime > 0)
         {
@@ -87,28 +91,28 @@ public class GameScene : MonoBehaviour
                 isTimerRunning = false;
                 OnTimerComplete();
             }
+
             UpdateTimerDisplay();
             UpdateFillBar();
         }
     }
     
-    [Button("Active Froze", ButtonSizes.Large)]
     public void ActivateFrozeBooster()
     {
         if (isFrozeActive) return; // Đang froze rồi thì không cho dùng nữa
-        
+
         isFrozeActive = true;
         frozeRemainingTime = frozeDuration;
         imgFroze.DOFillAmount(1f, 0.2f);
     }
-    
+
     private void EndFroze()
     {
         isFrozeActive = false;
         frozeRemainingTime = 0;
         imgFroze.DOFillAmount(0f, 0.2f);
     }
-    
+
     private void HandleToggleZoomInOut()
     {
         cameraController.ToggleZoomInOut();
@@ -117,7 +121,7 @@ public class GameScene : MonoBehaviour
     }
 
     #region Time Control
-    
+
     /// <summary>
     /// Pause cả Main Timer và Froze Timer (dùng khi mở popup)
     /// </summary>
@@ -135,6 +139,7 @@ public class GameScene : MonoBehaviour
     {
         isPaused = false;
     }
+
     private void UpdateTimerDisplay()
     {
         int minutes = Mathf.FloorToInt(currentTime / 60f);
@@ -153,12 +158,18 @@ public class GameScene : MonoBehaviour
         isTimerRunning = true;
         currentTime = 60;
     }
-    
+
     private void OnTimerComplete()
     {
-        TimeOutBox.Setup().Show();
+        if (!hasUsedTimeOffer)
+        {
+            TimeOutBox.Setup().Show();
+            hasUsedTimeOffer = true;
+        }
+        else
+            LoseBox.Setup().Show();
         GamePlayController.Instance.PauseGame();
     }
-    
+
     #endregion
 }

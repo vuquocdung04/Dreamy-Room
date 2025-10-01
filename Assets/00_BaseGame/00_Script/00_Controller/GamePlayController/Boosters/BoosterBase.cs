@@ -1,3 +1,4 @@
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,29 @@ public abstract class BoosterBase : MonoBehaviour
     private int cachedMaxLevel;
     protected abstract void OnBoosterUsed();
     protected abstract void UpdateUseProfileAmount(int amount);
+    
+        
+    public void Init(int curBoosterAmount)
+    {
+        cachedMaxLevel = UseProfile.MaxUnlockedLevel;
+        IncreaseAmount(curBoosterAmount);
+        
+        var levelUnlock = cachedDataConflict.GetLevelUnlock();
+        
+        var isUnlocked = cachedMaxLevel >= levelUnlock;
+        transLockedState.gameObject.SetActive(!isUnlocked);
+        transUnlockedState.gameObject.SetActive(isUnlocked);
+
+        if (!isUnlocked) return;
+        
+        UpdateAmountUI();
+    }
+
+    public void IncreaseAmount(int amount)
+    {
+        boosterAmount = amount;
+    }
+    
     public void AddClickListener(System.Action<BoosterBase> callback = null)
     {
         btn.onClick.AddListener(delegate
@@ -47,43 +71,28 @@ public abstract class BoosterBase : MonoBehaviour
     public void HandleAction()
     {
         if(!IsUnlocked()) return;
-        
-        if(boosterAmount <= 0)
+        GameController.Instance.dataContains.dataBooster.boosterTypeSeleced =  boosterType;
+        if (boosterAmount <= 0)
+        {
+            GamePlayController.Instance.PauseGame();
             GetMoreBox.Setup().Show();
+            return;
+        }
         
         boosterAmount--;
         UpdateUseProfileAmount(boosterAmount);
-        UpdateAmountUI(IsBoosterAvailable());
+        UpdateAmountUI();
         OnBoosterUsed();
     }
-    
-    public void Init(int curBoosterAmount)
+
+
+    public void UpdateAmountUI()
     {
-        cachedMaxLevel = UseProfile.MaxUnlockedLevel;
-        boosterAmount = curBoosterAmount;
-        
-        var levelUnlock = cachedDataConflict.GetLevelUnlock();
-        
-        var isUnlocked = cachedMaxLevel >= levelUnlock;
-        transLockedState.gameObject.SetActive(!isUnlocked);
-        transUnlockedState.gameObject.SetActive(isUnlocked);
+        bool isBoosterAvailable = boosterAmount > 0;
+        transAmountNotEmpty.gameObject.SetActive(isBoosterAvailable);
+        transAmountEmpty.gameObject.SetActive(!isBoosterAvailable);
 
-        if (!isUnlocked) return;
-        
-        UpdateAmountUI(IsBoosterAvailable());
-    }
-
-    private bool IsBoosterAvailable()
-    {
-        return boosterAmount > 0;
-    }
-
-    private void UpdateAmountUI(bool hasItems)
-    {
-        transAmountNotEmpty.gameObject.SetActive(hasItems);
-        transAmountEmpty.gameObject.SetActive(!hasItems);
-
-        if (hasItems)
+        if (isBoosterAvailable)
             txtBoosterAmount.text = boosterAmount.ToString();
     }
 

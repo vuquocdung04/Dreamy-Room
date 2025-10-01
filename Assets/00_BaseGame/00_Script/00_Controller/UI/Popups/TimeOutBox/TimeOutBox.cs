@@ -22,7 +22,9 @@ public class TimeOutBox : BoxSingleton<TimeOutBox>
         });
         btnContinueByCoin.onClick.AddListener(delegate
         {
-            
+            GamePlayController.Instance.gameScene.AddTime();
+            GamePlayController.Instance.ResumeGame();
+            Close();
         });
         btnContinueByAd.onClick.AddListener(delegate
         {

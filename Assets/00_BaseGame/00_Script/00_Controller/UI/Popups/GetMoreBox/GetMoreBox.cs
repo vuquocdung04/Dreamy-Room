@@ -21,11 +21,11 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     private DataBoosterBase dataBooster;
     protected override void Init()
     {
-        btnClose.onClick.AddListener(Close);
-        btnCloseByPanel.onClick.AddListener(Close);
-        btnBuyByCoin.onClick.AddListener(delegate { });
-
-        btnBuyByAds.onClick.AddListener(delegate { });
+        currentBoosterType = GiftType.None;
+        ActionClick(btnClose);
+        ActionClick(btnCloseByPanel);
+        ActionClick(btnBuyByCoin, IncreaseAmountBooster);
+        ActionClick(btnBuyByAds, IncreaseAmountBooster);
         
         CacheDataBoosterReference();
     }
@@ -35,6 +35,34 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         UpdatePopupUI();
     }
 
+    private void IncreaseAmountBooster()
+    {
+        switch (currentBoosterType)
+        {
+            case GiftType.BoosterHint:
+                UseProfile.Booster_Hint++;
+                break;
+            case GiftType.BoosterMagicWand:
+                UseProfile.Booster_MagicWand++;
+                break;
+            case GiftType.BoosterFrozenTime:
+                UseProfile.Booster_FrozeTime++;
+                break;
+        }
+
+        Debug.LogError("IncreaseBooster");
+        GamePlayController.Instance.playerContains.boosterController.UpdateAmountBooster(currentBoosterType);
+    }
+    private void ActionClick(Button btn, System.Action callback = null)
+    {
+        btn.onClick.AddListener(delegate
+        {
+            Close();
+            GamePlayController.Instance.ResumeGame();
+            callback?.Invoke();
+        });
+    }
+    
     private void CacheDataBoosterReference()
     {
         dataBooster = GameController.Instance.dataContains.dataBooster;
@@ -43,8 +71,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     {
         var typeSelected = dataBooster.boosterTypeSeleced;
         if(!IsNewBoosterSelected(typeSelected)) return;
-        var boosterConflict = dataBooster.GetBoosterConflict(typeSelected);
-
+        var boosterConflict = dataBooster.GetBoosterConflict(currentBoosterType);
         var sprIcon = boosterConflict.GetIcon();
         var priceInformation = boosterConflict.GetPrice();
         var descriptionInformation = boosterConflict.GetDescription();
@@ -62,6 +89,6 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
             return false;
         }
         currentBoosterType = newBoosterType;
-        return false;
+        return true;
     }
 }
