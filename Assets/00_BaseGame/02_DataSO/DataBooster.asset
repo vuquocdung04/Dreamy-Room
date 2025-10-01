@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13866ee61ed4d249c732f1bf41dc045, type: 3}
   m_Name: DataBooster
   m_EditorClassIdentifier: 
-  boosterTypeSeleced: 0
+  boosterTypeSeleced: 21
   lsBoosters:
   - type: 22
     levelUnlock: 2
     price: 800
-    description: 
+    description: "hint\t"
     icon: {fileID: 21300000, guid: 7e87d1df83446024dacc7020c4828084, type: 3}
   - type: 23
     levelUnlock: 3
     price: 800
-    description: 
+    description: magic
     icon: {fileID: 21300000, guid: 934c91495bdc89a4c954c55b8177f59d, type: 3}
   - type: 21
     levelUnlock: 4
     price: 1000
-    description: 
+    description: Froze Booster
     icon: {fileID: 21300000, guid: fa92ef5e64b2ca441a33d2284740d792, type: 3}
