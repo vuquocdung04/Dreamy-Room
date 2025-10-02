@@ -134,17 +134,13 @@ public class LevelBase : MonoBehaviour
             var shadow = inactiveShadows[i];
             shadow.ValidateReadyState();
             if (shadow.isReadyShow)
-            {
                 inactiveShadows.RemoveAt(i);
-            }
         }
     }
     private void AddItemToOutOfBox(ItemBase item)
     {
         if (!itemsOutOfBox.Contains(item))
-        {
             itemsOutOfBox.Add(item);
-        }
     }
 
     private void OnItemPlacedCorrectly(object obj = null)
@@ -163,9 +159,7 @@ public class LevelBase : MonoBehaviour
             }
 
             foreach (var item in itemsOutOfBox)
-            {
                 item.ValidateUnlockState();
-            }
         }
     }
 

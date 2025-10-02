@@ -14,8 +14,8 @@ public class GamePlayController : Singleton<GamePlayController>
     private void Init()
     {
         gameScene.Init();
-        playerContains.Init();
         levelController.Init();
+        playerContains.Init();
     }
     
     public void PauseGame()
