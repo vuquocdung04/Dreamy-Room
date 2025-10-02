@@ -28,7 +28,7 @@ public class ItemSlot : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
-    private void DeActive()
+    public void DeActive()
     {
         this.gameObject.SetActive(false);
     }

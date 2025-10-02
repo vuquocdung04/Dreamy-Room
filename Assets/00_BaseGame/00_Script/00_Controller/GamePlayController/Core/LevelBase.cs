@@ -20,10 +20,17 @@ public class LevelBase : MonoBehaviour
     [Header("Game Setting")]
     [SerializeField] private int totalItemsRequired;
     [SerializeField] private int itemsPlacedCorrectly;
-    public void Start()
+
+    public virtual void Init()
     {
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
+
+        foreach (var shadow in allShadows)
+        {
+            shadow.Init();
+            shadow.DeActive();
+        }
     }
 
     private void OnDestroy()
@@ -54,7 +61,7 @@ public class LevelBase : MonoBehaviour
 
     public void UseFrozeBooster()
     {
-        
+        GamePlayController.Instance.gameScene.ActivateFrozeBooster();
     }
     public void UseHintBooster()
     {

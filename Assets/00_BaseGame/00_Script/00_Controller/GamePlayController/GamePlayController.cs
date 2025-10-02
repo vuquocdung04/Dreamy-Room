@@ -3,6 +3,7 @@ public class GamePlayController : Singleton<GamePlayController>
 {
     public GameScene gameScene;
     public PlayerContains playerContains;
+    public LevelController levelController;
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -14,6 +15,7 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         gameScene.Init();
         playerContains.Init();
+        levelController.Init();
     }
     
     public void PauseGame()

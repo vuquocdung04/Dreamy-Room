@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataLevel", menuName = "DATA/DataLevelSO", order = 4)]
 public class DataLevelBase : ScriptableObject
 {
+    public GameObject levelTutorial;
+    
     [SerializeField] private List<LevelConflict> lstLevelConflicts;
 
     private Dictionary<int, LevelConflict> levelDictionary;

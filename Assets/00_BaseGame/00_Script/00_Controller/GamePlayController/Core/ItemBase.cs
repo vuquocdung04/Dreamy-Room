@@ -103,6 +103,7 @@ public class ItemBase : MonoBehaviour
         targetSlot.isFullSlot = true;
         spriteRenderer.sortingOrder = indexLayer;
         spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
+        transform.DORotate(Vector3.zero, 0.2f);
         transform.DOMove(targetSlot.transform.position, 0.5f);
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
     }
