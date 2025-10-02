@@ -6476,7 +6476,6 @@ MonoBehaviour:
   - {fileID: 1329026975}
   - {fileID: 637627569}
   - {fileID: 3182826}
-  itemsOutOfBox: []
   slots: {fileID: 1695991062}
   items: {fileID: 1128339123}
   box: {fileID: 921118951}
@@ -7096,7 +7095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
-  conditionSlots: []
+  conditionSlots:
+  - {fileID: 709907886}
 --- !u!1 &2030127136
 GameObject:
   m_ObjectHideFlags: 0

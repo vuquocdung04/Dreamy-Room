@@ -1,3 +1,4 @@
+using EventDispatcher;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,6 +53,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
 
         Debug.LogError("IncreaseBooster");
         GamePlayController.Instance.playerContains.boosterController.UpdateAmountBooster(currentBoosterType);
+        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
     }
     private void ActionClick(Button btn, System.Action callback = null)
     {

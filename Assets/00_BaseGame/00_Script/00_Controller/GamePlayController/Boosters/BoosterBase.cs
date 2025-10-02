@@ -1,4 +1,5 @@
 
+using EventDispatcher;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,6 @@ public abstract class BoosterBase : MonoBehaviour
     [SerializeField] protected RectTransform transAmountEmpty;
     [SerializeField] protected Button btn;
     [SerializeField] protected int boosterAmount;
-
     private BoosterConflict cachedDataConflict;
     private int cachedMaxLevel;
     protected abstract void OnBoosterUsed();
@@ -34,8 +34,14 @@ public abstract class BoosterBase : MonoBehaviour
         transUnlockedState.gameObject.SetActive(isUnlocked);
 
         if (!isUnlocked) return;
-        
+        this.RegisterListener(EventID.ON_BOOSTER_CONDITION_CHANGED, UpdateBoosterButtonState);
         UpdateAmountUI();
+        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+    }
+
+    private void OnDestroy()
+    {
+        this.RemoveListener(EventID.ON_BOOSTER_CONDITION_CHANGED, UpdateBoosterButtonState);
     }
 
     public void IncreaseAmount(int amount)
@@ -56,18 +62,6 @@ public abstract class BoosterBase : MonoBehaviour
         cachedDataConflict = conflict;
     }
     
-    public void InActiveBtn()
-    {
-        if(!IsUnlocked()) return;
-        btn.interactable = false;
-    }
-
-    public void ActiveBtn()
-    {
-        if(!IsUnlocked()) return;
-        btn.interactable = true;
-    }
-
     public void HandleAction()
     {
         if(!IsUnlocked()) return;
@@ -91,13 +85,36 @@ public abstract class BoosterBase : MonoBehaviour
         bool isBoosterAvailable = boosterAmount > 0;
         transAmountNotEmpty.gameObject.SetActive(isBoosterAvailable);
         transAmountEmpty.gameObject.SetActive(!isBoosterAvailable);
-
+        
         if (isBoosterAvailable)
             txtBoosterAmount.text = boosterAmount.ToString();
     }
+    private void UpdateBoosterButtonState(object obj = null)
+    {
+        if (boosterAmount <= 0)
+        {
+            btn.interactable = true;
+            return;
+        }
+        bool canUse = CheckBoosterSpecificConditions();
+        btn.interactable = canUse;
+    }
 
     private bool IsUnlocked() => cachedMaxLevel >= cachedDataConflict.GetLevelUnlock();
-       
+
+
+    private bool CheckBoosterSpecificConditions()
+    {
+        switch (boosterType)
+        {
+            case GiftType.BoosterHint:
+                return GamePlayController.Instance.levelController.HasItemOutOfBox();
+            case GiftType.BoosterMagicWand:
+                return GamePlayController.Instance.levelController.HasReadyShadows();
+            default:
+                return true;
+        }
+    }
     //Setup
     public void SetupOdin()
     {

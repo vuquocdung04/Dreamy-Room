@@ -10,16 +10,24 @@ public class LevelBase : MonoBehaviour
     [SerializeField] private float snapThreshold;
     [SerializeField] private List<ItemSlot> allShadows;
     [SerializeField] private List<ItemBase> allItems;
-    [SerializeField] private List<ItemBase> itemsOutOfBox;
+    [Header("Debug"),Space(5)]
+    [SerializeField] private List<ItemSlot> inactiveShadows = new();
+    [SerializeField] private List<ItemBase> itemsOutOfBox = new();
 
-    [Header("Box Setting")] 
-    [SerializeField] private Transform slots;
+    [Header("Box Setting")] [SerializeField]
+    private Transform slots;
+
     [SerializeField] private Transform items;
     [SerializeField] private BoxGameBase box;
-    
-    [Header("Game Setting")]
-    [SerializeField] private int totalItemsRequired;
+
+    [Header("Game Setting")] [SerializeField]
+    private int totalItemsRequired;
+
     [SerializeField] private int itemsPlacedCorrectly;
+
+    // Cache trạng thái
+    private bool lastHasItemOutOfBox;
+    private bool lastHasReadyShadows;
 
     public virtual void Init()
     {
@@ -29,6 +37,7 @@ public class LevelBase : MonoBehaviour
         foreach (var shadow in allShadows)
         {
             shadow.Init();
+            if(!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
     }
@@ -39,6 +48,16 @@ public class LevelBase : MonoBehaviour
         this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
     }
 
+    public bool HasItemOutOfBox() => itemsOutOfBox.Count > 0;
+
+    public bool HasReadyShadowsForMagicWand()
+    {
+        return allShadows.Exists(shadow => 
+            shadow.isReadyShow && 
+            !shadow.isFullSlot && 
+            !shadow.gameObject.activeSelf);
+    }
+
     private void TakeItemOutOfBox(object obj = null)
     {
         if (itemsOutOfBox.Count >= maxItemOutOfBox)
@@ -46,16 +65,29 @@ public class LevelBase : MonoBehaviour
             Debug.Log("items out of box full");
             return;
         }
-        if(itemsOutOfBox == null && itemsOutOfBox.Count == 0) return;
+
+        if (itemsOutOfBox == null && itemsOutOfBox.Count == 0) return;
         ItemBase item = allItems[0];
         allItems.RemoveAt(0);
         AddItemToOutOfBox(item);
         Vector2 spawnPos = box.transform.position;
         item.OutSideBox(spawnPos);
-        
         if (allItems.Count == 0)
-        {
             box.ScaleToZero();
+        CheckAndPostBoosterConditionChanged();
+    }
+
+    private void CheckAndPostBoosterConditionChanged()
+    {
+        bool currentHasItemOutOfBox = HasItemOutOfBox();
+        bool currentHasReadyShadows = HasReadyShadowsForMagicWand();
+
+        if (currentHasItemOutOfBox != lastHasItemOutOfBox ||
+            currentHasReadyShadows != lastHasReadyShadows)
+        {
+            lastHasItemOutOfBox = currentHasItemOutOfBox;
+            lastHasReadyShadows = currentHasReadyShadows;
+            this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         }
     }
 
@@ -63,6 +95,7 @@ public class LevelBase : MonoBehaviour
     {
         GamePlayController.Instance.gameScene.ActivateFrozeBooster();
     }
+
     public void UseHintBooster()
     {
         foreach (var item in itemsOutOfBox)
@@ -77,39 +110,43 @@ public class LevelBase : MonoBehaviour
             }
         }
     }
-    
+
     public void UseMagicWandBooster()
     {
-        foreach (var shadow in allShadows)
-        {
-            if (!shadow.isFullSlot)
-            {
-                shadow.ValidateReadyState();
-            }
-        }
+        ValidateInactiveShadows();
         
-        List<ItemSlot> availableSlots = allShadows.Where(shadow => 
-            shadow.isReadyShow && !shadow.gameObject.activeSelf).ToList();
-    
+        List<ItemSlot> availableSlots = allShadows.Where(shadow =>
+            shadow.isReadyShow && !shadow.isFullSlot &&!shadow.gameObject.activeSelf).ToList();
+
         int countToTake = Mathf.Min(3, availableSlots.Count);
         List<ItemSlot> shadowsToShow = availableSlots.Take(countToTake).ToList();
-    
-        if(shadowsToShow.Count == 0) return;
-    
+
+        if (shadowsToShow.Count == 0) return;
+
         foreach (var shadow in shadowsToShow)
-        {
             shadow.Active();
-            allShadows.Remove(shadow);
+        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+    }
+    private void ValidateInactiveShadows()
+    {
+        for (int i = inactiveShadows.Count - 1; i >= 0; i--)
+        {
+            var shadow = inactiveShadows[i];
+            shadow.ValidateReadyState();
+            if (shadow.isReadyShow)
+            {
+                inactiveShadows.RemoveAt(i);
+            }
         }
     }
-
     private void AddItemToOutOfBox(ItemBase item)
     {
-        if(!itemsOutOfBox.Contains(item))
+        if (!itemsOutOfBox.Contains(item))
         {
             itemsOutOfBox.Add(item);
         }
     }
+
     private void OnItemPlacedCorrectly(object obj = null)
     {
         if (obj is ItemBase placedItem)
@@ -118,8 +155,13 @@ public class LevelBase : MonoBehaviour
             {
                 itemsOutOfBox.Remove(placedItem);
                 itemsPlacedCorrectly++;
+                
+                ValidateInactiveShadows();
+                
                 CheckWin();
+                CheckAndPostBoosterConditionChanged();
             }
+
             foreach (var item in itemsOutOfBox)
             {
                 item.ValidateUnlockState();
@@ -150,16 +192,17 @@ public class LevelBase : MonoBehaviour
                 box = boxTransform.gameObject.AddComponent<BoxGameBase>();
             }
         }
+
         allItems.Clear();
         allShadows.Clear();
-        ItemSlot[] slotComponents = slots.GetComponentsInChildren<ItemSlot>(true); 
+        ItemSlot[] slotComponents = slots.GetComponentsInChildren<ItemSlot>(true);
         allShadows.AddRange(slotComponents);
-        
-        ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true); 
+
+        ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true);
         allItems.AddRange(itemComponents);
-        
+
         totalItemsRequired = allItems.Count;
-        
+
         foreach (var item in this.allItems)
         {
             item.SetupOdin();

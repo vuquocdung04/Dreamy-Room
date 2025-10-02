@@ -106,6 +106,7 @@ public class ItemBase : MonoBehaviour
         transform.DORotate(Vector3.zero, 0.2f);
         transform.DOMove(targetSlot.transform.position, 0.5f);
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
+        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
     }
 
     private void OnFailSnap()

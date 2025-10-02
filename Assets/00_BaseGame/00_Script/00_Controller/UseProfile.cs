@@ -292,7 +292,7 @@ public class UseProfile : MonoBehaviour
         get => PlayerPrefs.GetInt(StringHelper.BOOSTER_MAGICWAND, 3);
         set
         {
-            PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGNET, value);
+            PlayerPrefs.SetInt(StringHelper.BOOSTER_MAGICWAND, value);
             PlayerPrefs.Save();
         }
     }

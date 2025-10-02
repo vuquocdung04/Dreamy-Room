@@ -9,4 +9,14 @@ public class LevelController : MonoBehaviour
     {
         currentLevel.Init();
     }
+
+    public bool HasItemOutOfBox()
+    {
+        return currentLevel.HasItemOutOfBox();
+    }
+
+    public bool HasReadyShadows()
+    {
+        return currentLevel.HasReadyShadowsForMagicWand();
+    }
 }

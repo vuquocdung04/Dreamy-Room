@@ -14,7 +14,6 @@ public class BoosterController : MonoBehaviour
         var dataBooster = GameController.Instance.dataContains.dataBooster;
         foreach(var booster in lsBoosters) booster.SetBoosterConflict(dataBooster.GetBoosterConflict(booster.GetBoosterType()));
         
-        InActiveBtns();
         foreach (var booster in lsBoosters)
         {
             var boosterAmount = GetBoosterAmountByType(booster.GetBoosterType());
@@ -59,19 +58,7 @@ public class BoosterController : MonoBehaviour
         rectBoosters.gameObject.SetActive(isUnlocked);
 
     }
-
-    private void InActiveBtns()
-    {
-        foreach (var booster in this.lsBoosters)
-            booster.InActiveBtn();
-    }
-
-    private void ActiveBtns()
-    {
-        foreach (var booster in this.lsBoosters)
-            booster.ActiveBtn();
-    }
-
+    
     [Button("Setup Booster")]
     public void SetupItem()
     {
