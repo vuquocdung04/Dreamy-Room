@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LevelBase : MonoBehaviour
 {
+    [SerializeField] private bool isBoxReadyForInteraction;
     [SerializeField] private int maxItemOutOfBox = 10;
     [SerializeField] private float snapThreshold;
     [SerializeField] private List<ItemSlot> allShadows;
@@ -48,10 +49,18 @@ public class LevelBase : MonoBehaviour
         this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
     }
 
-    public bool HasItemOutOfBox() => itemsOutOfBox.Count > 0;
+    public void SetBoxReadyForInteraction(bool ready)
+    {
+        isBoxReadyForInteraction = ready;
+        CheckAndPostBoosterConditionChanged();
+    }
+    
+    public bool HasItemOutOfBox() => isBoxReadyForInteraction && itemsOutOfBox.Count > 0;
 
     public bool HasReadyShadowsForMagicWand()
     {
+        if (!isBoxReadyForInteraction) return false;
+        
         return allShadows.Exists(shadow => 
             shadow.isReadyShow && 
             !shadow.isFullSlot && 

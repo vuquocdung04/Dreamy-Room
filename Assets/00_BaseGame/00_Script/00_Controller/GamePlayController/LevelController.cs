@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -18,5 +19,11 @@ public class LevelController : MonoBehaviour
     public bool HasReadyShadows()
     {
         return currentLevel.HasReadyShadowsForMagicWand();
+    }
+    
+    [Button("test")]
+    public void SetBoxReadyForInteraction(bool ready)
+    {
+        currentLevel.SetBoxReadyForInteraction(ready);
     }
 }

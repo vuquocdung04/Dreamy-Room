@@ -18,7 +18,8 @@ public class GameScene : MonoBehaviour
 
     [SerializeField] private Image fillTimingBar;
     [SerializeField] private TextMeshProUGUI txtTiming;
-    [SerializeField] private Image imgFroze;
+    [SerializeField] private Image imgFrozeTimer;
+    [SerializeField] private Image imgFrozeBg;
     private CameraController cameraController;
 
     [Header("Time Setting")] [SerializeField]
@@ -103,14 +104,16 @@ public class GameScene : MonoBehaviour
 
         isFrozeActive = true;
         frozeRemainingTime = frozeDuration;
-        imgFroze.DOFillAmount(1f, 0.2f);
+        imgFrozeTimer.DOFillAmount(1f, 0.2f);
+        imgFrozeBg.DOFade(1f, 0.2f);
     }
 
     private void EndFroze()
     {
         isFrozeActive = false;
         frozeRemainingTime = 0;
-        imgFroze.DOFillAmount(0f, 0.2f);
+        imgFrozeBg.DOFade(0f, 0.2f).SetEase(Ease.InOutSine);
+        imgFrozeTimer.DOFillAmount(0f, 0.2f);
     }
 
     private void HandleToggleZoomInOut()

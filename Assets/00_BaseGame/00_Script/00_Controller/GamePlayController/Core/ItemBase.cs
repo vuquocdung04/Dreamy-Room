@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
+    #region Variables
     [Header("Behavior Settings")]
     [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
     [SerializeField]
@@ -30,10 +31,13 @@ public class ItemBase : MonoBehaviour
 
     private Tween idleTween;
     private Vector3 newPosition;
-    
+    #endregion
+
+    #region Properties
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
+    #endregion
 
-
+    #region Item Placement
     public void OutSideBox(Vector2 posSpawn)
     {
         transform.position = posSpawn;
@@ -46,6 +50,7 @@ public class ItemBase : MonoBehaviour
         float randX = Random.Range(-3.5f, 3.5f);
         transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(PlayIdleTween);
     }
+
     public void ValidateUnlockState()
     {
         if (isUnlocked) return;
@@ -57,6 +62,7 @@ public class ItemBase : MonoBehaviour
         if (allConditionsMet)
             isUnlocked = true;
     }
+
     private void CheckItemPlacement(float threshold)
     {
         if (!isUnlocked)
@@ -113,10 +119,12 @@ public class ItemBase : MonoBehaviour
     {
         spriteRenderer.sortingOrder = indexLayer;
         transform.eulerAngles = new Vector3(0, 0, angle);
-        transform.DORotate(new Vector3(0,0,angle), 0.2f).OnComplete(PlayIdleTween);
+        transform.DORotate(new Vector3(0, 0, angle), 0.2f).OnComplete(PlayIdleTween);
     }
+    #endregion
 
-    public void OnStartDrag(float top,Vector3 mousePosition)
+    #region Drag & Drop
+    public void OnStartDrag(float top, Vector3 mousePosition)
     {
         spriteRenderer.sortingOrder = 100;
         StopIdleTween();
@@ -131,11 +139,12 @@ public class ItemBase : MonoBehaviour
             transform.position = pos;
         }
     }
+
     public void OnDrag(Vector3 delta, float left, float right, float bottom, float top)
     {
         newPosition = transform.position + delta;
-        newPosition.x = Mathf.Clamp(newPosition.x, left,right);
-        newPosition.y = Mathf.Clamp(newPosition.y, bottom,top);
+        newPosition.x = Mathf.Clamp(newPosition.x, left, right);
+        newPosition.y = Mathf.Clamp(newPosition.y, bottom, top);
         transform.position = newPosition;
     }
 
@@ -143,7 +152,9 @@ public class ItemBase : MonoBehaviour
     {
         CheckItemPlacement(threshold);
     }
-    
+    #endregion
+
+    #region Animation
     private void PlayIdleTween()
     {
         if (this == null || !gameObject.activeInHierarchy) return;
@@ -156,16 +167,16 @@ public class ItemBase : MonoBehaviour
         if (idleTween != null)
             idleTween.Kill();
     }
+    #endregion
 
-    /// <summary>
-    ///  Setup
-    /// </summary>
+    #region Setup
     public void SetupOdin()
     {
-        spriteRenderer =  GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         coll2D = GetComponent<Collider2D>();
         indexLayer = spriteRenderer.sortingOrder;
         spriteRenderer.sortingLayerName = SortingLayerName.ITEM_UNPLACED;
         if (conditionSlots.Count > 0) isUnlocked = false;
     }
+    #endregion
 }
