@@ -4,20 +4,17 @@ public class InputManager : MonoBehaviour
 {
     private Camera mainCamera;
     private CameraController cameraController;
+    private PlayerContains playerContains;
 
     private bool isDraggingCamera;
     private ItemBase currentDraggingItem;
+    private PreGameItem currentPreGameDraggingItem;
 
-    // Cho camera dragging (dùng screen space)
     private Vector3 lastScreenPosition;
-
-    // Cho object dragging (dùng world space)
     private Vector3 currentMousePosition;
     private Vector3 prevMousePosition;
-    private Vector3 delta;
+    private Vector3 mouseDelta;
     private float left, top, right, bottom;
-
-    private PlayerContains playerContains;
 
     [SerializeField] private bool isWin, isLose, isPopupOpen, canMoveCamera;
 
@@ -27,88 +24,121 @@ public class InputManager : MonoBehaviour
         mainCamera = playerContains.mainCamera;
         cameraController = playerContains.cameraController;
         UpdateBonds();
-
-        //canMoveCamera = UseProfile.MaxUnlockedLevel > 5;
     }
 
     private void Update()
     {
         if (isWin || isPopupOpen || isLose) return;
 
-
-        if (cameraController == null)
-        {
-            Debug.Log("CameraController is null");
-            return;
-        }
-
         currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         currentMousePosition.z = 0;
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
-
-            if (hit.collider == null)
-            {
-                if (canMoveCamera)
-                {
-                    isDraggingCamera = true;
-                    lastScreenPosition = Input.mousePosition;
-                }
-            }
-            else
-            {
-                BoxGameBase box = hit.collider.GetComponent<BoxGameBase>();
-                if (box != null)
-                {
-                    box.OnBoxClicked();
-                    return;
-                }
-
-                ItemBase item = hit.collider.GetComponent<ItemBase>();
-                if (item != null)
-                {
-                    currentDraggingItem = item;
-                    currentDraggingItem.OnStartDrag(top, currentMousePosition);
-                }
-                else
-                {
-                    if (canMoveCamera)
-                    {
-                        isDraggingCamera = true;
-                        lastScreenPosition = Input.mousePosition;
-                    }
-                }
-            }
-
+            HandleMouseDown();
             prevMousePosition = currentMousePosition;
         }
 
         // Xử lý drag
+        HandleDragging();
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            HandleMouseUp();
+        }
+    }
+
+    private void HandleMouseDown()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
+        if (hit.collider == null)
+        {
+            StartCameraDrag();
+            return;
+        }
+
+        // Thử các component theo thứ tự ưu tiên
+        if (TryHandleBox(hit.collider)) return;
+        if (TryHandleItem(hit.collider)) return;
+        if (TryHandlePreGameItem(hit.collider)) return;
+        
+        StartCameraDrag();
+    }
+
+    private bool TryHandleBox(Collider2D coll)
+    {
+        BoxGameBase box = coll.GetComponent<BoxGameBase>();
+        if (box != null)
+        {
+            box.OnBoxClicked();
+            return true;
+        }
+        return false;
+    }
+
+    private bool TryHandleItem(Collider2D coll)
+    {
+        ItemBase item = coll.GetComponent<ItemBase>();
+        if (item != null)
+        {
+            currentDraggingItem = item;
+            currentDraggingItem.OnStartDrag(top, currentMousePosition);
+            return true;
+        }
+        return false;
+    }
+
+    private bool TryHandlePreGameItem(Collider2D coll)
+    {
+        PreGameItem preGameItem = coll.GetComponent<PreGameItem>();
+        if (preGameItem != null)
+        {
+            currentPreGameDraggingItem = preGameItem;
+            currentPreGameDraggingItem.OnStartDrag(top, currentMousePosition);
+            return true;
+        }
+        return false;
+    }
+
+    private void StartCameraDrag()
+    {
+        if (canMoveCamera)
+        {
+            isDraggingCamera = true;
+            lastScreenPosition = Input.mousePosition;
+        }
+    }
+
+    private void HandleDragging()
+    {
         if (isDraggingCamera)
         {
             cameraController.MoveCamera(ref lastScreenPosition);
         }
         else if (currentDraggingItem != null)
         {
-            delta = currentMousePosition - prevMousePosition;
-            currentDraggingItem.OnDrag(delta, left, right, bottom, top);
+            mouseDelta = currentMousePosition - prevMousePosition;
+            currentDraggingItem.OnDrag(mouseDelta, left, right, bottom, top);
             prevMousePosition = currentMousePosition;
         }
-
-        if (Input.GetMouseButtonUp(0))
+        else if (currentPreGameDraggingItem != null)
         {
-            if (currentDraggingItem != null)
-            {
-                float snapThreshold = 1f;
-                currentDraggingItem.OnEndDrag(snapThreshold);
-                currentDraggingItem = null;
-            }
-
-            UpdateBonds();
-            isDraggingCamera = false;
+            mouseDelta = currentMousePosition - prevMousePosition;
+            currentPreGameDraggingItem.OnDrag(mouseDelta, left, right, bottom, top);
+            prevMousePosition = currentMousePosition;
         }
+    }
+
+    private void HandleMouseUp()
+    {
+        if (currentDraggingItem != null)
+        {
+            currentDraggingItem.OnEndDrag(1f);
+            currentDraggingItem = null;
+        }
+
+        UpdateBonds();
+        isDraggingCamera = false;
     }
 
     private void UpdateBonds()
@@ -121,23 +151,8 @@ public class InputManager : MonoBehaviour
             : playerContains.bottom.transform.position.y + 2f;
     }
 
-    public void SetWin(bool state)
-    {
-        isWin = state;
-    }
-
-    public void SetLose(bool state)
-    {
-        isLose = state;
-    }
-
-    public void SetPopupState(bool state)
-    {
-        isPopupOpen = state;
-    }
-
-    public void SetCanMoveCamera(bool state)
-    {
-        canMoveCamera = state;
-    }
+    public void SetWin(bool state) => isWin = state;
+    public void SetLose(bool state) => isLose = state;
+    public void SetPopupState(bool state) => isPopupOpen = state;
+    public void SetCanMoveCamera(bool state) => canMoveCamera = state;
 }
