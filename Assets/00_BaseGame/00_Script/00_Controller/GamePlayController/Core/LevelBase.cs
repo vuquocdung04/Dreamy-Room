@@ -102,7 +102,11 @@ public class LevelBase : MonoBehaviour
 
     public void UseFrozeBooster()
     {
-        GamePlayController.Instance.gameScene.ActivateFrozeBooster();
+        var gamePlayController = GamePlayController.Instance;
+        gamePlayController.effectController.EffectBooster(delegate
+        {
+            gamePlayController.gameScene.ActivateFrozeBooster();
+        });
     }
 
     public void UseHintBooster()

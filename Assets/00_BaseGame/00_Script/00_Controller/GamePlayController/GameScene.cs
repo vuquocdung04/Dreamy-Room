@@ -16,7 +16,6 @@ public class GameScene : MonoBehaviour
 
     [SerializeField] private RectTransform topBar;
 
-    [SerializeField] private Image fillTimingBar;
     [SerializeField] private TextMeshProUGUI txtTiming;
     [SerializeField] private Image imgFrozeTimer;
     [SerializeField] private Image imgFrozeBg;
@@ -31,13 +30,14 @@ public class GameScene : MonoBehaviour
     [Header("Froze Setting")] [SerializeField]
     private float frozeRemainingTime;
 
+    [SerializeField] private Image fillFrozeReload;
     [SerializeField] private bool isFrozeActive;
     [SerializeField] private float frozeDuration = 30f;
 
     [Header("Pause Setting")] [SerializeField]
     private bool isPaused; // Pause từ popup
 
-    private bool hasUsedTimeOffer = false;
+    private bool hasUsedTimeOffer;
 
     public void Init()
     {
@@ -64,8 +64,7 @@ public class GameScene : MonoBehaviour
         totalTime = seconds;
         currentTime = seconds;
         isTimerRunning = true;
-
-        fillTimingBar.fillAmount = 1f;
+        
         UpdateTimerDisplay();
     }
 
@@ -79,6 +78,10 @@ public class GameScene : MonoBehaviour
             frozeRemainingTime -= Time.deltaTime;
             if (frozeRemainingTime <= 0)
                 EndFroze();
+            else
+            {
+                fillFrozeReload.fillAmount = frozeRemainingTime/ frozeDuration;
+            }
             return;
         }
 
@@ -94,7 +97,6 @@ public class GameScene : MonoBehaviour
             }
 
             UpdateTimerDisplay();
-            UpdateFillBar();
         }
     }
     
@@ -148,12 +150,6 @@ public class GameScene : MonoBehaviour
         int minutes = Mathf.FloorToInt(currentTime / 60f);
         int seconds = Mathf.FloorToInt(currentTime % 60f);
         txtTiming.text = $"{minutes:00}:{seconds:00}";
-    }
-
-    private void UpdateFillBar()
-    {
-        float fillAmount = currentTime / totalTime;
-        fillTimingBar.fillAmount = fillAmount;
     }
 
     public void AddTime()
