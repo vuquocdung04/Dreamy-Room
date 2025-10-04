@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +8,9 @@ public class EffectController : MonoBehaviour
     [SerializeField] private Image imgBooster;
     [SerializeField] private Image effect;
     [Header("Booster Settings")]
-    [SerializeField] private float targetY = 20f;
-    [SerializeField] private float generalDuration = 0.5f;
+    [SerializeField] private float targetY = 100f;
+    [SerializeField] private float boosterDuration = 0.2f;
+    [SerializeField] private float effectDuration = 0.25f;
     private Vector3 originalPosition;
     private DataBoosterBase dataBooster;
     private BoosterConflict boosterConflict;
@@ -20,9 +20,10 @@ public class EffectController : MonoBehaviour
     {
         dataBooster = GameController.Instance.dataContains.dataBooster;
         originalPosition = imgBooster.transform.localPosition;
+        imgBooster.transform.gameObject.SetActive(false);
+        effect.transform.gameObject.SetActive(false);
     }
-
-    [Button("Effect", ButtonSizes.Large)]
+    
     public void EffectBooster(System.Action callback = null)
     {
         GetBoosterIcon();
@@ -40,11 +41,12 @@ public class EffectController : MonoBehaviour
     private void RunEffect(System.Action callback)
     {
         imgBooster.gameObject.SetActive(true);
+        effect.gameObject.SetActive(true);
         Sequence seq = DOTween.Sequence();
         
-        seq.Append(imgBooster.transform.DOLocalMove(new Vector3(originalPosition.x,originalPosition.y + targetY,originalPosition.z), generalDuration ).SetEase(Ease.OutBack));
-        seq.Join(effect.transform.DOScale(Vector3.one * 5f, generalDuration));
-        seq.Join(effect.DOFade(0f, generalDuration));
+        seq.Append(imgBooster.transform.DOLocalMove(new Vector3(originalPosition.x,originalPosition.y + targetY,originalPosition.z), boosterDuration ).SetEase(Ease.OutBack));
+        seq.Join(effect.transform.DOScale(Vector3.one * 5f, effectDuration));
+        seq.Join(effect.DOFade(0f, effectDuration));
 
         seq.OnComplete(delegate
         {
@@ -55,9 +57,10 @@ public class EffectController : MonoBehaviour
 
     private void ResetBooster()
     {
-        imgBooster.gameObject.SetActive(false);
         imgBooster.transform.localPosition = originalPosition;
-        effect.transform.localScale = Vector3.zero;
+        effect.transform.localScale = Vector3.one;
         effect.color = Color.white;
+        imgBooster.gameObject.SetActive(false);
+        effect.gameObject.SetActive(false);
     }
 }

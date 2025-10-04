@@ -1,4 +1,5 @@
 using DG.Tweening;
+using EventDispatcher;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -15,14 +16,14 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Sprite sprZoomOut;
 
     [SerializeField] private RectTransform topBar;
-
+    [SerializeField] private Image fillProgressBar;
+    
     [SerializeField] private TextMeshProUGUI txtTiming;
     [SerializeField] private Image imgFrozeTimer;
     [SerializeField] private Image imgFrozeBg;
     private CameraController cameraController;
 
-    [Header("Time Setting")] [SerializeField]
-    private float totalTime;
+    [Header("Time Setting")]
 
     [SerializeField] private float currentTime;
     [SerializeField] private bool isTimerRunning;
@@ -61,7 +62,6 @@ public class GameScene : MonoBehaviour
 
     private void StartTimer(float seconds)
     {
-        totalTime = seconds;
         currentTime = seconds;
         isTimerRunning = true;
         
@@ -99,6 +99,11 @@ public class GameScene : MonoBehaviour
             UpdateTimerDisplay();
         }
     }
+
+    public void SetFillProgressGame(float current, float total)
+    {
+        fillProgressBar.fillAmount = current/ total;
+    }
     
     public void ActivateFrozeBooster()
     {
@@ -116,6 +121,7 @@ public class GameScene : MonoBehaviour
         frozeRemainingTime = 0;
         imgFrozeBg.DOFade(0f, 0.2f).SetEase(Ease.InOutSine);
         imgFrozeTimer.DOFillAmount(0f, 0.2f);
+        this.PostEvent(EventID.ON_FROZE_BOOSTER_ENDED);
     }
 
     private void HandleToggleZoomInOut()

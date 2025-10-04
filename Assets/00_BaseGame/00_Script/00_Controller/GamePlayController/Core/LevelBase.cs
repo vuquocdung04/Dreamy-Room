@@ -30,17 +30,20 @@ public class LevelBase : MonoBehaviour
     private bool lastHasItemOutOfBox;
     private bool lastHasReadyShadows;
 
+    private EffectController effectController;
+    
     public virtual void Init()
     {
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
-
+        effectController = GamePlayController.Instance.effectController;
         foreach (var shadow in allShadows)
         {
             shadow.Init();
             if(!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
+        
     }
 
     private void OnDestroy()
@@ -102,43 +105,44 @@ public class LevelBase : MonoBehaviour
 
     public void UseFrozeBooster()
     {
-        var gamePlayController = GamePlayController.Instance;
-        gamePlayController.effectController.EffectBooster(delegate
+        effectController.EffectBooster(delegate
         {
-            gamePlayController.gameScene.ActivateFrozeBooster();
+            GamePlayController.Instance.gameScene.ActivateFrozeBooster();
         });
     }
 
     public void UseHintBooster()
     {
-        foreach (var item in itemsOutOfBox)
+        effectController.EffectBooster(delegate
         {
-            foreach (var slot in item.GetTargetSlot())
-            {
-                if (slot != null && !slot.isFullSlot && slot.isReadyShow)
-                {
-                    item.OnDoneSnap(slot);
-                    return;
-                }
-            }
-        }
+            foreach (var item in itemsOutOfBox)
+                foreach (var slot in item.GetTargetSlot())
+                    if (slot != null && !slot.isFullSlot && slot.isReadyShow)
+                    {
+                        item.OnDoneSnap(slot);
+                        return;
+                    }
+        });
     }
 
     public void UseMagicWandBooster()
     {
-        ValidateInactiveShadows();
+        effectController.EffectBooster(delegate
+        {
+            ValidateInactiveShadows();
         
-        List<ItemSlot> availableSlots = allShadows.Where(shadow =>
-            shadow.isReadyShow && !shadow.isFullSlot &&!shadow.gameObject.activeSelf).ToList();
+            List<ItemSlot> availableSlots = allShadows.Where(shadow =>
+                shadow.isReadyShow && !shadow.isFullSlot &&!shadow.gameObject.activeSelf).ToList();
 
-        int countToTake = Mathf.Min(3, availableSlots.Count);
-        List<ItemSlot> shadowsToShow = availableSlots.Take(countToTake).ToList();
+            int countToTake = Mathf.Min(3, availableSlots.Count);
+            List<ItemSlot> shadowsToShow = availableSlots.Take(countToTake).ToList();
 
-        if (shadowsToShow.Count == 0) return;
+            if (shadowsToShow.Count == 0) return;
 
-        foreach (var shadow in shadowsToShow)
-            shadow.Active();
-        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+            foreach (var shadow in shadowsToShow)
+                shadow.Active();
+            this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+        });
     }
     private void ValidateInactiveShadows()
     {
@@ -166,7 +170,6 @@ public class LevelBase : MonoBehaviour
                 itemsPlacedCorrectly++;
                 
                 ValidateInactiveShadows();
-                
                 CheckWin();
                 CheckAndPostBoosterConditionChanged();
             }
@@ -178,6 +181,7 @@ public class LevelBase : MonoBehaviour
 
     private void CheckWin()
     {
+        GamePlayController.Instance.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
         if (itemsPlacedCorrectly == totalItemsRequired)
         {
             Debug.Log("WIn Game");

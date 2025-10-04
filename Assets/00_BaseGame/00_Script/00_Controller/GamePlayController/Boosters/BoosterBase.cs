@@ -24,7 +24,7 @@ public abstract class BoosterBase : MonoBehaviour
     #endregion
 
     #region Initialization
-    public void Init(int curBoosterAmount)
+    public virtual void Init(int curBoosterAmount)
     {
         cachedMaxLevel = UseProfile.MaxUnlockedLevel;
         IncreaseAmount(curBoosterAmount);
