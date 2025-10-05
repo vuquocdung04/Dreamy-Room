@@ -9,6 +9,7 @@ public class GameController : Singleton<GameController>
     public DataContains dataContains;
     public AdmobController admobController;
     public EffectChangeScene effectChangeScene;
+    public EffectChangeScene2 effectChangeScene2;
     protected override void OnAwake()
     {
         Init();
