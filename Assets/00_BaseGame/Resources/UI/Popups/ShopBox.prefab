@@ -13216,7 +13216,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 310084065234659250}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.27988514
+  m_Size: 0.27988517
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24263,6 +24263,7 @@ MonoBehaviour:
   durationAppeared: 0.2
   hasAppearedBefore: 1
   durationSlide: 0.2
+  canvas: {fileID: 8801204397338223535}
 --- !u!223 &8801204397338223535
 Canvas:
   m_ObjectHideFlags: 0
@@ -24272,7 +24273,7 @@ Canvas:
   m_GameObject: {fileID: 8109928989017697617}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

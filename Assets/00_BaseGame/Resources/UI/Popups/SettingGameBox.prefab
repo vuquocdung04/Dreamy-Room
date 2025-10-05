@@ -921,6 +921,7 @@ MonoBehaviour:
   durationAppeared: 0.3
   hasAppearedBefore: 0
   durationSlide: 0.2
+  canvas: {fileID: 6039124567631247852}
   btnClose: {fileID: 2806846321125624418}
   btnGoHome: {fileID: 7735475496405640390}
   btnRetry: {fileID: 895002832528227029}
@@ -941,7 +942,7 @@ Canvas:
   m_GameObject: {fileID: 4207487350243396800}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -952,7 +953,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1575016995
   m_SortingOrder: 40
   m_TargetDisplay: 0
 --- !u!114 &1840022439028170867

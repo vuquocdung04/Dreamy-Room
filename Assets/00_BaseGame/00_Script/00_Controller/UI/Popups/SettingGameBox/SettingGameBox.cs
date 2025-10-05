@@ -8,6 +8,8 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         return Path(PathPrefabs.SETTING_GAME_BOX);
     }
 
+    public Canvas canvas;
+    
     public Button btnClose;
     public Button btnGoHome;
     public Button btnRetry;
@@ -26,6 +28,7 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
     
     protected override void Init()
     {
+        canvas.worldCamera = GamePlayController.Instance.playerContains.mainCamera;
         UpdateStateVib_Music_Sound();
         
         ActionBtnClick(btnClose, delegate

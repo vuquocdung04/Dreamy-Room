@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 public class CollectionBox : BoxSingleton<CollectionBox>
 {
+    public Canvas canvas;
     public static CollectionBox Setup()
     {
         return Path(PathPrefabs.COLLECTION_BOX);
@@ -11,8 +13,9 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     public List<CollectionItem> lsItems;
     protected override void Init()
     {
+        canvas.worldCamera = Camera.main;
         UpdateItemState();
-
+    
         OnClick(lsItems, (item) => HanleSelection(delegate
         {
             GameController.Instance.dataContains.dataCollection.SetCollectionType(item.GetCollectionType());

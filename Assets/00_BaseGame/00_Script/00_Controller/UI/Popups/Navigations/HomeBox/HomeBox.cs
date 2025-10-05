@@ -11,6 +11,7 @@ public class HomeBox : BoxSingleton<HomeBox>
         return Path(PathPrefabs.HOME_BOX);
     }
     public LevelHomeController levelHomeController;
+    public Canvas canvas;
     
     [Header("Avatar")]
     public AvatarHomeBox avatarHomeBox;
@@ -42,6 +43,7 @@ public class HomeBox : BoxSingleton<HomeBox>
     protected override void Init()
     {
         levelHomeController.Init();
+        canvas.worldCamera = Camera.main;
         
         SetupBtnOnClick(btnDailylogin, () => DailyLoginBox.Setup().Show());
         SetupBtnOnClick(btnDailyreward, () => DailyRewardBox.Setup().Show());

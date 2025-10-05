@@ -436,6 +436,7 @@ MonoBehaviour:
   durationAppeared: 0.2
   hasAppearedBefore: 0
   durationSlide: 0.2
+  canvas: {fileID: 2298636186915396051}
 --- !u!223 &2298636186915396051
 Canvas:
   m_ObjectHideFlags: 0
@@ -445,7 +446,7 @@ Canvas:
   m_GameObject: {fileID: 2648585581714543791}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
