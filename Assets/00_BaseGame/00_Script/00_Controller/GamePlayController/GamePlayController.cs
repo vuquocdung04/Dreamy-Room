@@ -24,13 +24,11 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         gameScene.PauseTime();   
         playerContains.PauseGame(true);
-        playerContains.inputManager.SetCanMoveCamera(false);
     }
 
     public void ResumeGame()
     {
         gameScene.ResumeTime();
         playerContains.PauseGame(false);
-        playerContains.inputManager.SetCanMoveCamera(true);
     }
 }

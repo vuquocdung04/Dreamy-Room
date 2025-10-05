@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
         playerContains = GamePlayController.Instance.playerContains;
         mainCamera = playerContains.mainCamera;
         cameraController = playerContains.cameraController;
-        UpdateBonds();
+        UpdateBounds();
     }
 
     private void Update()
@@ -137,11 +137,11 @@ public class InputManager : MonoBehaviour
             currentDraggingItem = null;
         }
 
-        UpdateBonds();
+        UpdateBounds();
         isDraggingCamera = false;
     }
 
-    private void UpdateBonds()
+    private void UpdateBounds()
     {
         left = playerContains.left.transform.position.x;
         top = playerContains.top.transform.position.y;
@@ -153,6 +153,22 @@ public class InputManager : MonoBehaviour
 
     public void SetWin(bool state) => isWin = state;
     public void SetLose(bool state) => isLose = state;
-    public void SetPopupState(bool state) => isPopupOpen = state;
+    public void SetPopupState(bool state)
+    {
+        isPopupOpen = state;
+    
+        // Reset trạng thái khi tắt popup
+        if (!state)
+        {
+            isDraggingCamera = false;
+            currentDraggingItem = null;
+            currentPreGameDraggingItem = null;
+            
+            lastScreenPosition = Input.mousePosition;
+            currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            currentMousePosition.z = 0;
+            prevMousePosition = currentMousePosition;
+        }
+    }
     public void SetCanMoveCamera(bool state) => canMoveCamera = state;
 }
