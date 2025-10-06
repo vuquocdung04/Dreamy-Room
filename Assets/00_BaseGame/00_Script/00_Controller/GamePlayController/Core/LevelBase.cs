@@ -18,8 +18,8 @@ public class LevelBase : MonoBehaviour
 
     [SerializeField] private List<ItemBase> itemsOutOfBox = new();
 
-    [Header("Box Setting")] [SerializeField]
-    private Transform slots;
+    [Header("Box Setting")]
+    [SerializeField] private Transform slots;
 
     [SerializeField] private Transform items;
     [SerializeField] private BoxGameBase box;
@@ -58,6 +58,12 @@ public class LevelBase : MonoBehaviour
         this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
     }
 
+
+    public void SetColorBox(Color color)
+    {
+        box.SetColor(color);
+    }
+    
     public void SetBoxReadyForInteraction(bool ready)
     {
         isBoxReadyForInteraction = ready;

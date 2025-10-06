@@ -8,11 +8,11 @@ public class BoxGameBase : MonoBehaviour
 {
     [SerializeField] private Collider2D coll;
     [SerializeField] private Transform spawnPos;
-    [SerializeField] private Color boxColor;
     [SerializeField] private float lidFrameDuration = 0.1f;
     [SerializeField] private float tapeFrameDuration = 0.1f;
 
-    [Space(5)] [SerializeField] private SpriteRenderer lid0SpriteRenderer;
+    [Space(5)] [SerializeField] private SpriteRenderer body;
+    [SerializeField] private SpriteRenderer lid0SpriteRenderer;
     [SerializeField] private Sprite originalSpriteLid0;
     [SerializeField] private SpriteRenderer lid1SpriteRenderer;
     [SerializeField] private Sprite originalSpriteLid1;
@@ -33,6 +33,12 @@ public class BoxGameBase : MonoBehaviour
         originalScale = transform.localScale;
     }
 
+    public void SetColor(Color color)
+    {
+        lid0SpriteRenderer.color = color;
+        lid1SpriteRenderer.color = color;
+        body.color = color;
+    }
 
     public void ScaleToZero()
     {
