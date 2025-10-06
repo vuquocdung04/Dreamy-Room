@@ -11,6 +11,7 @@ public class EffectChangeScene2 : MonoBehaviour
     public Transform parent;
     public SpriteRenderer imgBg;
     public SpriteRenderer imgIcon;
+    public SpriteMask imgMask;
     public float durationFadeIn = 1f;
     public float durationFadeOut = 0.5f;
     public bool isBusy;
@@ -27,6 +28,7 @@ public class EffectChangeScene2 : MonoBehaviour
         int rand = UnityEngine.Random.Range(0, lsSpritesBg.Count);
         imgBg.sprite = lsSpritesBg[rand];
         imgIcon.sprite = icon;
+        imgMask.sprite = icon;
     }
 
     public async void RunEffect(string sceneName)

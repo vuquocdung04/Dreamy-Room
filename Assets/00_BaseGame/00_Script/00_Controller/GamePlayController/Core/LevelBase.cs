@@ -7,27 +7,27 @@ using UnityEngine;
 
 public class LevelBase : MonoBehaviour
 {
-    [SerializeField] private bool isBoxReadyForInteraction;
-    [SerializeField] private int maxItemOutOfBox = 10;
-    [SerializeField] private float snapThreshold;
-    [SerializeField] private List<ItemSlot> allShadows;
-    [SerializeField] private List<ItemBase> allItems;
+    [SerializeField] protected bool isBoxReadyForInteraction;
+    [SerializeField] protected int maxItemOutOfBox = 10;
+    [SerializeField] protected float snapThreshold;
+    [SerializeField] protected List<ItemSlot> allShadows;
+    [SerializeField] protected List<ItemBase> allItems;
 
     [Header("Debug"), Space(5)] [SerializeField]
-    private List<ItemSlot> inactiveShadows = new();
+    protected List<ItemSlot> inactiveShadows = new();
 
-    [SerializeField] private List<ItemBase> itemsOutOfBox = new();
+    [SerializeField] protected List<ItemBase> itemsOutOfBox = new();
 
     [Header("Box Setting")]
-    [SerializeField] private Transform slots;
+    [SerializeField] protected Transform slots;
 
-    [SerializeField] private Transform items;
+    [SerializeField] protected Transform items;
     [SerializeField] private BoxGameBase box;
 
     [Header("Game Setting")] [SerializeField]
-    private int totalItemsRequired;
+    protected int totalItemsRequired;
 
-    [SerializeField] private int itemsPlacedCorrectly;
+    [SerializeField] protected int itemsPlacedCorrectly;
 
     // Cache trạng thái
     private bool lastHasItemOutOfBox;

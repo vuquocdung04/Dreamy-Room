@@ -624,7 +624,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!331 &471154127
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   parent: {fileID: 2025827424}
   imgBg: {fileID: 552431308}
   imgIcon: {fileID: 471154126}
+  imgMask: {fileID: 471154127}
   durationFadeIn: 1
   durationFadeOut: 0.5
   isBusy: 0
