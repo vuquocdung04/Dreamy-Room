@@ -32,6 +32,7 @@ public class LevelHomeController : MonoBehaviour
                 {
                     //NOTE: GO TO LEVEL
                     Debug.Log("Play level: " + item.GetId());
+                    UseProfile.CurrentLevel = item.GetId();
                     GameController.Instance.effectChangeScene2.RunEffect(SceneName.GAME_PLAY);
                 })
             );

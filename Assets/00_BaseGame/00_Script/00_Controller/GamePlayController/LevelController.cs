@@ -1,15 +1,18 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
     public LevelBase currentLevel;
-    public Color color = Color.yellow;
+    public List<Color> lsColors;
     public void Init()
     {
         currentLevel.Init();
-        currentLevel.SetColorBox(color);
+        int rand =  Random.Range(0, lsColors.Count);
+        currentLevel.SetColorBox(lsColors[rand]);
     }
+    
 
     public bool HasItemOutOfBox()
     {
@@ -26,8 +29,4 @@ public class LevelController : MonoBehaviour
         currentLevel.SetBoxReadyForInteraction(ready);
     }
 
-    public void GenerateLevel()
-    {
-        currentLevel.SetColorBox(color);
-    }
 }

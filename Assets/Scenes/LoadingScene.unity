@@ -614,7 +614,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1575016995
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 2a23a1e923d3cff4fbcc76b7421399ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -672,8 +672,8 @@ SpriteMask:
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: -1575016995
   m_BackSortingLayerID: -1575016995
-  m_FrontSortingLayer: 2
-  m_BackSortingLayer: 2
+  m_FrontSortingLayer: 3
+  m_BackSortingLayer: 3
   m_FrontSortingOrder: 100
   m_BackSortingOrder: 97
   m_IsCustomRangeActive: 1
@@ -809,14 +809,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1575016995
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 98
   m_Sprite: {fileID: 21300000, guid: a50fed70a8a63534ebe48e5b5714e52b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.97, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1259,6 +1259,28 @@ MonoBehaviour:
   durationFadeIn: 1
   durationFadeOut: 0.5
   isBusy: 0
+  lsSpritesBg:
+  - {fileID: 21300000, guid: bd2fcc5d683ae5a49bec9f671a21eb6b, type: 3}
+  - {fileID: 21300000, guid: a50fed70a8a63534ebe48e5b5714e52b, type: 3}
+  - {fileID: 21300000, guid: 71ccd8ad3c040ff46ab7b9f885844fe5, type: 3}
+  - {fileID: 21300000, guid: 62b92e4ab10e23146bca0b38f48a41cf, type: 3}
+  - {fileID: 21300000, guid: 37bc5b130de88734491785cb6e0690e9, type: 3}
+  - {fileID: 21300000, guid: b0c51effc952a4749b739d7d7c17c2b5, type: 3}
+  - {fileID: 21300000, guid: c9134cc099fff1047ad98a371a526f42, type: 3}
+  - {fileID: 21300000, guid: 0e702bedb5df31845a5fa276e9296000, type: 3}
+  - {fileID: 21300000, guid: e09f5a09a0ff20042a985e1f9c464f3d, type: 3}
+  - {fileID: 21300000, guid: 961c3f154bb53eb48a12982c5b88b359, type: 3}
+  - {fileID: 21300000, guid: 9b87c891d7aab3945a13b97ec70e9142, type: 3}
+  - {fileID: 21300000, guid: 1e7e8ecb0e2c76d478f3a82b6102559e, type: 3}
+  - {fileID: 21300000, guid: 95f366bc2cf707d41bccd728a6e26da1, type: 3}
+  - {fileID: 21300000, guid: 8d7c50e6762d8e34ab2c24b36dd5057a, type: 3}
+  - {fileID: 21300000, guid: 24d5b85b07315fb44aca40ef1ab5cc49, type: 3}
+  - {fileID: 21300000, guid: 16ec619f69b05c34c8c1c56cb78cfe55, type: 3}
+  - {fileID: 21300000, guid: 71aba55f2590251449683bb23f693bcd, type: 3}
+  - {fileID: 21300000, guid: 58abdc7bf9fef324faa9965a104ce79d, type: 3}
+  - {fileID: 21300000, guid: 75ce2339d2d59f842a5c74c4145e90f1, type: 3}
+  - {fileID: 21300000, guid: f452f3ab293708a4ca60d6bd46a18c43, type: 3}
+  - {fileID: 21300000, guid: 766b7423b7e63024a8723e093afd744d, type: 3}
 --- !u!1 &823404387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,7 +2050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2025827424
 Transform:
   m_ObjectHideFlags: 0

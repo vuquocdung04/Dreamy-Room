@@ -42,11 +42,11 @@ public class LevelConflict
 {
     [HorizontalGroup("Split",Width = 0.3f)]
     public int idLevel;
-    
-    [HorizontalGroup("Split",Width = 0.5f)]
+    [HorizontalGroup("Split",Width = 0.4f)]
     public GameObject prefab;
     
     [HorizontalGroup("Split"),HideLabel]
     [PreviewField(50, ObjectFieldAlignment.Right)]
     public Sprite thumbnailIcon;
 }
+

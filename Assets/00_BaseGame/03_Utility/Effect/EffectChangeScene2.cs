@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -13,11 +14,18 @@ public class EffectChangeScene2 : MonoBehaviour
     public float durationFadeIn = 1f;
     public float durationFadeOut = 0.5f;
     public bool isBusy;
-
-
-    public void SetImage(Sprite bg, Sprite icon)
+    public List<Sprite> lsSpritesBg;
+    private DataLevelBase dataLevel;
+    public void Init()
     {
-        imgBg.sprite = bg;
+        dataLevel = GameController.Instance.dataContains.dataLevel;
+    }
+    private void SetImage()
+    {
+        int currentLevel = UseProfile.CurrentLevel;
+        var icon = dataLevel.GetLevelSpriteById(currentLevel);
+        int rand = UnityEngine.Random.Range(0, lsSpritesBg.Count);
+        imgBg.sprite = lsSpritesBg[rand];
         imgIcon.sprite = icon;
     }
 
@@ -26,6 +34,7 @@ public class EffectChangeScene2 : MonoBehaviour
         try
         {
             parent.gameObject.SetActive(true);
+            SetImage();
             isBusy = true;
             imgIcon.transform.localScale = Vector3.one * 25f;
             await imgIcon.transform.DOScale(Vector3.zero, durationFadeIn).SetEase(Ease.Linear).AsyncWaitForCompletion();

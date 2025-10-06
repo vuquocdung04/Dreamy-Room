@@ -21,6 +21,9 @@ public class GameController : Singleton<GameController>
         admobController.Init();
         dataContains.Init();
         musicController.Init();
+        effectChangeScene2.Init();
+        
+        
         startLoading.Init();
     }
 
