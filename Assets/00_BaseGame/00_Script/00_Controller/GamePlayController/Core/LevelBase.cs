@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using EventDispatcher;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -45,6 +46,10 @@ public class LevelBase : MonoBehaviour
             if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
+        foreach(var item in allItems)
+        {
+            item.Init(box.GetSpawnPos());
+        }
     }
 
     private void OnDestroy()
@@ -79,15 +84,16 @@ public class LevelBase : MonoBehaviour
             return;
         }
 
-        if (itemsOutOfBox == null && itemsOutOfBox.Count == 0) return;
+        if (allItems == null || allItems.Count == 0) return;
         ItemBase item = allItems[0];
+        item.gameObject.SetActive(true);
         allItems.RemoveAt(0);
         AddItemToOutOfBox(item);
         if (box.HasBoxOpened())
             box.PlayAnimation();
         if (itemsOutOfBox.Count >= maxItemOutOfBox) box.CloseBox();
 
-        Vector2 spawnPos = box.transform.position;
+        Vector2 spawnPos = box.GetSpawnPos().position;
         item.OutSideBox(spawnPos);
         if (allItems.Count == 0)
             box.ScaleToZero();
@@ -142,7 +148,10 @@ public class LevelBase : MonoBehaviour
             if (shadowsToShow.Count == 0) return;
 
             foreach (var shadow in shadowsToShow)
+            {
                 shadow.Active();
+                shadow.transform.DOJump(shadow.transform.position, 2f,1,0.1f);
+            }
             this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         });
     }
@@ -175,6 +184,9 @@ public class LevelBase : MonoBehaviour
 
                 ValidateInactiveShadows();
                 CheckWin();
+                
+                CheckAndReopenBox();
+                
                 CheckAndPostBoosterConditionChanged();
             }
 
@@ -183,6 +195,14 @@ public class LevelBase : MonoBehaviour
         }
     }
 
+    private void CheckAndReopenBox()
+    {
+        if (itemsOutOfBox.Count < maxItemOutOfBox)
+        {
+            box.ReopenBox();
+        }
+    }
+    
     private void CheckWin()
     {
         GamePlayController.Instance.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);

@@ -33,6 +33,13 @@ public class ItemBase : MonoBehaviour
     private Vector3 newPosition;
     #endregion
 
+    public void Init(Transform pos)
+    {
+        transform.localPosition = pos.position;
+        gameObject.SetActive(false);
+    }
+    
+    
     #region Properties
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
     #endregion
@@ -45,7 +52,7 @@ public class ItemBase : MonoBehaviour
         float angleZ = Random.Range(-40f, 40f);
         angle = angleZ;
         transform.localEulerAngles = new Vector3(0, 0, angle);
-        transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+        transform.DOScale(Vector3.one,0.3f).SetEase(Ease.OutBack);
         float randY = Random.Range(1.5f, 6f);
         float randX = Random.Range(-3.5f, 3.5f);
         transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(PlayIdleTween);
