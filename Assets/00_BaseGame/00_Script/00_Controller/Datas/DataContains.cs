@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class DataContains : MonoBehaviour
@@ -18,10 +19,10 @@ public class DataContains : MonoBehaviour
 
     private void HasPassedDay()
     {
-        if (TimeManager.HasDayPassed(UseProfile.FirstTimeOpenGame, TimeManager.GetCurrentTime()))
+        if (TimeManager.HasDayPassed(UseProfile.FirstTimeOpenGame, DateTime.Now))
         {
             dataDaily.PrepareForNewDay();
-            UseProfile.FirstTimeOpenGame = TimeManager.GetCurrentTime();
+            UseProfile.FirstTimeOpenGame = DateTime.Now;
         }
     }
 }

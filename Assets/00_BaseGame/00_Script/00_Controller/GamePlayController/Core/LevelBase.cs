@@ -11,8 +11,10 @@ public class LevelBase : MonoBehaviour
     [SerializeField] private float snapThreshold;
     [SerializeField] private List<ItemSlot> allShadows;
     [SerializeField] private List<ItemBase> allItems;
-    [Header("Debug"),Space(5)]
-    [SerializeField] private List<ItemSlot> inactiveShadows = new();
+
+    [Header("Debug"), Space(5)] [SerializeField]
+    private List<ItemSlot> inactiveShadows = new();
+
     [SerializeField] private List<ItemBase> itemsOutOfBox = new();
 
     [Header("Box Setting")] [SerializeField]
@@ -31,7 +33,7 @@ public class LevelBase : MonoBehaviour
     private bool lastHasReadyShadows;
 
     private EffectController effectController;
-    
+
     public virtual void Init()
     {
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
@@ -40,10 +42,9 @@ public class LevelBase : MonoBehaviour
         foreach (var shadow in allShadows)
         {
             shadow.Init();
-            if(!shadow.isReadyShow) inactiveShadows.Add(shadow);
+            if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
-        
     }
 
     private void OnDestroy()
@@ -57,16 +58,16 @@ public class LevelBase : MonoBehaviour
         isBoxReadyForInteraction = ready;
         CheckAndPostBoosterConditionChanged();
     }
-    
+
     public bool HasItemOutOfBox() => isBoxReadyForInteraction && itemsOutOfBox.Count > 0;
 
     public bool HasReadyShadowsForMagicWand()
     {
         if (!isBoxReadyForInteraction) return false;
-        
-        return allShadows.Exists(shadow => 
-            shadow.isReadyShow && 
-            !shadow.isFullSlot && 
+
+        return allShadows.Exists(shadow =>
+            shadow.isReadyShow &&
+            !shadow.isFullSlot &&
             !shadow.gameObject.activeSelf);
     }
 
@@ -82,6 +83,10 @@ public class LevelBase : MonoBehaviour
         ItemBase item = allItems[0];
         allItems.RemoveAt(0);
         AddItemToOutOfBox(item);
+        if (box.HasBoxOpened())
+            box.PlayAnimation();
+        if (itemsOutOfBox.Count >= maxItemOutOfBox) box.CloseBox();
+
         Vector2 spawnPos = box.transform.position;
         item.OutSideBox(spawnPos);
         if (allItems.Count == 0)
@@ -105,10 +110,7 @@ public class LevelBase : MonoBehaviour
 
     public void UseFrozeBooster()
     {
-        effectController.EffectBooster(delegate
-        {
-            GamePlayController.Instance.gameScene.ActivateFrozeBooster();
-        });
+        effectController.EffectBooster(delegate { GamePlayController.Instance.gameScene.ActivateFrozeBooster(); });
     }
 
     public void UseHintBooster()
@@ -116,12 +118,12 @@ public class LevelBase : MonoBehaviour
         effectController.EffectBooster(delegate
         {
             foreach (var item in itemsOutOfBox)
-                foreach (var slot in item.GetTargetSlot())
-                    if (slot != null && !slot.isFullSlot && slot.isReadyShow)
-                    {
-                        item.OnDoneSnap(slot);
-                        return;
-                    }
+            foreach (var slot in item.GetTargetSlot())
+                if (slot != null && !slot.isFullSlot && slot.isReadyShow)
+                {
+                    item.OnDoneSnap(slot);
+                    return;
+                }
         });
     }
 
@@ -130,9 +132,9 @@ public class LevelBase : MonoBehaviour
         effectController.EffectBooster(delegate
         {
             ValidateInactiveShadows();
-        
+
             List<ItemSlot> availableSlots = allShadows.Where(shadow =>
-                shadow.isReadyShow && !shadow.isFullSlot &&!shadow.gameObject.activeSelf).ToList();
+                shadow.isReadyShow && !shadow.isFullSlot && !shadow.gameObject.activeSelf).ToList();
 
             int countToTake = Mathf.Min(3, availableSlots.Count);
             List<ItemSlot> shadowsToShow = availableSlots.Take(countToTake).ToList();
@@ -144,6 +146,7 @@ public class LevelBase : MonoBehaviour
             this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         });
     }
+
     private void ValidateInactiveShadows()
     {
         for (int i = inactiveShadows.Count - 1; i >= 0; i--)
@@ -154,6 +157,7 @@ public class LevelBase : MonoBehaviour
                 inactiveShadows.RemoveAt(i);
         }
     }
+
     private void AddItemToOutOfBox(ItemBase item)
     {
         if (!itemsOutOfBox.Contains(item))
@@ -168,7 +172,7 @@ public class LevelBase : MonoBehaviour
             {
                 itemsOutOfBox.Remove(placedItem);
                 itemsPlacedCorrectly++;
-                
+
                 ValidateInactiveShadows();
                 CheckWin();
                 CheckAndPostBoosterConditionChanged();

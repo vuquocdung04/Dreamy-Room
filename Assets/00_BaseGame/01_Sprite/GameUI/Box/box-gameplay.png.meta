@@ -108,18 +108,619 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: box-gameplay_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 3
+        width: 157
+        height: 213
+      alignment: 9
+      pivot: {x: 0.9999999, y: 0.5256728}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f38a02a9c3a4eab4daf02a4c69cc2d66
+      internalID: 605033728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_2
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1
+        width: 200
+        height: 192
+      alignment: 9
+      pivot: {x: 0.7599673, y: 0.48836657}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594e27c3fb99a7d4b9c2a2d05e72c903
+      internalID: -878149236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_3
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 2
+        width: 189
+        height: 181
+      alignment: 9
+      pivot: {x: 0.65856576, y: 0.5112891}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c11cff44222dc449a891c06c0a90971
+      internalID: 1552181053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_5
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 5
+        width: 162
+        height: 158
+      alignment: 9
+      pivot: {x: 0.9987454, y: 0.5029474}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c2f3778a2e92444b11993daa202f9f
+      internalID: -1661095455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_7
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 2
+        width: 203
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06f1c1d8fdc9e84e9ef798f4007ed9f
+      internalID: 342172009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_9
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 3
+        width: 132
+        height: 154
+      alignment: 9
+      pivot: {x: 0.993485, y: 0.49686673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea9f11c0cee848459347c8823518196
+      internalID: -13612753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_10
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 4
+        width: 124
+        height: 153
+      alignment: 9
+      pivot: {x: 0.9997362, y: 0.4980896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be176fe2ffe79c9498cc42a21582f731
+      internalID: 1550137044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_11
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 3
+        width: 130
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db36dd8aabc9f64eb38f23e9ab34c4a
+      internalID: -249415536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_12
+      rect:
+        serializedVersion: 2
+        x: 2011
+        y: 160
+        width: 33
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff834afd9c88aee4ea3bf5de7486838b
+      internalID: 1066010987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_13
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 161
+        width: 213
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a49ee9ea699334199131bc9525120b
+      internalID: 1547960458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_14
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 162
+        width: 136
+        height: 91
+      alignment: 9
+      pivot: {x: 0.0013481589, y: 0.8810656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96d9508035e6fc4392b961b2617d08d
+      internalID: 1925685286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_15
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 162
+        width: 213
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d12788824660540a81137b79e5c9f0
+      internalID: 1955433842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_17
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 166
+        width: 143
+        height: 79
+      alignment: 9
+      pivot: {x: 0.00021682419, y: 0.8551858}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 891749f3decab5a4bb3455bcf6cfa4a9
+      internalID: -1830849523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_18
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 170
+        width: 197
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcf22ba1b04efb4418107d47f874ad6d
+      internalID: -468183590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_19
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 186
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3763ad095d24bb4ab3f4632d6eef8d8
+      internalID: 1053418005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_20
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 214
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 519b167c3b259704a9d2a7015245bd7b
+      internalID: -692260987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_21
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 229
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99e37162f6f42b41a597007426d4a20
+      internalID: -1733550753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_22
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 230
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3887c50d4bced284d815b1dc92fa8353
+      internalID: 507373339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_24
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 225
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f37886c018b6824ca4b19aedb0793fe
+      internalID: 1047245647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_26
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 196
+        width: 129
+        height: 55
+      alignment: 9
+      pivot: {x: -0.0014359822, y: 0.7845623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c782fd42870335846b36a6ffca77c635
+      internalID: 548134214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_27
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 203
+        width: 63
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5804191, y: 0.049297333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fff08c990181c544a30967df39deb0f
+      internalID: 1344975039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_28
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 203
+        width: 86
+        height: 50
+      alignment: 9
+      pivot: {x: -0.0011220532, y: 0.37486908}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e35960a03ea5c246a9ecc6e25b31ebe
+      internalID: 1638440411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_29
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 220
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4168b84da0e85f24b822f417458fbb4d
+      internalID: 741997773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_30
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 220
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b3da4f843ddbd74e9aca37e603d413a
+      internalID: -500273367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_31
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 220
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29d8e55b930bdf14dbc0596ce9ddd09c
+      internalID: -806405348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_32
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 220
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ff48439ec0da7418b6876067500977
+      internalID: 247367080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box-gameplay_33
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 220
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e2d36a5b5e0fe248a48b0b0eb8c78bc
+      internalID: -87860086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bd9d99a0702de5a49a69c2f363a5d040
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      box-gameplay_0: 605033728
+      box-gameplay_1: 185995529
+      box-gameplay_10: 1550137044
+      box-gameplay_11: -249415536
+      box-gameplay_12: 1066010987
+      box-gameplay_13: 1547960458
+      box-gameplay_14: 1925685286
+      box-gameplay_15: 1955433842
+      box-gameplay_16: -873991286
+      box-gameplay_17: -1830849523
+      box-gameplay_18: -468183590
+      box-gameplay_19: 1053418005
+      box-gameplay_2: -878149236
+      box-gameplay_20: -692260987
+      box-gameplay_21: -1733550753
+      box-gameplay_22: 507373339
+      box-gameplay_23: 326145069
+      box-gameplay_24: 1047245647
+      box-gameplay_25: 156459376
+      box-gameplay_26: 548134214
+      box-gameplay_27: 1344975039
+      box-gameplay_28: 1638440411
+      box-gameplay_29: 741997773
+      box-gameplay_3: 1552181053
+      box-gameplay_30: -500273367
+      box-gameplay_31: -806405348
+      box-gameplay_32: 247367080
+      box-gameplay_33: -87860086
+      box-gameplay_4: -273493959
+      box-gameplay_5: -1661095455
+      box-gameplay_6: -48259792
+      box-gameplay_7: 342172009
+      box-gameplay_8: 908262883
+      box-gameplay_9: -13612753
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
