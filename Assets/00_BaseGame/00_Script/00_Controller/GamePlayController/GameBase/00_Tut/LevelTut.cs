@@ -44,20 +44,26 @@ public class LevelTut : LevelBase
             RaycastHit2D hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
             prevMousePosition = currentMousePosition;
             if (!hit.collider) return;
-
             if (!hasDoneStep1)
             {
                 var box = hit.collider.GetComponent<BoxGameBase>();
                 if (!box) return;
-                box.OnBoxClicked();
-                hasDoneStep1 = true;
-                itemTut = itemsOutOfBox[0];
-                Phase2TutTween().Forget();
+                box.OnBoxClicked(delegate
+                {
+                    hasDoneStep1 = true;
+                    itemTut = itemsOutOfBox[0];
+                    Phase2TutTween().Forget();
+                });
             }
             else
             {
+                var item = hit.collider.GetComponent<ItemBase>();
+                if (!item) return;
+                itemTut = item;
                 tutHandTween.Kill();
-                itemTut.OnStartDrag(top, currentMousePosition);
+                tutHandTween = null;
+                tutHand.gameObject.SetActive(false);
+                item.OnStartDrag(top, currentMousePosition);
                 isDragging = true;
             }
         }
@@ -71,29 +77,52 @@ public class LevelTut : LevelBase
 
         if (Input.GetMouseButtonUp(0))
         {
-            if(!itemTut) return;
-            itemTut.OnEndDrag(1f);
+            if (itemTut != null)
+            {
+                itemTut.OnEndDrag(1f);
+            }
             isDragging = false;
+            CheckDoneTut();
+        }
+    }
+
+    protected override void HandleAfterWinGame()
+    {
+        GamePlayController.Instance.playerContains.WinGame();
+        mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate
+        {
+            GameController.Instance.effectChangeScene2.RunEffect(SceneName.HOME_SCENE);
+            UseProfile.HasCompletedLevelTutorial = true;
+        });
+    }
+
+    private void CheckDoneTut()
+    {
+        if (itemsPlacedCorrectly == 1)
+        {
             isDoneTut = true;
             GamePlayController.Instance.playerContains.inputManager.enabled = true;
         }
     }
-    
+
     private void Phase1TutTween()
     {
-        tutHandTween = tutHand.DOMoveY(-4.5f,0.5f).SetLoops(-1, LoopType.Yoyo);
+        tutHandTween = tutHand.DOMoveY(-4.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
-    
+
     private async UniTask Phase2TutTween()
     {
-        tutHandTween.Kill();
         tutHand.gameObject.SetActive(false);
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
         tutHand.gameObject.SetActive(true);
-        tutHand.transform.position = itemTut.transform.position;
-        tutHandTween = tutHand.DOMove(new Vector2(-2.7f,-2.52f),1f).SetLoops(-1, LoopType.Yoyo);
+        var newPos = itemTut.transform.position;
+        newPos.y -= 1f;
+        tutHand.transform.position = newPos;
+        tutHandTween.Kill();
+        tutHandTween = null;
+        tutHandTween = tutHand.DOMove(new Vector2(-2.7f, -2.52f), 1f).SetLoops(-1, LoopType.Yoyo);
     }
-    
+
     private void UpdateBounds()
     {
         var playerContains = GamePlayController.Instance.playerContains;

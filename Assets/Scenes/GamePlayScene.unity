@@ -1744,7 +1744,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 8
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 8cb08d5b9c760ec43b4fe7fc98fe0f9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4910,6 +4910,7 @@ MonoBehaviour:
   sprZoomIn: {fileID: 21300000, guid: 375135801f2686d44a6355803290a4ec, type: 3}
   sprZoomOut: {fileID: 21300000, guid: 5feae828d10d92040bc412f27ba4f555, type: 3}
   topBar: {fileID: 300754391}
+  bottomBar: {fileID: 1415384599}
   fillProgressBar: {fileID: 1325535031}
   txtTiming: {fileID: 656707099}
   imgFrozeTimer: {fileID: 1134661271}
@@ -6969,7 +6970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoxReadyForInteraction: 1
-  maxItemOutOfBox: 4
+  maxItemOutOfBox: 10
   snapThreshold: 0
   allShadows:
   - {fileID: 1765794489}
@@ -6994,6 +6995,7 @@ MonoBehaviour:
   itemsPlacedCorrectly: 0
   charSleep: {fileID: 1989781791}
   tutHand: {fileID: 297599819}
+  itemTut: {fileID: 0}
 --- !u!1 &1804543229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,7 +7600,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 9
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: dc5de78a0f2b91b48a58f3c78c6af90f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

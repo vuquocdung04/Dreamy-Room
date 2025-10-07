@@ -18,6 +18,12 @@ public class GamePlayController : Singleton<GamePlayController>
         levelController.Init();
         playerContains.Init();
         effectController.Init();
+
+        if (!UseProfile.HasCompletedLevelTutorial)
+        {
+            gameScene.topBar.gameObject.SetActive(false);
+            gameScene.bottomBar.gameObject.SetActive(false);
+        }
     }
     
     public void PauseGame()

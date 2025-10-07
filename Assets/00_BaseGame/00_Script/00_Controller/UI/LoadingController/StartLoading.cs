@@ -11,6 +11,7 @@ public class StartLoading : MonoBehaviour
     public RectTransform iconLogoRect;
 
     private Tween iconTween;
+
     public void Init()
     {
         this.fillLoadingBar.fillAmount = 0;
@@ -20,7 +21,8 @@ public class StartLoading : MonoBehaviour
     private IEnumerator LoadScene()
     {
         yield return null;
-        var asyncOperation = SceneManager.LoadSceneAsync(SceneName.HOME_SCENE);
+        var sceneName = UseProfile.HasCompletedLevelTutorial ? SceneName.HOME_SCENE : SceneName.GAME_PLAY;
+        var asyncOperation = SceneManager.LoadSceneAsync(sceneName);
 
         yield return null;
         bool tweenComplete = false;
@@ -28,16 +30,16 @@ public class StartLoading : MonoBehaviour
             .OnComplete(() => tweenComplete = true);
 
         iconTween = IconTween();
-        
+
         asyncOperation!.allowSceneActivation = false;
-    
+
         while (asyncOperation.progress < 0.9f || !tweenComplete)
         {
             yield return null;
         }
-    
+
         asyncOperation.allowSceneActivation = true;
-    
+
         while (!asyncOperation.isDone)
         {
             yield return null;

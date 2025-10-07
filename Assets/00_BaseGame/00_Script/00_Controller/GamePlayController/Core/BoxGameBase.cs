@@ -46,11 +46,19 @@ public class BoxGameBase : MonoBehaviour
         transform.DOScale(Vector3.zero, 0.2f).OnComplete(() => { gameObject.SetActive(false); });
     }
 
-    public void OnBoxClicked()
+    public void OnBoxClicked(System.Action callback = null)
     {
+        if (!isFirstClick)
+        {
+            PlayAnimationOpen(delegate
+            {
+                this.PostEvent(EventID.REQUEST_TAKE_ITEM_FROM_BOX);
+                callback?.Invoke();
+            }).Forget();
+            return;
+        }
+            
         this.PostEvent(EventID.REQUEST_TAKE_ITEM_FROM_BOX);
-        if(!isFirstClick)
-            PlayAnimationOpen().Forget();
     }
 
     public void CloseBox()
@@ -79,7 +87,7 @@ public class BoxGameBase : MonoBehaviour
         sequence.Append(transform.DOScale(originalScale, 0.2f).SetEase(Ease.OutBack, 1.2f));
     }
 
-    private async UniTaskVoid PlayAnimationOpen()
+    private async UniTaskVoid PlayAnimationOpen(System.Action callback = null)
     {
         await PlayFrameAnimation(framesTape, tapeSpriteRenderer, tapeFrameDuration, true);
 
@@ -89,7 +97,9 @@ public class BoxGameBase : MonoBehaviour
 
         lid1SpriteRenderer.gameObject.SetActive(true);
         await PlayFrameAnimation(framesLid1, lid1SpriteRenderer, lidFrameDuration);
-
+        
+        callback?.Invoke();
+        
         hasBoxOpened = true;
         isFirstClick = true;
     }

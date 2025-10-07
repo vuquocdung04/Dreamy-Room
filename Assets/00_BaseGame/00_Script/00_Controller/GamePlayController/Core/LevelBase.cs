@@ -5,7 +5,7 @@ using EventDispatcher;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class LevelBase : MonoBehaviour
+public abstract class LevelBase : MonoBehaviour
 {
     [SerializeField] protected bool isBoxReadyForInteraction;
     [SerializeField] protected int maxItemOutOfBox = 10;
@@ -189,6 +189,7 @@ public class LevelBase : MonoBehaviour
                 itemsPlacedCorrectly++;
 
                 ValidateInactiveShadows();
+                HandleFillProgress();
                 CheckWin();
                 
                 CheckAndReopenBox();
@@ -208,16 +209,20 @@ public class LevelBase : MonoBehaviour
             box.ReopenBox();
         }
     }
-    
-    private void CheckWin()
+
+    private void HandleFillProgress()
     {
         GamePlayController.Instance.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
+    }
+    private void CheckWin()
+    {
         if (itemsPlacedCorrectly == totalItemsRequired)
         {
-            Debug.Log("WIn Game");
+            Debug.Log("WinGame");
+            HandleAfterWinGame();
         }
     }
-
+    protected abstract void HandleAfterWinGame();
 
     [Button("Setup Item", ButtonSizes.Large)]
     public void SetupItem()

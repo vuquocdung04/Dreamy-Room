@@ -53,7 +53,7 @@ public class ItemBase : MonoBehaviour
         angle = angleZ;
         transform.localEulerAngles = new Vector3(0, 0, angle);
         transform.DOScale(Vector3.one,0.3f).SetEase(Ease.OutBack);
-        float randY = Random.Range(1.5f, 6f);
+        float randY = Random.Range(4f, 6f);
         float randX = Random.Range(-3.5f, 3.5f);
         transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(PlayIdleTween);
     }
@@ -140,7 +140,7 @@ public class ItemBase : MonoBehaviour
         if (itemSize == ItemSize.Small)
         {
             Vector3 pos = mousePosition;
-            pos.y += 1f;
+            pos.y += 2f;
             if (pos.y > top)
                 pos.y = top;
             transform.position = pos;

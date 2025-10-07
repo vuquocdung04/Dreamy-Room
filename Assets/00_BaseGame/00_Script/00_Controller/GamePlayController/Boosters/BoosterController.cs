@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BoosterController : MonoBehaviour
 {
-    [SerializeField] private RectTransform rectBoosters;
+    public RectTransform rectBoosters;
     [SerializeField] private List<BoosterBase> lsBoosters;
 
     public void Init()

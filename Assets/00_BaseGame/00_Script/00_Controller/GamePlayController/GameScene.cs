@@ -15,7 +15,9 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Sprite sprZoomIn;
     [SerializeField] private Sprite sprZoomOut;
 
-    [SerializeField] private RectTransform topBar;
+    public RectTransform topBar;
+    public RectTransform bottomBar;
+    
     [SerializeField] private Image fillProgressBar;
     
     [SerializeField] private TextMeshProUGUI txtTiming;
