@@ -220,26 +220,26 @@ public class UseProfile : MonoBehaviour
     }
     
     
-    public static DateTime FirstTimeOpenGame
+    public static DateTime TimeLastLoginDate
     {
         get
         {
-            if (PlayerPrefs.HasKey(StringHelper.FIRST_TIME_OPEN_GAME))
+            if (PlayerPrefs.HasKey(StringHelper.TIME_LAST_LOGIN_DATE))
             {
-                var temp = Convert.ToInt64(PlayerPrefs.GetString(StringHelper.FIRST_TIME_OPEN_GAME));
+                var temp = Convert.ToInt64(PlayerPrefs.GetString(StringHelper.TIME_LAST_LOGIN_DATE));
                 return DateTime.FromBinary(temp);
             }
             else
             {
                 var newDateTime = DateTime.Now.AddDays(-1);
-                PlayerPrefs.SetString(StringHelper.FIRST_TIME_OPEN_GAME, newDateTime.ToBinary().ToString());
+                PlayerPrefs.SetString(StringHelper.TIME_LAST_LOGIN_DATE, newDateTime.ToBinary().ToString());
                 PlayerPrefs.Save();
                 return newDateTime;
             }
         }
         set
         {
-            PlayerPrefs.SetString(StringHelper.FIRST_TIME_OPEN_GAME, value.ToBinary().ToString());
+            PlayerPrefs.SetString(StringHelper.TIME_LAST_LOGIN_DATE, value.ToBinary().ToString());
             PlayerPrefs.Save();
         }
     }

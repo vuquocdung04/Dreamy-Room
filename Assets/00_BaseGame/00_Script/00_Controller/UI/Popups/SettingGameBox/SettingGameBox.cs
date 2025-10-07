@@ -37,7 +37,10 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
             GamePlayController.Instance.ResumeGame();
         });
         ActionBtnClick(btnGoHome, ()=> QuitLevelBox.Setup().Show());
-        ActionBtnClick(btnRetry, ()=> Debug.Log("Retry"));
+        ActionBtnClick(btnRetry, () =>
+        {
+            GameController.Instance.effectChangeScene2.RunEffect(SceneName.GAME_PLAY);
+        });
         ActionBtnClick(btnVib, () =>
         {
             bool newState = ToggleSetting(GameController.Instance.useProfile.OnVib, imgVib);

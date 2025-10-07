@@ -16,7 +16,7 @@ public class StringHelper
     public const string TIME_UNLIMITER_HEART = "TIME_UNLIMITER_HEART";
     public const string TIME_LAST_OVER_HEART = "TIME_LAST_OVER_HEART";
     
-    public const string FIRST_TIME_OPEN_GAME = "FIRST_TIME_OPEN_GAME";
+    public const string TIME_LAST_LOGIN_DATE = "TIME_LAST_LOGIN_DATE";
     
     public const string MAX_UNLOCK_LEVEL = "MAX_UNLOCK_LEVEL";
     public const string CURRENT_LEVEL = "CURRENT_LEVEL";

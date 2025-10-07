@@ -37,4 +37,5 @@ public class QuitLevelBox : BoxSingleton<QuitLevelBox>
         //NOTE: GO TO HOME SCENE AND DEDUCE HEART AND STAR
         GameController.Instance.effectChangeScene2.RunEffect(SceneName.HOME_SCENE);
     }
+
 }

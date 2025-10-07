@@ -60,21 +60,21 @@ public class DEVTOOL : MonoBehaviour
     [Button("Reset Day (Yesterday)", ButtonSizes.Large)]
     private void ResetDay()
     {
-        UseProfile.FirstTimeOpenGame = DateTime.Now.AddDays(-1);
+        UseProfile.TimeLastLoginDate = DateTime.Now.AddDays(-1);
     }
 
     [TabGroup("DevToolTabs", "Time")]
     [Button("Next Day", ButtonSizes.Large)]
     private void NextDay()
     {
-        UseProfile.FirstTimeOpenGame = DateTime.Now.AddDays(1);
+        UseProfile.TimeLastLoginDate = DateTime.Now.AddDays(-1);
     }
 
     [TabGroup("DevToolTabs", "Time")]
     [Button("Next 2 Days", ButtonSizes.Large)]
     private void Next2Day()
     {
-        UseProfile.FirstTimeOpenGame = DateTime.Now.AddDays(2);
+        UseProfile.TimeLastLoginDate = DateTime.Now.AddDays(-2);
     }
 
 

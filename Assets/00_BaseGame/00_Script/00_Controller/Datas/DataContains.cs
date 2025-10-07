@@ -19,10 +19,11 @@ public class DataContains : MonoBehaviour
 
     private void HasPassedDay()
     {
-        if (TimeManager.HasDayPassed(UseProfile.FirstTimeOpenGame, DateTime.Now))
+        Debug.Log(TimeManager.HasDayPassed(UseProfile.TimeLastLoginDate, DateTime.Now));
+        if (TimeManager.HasDayPassed(UseProfile.TimeLastLoginDate, DateTime.Now))
         {
             dataDaily.PrepareForNewDay();
-            UseProfile.FirstTimeOpenGame = DateTime.Now;
+            UseProfile.TimeLastLoginDate = DateTime.Now;
         }
     }
 }
