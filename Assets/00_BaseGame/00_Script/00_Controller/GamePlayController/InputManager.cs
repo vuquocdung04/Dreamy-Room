@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     private bool isDraggingCamera;
     private ItemBase currentDraggingItem;
     private PreGameItem currentPreGameDraggingItem;
+    private ItemRemoverBase currentDrawingItem; // Thêm drawing item
 
     private Vector3 lastScreenPosition;
     private Vector3 currentMousePosition;
@@ -17,6 +18,10 @@ public class InputManager : MonoBehaviour
     private float left, top, right, bottom;
 
     [SerializeField] private bool isWin, isLose, isPopupOpen, canMoveCamera;
+    
+    [Header("Drawing Settings")]
+    [SerializeField] private float drawApplyInterval = 0.05f;
+    private float lastDrawApplyTime;
 
     public void Init()
     {
@@ -56,9 +61,9 @@ public class InputManager : MonoBehaviour
             StartCameraDrag();
             return;
         }
-
-        // Thử các component theo thứ tự ưu tiên
+        
         if (TryHandleBox(hit.collider)) return;
+        if (TryHandleDrawingItem(hit.collider)) return;
         if (TryHandleItem(hit.collider)) return;
         if (TryHandlePreGameItem(hit.collider)) return;
         
@@ -71,6 +76,18 @@ public class InputManager : MonoBehaviour
         if (box != null)
         {
             box.OnBoxClicked();
+            return true;
+        }
+        return false;
+    }
+
+    private bool TryHandleDrawingItem(Collider2D coll)
+    {
+        ItemRemoverBase drawingItem = coll.GetComponent<ItemRemoverBase>();
+        if (drawingItem != null)
+        {
+            currentDrawingItem = drawingItem;
+            lastDrawApplyTime = Time.time;
             return true;
         }
         return false;
@@ -115,6 +132,24 @@ public class InputManager : MonoBehaviour
         {
             cameraController.MoveCamera(ref lastScreenPosition);
         }
+        else if (currentDrawingItem != null)
+        {
+            // Logic vẽ
+            mouseDelta = currentMousePosition - prevMousePosition;
+            currentDrawingItem.transform.position += mouseDelta;
+            
+            // Vẽ tại vị trí hiện tại (có thể thêm offset nếu cần)
+            currentDrawingItem.DrawAtPosition(currentDrawingItem.transform.position);
+            
+            // Apply changes với interval để tối ưu
+            if (Time.time - lastDrawApplyTime >= drawApplyInterval)
+            {
+                currentDrawingItem.ApplyMaskChanges();
+                lastDrawApplyTime = Time.time;
+            }
+            
+            prevMousePosition = currentMousePosition;
+        }
         else if (currentDraggingItem != null)
         {
             mouseDelta = currentMousePosition - prevMousePosition;
@@ -131,7 +166,18 @@ public class InputManager : MonoBehaviour
 
     private void HandleMouseUp()
     {
-        if (currentDraggingItem != null)
+        if (currentDrawingItem != null)
+        {
+            currentDrawingItem.ApplyMaskChanges();
+            
+            if (currentDrawingItem.CheckDrawingCoverage())
+            {
+                OnDrawingStageComplete();
+            }
+            
+            currentDrawingItem = null;
+        }
+        else if (currentDraggingItem != null)
         {
             currentDraggingItem.OnEndDrag(1f);
             currentDraggingItem = null;
@@ -139,6 +185,11 @@ public class InputManager : MonoBehaviour
 
         UpdateBounds();
         isDraggingCamera = false;
+    }
+    
+    private void OnDrawingStageComplete()
+    {
+        Debug.Log("Drawing stage completed!");
     }
 
     private void UpdateBounds()
@@ -163,6 +214,7 @@ public class InputManager : MonoBehaviour
             isDraggingCamera = false;
             currentDraggingItem = null;
             currentPreGameDraggingItem = null;
+            currentDrawingItem = null; // Reset drawing item
             
             lastScreenPosition = Input.mousePosition;
             currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -171,4 +223,7 @@ public class InputManager : MonoBehaviour
         }
     }
     public void SetCanMoveCamera(bool state) => canMoveCamera = state;
+    
+    // Public getter cho drawing item hiện tại
+    public ItemRemoverBase GetCurrentDrawingItem() => currentDrawingItem;
 }

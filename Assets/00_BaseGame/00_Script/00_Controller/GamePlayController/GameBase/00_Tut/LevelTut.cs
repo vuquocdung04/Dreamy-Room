@@ -68,7 +68,7 @@ public class LevelTut : LevelBase
             }
         }
 
-        if (isDragging)
+        if (isDragging && itemTut != null)
         {
             mouseDelta = currentMousePosition - prevMousePosition;
             itemTut.OnDrag(mouseDelta, left, right, bottom, top);
@@ -80,6 +80,7 @@ public class LevelTut : LevelBase
             if (itemTut != null)
             {
                 itemTut.OnEndDrag(1f);
+                itemTut = null;
             }
             isDragging = false;
             CheckDoneTut();
