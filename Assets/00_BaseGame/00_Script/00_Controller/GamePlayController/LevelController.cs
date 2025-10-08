@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
     public LevelBase currentLevel;
     public List<Color> lsColors;
+    public List<Sprite> lsSpritesBg;
+    public Image imgBg;
 
     public void Init()
     {
@@ -29,8 +32,15 @@ public class LevelController : MonoBehaviour
         currentLevel.Init();
         int rand = Random.Range(0, lsColors.Count);
         currentLevel.SetColorBox(lsColors[rand]);
+        
+        RandomSpriteBg();
     }
 
+    private void RandomSpriteBg()
+    {
+        int rand = Random.Range(0, lsSpritesBg.Count);
+        imgBg.sprite = lsSpritesBg[rand];
+    }
 
     public bool HasItemOutOfBox()
     {

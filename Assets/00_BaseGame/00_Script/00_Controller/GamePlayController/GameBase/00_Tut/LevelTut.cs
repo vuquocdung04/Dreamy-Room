@@ -92,7 +92,7 @@ public class LevelTut : LevelBase
         GamePlayController.Instance.playerContains.WinGame();
         mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate
         {
-            GameController.Instance.effectChangeScene2.RunEffect(SceneName.HOME_SCENE);
+            GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
             UseProfile.HasCompletedLevelTutorial = true;
         });
     }

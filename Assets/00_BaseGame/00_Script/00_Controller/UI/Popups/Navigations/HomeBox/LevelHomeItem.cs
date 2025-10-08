@@ -29,6 +29,18 @@ public class LevelHomeItem : MonoBehaviour
         txtLevel.text = idLevel.ToString();
     }
 
+    public void FitIconToTargetHeight(float targetHeight)
+    {
+        if(icon.sprite == null) return;
+    
+        Rect rect = icon.sprite.rect;
+        
+        float aspectRatio = rect.width / rect.height;
+        
+        float newWidth = targetHeight * aspectRatio;
+        icon.rectTransform.sizeDelta = new Vector2(newWidth, targetHeight);
+    }
+    
     public void UpdateState(Color colorIcon, Sprite sprBg, bool isLock = false)
     {
         switch (isLock)

@@ -14,11 +14,11 @@ public class LoseBox : BoxSingleton<LoseBox>
     {
         btnRetry.onClick.AddListener(delegate
         {
-            //NOTE: RETRY
+            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
         });
         btnGoHome.onClick.AddListener(delegate
         {
-            //NOTE: GO HOME
+            GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
         });
     }
 

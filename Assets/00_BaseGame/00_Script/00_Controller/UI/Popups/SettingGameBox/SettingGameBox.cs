@@ -39,7 +39,7 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         ActionBtnClick(btnGoHome, ()=> QuitLevelBox.Setup().Show());
         ActionBtnClick(btnRetry, () =>
         {
-            GameController.Instance.effectChangeScene2.RunEffect(SceneName.GAME_PLAY);
+            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
         });
         ActionBtnClick(btnVib, () =>
         {

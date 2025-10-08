@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,42 +17,74 @@ public class LevelHomeController : MonoBehaviour
     [SerializeField] private Sprite sprLockLarge;
     [SerializeField] private Color colorLockIcon = new Color(1, 1, 1, 0.5f);
 
+    [Header("Scale Settings")] [SerializeField]
+    private float targetHeight = 200;
     [Header("Categories")]
     public List<LevelHomeCategory> lsCategories;
+    [SerializeField] private int batchSize = 50; // Số item xử lý mỗi frame
+    private CancellationTokenSource cts;
 
-    public void Init()
+    public async void Init()
     {
-        var dataLevel = GameController.Instance.dataContains.dataLevel;
-        foreach (var category in lsCategories)
+        try
         {
-            category.Init(
-                dataLevel,
-                UseProfile.MaxUnlockedLevel,
-                colorLockIcon,
-                sprLockSmall,
-                sprLockLarge,
-                (item) => HandleSelection(item, delegate 
-                {
-                    //NOTE: GO TO LEVEL
-                    Debug.Log("Play level: " + item.GetId());
-                    UseProfile.CurrentLevel = item.GetId();
-                    GameController.Instance.effectChangeScene2.RunEffect(SceneName.GAME_PLAY);
-                })
-            );
+            cts?.Cancel();
+            cts?.Dispose();
+            cts = new CancellationTokenSource();
+            
+            var dataLevel = GameController.Instance.dataContains.dataLevel;
+            foreach (var category in lsCategories)
+            {
+                category.Init(
+                    dataLevel,
+                    UseProfile.MaxUnlockedLevel,
+                    colorLockIcon,
+                    sprLockSmall,
+                    sprLockLarge,
+                    (item) => HandleSelection(item, delegate 
+                    {
+                        //NOTE: GO TO LEVEL
+                        Debug.Log("Play level: " + item.GetId());
+                        UseProfile.CurrentLevel = item.GetId();
+                        GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
+                    })
+                );
+            }
+        
+            await ScaleAllIconsAsync(cts.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log("Init cancelled");
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
         }
     }
-    private void HandleSelection(LevelHomeItem item, System.Action callback = null)
+    private void HandleSelection(LevelHomeItem item, Action callback = null)
     {
         if (item.GetId() <= UseProfile.MaxUnlockedLevel)
-        {
             callback?.Invoke();
-        }
         else
+            LevelBox.Setup().Show();
+    }
+
+    private async UniTask ScaleAllIconsAsync(CancellationToken ct)
+    {
+        int count = 0;
+        foreach (var category in lsCategories)
         {
-            LevelBox.Setup().Show(); 
+            foreach (var item in category.lsItems)
+            {
+                item.FitIconToTargetHeight(targetHeight);
+                count++;
+                
+                if (count % batchSize == 0)
+                    await UniTask.Yield(ct);
+            }
         }
     }
-    
     //Odin
     [Button("Setup All Items In All Categories", ButtonSizes.Large)]
     private void SetupAllItems()

@@ -32,4 +32,9 @@ public class GameController : Singleton<GameController>
         UseProfile.TargetFrameRate = tgFrameRate;
         Application.targetFrameRate = UseProfile.TargetFrameRate;
     }
+
+    public void ChangeScene2(string sceneName)
+    {
+        effectChangeScene2.RunEffect(sceneName);
+    }
 }

@@ -11329,12 +11329,14 @@ MonoBehaviour:
   sprLockSmall: {fileID: 21300000, guid: 5363cd6882debfd408e04bd847e309d2, type: 3}
   sprLockLarge: {fileID: 21300000, guid: 3e2fa5cae49b3714d8a7df9cae7b98fa, type: 3}
   colorLockIcon: {r: 0, g: 0, b: 0, a: 0.5}
+  targetHeight: 250
   lsCategories:
   - {fileID: 7552353952279441121}
   - {fileID: 8682847694495913963}
   - {fileID: 26352968392526429}
   - {fileID: 2323562918928387047}
   - {fileID: 5534138212756999927}
+  batchSize: 50
 --- !u!223 &1798053855515241446
 Canvas:
   m_ObjectHideFlags: 0
