@@ -17,8 +17,9 @@ public class LevelHomeController : MonoBehaviour
     [SerializeField] private Sprite sprLockLarge;
     [SerializeField] private Color colorLockIcon = new Color(1, 1, 1, 0.5f);
 
-    [Header("Scale Settings")] [SerializeField]
-    private float targetHeight = 200;
+    [Header("Scale Settings")]
+    [SerializeField] private float targetHeightSmall = 250f;
+    [SerializeField] private float targetHeightLarge = 300f;
     [Header("Categories")]
     public List<LevelHomeCategory> lsCategories;
     [SerializeField] private int batchSize = 50; // Số item xử lý mỗi frame
@@ -77,6 +78,9 @@ public class LevelHomeController : MonoBehaviour
         {
             foreach (var item in category.lsItems)
             {
+                float targetHeight = item.GetItemHomeType() == ItemHomeType.Small 
+                    ? targetHeightSmall 
+                    : targetHeightLarge;
                 item.FitIconToTargetHeight(targetHeight);
                 count++;
                 

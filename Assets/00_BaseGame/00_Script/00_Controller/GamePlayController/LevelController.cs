@@ -17,8 +17,7 @@ public class LevelController : MonoBehaviour
     private void GenerateLevel()
     {
         var dataLevel = GameController.Instance.dataContains.dataLevel;
-        GameObject levelPrefab = null;
-        levelPrefab = Instantiate(!UseProfile.HasCompletedLevelTutorial
+        var levelPrefab = Instantiate(!UseProfile.HasCompletedLevelTutorial
             ? dataLevel.levelTutorial
             : dataLevel.GetLevelPrefabById(UseProfile.CurrentLevel));
 

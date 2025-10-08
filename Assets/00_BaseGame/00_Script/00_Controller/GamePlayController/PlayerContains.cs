@@ -20,6 +20,13 @@ public class PlayerContains : MonoBehaviour
         inputManager.Init();
         boosterController.Init();
         CheckCameraUnlockCondition();
+        
+        
+        if (!UseProfile.HasCompletedLevelTutorial)
+        {
+            GamePlayController.Instance.gameScene.HideBottomBar();
+            GamePlayController.Instance.gameScene.HideTopBar();
+        }
     }
 
     private void CheckCameraUnlockCondition()
@@ -31,6 +38,8 @@ public class PlayerContains : MonoBehaviour
     public void WinGame()
     {
         inputManager.SetWin(true);
+        GamePlayController.Instance.gameScene.HideBottomBar();
+        GamePlayController.Instance.gameScene.HideTopBar();
     }
 
     public void LoseGame()

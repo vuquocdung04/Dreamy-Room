@@ -62,6 +62,17 @@ public class GameScene : MonoBehaviour
         StartTimer(300);
     }
 
+    public void HideTopBar()
+    {
+        topBar.gameObject.SetActive(false);
+    }
+
+    public void HideBottomBar()
+    {
+        bottomBar.gameObject.SetActive(false);
+    }
+    
+    
     private void StartTimer(float seconds)
     {
         currentTime = seconds;
