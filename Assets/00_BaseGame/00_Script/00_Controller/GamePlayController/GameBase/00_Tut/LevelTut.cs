@@ -8,6 +8,7 @@ public class LevelTut : LevelBase
     public Transform tutHand;
 
     [SerializeField] private ItemBase itemTut;
+    private ItemBase itemGetPositionFirst;
     private Tween sleepTween;
     private Tween tutHandTween;
     private bool hasDoneStep1;
@@ -51,7 +52,7 @@ public class LevelTut : LevelBase
                 box.OnBoxClicked(delegate
                 {
                     hasDoneStep1 = true;
-                    itemTut = itemsOutOfBox[0];
+                    itemGetPositionFirst = itemsOutOfBox[0];
                     Phase2TutTween().Forget();
                 });
             }
@@ -116,7 +117,7 @@ public class LevelTut : LevelBase
         tutHand.gameObject.SetActive(false);
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
         tutHand.gameObject.SetActive(true);
-        var newPos = itemTut.transform.position;
+        var newPos = itemGetPositionFirst.transform.position;
         newPos.y -= 1f;
         tutHand.transform.position = newPos;
         tutHandTween.Kill();
