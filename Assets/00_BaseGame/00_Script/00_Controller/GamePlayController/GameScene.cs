@@ -15,8 +15,9 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Sprite sprZoomIn;
     [SerializeField] private Sprite sprZoomOut;
 
-    public RectTransform topBar;
-    public RectTransform bottomBar;
+    [SerializeField] private RectTransform topBar;
+    [SerializeField] private RectTransform bottomBar;
+    [SerializeField] private RectTransform boosterBar;
     
     [SerializeField] private Image fillProgressBar;
     
@@ -71,7 +72,11 @@ public class GameScene : MonoBehaviour
     {
         bottomBar.gameObject.SetActive(false);
     }
-    
+
+    public void HideBoosterBar()
+    {
+        boosterBar.gameObject.SetActive(false);
+    }
     
     private void StartTimer(float seconds)
     {

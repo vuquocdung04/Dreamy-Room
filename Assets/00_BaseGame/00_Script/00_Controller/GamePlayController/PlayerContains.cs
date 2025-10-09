@@ -19,20 +19,6 @@ public class PlayerContains : MonoBehaviour
         cameraController.Init();
         inputManager.Init();
         boosterController.Init();
-        CheckCameraUnlockCondition();
-        
-        
-        if (!UseProfile.HasCompletedLevelTutorial)
-        {
-            GamePlayController.Instance.gameScene.HideBottomBar();
-            GamePlayController.Instance.gameScene.HideTopBar();
-        }
-    }
-
-    private void CheckCameraUnlockCondition()
-    {
-        var maxLevelUnlock = UseProfile.MaxUnlockedLevel;
-        inputManager.SetCanMoveCamera(maxLevelUnlock >= 3);
     }
     
     public void WinGame()

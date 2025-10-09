@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class GamePlayController : Singleton<GamePlayController>
 {
     public GameScene gameScene;
@@ -18,7 +20,34 @@ public class GamePlayController : Singleton<GamePlayController>
         levelController.Init();
         playerContains.Init();
         effectController.Init();
+        
+        HandleUnlockBar();
+        HandleUnlockCamera();
     }
+
+    private void HandleUnlockCamera()
+    {
+        var maxLevel = UseProfile.MaxUnlockedLevel;
+        if(maxLevel >= 3)
+            playerContains.inputManager.SetCanMoveCamera(true);
+    }
+    
+    private void HandleUnlockBar()
+    {
+        var maxLevel = UseProfile.MaxUnlockedLevel;
+        
+        if (!UseProfile.HasCompletedLevelTutorial)
+        {
+            gameScene.HideBottomBar();
+            gameScene.HideTopBar();
+        }
+        else
+        {
+            if(maxLevel < 2)
+                gameScene.HideBoosterBar();
+        }
+    }
+    
     
     public void PauseGame()
     {

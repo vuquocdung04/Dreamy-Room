@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class BoosterController : MonoBehaviour
 {
-    public RectTransform rectBoosters;
     [SerializeField] private List<BoosterBase> lsBoosters;
 
     public void Init()
     {
-        HandleStateRectBoosters();
         var dataBooster = GameController.Instance.dataContains.dataBooster;
         foreach(var booster in lsBoosters) booster.SetBoosterConflict(dataBooster.GetBoosterConflict(booster.GetBoosterType()));
         
@@ -49,14 +47,6 @@ public class BoosterController : MonoBehaviour
             GiftType.BoosterMagicWand => UseProfile.Booster_MagicWand,
             _ => 0
         };
-    }
-
-    private void HandleStateRectBoosters()
-    {
-        var maxLevel = UseProfile.MaxUnlockedLevel;
-        var isUnlocked = maxLevel > 2;
-        rectBoosters.gameObject.SetActive(isUnlocked);
-
     }
     
     [Button("Setup Booster")]

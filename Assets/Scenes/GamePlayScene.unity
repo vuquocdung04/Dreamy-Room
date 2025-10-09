@@ -3931,7 +3931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3cdd1ba3b54475be47190604b8b5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectBoosters: {fileID: 573407023}
   lsBoosters:
   - {fileID: 87391730}
   - {fileID: 2030127141}
@@ -3988,6 +3987,7 @@ MonoBehaviour:
   sprZoomOut: {fileID: 21300000, guid: 5feae828d10d92040bc412f27ba4f555, type: 3}
   topBar: {fileID: 300754391}
   bottomBar: {fileID: 1415384599}
+  boosterBar: {fileID: 573407023}
   fillProgressBar: {fileID: 1325535031}
   txtTiming: {fileID: 656707099}
   imgFrozeTimer: {fileID: 1134661271}
