@@ -18,8 +18,8 @@ public abstract class LevelBase : MonoBehaviour
 
     [SerializeField] protected List<ItemBase> itemsOutOfBox = new();
 
-    [Header("Box Setting")]
-    [SerializeField] protected Transform slots;
+    [Header("Box Setting")] [SerializeField]
+    protected Transform slots;
 
     [SerializeField] protected Transform items;
     [SerializeField] private BoxGameBase box;
@@ -46,7 +46,8 @@ public abstract class LevelBase : MonoBehaviour
             if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
-        foreach(var item in allItems)
+
+        foreach (var item in allItems)
         {
             item.Init(box.GetSpawnPos());
         }
@@ -63,7 +64,7 @@ public abstract class LevelBase : MonoBehaviour
     {
         box.SetColor(color);
     }
-    
+
     public void SetBoxReadyForInteraction(bool ready)
     {
         isBoxReadyForInteraction = ready;
@@ -156,8 +157,9 @@ public abstract class LevelBase : MonoBehaviour
             foreach (var shadow in shadowsToShow)
             {
                 shadow.Active();
-                shadow.transform.DOJump(shadow.transform.position, 2f,1,0.1f);
+                shadow.transform.DOJump(shadow.transform.position, 2f, 1, 0.1f);
             }
+
             this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         });
     }
@@ -191,9 +193,9 @@ public abstract class LevelBase : MonoBehaviour
                 ValidateInactiveShadows();
                 HandleFillProgress();
                 CheckWin();
-                
+
                 CheckAndReopenBox();
-                
+
                 CheckAndPostBoosterConditionChanged();
             }
 
@@ -214,6 +216,7 @@ public abstract class LevelBase : MonoBehaviour
     {
         GamePlayController.Instance.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
     }
+
     private void CheckWin()
     {
         if (itemsPlacedCorrectly == totalItemsRequired)
@@ -222,7 +225,16 @@ public abstract class LevelBase : MonoBehaviour
             HandleAfterWinGame();
         }
     }
-    protected abstract void HandleAfterWinGame();
+
+    protected virtual void HandleAfterWinGame()
+    {
+        GamePlayController.Instance.playerContains.WinGame();
+        GamePlayController.Instance.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
+            delegate
+            {
+                WinBox.Setup().Show();
+            });
+    }
 
     [Button("Setup Item", ButtonSizes.Large)]
     public void SetupItem()

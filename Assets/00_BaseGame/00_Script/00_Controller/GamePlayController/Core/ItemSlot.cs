@@ -19,7 +19,6 @@ public class ItemSlot : MonoBehaviour
         if (allConditionsMet)
         {
             isReadyShow = true;
-            Active();
         }
     }
     

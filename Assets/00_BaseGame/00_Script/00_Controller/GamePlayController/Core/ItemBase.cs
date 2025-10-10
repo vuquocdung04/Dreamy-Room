@@ -53,6 +53,7 @@ public class ItemBase : MonoBehaviour
 
     public void OutSideBox(Vector2 posSpawn)
     {
+        coll2D.enabled = false;
         transform.position = posSpawn;
         transform.localScale = Vector3.zero;
         float angleZ = Random.Range(-40f, 40f);
@@ -61,7 +62,11 @@ public class ItemBase : MonoBehaviour
         transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
         float randY = Random.Range(4f, 6f);
         float randX = Random.Range(-3.5f, 3.5f);
-        transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(PlayIdleTween);
+        transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(delegate
+        {
+            coll2D.enabled = true;
+            PlayIdleTween();
+        });
     }
 
     public void ValidateUnlockState()
@@ -118,17 +123,17 @@ public class ItemBase : MonoBehaviour
     {
         if (isInteractableAfterPlacement)
         {
-            coll2D.enabled = false;
+            //NOTE: lam gi do
         }
         else
         {
+            coll2D.enabled = false;
             StopIdleTween();
-            targetSlot.Active();
             targetSlot.isFullSlot = true;
             spriteRenderer.sortingOrder = indexLayer;
             spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
             transform.DORotate(Vector3.zero, 0.2f);
-            transform.DOMove(targetSlot.transform.position, 0.5f);
+            transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(targetSlot.Active);
             this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
             this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         }

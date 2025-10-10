@@ -30,6 +30,8 @@ public class GamePlayController : Singleton<GamePlayController>
         var maxLevel = UseProfile.MaxUnlockedLevel;
         if(maxLevel >= 3)
             playerContains.inputManager.SetCanMoveCamera(true);
+        else
+            playerContains.inputManager.SetCanMoveCamera(false);
     }
     
     private void HandleUnlockBar()
