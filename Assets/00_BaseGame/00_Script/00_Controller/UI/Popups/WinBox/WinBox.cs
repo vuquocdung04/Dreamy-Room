@@ -41,7 +41,14 @@ public class WinBox : BoxSingleton<WinBox>
 
     private void OnClickGift()
     {
-        AnimationOpen();
+        btnOpenGift.enabled = false;
+        description.gameObject.SetActive(false);
+        AnimationOpen(delegate
+        {
+            btnClaim.gameObject.SetActive(true);
+            btnClaimX2.gameObject.SetActive(true);
+        });
+        
     }
 
     private void HandleProgress()
@@ -54,10 +61,7 @@ public class WinBox : BoxSingleton<WinBox>
             if (UseProfile.LevelWinBoxProgress >= 5)
             {
                 UseProfile.LevelWinBoxProgress = 0;
-                progressBar.gameObject.SetActive(false);
-                btnNext.gameObject.SetActive(false);
-                btnOpenGift.enabled = true;
-                txtTitle.text = "Unlock Rewards";
+                HandlePhaseUnlockReward();
             }
             else
             {
@@ -85,5 +89,15 @@ public class WinBox : BoxSingleton<WinBox>
             seq.OnComplete(callback);
 
         seq.Play();
+    }
+
+    private void HandlePhaseUnlockReward()
+    {
+        progressBar.gameObject.SetActive(false);
+        btnNext.gameObject.SetActive(false);
+        btnOpenGift.enabled = true;
+        txtTitle.text = "Unlock Rewards";
+        description.gameObject.SetActive(true);
+        gift.DOAnchorPosY(-284f,0.2f).SetEase(Ease.OutBack);
     }
 }
