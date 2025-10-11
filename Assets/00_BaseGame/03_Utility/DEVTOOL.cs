@@ -100,6 +100,13 @@ public class DEVTOOL : MonoBehaviour
         UseProfile.CurrentLevel++;
     }
 
+	[TabGroup("DevToolTabs", "Level")]
+    [Button("Show Popup Win", ButtonSizes.Large)]
+    private void ShowPopupWin()
+    {
+        UseProfile.LevelWinBoxProgress = 4;
+        WinBox.Setup().Show();
+    }
 
     // --- TAB KHÁC ---
     [TabGroup("DevToolTabs", "Other")]

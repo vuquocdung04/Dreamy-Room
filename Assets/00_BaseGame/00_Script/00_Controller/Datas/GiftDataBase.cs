@@ -86,5 +86,5 @@ public class GiftDataEntry
 public class Gift
 {
     public Sprite giftSprite;
-    public GameObject giftAnim;
+    //public GameObject giftAnim;
 }
