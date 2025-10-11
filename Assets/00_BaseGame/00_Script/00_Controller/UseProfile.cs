@@ -45,7 +45,17 @@ public class UseProfile : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-    
+
+
+    public static int LevelWinBoxProgress
+    {
+        get => PlayerPrefs.GetInt(StringHelper.LEVEL_WIN_BOX_PROGRESS, 0);
+        set
+        {
+            PlayerPrefs.SetInt(StringHelper.LEVEL_WIN_BOX_PROGRESS, value);
+            PlayerPrefs.Save();
+        }
+    }
     
     public static int MaxUnlockedLevel
     {

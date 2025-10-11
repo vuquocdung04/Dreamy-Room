@@ -32,6 +32,9 @@ public class StringHelper
     public const string FRAME_DETAIL =  "FRAME_DETAIL";
     public const string AVATAR_DETAIL =  "AVATAR_DETAIL";
     
+    // Level gift
+    public const string LEVEL_WIN_BOX_PROGRESS = "LEVEL_WIN_BOX_PROGRESS";
+    
     //Booster
     public const string BOOSTER_BOXBUFFER = "BOOSTER_BOXBUFFER";
     public const string BOOSTER_COMPASS =  "BOOSTER_COMPASS";
