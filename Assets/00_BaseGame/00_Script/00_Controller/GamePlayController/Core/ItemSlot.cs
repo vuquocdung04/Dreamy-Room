@@ -36,11 +36,12 @@ public abstract class ItemSlot : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetupOdin()
+    public void SetupOdin(int index, SpriteRenderer sr)
     {
-        spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        spriteRenderer = sr;
         if (spriteRenderer == null) return;
-        indexOrder = spriteRenderer.sortingOrder;
+        indexOrder = index;
+        spriteRenderer.sortingOrder = indexOrder;
     }
     
 }

@@ -232,9 +232,8 @@ public abstract class LevelBase : MonoBehaviour
     }
 
     [Button("Setup Item", ButtonSizes.Large)]
-    public void SetupItem()
+    private void SetupItem()
     {
-        slots = transform.Find("Slots");
         items = transform.Find("Items");
         Transform boxTransform = transform.Find("Box");
         if (boxTransform != null)
@@ -245,28 +244,54 @@ public abstract class LevelBase : MonoBehaviour
                 box = boxTransform.gameObject.AddComponent<BoxGameBase>();
             }
         }
-        
-
         allItems.Clear();
-        allShadows.Clear();
-        ItemSlot[] slotComponents = slots.GetComponentsInChildren<ItemSlot>(true);
-        allShadows.AddRange(slotComponents);
-
         ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true);
         allItems.AddRange(itemComponents);
-
         totalItemsRequired = allItems.Count;
-
         foreach (var item in this.allItems)
         {
             item.SetupOdin();
         }
+        Debug.Log("Finish Setup Item");
+    }
+
+    [Button("Create && Setup Shadow Item", ButtonSizes.Large)]
+    private void CreateShadowItem()
+    {
+        slots = transform.Find("Slots");
+        allShadows.Clear();
+        
+        if (allItems.Count == 0)
+        {
+            Debug.Log("No Items Count, can't create Shadow Item");
+            return;
+        }
+
+        foreach (var item in allItems)
+        {
+            var shadowGo = new GameObject(item.name + "_shadow");
+            shadowGo.transform.SetParent(slots);
+            shadowGo.transform.position = item.transform.position;
+            
+            if (!shadowGo.TryGetComponent(out SpriteRenderer sr))
+                sr = shadowGo.AddComponent<SpriteRenderer>();
+        
+            if (!shadowGo.TryGetComponent(out ItemSlot shadowSlot))
+                shadowSlot = shadowGo.AddComponent<ItemSlot>();
+            
+            int targetOrder = item.GetIndexLayer() - 1;
+            shadowSlot.SetupOdin(targetOrder,sr);
+            shadowSlot.transform.SetParent(slots);
+        }
+        ItemSlot[] slotComponents = slots.GetComponentsInChildren<ItemSlot>(true);
+        allShadows.AddRange(slotComponents);
         foreach (var shadow in allShadows)
         {
-            shadow.SetupOdin();
             shadow.Init();
             if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
+        
+        Debug.Log("Finish Setup Shadow Item");
     }
 }

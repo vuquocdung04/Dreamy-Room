@@ -33,6 +33,7 @@ public class ItemBase : MonoBehaviour
     private Tween idleTween;
     private Vector3 newPosition;
     private bool toggleChangAnim;
+    public int GetIndexLayer() => indexLayer;
 
     #endregion
 
