@@ -40,13 +40,6 @@ public abstract class LevelBase : MonoBehaviour
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         effectController = GamePlayController.Instance.effectController;
-        foreach (var shadow in allShadows)
-        {
-            shadow.Init();
-            if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
-            shadow.DeActive();
-        }
-
         foreach (var item in allItems)
         {
             item.Init(box.GetSpawnPos());
@@ -268,10 +261,12 @@ public abstract class LevelBase : MonoBehaviour
         {
             item.SetupOdin();
         }
-
         foreach (var shadow in allShadows)
         {
             shadow.SetupOdin();
+            shadow.Init();
+            if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
+            shadow.DeActive();
         }
     }
 }

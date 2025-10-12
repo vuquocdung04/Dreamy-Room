@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 using TMPro;
 
 public class WinBox : BoxSingleton<WinBox>
@@ -54,6 +53,7 @@ public class WinBox : BoxSingleton<WinBox>
 
     private void OnClickNext()
     {
+        GameController.Instance.NextLevel();
     }
 
     private void OnClickClaim(bool isX2 = false)

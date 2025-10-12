@@ -37,4 +37,14 @@ public class GameController : Singleton<GameController>
     {
         effectChangeScene2.RunEffect(sceneName);
     }
+
+    public void NextLevel()
+    {
+        if (UseProfile.CurrentLevel == UseProfile.MaxUnlockedLevel)
+        {
+            UseProfile.MaxUnlockedLevel++;
+        }
+        UseProfile.CurrentLevel++;
+        ChangeScene2(SceneName.GAME_PLAY);
+    }
 }
