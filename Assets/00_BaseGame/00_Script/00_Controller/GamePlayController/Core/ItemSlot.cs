@@ -2,12 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ItemSlot : MonoBehaviour
+public abstract class ItemSlot : MonoBehaviour
 {
     public bool isFullSlot;
     public bool isReadyShow = true;
+    [SerializeField] private int indexOrder;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     public List<ItemSlot> conditionSlots;
 
+    public bool HasSpriteRenderer() => spriteRenderer;
+    public int SetOrderItemPlaced() => indexOrder;
     public void Init()
     {
         isReadyShow = conditionSlots.Count == 0;
@@ -24,13 +28,19 @@ public class ItemSlot : MonoBehaviour
     
     public void Active()
     {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void DeActive()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
-    
+
+    public void SetupOdin()
+    {
+        spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) return;
+        indexOrder = spriteRenderer.sortingOrder;
+    }
     
 }

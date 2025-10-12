@@ -90,7 +90,7 @@ public class LevelTut : LevelBase
 
     protected override void HandleAfterWinGame()
     {
-        GamePlayController.Instance.playerContains.WinGame();
+        GamePlayController.Instance.WinGame();
         mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate
         {
             GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);

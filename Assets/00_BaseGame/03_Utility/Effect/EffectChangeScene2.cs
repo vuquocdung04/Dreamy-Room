@@ -23,8 +23,8 @@ public class EffectChangeScene2 : MonoBehaviour
     }
     private void SetImage()
     {
-        int currentLevel = UseProfile.CurrentLevel;
-        var icon = dataLevel.GetLevelSpriteById(currentLevel);
+        int maxUnlockedLevel = UseProfile.MaxUnlockedLevel;
+        var icon = dataLevel.GetLevelSpriteById(maxUnlockedLevel);
         int rand = UnityEngine.Random.Range(0, lsSpritesBg.Count);
         imgBg.sprite = lsSpritesBg[rand];
         imgIcon.sprite = icon;

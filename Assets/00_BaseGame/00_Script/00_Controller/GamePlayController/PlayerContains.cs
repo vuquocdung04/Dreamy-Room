@@ -20,18 +20,6 @@ public class PlayerContains : MonoBehaviour
         inputManager.Init();
         boosterController.Init();
     }
-    
-    public void WinGame()
-    {
-        inputManager.SetWin(true);
-        GamePlayController.Instance.gameScene.HideBottomBar();
-        GamePlayController.Instance.gameScene.HideTopBar();
-    }
-
-    public void LoseGame()
-    {
-        inputManager.SetLose(true);
-    }
 
     public void PauseGame(bool isPaused)
     {

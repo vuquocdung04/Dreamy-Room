@@ -1,5 +1,4 @@
 
-using UnityEngine;
 
 public class GamePlayController : Singleton<GamePlayController>
 {
@@ -49,7 +48,17 @@ public class GamePlayController : Singleton<GamePlayController>
                 gameScene.HideBoosterBar();
         }
     }
-    
+
+    public void LoseGame()
+    {
+        playerContains.inputManager.SetLose(true);
+    }
+    public void WinGame()
+    {
+        playerContains.inputManager.SetWin(true);
+        gameScene.HideBottomBar();
+        gameScene.HideTopBar();
+    }
     
     public void PauseGame()
     {

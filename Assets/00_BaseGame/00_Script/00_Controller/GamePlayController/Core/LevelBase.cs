@@ -51,7 +51,9 @@ public abstract class LevelBase : MonoBehaviour
         {
             item.Init(box.GetSpawnPos());
         }
+
     }
+    
 
     private void OnDestroy()
     {
@@ -228,7 +230,7 @@ public abstract class LevelBase : MonoBehaviour
 
     protected virtual void HandleAfterWinGame()
     {
-        GamePlayController.Instance.playerContains.WinGame();
+        GamePlayController.Instance.WinGame();
         GamePlayController.Instance.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
             delegate
             {
@@ -250,6 +252,7 @@ public abstract class LevelBase : MonoBehaviour
                 box = boxTransform.gameObject.AddComponent<BoxGameBase>();
             }
         }
+        
 
         allItems.Clear();
         allShadows.Clear();
@@ -264,6 +267,11 @@ public abstract class LevelBase : MonoBehaviour
         foreach (var item in this.allItems)
         {
             item.SetupOdin();
+        }
+
+        foreach (var shadow in allShadows)
+        {
+            shadow.SetupOdin();
         }
     }
 }

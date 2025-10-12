@@ -130,7 +130,9 @@ public class ItemBase : MonoBehaviour
             coll2D.enabled = false;
             StopIdleTween();
             targetSlot.isFullSlot = true;
-            spriteRenderer.sortingOrder = indexLayer;
+            spriteRenderer.sortingOrder = slotsSnap.Count >= 2 && targetSlot.HasSpriteRenderer()
+                ? targetSlot.SetOrderItemPlaced() + 1
+                : indexLayer;
             spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
             transform.DORotate(Vector3.zero, 0.2f);
             transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(targetSlot.Active);

@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 2
+  spriteRenderer: {fileID: 3800255712198836066}
   conditionSlots: []
 --- !u!212 &3800255712198836066
 SpriteRenderer:
@@ -465,7 +467,7 @@ MonoBehaviour:
   conditionSlots:
   - {fileID: 3896261576347635359}
   itemSize: 0
-  indexLayer: 4
+  indexLayer: 5
   angle: 0
   coll2D: {fileID: 294131751985774999}
   spriteRenderer: {fileID: 9187387959873864973}
@@ -513,7 +515,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 5cc50ecb40aa09a4aa124c0a3b2c8c40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -617,6 +619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 1
+  spriteRenderer: {fileID: 145297514444730719}
   conditionSlots: []
 --- !u!212 &145297514444730719
 SpriteRenderer:
@@ -717,6 +721,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 7
+  spriteRenderer: {fileID: 6559378006765105646}
   conditionSlots: []
 --- !u!212 &6559378006765105646
 SpriteRenderer:
@@ -1959,6 +1965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 8
+  spriteRenderer: {fileID: 6123367588078509125}
   conditionSlots: []
 --- !u!212 &6123367588078509125
 SpriteRenderer:
@@ -2215,6 +2223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 6
+  spriteRenderer: {fileID: 5776791200620442125}
   conditionSlots: []
 --- !u!212 &5776791200620442125
 SpriteRenderer:
@@ -2315,6 +2325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 4
+  spriteRenderer: {fileID: 8295931475993974345}
   conditionSlots: []
 --- !u!212 &8295931475993974345
 SpriteRenderer:
@@ -2415,6 +2427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 3
+  spriteRenderer: {fileID: 7469846426620270114}
   conditionSlots: []
 --- !u!212 &7469846426620270114
 SpriteRenderer:
@@ -2515,6 +2529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 5
+  spriteRenderer: {fileID: 7288555607710558399}
   conditionSlots: []
 --- !u!212 &7288555607710558399
 SpriteRenderer:
@@ -2615,6 +2631,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 6
+  spriteRenderer: {fileID: 1584252946823378434}
   conditionSlots: []
 --- !u!212 &1584252946823378434
 SpriteRenderer:
@@ -3028,6 +3046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 4
+  spriteRenderer: {fileID: 1824873860579474616}
   conditionSlots: []
 --- !u!212 &1824873860579474616
 SpriteRenderer:
@@ -3128,6 +3148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 8
+  spriteRenderer: {fileID: 7756912824801951370}
   conditionSlots:
   - {fileID: 3317449355943046652}
   - {fileID: 3896261576347635359}
@@ -3230,6 +3252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 4
+  spriteRenderer: {fileID: 5328655454966541825}
   conditionSlots: []
 --- !u!212 &5328655454966541825
 SpriteRenderer:
@@ -3619,6 +3643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 6
+  spriteRenderer: {fileID: 7654430976456135768}
   conditionSlots: []
 --- !u!212 &7654430976456135768
 SpriteRenderer:
@@ -3719,6 +3745,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 6
+  spriteRenderer: {fileID: 6623402177555074679}
   conditionSlots: []
 --- !u!212 &6623402177555074679
 SpriteRenderer:
@@ -3819,6 +3847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 3
+  spriteRenderer: {fileID: 5716679207750209413}
   conditionSlots:
   - {fileID: 3896261576347635359}
 --- !u!212 &5716679207750209413
@@ -4078,6 +4108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 7
+  spriteRenderer: {fileID: 927865625699718215}
   conditionSlots:
   - {fileID: 3184537647969855427}
 --- !u!212 &927865625699718215
@@ -4179,6 +4211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 4
+  spriteRenderer: {fileID: 9041322796877025799}
   conditionSlots:
   - {fileID: 3896261576347635359}
 --- !u!212 &9041322796877025799
@@ -4221,7 +4255,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 5cc50ecb40aa09a4aa124c0a3b2c8c40, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
   m_FlipX: 0
