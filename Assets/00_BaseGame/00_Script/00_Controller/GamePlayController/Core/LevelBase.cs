@@ -9,7 +9,6 @@ public abstract class LevelBase : MonoBehaviour
 {
     [SerializeField] protected bool isBoxReadyForInteraction;
     [SerializeField] protected int maxItemOutOfBox = 10;
-    [SerializeField] protected float snapThreshold;
     [SerializeField] protected List<ItemSlot> allShadows;
     [SerializeField] protected List<ItemBase> allItems;
 
@@ -44,9 +43,8 @@ public abstract class LevelBase : MonoBehaviour
         {
             item.Init(box.GetSpawnPos());
         }
-
     }
-    
+
 
     private void OnDestroy()
     {
@@ -225,10 +223,7 @@ public abstract class LevelBase : MonoBehaviour
     {
         GamePlayController.Instance.WinGame();
         GamePlayController.Instance.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
-            delegate
-            {
-                WinBox.Setup().Show();
-            });
+            delegate { WinBox.Setup().Show(); });
     }
 
     [Button("Setup Item", ButtonSizes.Large)]
@@ -244,6 +239,7 @@ public abstract class LevelBase : MonoBehaviour
                 box = boxTransform.gameObject.AddComponent<BoxGameBase>();
             }
         }
+
         allItems.Clear();
         ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true);
         allItems.AddRange(itemComponents);
@@ -252,6 +248,7 @@ public abstract class LevelBase : MonoBehaviour
         {
             item.SetupOdin();
         }
+
         Debug.Log("Finish Setup Item");
     }
 
@@ -260,9 +257,9 @@ public abstract class LevelBase : MonoBehaviour
     {
         slots = transform.Find("Slots");
         allShadows.Clear();
-        
-        if(slots.childCount > 0) return;
-        
+
+        if (slots.childCount > 0) return;
+
         if (allItems.Count == 0)
         {
             Debug.Log("No Items Count, can't create Shadow Item");
@@ -274,10 +271,10 @@ public abstract class LevelBase : MonoBehaviour
             var shadowGo = new GameObject(item.name + "_shadow");
             shadowGo.transform.SetParent(slots);
             shadowGo.transform.position = item.transform.position;
-            
-            if (!shadowGo.TryGetComponent(out SpriteRenderer sr))
-                sr = shadowGo.AddComponent<SpriteRenderer>();
-        
+
+            if (!shadowGo.TryGetComponent(out SpriteRenderer newSpr))
+                newSpr = shadowGo.AddComponent<SpriteRenderer>();
+
             var shadowSlot = shadowGo.GetComponent<ItemSlot>();
             if (shadowSlot == null)
             {
@@ -289,19 +286,15 @@ public abstract class LevelBase : MonoBehaviour
                     continue;
                 }
             }
+
             item.AddSnapSlot(shadowSlot);
             int targetOrder = item.GetIndexLayer() - 1;
-            shadowSlot.SetupOdin(targetOrder,sr);
+            shadowSlot.SetupOdin(targetOrder, newSpr, item.GetSprite());
             shadowSlot.transform.SetParent(slots);
         }
+
         ItemSlot[] slotComponents = slots.GetComponentsInChildren<ItemSlot>(true);
         allShadows.AddRange(slotComponents);
-        foreach (var shadow in allShadows)
-        {
-            shadow.Init();
-            if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
-            shadow.DeActive();
-        }
         Debug.Log("Finish Setup Shadow Item");
     }
 
@@ -312,6 +305,36 @@ public abstract class LevelBase : MonoBehaviour
             Debug.LogError("ItemSlot is abstract! Override CreateItemSlotInstance in subclass.");
             return null;
         }
+
         return go.AddComponent<ItemSlot>();
+    }
+
+
+    [Button("Check State Ready Item && Slot", ButtonSizes.Large)]
+    private void CheckStateReadyItemAndSlot()
+    {
+        if (allItems.Count == 0)
+        {
+            Debug.Log("allItems count = 0");
+            return;
+        }
+
+        foreach (var item in allItems)
+        {
+            item.SetStateItem();
+        }
+
+        if (allShadows.Count == 0)
+        {
+            Debug.Log("shadows count = 0");
+            return;
+        }
+
+        foreach (var shadow in allShadows)
+        {
+            shadow.Init();
+            if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
+            shadow.DeActive();
+        }
     }
 }

@@ -9,7 +9,7 @@ public abstract class ItemSlot : MonoBehaviour
     [SerializeField] private int indexOrder;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public List<ItemSlot> conditionSlots = new();
-
+    
     public bool HasSpriteRenderer() => spriteRenderer;
     public int SetOrderItemPlaced() => indexOrder;
     public void Init()
@@ -36,12 +36,14 @@ public abstract class ItemSlot : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetupOdin(int index, SpriteRenderer sr)
+    public void SetupOdin(int index, SpriteRenderer newSpireRenderer, Sprite itemSpr)
     {
-        spriteRenderer = sr;
+        spriteRenderer = newSpireRenderer;
         if (spriteRenderer == null) return;
         indexOrder = index;
         spriteRenderer.sortingOrder = indexOrder;
+        spriteRenderer.sprite = itemSpr;
+        spriteRenderer.color = new Color(0, 0, 0, 0.3f);
     }
     
 }

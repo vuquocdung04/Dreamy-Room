@@ -35,11 +35,13 @@ public class ItemBase : MonoBehaviour
     private Tween idleTween;
     private Vector3 newPosition;
     private bool toggleChangAnim;
+    
     public int GetIndexLayer() => indexLayer;
     public void AddSnapSlot(ItemSlot slot){
         slotsSnap.Clear();
         slotsSnap.Add(slot);
     }
+    public Sprite GetSprite() => spriteRenderer.sprite;
     #endregion
 
     public void Init(Transform pos)
@@ -127,30 +129,34 @@ public class ItemBase : MonoBehaviour
 
     public void OnDoneSnap(ItemSlot targetSlot)
     {
-        if (isInteractableAfterPlacement)
+        coll2D.enabled = false;
+        StopIdleTween();
+        targetSlot.isFullSlot = true;
+        spriteRenderer.sortingOrder = slotsSnap.Count >= 2 && targetSlot.HasSpriteRenderer()
+            ? targetSlot.SetOrderItemPlaced() + 1
+            : indexLayer;
+        spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
+        transform.DORotate(Vector3.zero, 0.2f);
+        transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(delegate
         {
-            //NOTE: lam gi do
-        }
-        else
-        {
-            coll2D.enabled = false;
-            StopIdleTween();
-            targetSlot.isFullSlot = true;
-            spriteRenderer.sortingOrder = slotsSnap.Count >= 2 && targetSlot.HasSpriteRenderer()
-                ? targetSlot.SetOrderItemPlaced() + 1
-                : indexLayer;
-            spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
-            transform.DORotate(Vector3.zero, 0.2f);
-            transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(targetSlot.Active);
-            this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
-            this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
-            UpdateToPlacedState();
-        }
-
+            targetSlot.Active();
+            if(isInteractableAfterPlacement)
+                coll2D.enabled = true;
+        });
+        this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
+        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+        UpdateTargetItemSpriteAfterPlacement();
+        UpdateSpriteToPlaced();
         isPlaced = true;
     }
 
-    private void UpdateToPlacedState()
+    private void UpdateSpriteToPlaced()
+    {
+        if(sprPlaced == null) return;
+        spriteRenderer.sprite = sprPlaced;
+    }
+    
+    private void UpdateTargetItemSpriteAfterPlacement()
     {
         if(!targetItemToUpdate) return;
         if(targetItemToUpdate.sprPlaced == null) return;
@@ -237,6 +243,10 @@ public class ItemBase : MonoBehaviour
         coll2D = GetComponent<Collider2D>();
         indexLayer = spriteRenderer.sortingOrder;
         spriteRenderer.sortingLayerName = SortingLayerName.ITEM_UNPLACED;
+        
+    }
+    public void SetStateItem()
+    {
         if (conditionSlots.Count > 0) isUnlocked = false;
 
         if (sprOriginal == null || sprAnim == null)
