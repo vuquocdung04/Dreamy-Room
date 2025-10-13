@@ -8,7 +8,7 @@ public abstract class ItemSlot : MonoBehaviour
     public bool isReadyShow = true;
     [SerializeField] private int indexOrder;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    public List<ItemSlot> conditionSlots;
+    public List<ItemSlot> conditionSlots = new();
 
     public bool HasSpriteRenderer() => spriteRenderer;
     public int SetOrderItemPlaced() => indexOrder;

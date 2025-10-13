@@ -261,6 +261,8 @@ public abstract class LevelBase : MonoBehaviour
         slots = transform.Find("Slots");
         allShadows.Clear();
         
+        if(slots.childCount > 0) return;
+        
         if (allItems.Count == 0)
         {
             Debug.Log("No Items Count, can't create Shadow Item");
@@ -276,9 +278,18 @@ public abstract class LevelBase : MonoBehaviour
             if (!shadowGo.TryGetComponent(out SpriteRenderer sr))
                 sr = shadowGo.AddComponent<SpriteRenderer>();
         
-            if (!shadowGo.TryGetComponent(out ItemSlot shadowSlot))
-                shadowSlot = shadowGo.AddComponent<ItemSlot>();
-            
+            var shadowSlot = shadowGo.GetComponent<ItemSlot>();
+            if (shadowSlot == null)
+            {
+                shadowSlot = CreateItemSlotInstance(shadowGo);
+                if (shadowSlot == null)
+                {
+                    Debug.LogError($"Failed to create ItemSlot for {shadowGo.name}");
+                    Destroy(shadowGo);
+                    continue;
+                }
+            }
+            item.AddSnapSlot(shadowSlot);
             int targetOrder = item.GetIndexLayer() - 1;
             shadowSlot.SetupOdin(targetOrder,sr);
             shadowSlot.transform.SetParent(slots);
@@ -291,7 +302,16 @@ public abstract class LevelBase : MonoBehaviour
             if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
             shadow.DeActive();
         }
-        
         Debug.Log("Finish Setup Shadow Item");
+    }
+
+    protected virtual ItemSlot CreateItemSlotInstance(GameObject go)
+    {
+        if (typeof(ItemSlot).IsAbstract)
+        {
+            Debug.LogError("ItemSlot is abstract! Override CreateItemSlotInstance in subclass.");
+            return null;
+        }
+        return go.AddComponent<ItemSlot>();
     }
 }

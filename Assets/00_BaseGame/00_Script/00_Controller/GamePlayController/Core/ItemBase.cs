@@ -27,14 +27,19 @@ public class ItemBase : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected Sprite sprOriginal;
     [SerializeField] protected Sprite sprAnim;
-
+    [SerializeField] protected Sprite sprPlaced;
+    [Tooltip("Item sẽ đổi sprite (sang sprPlaced) khi item này được đặt đúng.")]
+    [SerializeField] protected ItemBase targetItemToUpdate;
     [SerializeField] protected bool isInteractableAfterPlacement;
     [SerializeField] protected bool isPlaced;
     private Tween idleTween;
     private Vector3 newPosition;
     private bool toggleChangAnim;
     public int GetIndexLayer() => indexLayer;
-
+    public void AddSnapSlot(ItemSlot slot){
+        slotsSnap.Clear();
+        slotsSnap.Add(slot);
+    }
     #endregion
 
     public void Init(Transform pos)
@@ -139,11 +144,19 @@ public class ItemBase : MonoBehaviour
             transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(targetSlot.Active);
             this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
             this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+            UpdateToPlacedState();
         }
 
         isPlaced = true;
     }
 
+    private void UpdateToPlacedState()
+    {
+        if(!targetItemToUpdate) return;
+        if(targetItemToUpdate.sprPlaced == null) return;
+        targetItemToUpdate.spriteRenderer.sprite = targetItemToUpdate.sprPlaced;
+        Debug.Log("UpdateToPlacedState Completed");
+    }
     private void OnFailSnap()
     {
         spriteRenderer.sortingOrder = indexLayer;
