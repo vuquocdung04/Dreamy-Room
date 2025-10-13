@@ -230,16 +230,6 @@ public abstract class LevelBase : MonoBehaviour
     private void SetupItem()
     {
         items = transform.Find("Items");
-        Transform boxTransform = transform.Find("Box");
-        if (boxTransform != null)
-        {
-            box = boxTransform.GetComponent<BoxGameBase>();
-            if (box == null)
-            {
-                box = boxTransform.gameObject.AddComponent<BoxGameBase>();
-            }
-        }
-
         allItems.Clear();
         ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true);
         allItems.AddRange(itemComponents);

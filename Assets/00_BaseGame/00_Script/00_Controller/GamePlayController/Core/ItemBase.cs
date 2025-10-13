@@ -33,9 +33,10 @@ public class ItemBase : MonoBehaviour
     [SerializeField] protected bool isInteractableAfterPlacement;
     [SerializeField] protected bool isPlaced;
     private Tween idleTween;
+    private Tween restoreIdleTween;
+    
     private Vector3 newPosition;
     private bool toggleChangAnim;
-    
     public int GetIndexLayer() => indexLayer;
     public void AddSnapSlot(ItemSlot slot){
         slotsSnap.Clear();
@@ -168,28 +169,30 @@ public class ItemBase : MonoBehaviour
     {
         spriteRenderer.sortingOrder = indexLayer;
         transform.eulerAngles = new Vector3(0, 0, angle);
-        transform.DORotate(new Vector3(0, 0, angle), 0.2f).OnComplete(PlayIdleTween);
+        RestoreIdleState();
     }
 
     #endregion
 
     #region Drag & Drop
-
     public void OnStartDrag(float top, Vector3 mousePosition)
     {
         if (!isPlaced)
         {
             spriteRenderer.sortingOrder = 100;
             StopIdleTween();
+            StopRestoreIdleTween();
             transform.DORotate(Vector3.zero, 0.2f);
 
             if (itemSize == ItemSize.Small)
             {
-                Vector3 pos = mousePosition;
-                pos.y += 2f;
-                if (pos.y >= top)
-                    pos.y = top;
-                transform.position = pos;
+                var newPos = mousePosition;
+                newPos.y += 2f;
+                if (newPos.y >= top)
+                {
+                    newPos.y = top;
+                }
+                transform.position = newPos;
             }
         }
         else
@@ -199,11 +202,10 @@ public class ItemBase : MonoBehaviour
             spriteRenderer.sprite = toggleChangAnim ? sprAnim : sprOriginal;
         }
     }
-
     public void OnDrag(Vector3 delta, float left, float right, float bottom, float top)
     {
         if (isPlaced) return;
-
+    
         newPosition = transform.position + delta;
         newPosition.x = Mathf.Clamp(newPosition.x, left, right);
         newPosition.y = Mathf.Clamp(newPosition.y, bottom, top);
@@ -213,7 +215,6 @@ public class ItemBase : MonoBehaviour
     public void OnEndDrag(float threshold)
     {
         if (isPlaced) return;
-
         CheckItemPlacement(threshold);
     }
 
@@ -221,6 +222,17 @@ public class ItemBase : MonoBehaviour
 
     #region Animation
 
+    private void RestoreIdleState()
+    {
+        restoreIdleTween = transform.DORotate(new Vector3(0, 0, angle), 0.2f).OnComplete(PlayIdleTween);
+    }
+
+    private void StopRestoreIdleTween()
+    {
+        if(restoreIdleTween == null) return;
+        restoreIdleTween.Kill();
+    }
+    
     private void PlayIdleTween()
     {
         if (this == null || !gameObject.activeInHierarchy) return;
