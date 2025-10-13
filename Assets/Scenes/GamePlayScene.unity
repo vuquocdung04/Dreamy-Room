@@ -1178,6 +1178,15 @@ MonoBehaviour:
   isPopupOpen: 0
   canMoveCamera: 1
   drawApplyInterval: 0.05
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  boxLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  defaultLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &283376248
 GameObject:
   m_ObjectHideFlags: 0

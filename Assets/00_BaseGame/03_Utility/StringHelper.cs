@@ -90,3 +90,9 @@ public class SortingLayerName
     public const string ITEM_SHADOW = "ItemShadow";
     public const string ITEM_PLACED = "ItemPlaced";
 }
+
+public class LayerMaskName
+{
+    public const string DEFAULT = "Default";
+    public const string ITEM_UNPLACED =  "ItemUnplaced";
+}

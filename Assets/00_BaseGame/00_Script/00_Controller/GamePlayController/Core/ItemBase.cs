@@ -136,6 +136,7 @@ public class ItemBase : MonoBehaviour
             ? targetSlot.SetOrderItemPlaced() + 1
             : indexLayer;
         spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
+        gameObject.layer = LayerMask.NameToLayer(LayerMaskName.DEFAULT);
         transform.DORotate(Vector3.zero, 0.2f);
         transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(delegate
         {
@@ -186,7 +187,7 @@ public class ItemBase : MonoBehaviour
             {
                 Vector3 pos = mousePosition;
                 pos.y += 2f;
-                if (pos.y > top)
+                if (pos.y >= top)
                     pos.y = top;
                 transform.position = pos;
             }

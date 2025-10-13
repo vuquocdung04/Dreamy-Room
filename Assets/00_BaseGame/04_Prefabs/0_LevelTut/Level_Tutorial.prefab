@@ -51,7 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoxReadyForInteraction: 1
   maxItemOutOfBox: 10
-  snapThreshold: 0
   allShadows:
   - {fileID: 141987086979467374}
   - {fileID: 9170983160929794779}
@@ -122,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 0
+  spriteRenderer: {fileID: 0}
   conditionSlots: []
 --- !u!1 &933585346806710436
 GameObject:
@@ -135,7 +136,7 @@ GameObject:
   - component: {fileID: 4864229447231829917}
   - component: {fileID: 7759585299446472335}
   - component: {fileID: 839303556984587093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,6 +182,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7759585299446472335}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
+  isInteractableAfterPlacement: 0
+  isPlaced: 0
 --- !u!212 &7759585299446472335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -290,7 +295,7 @@ GameObject:
   - component: {fileID: 3154592344882012943}
   - component: {fileID: 6648781439871679667}
   - component: {fileID: 4178420991795389547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,6 +340,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6648781439871679667}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
+  isInteractableAfterPlacement: 0
+  isPlaced: 0
 --- !u!212 &6648781439871679667
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -444,7 +453,7 @@ GameObject:
   - component: {fileID: 4109747889124769802}
   - component: {fileID: 3096336347603575487}
   - component: {fileID: 3995271081530784469}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,6 +498,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3096336347603575487}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
+  isInteractableAfterPlacement: 0
+  isPlaced: 0
 --- !u!212 &3096336347603575487
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -632,6 +645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 0
+  spriteRenderer: {fileID: 0}
   conditionSlots: []
 --- !u!1 &1875903369392673863
 GameObject:
@@ -679,6 +694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 0
+  spriteRenderer: {fileID: 0}
   conditionSlots: []
 --- !u!1 &2201302093662371929
 GameObject:
@@ -860,7 +877,7 @@ GameObject:
   - component: {fileID: 5844934940017793215}
   - component: {fileID: 2042777148667905730}
   - component: {fileID: 7462283899322955141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,6 +922,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2042777148667905730}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
+  isInteractableAfterPlacement: 0
+  isPlaced: 0
 --- !u!212 &2042777148667905730
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1135,7 +1156,7 @@ GameObject:
   - component: {fileID: 8205965639529747922}
   - component: {fileID: 1598902238454949760}
   - component: {fileID: 3109177724540699097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: oclock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,6 +1201,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1598902238454949760}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
+  isInteractableAfterPlacement: 0
+  isPlaced: 0
 --- !u!212 &1598902238454949760
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1326,7 +1351,7 @@ GameObject:
   - component: {fileID: 885850989768010144}
   - component: {fileID: 6187531954759679717}
   - component: {fileID: 8263097870252236199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,6 +1396,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6187531954759679717}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
+  isInteractableAfterPlacement: 0
+  isPlaced: 0
 --- !u!212 &6187531954759679717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1514,6 +1543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 0
+  spriteRenderer: {fileID: 0}
   conditionSlots: []
 --- !u!1 &5567394392996084284
 GameObject:
@@ -1561,6 +1592,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 0
+  spriteRenderer: {fileID: 0}
   conditionSlots: []
 --- !u!1 &8051264405541500741
 GameObject:
@@ -1695,6 +1728,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
+  indexOrder: 0
+  spriteRenderer: {fileID: 0}
   conditionSlots:
   - {fileID: 5619406678653496960}
 --- !u!1 &8885045790122083305
@@ -1792,6 +1827,10 @@ PrefabInstance:
     - target: {fileID: 5519882080700532869, guid: 8df77f1d0e66958479a214fd6940e415, type: 3}
       propertyPath: m_Name
       value: BoxGameBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519882080700532869, guid: 8df77f1d0e66958479a214fd6940e415, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7042752187018160859, guid: 8df77f1d0e66958479a214fd6940e415, type: 3}
       propertyPath: m_LocalPosition.x

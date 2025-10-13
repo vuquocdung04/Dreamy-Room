@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 4671713142095928142}
   - component: {fileID: 2214899386866813484}
   - component: {fileID: 3873126544597409103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: may_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,6 +159,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2214899386866813484}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &2214899386866813484
@@ -270,7 +272,7 @@ GameObject:
   - component: {fileID: 8871633233886751378}
   - component: {fileID: 6131028773852767352}
   - component: {fileID: 2620439183679397806}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tu sach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,6 +317,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6131028773852767352}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &6131028773852767352
@@ -426,7 +430,7 @@ GameObject:
   - component: {fileID: 6263494264276554322}
   - component: {fileID: 9187387959873864973}
   - component: {fileID: 294131751985774999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goi_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,6 +477,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 9187387959873864973}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &9187387959873864973
@@ -788,7 +794,7 @@ GameObject:
   - component: {fileID: 1987878096249703500}
   - component: {fileID: 5568715283849745525}
   - component: {fileID: 8393832113173237562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tham
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,6 +839,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5568715283849745525}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &5568715283849745525
@@ -944,7 +952,7 @@ GameObject:
   - component: {fileID: 8122239434287966176}
   - component: {fileID: 7253342228514952982}
   - component: {fileID: 8929580432457604845}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,6 +997,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7253342228514952982}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &7253342228514952982
@@ -1100,7 +1110,7 @@ GameObject:
   - component: {fileID: 1072573311439531066}
   - component: {fileID: 8805625689789773852}
   - component: {fileID: 4205509681796827275}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gau Bong 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,6 +1157,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8805625689789773852}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &8805625689789773852
@@ -1306,7 +1318,7 @@ GameObject:
   - component: {fileID: 3448112981745763634}
   - component: {fileID: 3975480690893379118}
   - component: {fileID: 7419826180847954529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: palaroi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1351,6 +1363,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3975480690893379118}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &3975480690893379118
@@ -1462,7 +1476,7 @@ GameObject:
   - component: {fileID: 6539225069192233922}
   - component: {fileID: 6160259101962912834}
   - component: {fileID: 7904662056391727205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tu nho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,6 +1521,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6160259101962912834}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &6160259101962912834
@@ -1618,7 +1634,7 @@ GameObject:
   - component: {fileID: 3923864052090747594}
   - component: {fileID: 4682443883217779994}
   - component: {fileID: 2875898192085802358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1663,6 +1679,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4682443883217779994}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &4682443883217779994
@@ -1774,7 +1792,7 @@ GameObject:
   - component: {fileID: 4786463901503986616}
   - component: {fileID: 2642391963745175255}
   - component: {fileID: 1249000419404489482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bang ghim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,6 +1837,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2642391963745175255}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &2642391963745175255
@@ -2032,7 +2052,7 @@ GameObject:
   - component: {fileID: 3367484462583248848}
   - component: {fileID: 8341798775717198760}
   - component: {fileID: 6704710472864351136}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ngua Go
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2077,6 +2097,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8341798775717198760}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &8341798775717198760
@@ -2698,7 +2720,7 @@ GameObject:
   - component: {fileID: 5293524583112485195}
   - component: {fileID: 1802237504167339035}
   - component: {fileID: 7408295030058454391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gau_bong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2743,6 +2765,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1802237504167339035}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &1802237504167339035
@@ -2854,7 +2878,7 @@ GameObject:
   - component: {fileID: 2223880423695685573}
   - component: {fileID: 5705598215129860674}
   - component: {fileID: 2536873725126545194}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rem cua so
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2900,6 +2924,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5705598215129860674}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &5705598215129860674
@@ -3403,7 +3429,7 @@ GameObject:
   - component: {fileID: 3502190172640601378}
   - component: {fileID: 8674519669022749459}
   - component: {fileID: 1152579398852910707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3449,6 +3475,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8674519669022749459}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &8674519669022749459
@@ -3915,7 +3943,7 @@ GameObject:
   - component: {fileID: 6229654967089879560}
   - component: {fileID: 5253419625155496437}
   - component: {fileID: 4757995979466096112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goi_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3962,6 +3990,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5253419625155496437}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &5253419625155496437
@@ -4317,7 +4347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoxReadyForInteraction: 1
   maxItemOutOfBox: 10
-  snapThreshold: 1
   allShadows:
   - {fileID: 398207050155056537}
   - {fileID: 2705754839575198572}
@@ -4377,7 +4406,7 @@ GameObject:
   - component: {fileID: 518183081563980590}
   - component: {fileID: 4781667701184421656}
   - component: {fileID: 1988355080058653255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: may_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4422,6 +4451,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4781667701184421656}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &4781667701184421656
@@ -4533,7 +4564,7 @@ GameObject:
   - component: {fileID: 7788847063068127305}
   - component: {fileID: 806266328523329093}
   - component: {fileID: 7629965052657395399}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cua so
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4578,6 +4609,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 806266328523329093}
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
+  sprPlaced: {fileID: 0}
+  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &806266328523329093
@@ -4688,6 +4721,10 @@ PrefabInstance:
     - target: {fileID: 5519882080700532869, guid: 8df77f1d0e66958479a214fd6940e415, type: 3}
       propertyPath: m_Name
       value: BoxGameBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519882080700532869, guid: 8df77f1d0e66958479a214fd6940e415, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7042752187018160859, guid: 8df77f1d0e66958479a214fd6940e415, type: 3}
       propertyPath: m_LocalPosition.x

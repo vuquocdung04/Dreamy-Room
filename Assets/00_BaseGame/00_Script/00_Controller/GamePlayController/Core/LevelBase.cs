@@ -322,6 +322,8 @@ public abstract class LevelBase : MonoBehaviour
         foreach (var item in allItems)
         {
             item.SetStateItem();
+            // ReSharper disable once Unity.UnknownLayer
+            item.gameObject.layer = LayerMask.NameToLayer(LayerMaskName.ITEM_UNPLACED);
         }
 
         if (allShadows.Count == 0)

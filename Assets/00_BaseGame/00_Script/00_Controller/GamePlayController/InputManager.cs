@@ -22,7 +22,11 @@ public class InputManager : MonoBehaviour
     [Header("Drawing Settings")]
     [SerializeField] private float drawApplyInterval = 0.05f;
     private float lastDrawApplyTime;
-
+    [Header("Physics Layers")]
+    [SerializeField] private LayerMask itemLayer;
+    [SerializeField] private LayerMask boxLayer;
+    [SerializeField] private LayerMask defaultLayer;
+    
     public void Init()
     {
         playerContains = GamePlayController.Instance.playerContains;
@@ -55,18 +59,23 @@ public class InputManager : MonoBehaviour
 
     private void HandleMouseDown()
     {
-        RaycastHit2D hit = Physics2D.Raycast(currentMousePosition, Vector2.zero);
-        if (hit.collider == null)
+        // Ưu tiên 1: Check Box và Item Layer
+        LayerMask highPriorityLayers = boxLayer | itemLayer;
+        RaycastHit2D highPriorityHit = Physics2D.Raycast(currentMousePosition, Vector2.zero, Mathf.Infinity, highPriorityLayers);
+    
+        if (highPriorityHit.collider != null)
         {
-            StartCameraDrag();
-            return;
+            if (TryHandleBox(highPriorityHit.collider)) return;
+            if (TryHandleDrawingItem(highPriorityHit.collider)) return;
+            if (TryHandleItem(highPriorityHit.collider)) return;
         }
         
-        if (TryHandleBox(hit.collider)) return;
-        if (TryHandleDrawingItem(hit.collider)) return;
-        if (TryHandleItem(hit.collider)) return;
-        if (TryHandlePreGameItem(hit.collider)) return;
-        
+        RaycastHit2D defaultHit = Physics2D.Raycast(currentMousePosition, Vector2.zero, Mathf.Infinity, defaultLayer);
+        if (defaultHit.collider != null)
+        {
+            if (TryHandleItem(defaultHit.collider)) return;
+            if (TryHandlePreGameItem(defaultHit.collider)) return;
+        }
         StartCameraDrag();
     }
 
