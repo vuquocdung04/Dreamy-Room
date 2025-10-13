@@ -53,6 +53,7 @@ public class WinBox : BoxSingleton<WinBox>
 
     private void OnClickNext()
     {
+        Close();
         GameController.Instance.NextLevel();
     }
 

@@ -28,25 +28,32 @@ public class ItemBase : MonoBehaviour
     [SerializeField] protected Sprite sprOriginal;
     [SerializeField] protected Sprite sprAnim;
     [SerializeField] protected Sprite sprPlaced;
-    [Tooltip("Item sẽ đổi sprite (sang sprPlaced) khi item này được đặt đúng.")]
-    [SerializeField] protected ItemBase targetItemToUpdate;
+    [SerializeField] protected Sprite sprUpdate;
+    [Tooltip("Item sẽ đổi sprite (sang sprPlaced) khi item này được đặt đúng.")] [SerializeField]
+    protected ItemBase targetItemToUpdate;
+
     [SerializeField] protected bool isInteractableAfterPlacement;
     [SerializeField] protected bool isPlaced;
     private Tween idleTween;
     private Tween restoreIdleTween;
+    private Vector3 originalScale;
     
     private Vector3 newPosition;
     private bool toggleChangAnim;
     public int GetIndexLayer() => indexLayer;
-    public void AddSnapSlot(ItemSlot slot){
+
+    public void AddSnapSlot(ItemSlot slot)
+    {
         slotsSnap.Clear();
         slotsSnap.Add(slot);
     }
-    public Sprite GetSprite() => spriteRenderer.sprite;
-    #endregion
 
+    public Sprite GetSprite() => spriteRenderer.sprite;
+
+    #endregion
     public void Init(Transform pos)
     {
+        originalScale = transform.localScale;
         transform.localPosition = pos.position;
         gameObject.SetActive(false);
     }
@@ -68,7 +75,7 @@ public class ItemBase : MonoBehaviour
         float angleZ = Random.Range(-40f, 40f);
         angle = angleZ;
         transform.localEulerAngles = new Vector3(0, 0, angle);
-        transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
+        transform.DOScale(originalScale, 0.3f).SetEase(Ease.OutBack);
         float randY = Random.Range(4f, 6f);
         float randX = Random.Range(-3.5f, 3.5f);
         transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(delegate
@@ -139,32 +146,34 @@ public class ItemBase : MonoBehaviour
         spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
         gameObject.layer = LayerMask.NameToLayer(LayerMaskName.DEFAULT);
         transform.DORotate(Vector3.zero, 0.2f);
-        transform.DOMove(targetSlot.transform.position, 0.5f).OnComplete(delegate
+        transform.DOMove(targetSlot.transform.localPosition, 0.5f).OnComplete(delegate
         {
-            targetSlot.Active();
-            if(isInteractableAfterPlacement)
+            if (targetItemToUpdate == null)
+                targetSlot.Active();
+            if (isInteractableAfterPlacement)
                 coll2D.enabled = true;
+            UpdateTargetItemSpriteAfterPlacement();
+            UpdateSpriteToPlaced();
         });
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
         this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
-        UpdateTargetItemSpriteAfterPlacement();
-        UpdateSpriteToPlaced();
         isPlaced = true;
     }
 
     private void UpdateSpriteToPlaced()
     {
-        if(sprPlaced == null) return;
+        if (sprPlaced == null) return;
         spriteRenderer.sprite = sprPlaced;
     }
-    
+
     private void UpdateTargetItemSpriteAfterPlacement()
     {
-        if(!targetItemToUpdate) return;
-        if(targetItemToUpdate.sprPlaced == null) return;
-        targetItemToUpdate.spriteRenderer.sprite = targetItemToUpdate.sprPlaced;
-        Debug.Log("UpdateToPlacedState Completed");
+        if (!targetItemToUpdate) return;
+        if (targetItemToUpdate.sprUpdate == null) return;
+        gameObject.SetActive(false);
+        targetItemToUpdate.spriteRenderer.sprite = targetItemToUpdate.sprUpdate;
     }
+
     private void OnFailSnap()
     {
         spriteRenderer.sortingOrder = indexLayer;
@@ -175,6 +184,7 @@ public class ItemBase : MonoBehaviour
     #endregion
 
     #region Drag & Drop
+
     public void OnStartDrag(float top, Vector3 mousePosition)
     {
         if (!isPlaced)
@@ -192,6 +202,7 @@ public class ItemBase : MonoBehaviour
                 {
                     newPos.y = top;
                 }
+
                 transform.position = newPos;
             }
         }
@@ -202,10 +213,11 @@ public class ItemBase : MonoBehaviour
             spriteRenderer.sprite = toggleChangAnim ? sprAnim : sprOriginal;
         }
     }
+
     public void OnDrag(Vector3 delta, float left, float right, float bottom, float top)
     {
         if (isPlaced) return;
-    
+
         newPosition = transform.position + delta;
         newPosition.x = Mathf.Clamp(newPosition.x, left, right);
         newPosition.y = Mathf.Clamp(newPosition.y, bottom, top);
@@ -229,10 +241,10 @@ public class ItemBase : MonoBehaviour
 
     private void StopRestoreIdleTween()
     {
-        if(restoreIdleTween == null) return;
+        if (restoreIdleTween == null) return;
         restoreIdleTween.Kill();
     }
-    
+
     private void PlayIdleTween()
     {
         if (this == null || !gameObject.activeInHierarchy) return;
@@ -256,8 +268,8 @@ public class ItemBase : MonoBehaviour
         coll2D = GetComponent<Collider2D>();
         indexLayer = spriteRenderer.sortingOrder;
         spriteRenderer.sortingLayerName = SortingLayerName.ITEM_UNPLACED;
-        
     }
+
     public void SetStateItem()
     {
         if (conditionSlots.Count > 0) isUnlocked = false;
