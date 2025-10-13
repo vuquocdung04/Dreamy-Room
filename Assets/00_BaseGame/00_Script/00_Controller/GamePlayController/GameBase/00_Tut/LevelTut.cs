@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -88,9 +89,10 @@ public class LevelTut : LevelBase
         }
     }
 
-    protected override void HandleAfterWinGame()
+    protected override async UniTask HandleAfterWinGame()
     {
         GamePlayController.Instance.WinGame();
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate
         {
             GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
@@ -115,7 +117,7 @@ public class LevelTut : LevelBase
     private async UniTask Phase2TutTween()
     {
         tutHand.gameObject.SetActive(false);
-        await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
+        await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
         tutHand.gameObject.SetActive(true);
         var newPos = itemGetPositionFirst.transform.position;
         newPos.y -= 1f;

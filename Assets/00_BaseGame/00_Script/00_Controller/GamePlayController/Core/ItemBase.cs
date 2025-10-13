@@ -154,12 +154,20 @@ public class ItemBase : MonoBehaviour
                 coll2D.enabled = true;
             UpdateTargetItemSpriteAfterPlacement();
             UpdateSpriteToPlaced();
+
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            if (this is IPostPlacementAction specialItem)
+            {
+                specialItem.HandlePostPlacementAction();
+            }
         });
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
         this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         isPlaced = true;
     }
 
+    
+    
     private void UpdateSpriteToPlaced()
     {
         if (sprPlaced == null) return;

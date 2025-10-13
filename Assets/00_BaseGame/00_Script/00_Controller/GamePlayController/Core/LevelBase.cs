@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using EventDispatcher;
 using Sirenix.OdinInspector;
@@ -215,13 +217,15 @@ public abstract class LevelBase : MonoBehaviour
         if (itemsPlacedCorrectly == totalItemsRequired)
         {
             Debug.Log("WinGame");
-            HandleAfterWinGame();
+            HandleAfterWinGame().Forget();
         }
     }
 
-    protected virtual void HandleAfterWinGame()
+    protected virtual async UniTask HandleAfterWinGame()
     {
         GamePlayController.Instance.WinGame();
+        transform.position = Vector3.zero;
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
         GamePlayController.Instance.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
             delegate { WinBox.Setup().Show(); });
     }
