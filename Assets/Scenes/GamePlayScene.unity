@@ -4073,6 +4073,7 @@ MonoBehaviour:
   topBar: {fileID: 300754391}
   bottomBar: {fileID: 1415384599}
   boosterBar: {fileID: 573407023}
+  starBar: {fileID: 1569469643}
   fillProgressBar: {fileID: 1325535031}
   txtTiming: {fileID: 656707099}
   imgFrozeTimer: {fileID: 1134661271}
@@ -4136,7 +4137,7 @@ MonoBehaviour:
   gameScene: {fileID: 1312233915}
   playerContains: {fileID: 1411649488}
   levelController: {fileID: 115915240}
-  effectController: {fileID: 1951944313}
+  effectBoosterController: {fileID: 1951944313}
 --- !u!1 &1325535029
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,7 +5941,7 @@ GameObject:
   - component: {fileID: 1951944312}
   - component: {fileID: 1951944313}
   m_Layer: 0
-  m_Name: EffectController
+  m_Name: EffectBoosterController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6177,7 +6178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2103680022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6255,7 +6256,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

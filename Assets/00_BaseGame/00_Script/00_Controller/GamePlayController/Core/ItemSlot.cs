@@ -15,6 +15,7 @@ public abstract class ItemSlot : MonoBehaviour
     public void Init()
     {
         isReadyShow = conditionSlots.Count == 0;
+        
     }
 
     public void ValidateReadyState()

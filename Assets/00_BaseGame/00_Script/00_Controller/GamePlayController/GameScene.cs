@@ -18,7 +18,8 @@ public class GameScene : MonoBehaviour
     [SerializeField] private RectTransform topBar;
     [SerializeField] private RectTransform bottomBar;
     [SerializeField] private RectTransform boosterBar;
-    
+    [SerializeField] private RectTransform starBar;
+    public RectTransform GetStarBar() => starBar;
     [SerializeField] private Image fillProgressBar;
     
     [SerializeField] private TextMeshProUGUI txtTiming;

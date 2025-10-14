@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EffectController : MonoBehaviour
+public class EffectBoosterController : MonoBehaviour
 {
     [Header("Booster Image")]
     [SerializeField] private Image imgBooster;

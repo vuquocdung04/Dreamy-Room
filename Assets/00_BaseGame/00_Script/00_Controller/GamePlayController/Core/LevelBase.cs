@@ -34,17 +34,25 @@ public abstract class LevelBase : MonoBehaviour
     private bool lastHasItemOutOfBox;
     private bool lastHasReadyShadows;
 
-    private EffectController effectController;
+    private EffectBoosterController effectBoosterController;
+    private GamePlayController gamePlayController;
 
     public virtual void Init()
     {
-        this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
-        this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
-        effectController = GamePlayController.Instance.effectController;
+        gamePlayController = GamePlayController.Instance;
+        if (gamePlayController == null)
+        {
+            Debug.Log("GamePlayController is null");
+            return;
+        }
+        effectBoosterController = gamePlayController.effectBoosterController;
         foreach (var item in allItems)
         {
             item.Init(box.GetSpawnPos());
         }
+        this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
+        this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
+        this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
 
 
@@ -52,6 +60,7 @@ public abstract class LevelBase : MonoBehaviour
     {
         this.RemoveListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
+        this.RemoveListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
 
 
@@ -118,12 +127,12 @@ public abstract class LevelBase : MonoBehaviour
 
     public void UseFrozeBooster()
     {
-        effectController.EffectBooster(delegate { GamePlayController.Instance.gameScene.ActivateFrozeBooster(); });
+        effectBoosterController.EffectBooster(delegate { gamePlayController.gameScene.ActivateFrozeBooster(); });
     }
 
     public void UseHintBooster()
     {
-        effectController.EffectBooster(delegate
+        effectBoosterController.EffectBooster(delegate
         {
             foreach (var item in itemsOutOfBox)
             foreach (var slot in item.GetTargetSlot())
@@ -137,7 +146,7 @@ public abstract class LevelBase : MonoBehaviour
 
     public void UseMagicWandBooster()
     {
-        effectController.EffectBooster(delegate
+        effectBoosterController.EffectBooster(delegate
         {
             ValidateInactiveShadows();
 
@@ -185,7 +194,6 @@ public abstract class LevelBase : MonoBehaviour
             {
                 itemsOutOfBox.Remove(placedItem);
                 itemsPlacedCorrectly++;
-
                 ValidateInactiveShadows();
                 HandleFillProgress();
                 CheckWin();
@@ -200,6 +208,17 @@ public abstract class LevelBase : MonoBehaviour
         }
     }
 
+    private void SpawnStarEffect(object obj = null)
+    {
+        if(!UseProfile.HasCompletedLevelTutorial) return;
+        if (itemsPlacedCorrectly % 3 == 0)
+        {
+            if (obj is not ItemBase item) return;
+            var targetPos = gamePlayController.gameScene.GetStarBar();
+            var spawnPos = item.transform.position;
+            GameController.Instance.effectController.StarEffect(spawnPos,targetPos.position);
+        }
+    }
     private void CheckAndReopenBox()
     {
         if (itemsOutOfBox.Count < maxItemOutOfBox)
@@ -210,7 +229,7 @@ public abstract class LevelBase : MonoBehaviour
 
     private void HandleFillProgress()
     {
-        GamePlayController.Instance.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
+        gamePlayController.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
     }
 
     private void CheckWin()
@@ -224,10 +243,10 @@ public abstract class LevelBase : MonoBehaviour
 
     protected virtual async UniTask HandleAfterWinGame()
     {
-        GamePlayController.Instance.WinGame();
+        gamePlayController.WinGame();
         transform.position = Vector3.zero;
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
-        GamePlayController.Instance.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
+        gamePlayController.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
             delegate { WinBox.Setup().Show(); });
     }
 

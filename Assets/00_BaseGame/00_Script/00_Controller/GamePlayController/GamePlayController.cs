@@ -5,7 +5,7 @@ public class GamePlayController : Singleton<GamePlayController>
     public GameScene gameScene;
     public PlayerContains playerContains;
     public LevelController levelController;
-    public EffectController effectController;
+    public EffectBoosterController effectBoosterController;
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -18,7 +18,7 @@ public class GamePlayController : Singleton<GamePlayController>
         gameScene.Init();
         levelController.Init();
         playerContains.Init();
-        effectController.Init();
+        effectBoosterController.Init();
         
         HandleUnlockBar();
         HandleUnlockCamera();

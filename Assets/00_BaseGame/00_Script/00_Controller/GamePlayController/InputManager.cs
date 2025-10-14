@@ -233,6 +233,6 @@ public class InputManager : MonoBehaviour
     }
     public void SetCanMoveCamera(bool state) => canMoveCamera = state;
     
-    // Public getter cho drawing item hiện tại
+    public ItemBase GetCurrentDraggingItem() => currentDraggingItem;
     public ItemRemoverBase GetCurrentDrawingItem() => currentDrawingItem;
 }

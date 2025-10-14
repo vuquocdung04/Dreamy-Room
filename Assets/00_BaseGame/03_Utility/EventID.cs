@@ -27,4 +27,7 @@
     REQUEST_TAKE_ITEM_FROM_BOX = 3001,
     ITEM_PLACED_CORRECTLY = 3002,
     
+    //Star Effect
+    SPAWN_STAR = 4000
+    
 }

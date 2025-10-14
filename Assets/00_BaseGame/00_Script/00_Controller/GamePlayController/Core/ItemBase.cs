@@ -159,6 +159,7 @@ public class ItemBase : MonoBehaviour
             {
                 specialItem.HandlePostPlacementAction();
             }
+            this.PostEvent(EventID.SPAWN_STAR, this);
         });
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
         this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
