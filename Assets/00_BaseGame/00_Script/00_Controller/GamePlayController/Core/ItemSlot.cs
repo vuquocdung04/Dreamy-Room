@@ -9,7 +9,7 @@ public abstract class ItemSlot : MonoBehaviour
     [SerializeField] private int indexOrder;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public List<ItemSlot> conditionSlots = new();
-    
+    [SerializeField] private bool isActive;
     public bool HasSpriteRenderer() => spriteRenderer;
     public int SetOrderItemPlaced() => indexOrder;
     public void Init()
@@ -25,13 +25,14 @@ public abstract class ItemSlot : MonoBehaviour
             isReadyShow = true;
         }
     }
-    
-    public void Active()
+    public bool IsActive() => isActive;
+    public void SetActive() => isActive = true;
+    public void ActiveObj()
     {
         gameObject.SetActive(true);
     }
 
-    public void DeActive()
+    public void DeActiveObj()
     {
         gameObject.SetActive(false);
     }

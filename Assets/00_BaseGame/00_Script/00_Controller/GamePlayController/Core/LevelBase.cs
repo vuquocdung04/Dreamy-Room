@@ -75,7 +75,7 @@ public abstract class LevelBase : MonoBehaviour
         return allShadows.Exists(shadow =>
             shadow.isReadyShow &&
             !shadow.isFullSlot &&
-            !shadow.gameObject.activeSelf);
+            !shadow.IsActive());
     }
 
     private void TakeItemOutOfBox(object obj = null)
@@ -151,7 +151,8 @@ public abstract class LevelBase : MonoBehaviour
 
             foreach (var shadow in shadowsToShow)
             {
-                shadow.Active();
+                shadow.ActiveObj();
+                shadow.SetActive();
                 shadow.transform.DOJump(shadow.transform.position, 2f, 1, 0.1f);
             }
 
@@ -330,7 +331,7 @@ public abstract class LevelBase : MonoBehaviour
         {
             shadow.Init();
             if (!shadow.isReadyShow) inactiveShadows.Add(shadow);
-            shadow.DeActive();
+            shadow.DeActiveObj();
         }
     }
 }

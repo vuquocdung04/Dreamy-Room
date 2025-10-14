@@ -12,7 +12,6 @@ public class ItemBase : MonoBehaviour
     [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
     [SerializeField]
     protected bool isUnlocked = true;
-
     [Tooltip("DANH SÁCH các slot mục tiêu mà vật này có thể snap vào")] [SerializeField]
     protected List<ItemSlot> slotsSnap;
 
@@ -149,7 +148,7 @@ public class ItemBase : MonoBehaviour
         transform.DOMove(targetSlot.transform.localPosition, 0.5f).OnComplete(delegate
         {
             if (targetItemToUpdate == null)
-                targetSlot.Active();
+                targetSlot.SetActive();
             if (isInteractableAfterPlacement)
                 coll2D.enabled = true;
             UpdateTargetItemSpriteAfterPlacement();

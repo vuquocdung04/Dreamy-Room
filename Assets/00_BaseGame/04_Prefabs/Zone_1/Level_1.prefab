@@ -50,6 +50,7 @@ MonoBehaviour:
   indexOrder: 2
   spriteRenderer: {fileID: 3800255712198836066}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &3800255712198836066
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -631,6 +632,7 @@ MonoBehaviour:
   indexOrder: 1
   spriteRenderer: {fileID: 145297514444730719}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &145297514444730719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -733,6 +735,7 @@ MonoBehaviour:
   indexOrder: 7
   spriteRenderer: {fileID: 6559378006765105646}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &6559378006765105646
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1999,6 +2002,7 @@ MonoBehaviour:
   indexOrder: 8
   spriteRenderer: {fileID: 6123367588078509125}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &6123367588078509125
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2060,7 +2064,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5222532478072274954}
-  - component: {fileID: 3367484462583248848}
+  - component: {fileID: 7525247162513387934}
   - component: {fileID: 8341798775717198760}
   - component: {fileID: 6704710472864351136}
   m_Layer: 6
@@ -2085,7 +2089,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7070592618809712786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3367484462583248848
+--- !u!114 &7525247162513387934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2094,7 +2098,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4510905221358834434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
+  m_Script: {fileID: 11500000, guid: df5bb200f39a47c19899539cfe1b8031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
@@ -2260,6 +2264,7 @@ MonoBehaviour:
   indexOrder: 6
   spriteRenderer: {fileID: 5776791200620442125}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &5776791200620442125
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2362,6 +2367,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 8295931475993974345}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &8295931475993974345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2464,6 +2470,7 @@ MonoBehaviour:
   indexOrder: 3
   spriteRenderer: {fileID: 7469846426620270114}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &7469846426620270114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2566,6 +2573,7 @@ MonoBehaviour:
   indexOrder: 5
   spriteRenderer: {fileID: 7288555607710558399}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &7288555607710558399
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2668,6 +2676,7 @@ MonoBehaviour:
   indexOrder: 6
   spriteRenderer: {fileID: 1584252946823378434}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &1584252946823378434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3089,6 +3098,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 1824873860579474616}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &1824873860579474616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3352,6 +3362,7 @@ MonoBehaviour:
   conditionSlots:
   - {fileID: 3317449355943046652}
   - {fileID: 3896261576347635359}
+  isActive: 0
 --- !u!212 &7756912824801951370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3454,6 +3465,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 5328655454966541825}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &5328655454966541825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3849,6 +3861,7 @@ MonoBehaviour:
   indexOrder: 6
   spriteRenderer: {fileID: 7654430976456135768}
   conditionSlots: []
+  isActive: 0
 --- !u!212 &7654430976456135768
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3951,6 +3964,7 @@ MonoBehaviour:
   indexOrder: 6
   spriteRenderer: {fileID: 6623402177555074679}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &6623402177555074679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4054,6 +4068,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5716679207750209413}
   conditionSlots:
   - {fileID: 3896261576347635359}
+  isActive: 0
 --- !u!212 &5716679207750209413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4318,6 +4333,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 927865625699718215}
   conditionSlots:
   - {fileID: 3184537647969855427}
+  isActive: 0
 --- !u!212 &927865625699718215
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4421,6 +4437,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 9041322796877025799}
   conditionSlots:
   - {fileID: 3896261576347635359}
+  isActive: 0
 --- !u!212 &9041322796877025799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4548,7 +4565,7 @@ MonoBehaviour:
   - {fileID: 6539225069192233922}
   - {fileID: 5293524583112485195}
   - {fileID: 3923864052090747594}
-  - {fileID: 3367484462583248848}
+  - {fileID: 7525247162513387934}
   - {fileID: 4786463901503986616}
   - {fileID: 6229654967089879560}
   - {fileID: 6263494264276554322}
@@ -4623,6 +4640,7 @@ MonoBehaviour:
   indexOrder: 7
   spriteRenderer: {fileID: 2273401263766540566}
   conditionSlots: []
+  isActive: 1
 --- !u!212 &2273401263766540566
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4661,11 +4679,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 963605235
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 89c0c26626791094387f22ced1eb3d35, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5568628}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
