@@ -5591,7 +5591,7 @@ SpriteRenderer:
   m_Size: {x: 2.05, y: 3.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4359791885381984747
@@ -6848,12 +6848,12 @@ SpriteRenderer:
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 8908bcc467faa7f42ab8331a3b7606b9, type: 3}
+  m_Sprite: {fileID: 1444542692, guid: 8908bcc467faa7f42ab8331a3b7606b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.75, y: 2.81}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6883,7 +6883,7 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 21300000, guid: eb9d232ec8b40c0439bf354e9446f7ad, type: 3}
+  sprUpdate: {fileID: -1207765555, guid: eb9d232ec8b40c0439bf354e9446f7ad, type: 3}
   targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
@@ -6923,8 +6923,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.05, y: 3.02}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.75, y: 2.81}
+    newSize: {x: 1.75, y: 2.81}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -8897,8 +8897,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 963605235
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: f468f146e76454b40b8e8cfe5f077a13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
