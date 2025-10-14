@@ -266,6 +266,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 9123147602619682776}
   conditionSlots:
   - {fileID: 1446050753096805513}
+  isActive: 0
 --- !u!1 &645781237243272923
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +691,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5523633793508837180}
   conditionSlots:
   - {fileID: 3871837545523778326}
+  isActive: 0
 --- !u!1 &1456470425853418433
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +794,7 @@ MonoBehaviour:
   indexOrder: 3
   spriteRenderer: {fileID: 2993857085775053579}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &1501602020110969932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1462,7 @@ MonoBehaviour:
   indexOrder: 9
   spriteRenderer: {fileID: 6261385797485379094}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &2033347972401907709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1565,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 8175779787983744154}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &2165547888350169117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1668,7 @@ MonoBehaviour:
   indexOrder: 11
   spriteRenderer: {fileID: 5511643446899725937}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &2214171293501156355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1772,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8805662085061633202}
   conditionSlots:
   - {fileID: 3871837545523778326}
+  isActive: 0
 --- !u!1 &2296452565039508531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2194,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1355569684891354704}
   conditionSlots:
   - {fileID: 1446050753096805513}
+  isActive: 0
 --- !u!1 &2530007049929852583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,6 +2457,7 @@ MonoBehaviour:
   indexOrder: 6
   spriteRenderer: {fileID: 506717034742009663}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &2581739475467140730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,6 +2560,7 @@ MonoBehaviour:
   indexOrder: 8
   spriteRenderer: {fileID: 4630650515278063552}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &2621337291520617318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,6 +2664,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1528294213127260070}
   conditionSlots:
   - {fileID: 4531189159305827328}
+  isActive: 0
 --- !u!1 &2721196700819812590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,7 +3058,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 16
+  m_SortingOrder: 18
   m_Sprite: {fileID: 21300000, guid: 8d0b0d583eaa34144a1701cb957b66a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3076,7 +3087,7 @@ MonoBehaviour:
   - {fileID: 279431900959569108}
   conditionSlots: []
   itemSize: 0
-  indexLayer: 16
+  indexLayer: 18
   angle: 0
   coll2D: {fileID: 8848888801306138584}
   spriteRenderer: {fileID: 8369556518649117942}
@@ -3637,6 +3648,7 @@ MonoBehaviour:
   indexOrder: 7
   spriteRenderer: {fileID: 5650494627981167518}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &4197666453174801052
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,6 +4055,7 @@ MonoBehaviour:
   indexOrder: 15
   spriteRenderer: {fileID: 5982272508941064175}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &4561281470043011904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,6 +4159,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6874250945118578759}
   conditionSlots:
   - {fileID: 3991623966822390376}
+  isActive: 0
 --- !u!1 &4578111790459958969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,6 +4742,7 @@ MonoBehaviour:
   indexOrder: 12
   spriteRenderer: {fileID: 2376109507790473874}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &4811168057767064869
 GameObject:
   m_ObjectHideFlags: 0
@@ -4831,6 +4846,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3461402181660263816}
   conditionSlots:
   - {fileID: 4359791885381984747}
+  isActive: 0
 --- !u!1 &4817982417555208502
 GameObject:
   m_ObjectHideFlags: 0
@@ -4934,6 +4950,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4696412443143941670}
   conditionSlots:
   - {fileID: 8771745264238254691}
+  isActive: 0
 --- !u!1 &4841607591114311639
 GameObject:
   m_ObjectHideFlags: 0
@@ -5036,6 +5053,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 1166109411912351033}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &4941297388717779192
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,6 +5156,7 @@ MonoBehaviour:
   indexOrder: 8
   spriteRenderer: {fileID: 4544351915780401551}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &5070890591048667183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,6 +5349,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8590727448067319869}
   conditionSlots:
   - {fileID: 3871837545523778326}
+  isActive: 0
 --- !u!1 &5285354287346963135
 GameObject:
   m_ObjectHideFlags: 0
@@ -5591,6 +5611,7 @@ MonoBehaviour:
   indexOrder: 10
   spriteRenderer: {fileID: 5832806651312965951}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &5398848644338842794
 GameObject:
   m_ObjectHideFlags: 0
@@ -5855,6 +5876,7 @@ MonoBehaviour:
   indexOrder: 10
   spriteRenderer: {fileID: 1989590352388291626}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &5684128117991259081
 GameObject:
   m_ObjectHideFlags: 0
@@ -6444,6 +6466,7 @@ MonoBehaviour:
   indexOrder: 3
   spriteRenderer: {fileID: 1952561012569146822}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &6362795280156780526
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,6 +7165,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5470476265470814931}
   conditionSlots:
   - {fileID: 1446050753096805513}
+  isActive: 0
 --- !u!1 &7182745648901401573
 GameObject:
   m_ObjectHideFlags: 0
@@ -7244,6 +7268,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 2607391602327673018}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &7214811321024181987
 GameObject:
   m_ObjectHideFlags: 0
@@ -7506,6 +7531,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6313388452636866806}
   conditionSlots:
   - {fileID: 8771745264238254691}
+  isActive: 0
 --- !u!1 &7790679459001116350
 GameObject:
   m_ObjectHideFlags: 0
@@ -7608,6 +7634,7 @@ MonoBehaviour:
   indexOrder: 4
   spriteRenderer: {fileID: 8279883467250061968}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &7885498739781217214
 GameObject:
   m_ObjectHideFlags: 0
@@ -8274,6 +8301,7 @@ MonoBehaviour:
   indexOrder: 13
   spriteRenderer: {fileID: 4277301819113941774}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &8516504551950468484
 GameObject:
   m_ObjectHideFlags: 0
@@ -8376,6 +8404,7 @@ MonoBehaviour:
   indexOrder: 2
   spriteRenderer: {fileID: 6665405581834323070}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &8754107226695443676
 GameObject:
   m_ObjectHideFlags: 0
@@ -8478,6 +8507,7 @@ MonoBehaviour:
   indexOrder: -2
   spriteRenderer: {fileID: 5758199949888228157}
   conditionSlots: []
+  isActive: 0
 --- !u!1 &9099133259496517824
 GameObject:
   m_ObjectHideFlags: 0

@@ -188,7 +188,7 @@ public class InputManager : MonoBehaviour
         }
         else if (currentDraggingItem != null)
         {
-            currentDraggingItem.OnEndDrag(1f);
+            currentDraggingItem.OnEndDrag(1.25f);
             currentDraggingItem = null;
         }
 

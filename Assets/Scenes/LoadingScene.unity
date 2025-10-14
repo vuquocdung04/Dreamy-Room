@@ -410,9 +410,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cebcfca6b145eab1f7e8e968c34dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starPrefab: {fileID: 4996462301622789318, guid: ab21d0cf9e9597043a53806025b4872a, type: 3}
   scaleDuration: 0.2
   moveDuration: 0.6
+  starPrefab: {fileID: 4996462301622789318, guid: ab21d0cf9e9597043a53806025b4872a, type: 3}
+  congratulationPrefab: {fileID: 8990315898723799716, guid: eba70f2260e70584490204a3461188eb, type: 3}
+  lsCongratulations:
+  - {fileID: 21300000, guid: 3fb86df743f557e4d878ebdfd258a246, type: 3}
+  - {fileID: 21300000, guid: d2a06b4ff98b6bb46a73a6ecddbffd53, type: 3}
+  - {fileID: 21300000, guid: bf201922c64660947b5b3dcf35edeead, type: 3}
+  - {fileID: 21300000, guid: 54741542ed304bc49b224349a64ec799, type: 3}
+  - {fileID: 21300000, guid: 732136370692b474b904d9756415ee34, type: 3}
+  - {fileID: 21300000, guid: 0688407a4b53ab04288889f04f23fad1, type: 3}
+  - {fileID: 21300000, guid: 350a7c9af1ebfdf4f91145c4b618f9af, type: 3}
+  - {fileID: 21300000, guid: 104c05fb4cef71a4db233ddffdeee849, type: 3}
+  - {fileID: 21300000, guid: d227a8445220cd14c97a1bdbd59c8ec4, type: 3}
+  - {fileID: 21300000, guid: a5eb0aecba75df84db05ab2838f3ed5b, type: 3}
 --- !u!1 &341728762
 GameObject:
   m_ObjectHideFlags: 0

@@ -112,15 +112,14 @@ public class ItemBase : MonoBehaviour
 
         ItemSlot bestSlot = null;
         float minDistance = float.MaxValue;
-
-        // Luôn lặp qua danh sách slot để tìm ra vị trí phù hợp nhất
+        
         foreach (var slot in slotsSnap)
         {
             if (slot == null || slot.isFullSlot)
                 continue;
 
             float distance = Vector2.Distance(transform.position, slot.transform.position);
-            if (distance < minDistance)
+            if (distance <= minDistance)
             {
                 minDistance = distance;
                 bestSlot = slot;
@@ -145,7 +144,7 @@ public class ItemBase : MonoBehaviour
         spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
         gameObject.layer = LayerMask.NameToLayer(LayerMaskName.DEFAULT);
         transform.DORotate(Vector3.zero, 0.2f);
-        transform.DOMove(targetSlot.transform.localPosition, 0.5f).OnComplete(delegate
+        transform.DOMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
         {
             if (targetItemToUpdate == null)
                 targetSlot.SetActive();

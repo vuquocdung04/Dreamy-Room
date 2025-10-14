@@ -94,10 +94,11 @@ public abstract class LevelBase : MonoBehaviour
             Debug.Log("items out of box full");
             return;
         }
-
+        
         if (allItems == null || allItems.Count == 0) return;
         ItemBase item = allItems[0];
         item.gameObject.SetActive(true);
+        item.ValidateUnlockState();
         allItems.RemoveAt(0);
         AddItemToOutOfBox(item);
         if (box.HasBoxOpened())
@@ -185,7 +186,7 @@ public abstract class LevelBase : MonoBehaviour
         if (!itemsOutOfBox.Contains(item))
             itemsOutOfBox.Add(item);
     }
-
+    
     private void OnItemPlacedCorrectly(object obj = null)
     {
         if (obj is ItemBase placedItem)
@@ -202,7 +203,6 @@ public abstract class LevelBase : MonoBehaviour
 
                 CheckAndPostBoosterConditionChanged();
             }
-
             foreach (var item in itemsOutOfBox)
                 item.ValidateUnlockState();
         }
@@ -212,13 +212,16 @@ public abstract class LevelBase : MonoBehaviour
     {
         if(!UseProfile.HasCompletedLevelTutorial) return;
         if(gamePlayController.IsWin) return;
+        if (obj is not ItemBase item) return;
+        var targetPos = gamePlayController.gameScene.GetStarBar();
+        var spawnPos = item.transform.position;
+        
         if (itemsPlacedCorrectly % 3 == 0)
         {
-            if (obj is not ItemBase item) return;
-            var targetPos = gamePlayController.gameScene.GetStarBar();
-            var spawnPos = item.transform.position;
-            GameController.Instance.effectController.StarEffect(spawnPos,targetPos.position);
-            gamePlayController.gameScene.IncreaseStarAmount();
+            GameController.Instance.effectController.StarEffect(spawnPos,targetPos.position, delegate
+            {
+                gamePlayController.gameScene.IncreaseStarAmount();
+            });
         }
     }
     private void CheckAndReopenBox()
