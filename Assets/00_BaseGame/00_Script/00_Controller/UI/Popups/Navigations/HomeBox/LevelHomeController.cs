@@ -25,8 +25,10 @@ public class LevelHomeController : MonoBehaviour
     [SerializeField] private int batchSize = 50; // Số item xử lý mỗi frame
     private CancellationTokenSource cts;
 
+    private bool isBusy; // Anti spam
     public async void Init()
     {
+        isBusy = false;
         try
         {
             cts?.Cancel();
@@ -65,8 +67,12 @@ public class LevelHomeController : MonoBehaviour
     }
     private void HandleSelection(LevelHomeItem item, Action callback = null)
     {
+        if(isBusy) return;
         if (item.GetId() <= UseProfile.MaxUnlockedLevel)
+        {
+            isBusy = true;
             callback?.Invoke();
+        }
         else
             LevelBox.Setup().Show();
     }

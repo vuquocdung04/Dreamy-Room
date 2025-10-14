@@ -19,9 +19,9 @@ public class GameScene : MonoBehaviour
     [SerializeField] private RectTransform bottomBar;
     [SerializeField] private RectTransform boosterBar;
     [SerializeField] private RectTransform starBar;
-    public RectTransform GetStarBar() => starBar;
-    [SerializeField] private Image fillProgressBar;
+    [SerializeField] private TextMeshProUGUI txtStar;
     
+    [SerializeField] private Image fillProgressBar;
     [SerializeField] private TextMeshProUGUI txtTiming;
     [SerializeField] private Image imgFrozeTimer;
     [SerializeField] private Image imgFrozeBg;
@@ -43,11 +43,13 @@ public class GameScene : MonoBehaviour
     private bool isPaused; // Pause từ popup
 
     private bool hasUsedTimeOffer;
-
+    private int starAmount;
     public void Init()
     {
+        txtStar.text = starAmount.ToString();
+        
         cameraController = GamePlayController.Instance.playerContains.cameraController;
-
+        
         btnPause.onClick.AddListener(delegate
         {
             GamePlayController.Instance.PauseGame();
@@ -63,7 +65,13 @@ public class GameScene : MonoBehaviour
 
         StartTimer(300);
     }
+    public RectTransform GetStarBar() => starBar;
 
+    public void IncreaseStarAmount()
+    {
+        starAmount++;
+        txtStar.text = starAmount.ToString();
+    } 
     public void HideTopBar()
     {
         topBar.gameObject.SetActive(false);

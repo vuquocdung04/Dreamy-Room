@@ -211,12 +211,14 @@ public abstract class LevelBase : MonoBehaviour
     private void SpawnStarEffect(object obj = null)
     {
         if(!UseProfile.HasCompletedLevelTutorial) return;
+        if(gamePlayController.IsWin) return;
         if (itemsPlacedCorrectly % 3 == 0)
         {
             if (obj is not ItemBase item) return;
             var targetPos = gamePlayController.gameScene.GetStarBar();
             var spawnPos = item.transform.position;
             GameController.Instance.effectController.StarEffect(spawnPos,targetPos.position);
+            gamePlayController.gameScene.IncreaseStarAmount();
         }
     }
     private void CheckAndReopenBox()

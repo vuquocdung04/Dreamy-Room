@@ -6,7 +6,7 @@ public class EffectController : MonoBehaviour
     public Transform starPrefab; //Prefab
     public float scaleDuration = 0.4f;
     public float moveDuration = 0.5f;
-    public void StarEffect(Vector3 spawnPos, Vector3 worldTargetPos)
+    public void StarEffect(Vector3 spawnPos, Vector3 worldTargetPos, System.Action callback = null)
     {
         var starClone = SimplePool2.Spawn(starPrefab, spawnPos, Quaternion.identity);
         starClone.localScale = Vector3.zero;
@@ -28,6 +28,7 @@ public class EffectController : MonoBehaviour
         starSequence.OnComplete(() =>
         {
             SimplePool2.Despawn(starClone.gameObject);
+            callback?.Invoke();
         });
     }
 }

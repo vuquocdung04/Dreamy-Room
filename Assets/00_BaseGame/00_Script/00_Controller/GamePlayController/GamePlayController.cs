@@ -6,6 +6,7 @@ public class GamePlayController : Singleton<GamePlayController>
     public PlayerContains playerContains;
     public LevelController levelController;
     public EffectBoosterController effectBoosterController;
+    public bool IsWin {get; private set; }
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -52,6 +53,7 @@ public class GamePlayController : Singleton<GamePlayController>
     }
     public void WinGame()
     {
+        IsWin = true;
         playerContains.inputManager.SetWin(true);
         gameScene.HideBottomBar();
         gameScene.HideTopBar();
