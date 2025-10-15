@@ -51,6 +51,12 @@ public class ItemBase : MonoBehaviour
         slotsSnap.Add(slot);
     }
 
+    public void AddConditionSlot(ItemSlot slot)
+    {
+        conditionSlots.Clear();
+        conditionSlots.Add(slot);
+    }
+
     public Sprite GetSprite() => spriteRenderer.sprite;
 
     #endregion

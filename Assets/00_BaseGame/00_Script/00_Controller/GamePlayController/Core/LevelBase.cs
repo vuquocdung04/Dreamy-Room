@@ -342,6 +342,7 @@ public abstract class LevelBase : MonoBehaviour
             }
 
             item.AddSnapSlot(shadowSlot);
+            item.AddConditionSlot(shadowSlot);
             int targetOrder = item.GetIndexLayer() - 1;
             shadowSlot.SetupOdin(targetOrder, newSpr, item.GetSprite());
             shadowSlot.transform.SetParent(slots);
@@ -372,7 +373,7 @@ public abstract class LevelBase : MonoBehaviour
             Debug.Log("allItems count = 0");
             return;
         }
-
+        inactiveShadows.Clear();
         foreach (var item in allItems)
         {
             item.SetStateItem();
