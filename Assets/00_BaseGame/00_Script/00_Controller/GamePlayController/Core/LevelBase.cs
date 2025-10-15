@@ -340,9 +340,7 @@ public abstract class LevelBase : MonoBehaviour
                     continue;
                 }
             }
-
-            item.AddSnapSlot(shadowSlot);
-            item.AddConditionSlot(shadowSlot);
+            
             int targetOrder = item.GetIndexLayer() - 1;
             shadowSlot.SetupOdin(targetOrder, newSpr, item.GetSprite());
             shadowSlot.transform.SetParent(slots);
@@ -365,26 +363,22 @@ public abstract class LevelBase : MonoBehaviour
     }
 
 
-    [Button("Check State Ready Item && Slot", ButtonSizes.Large)]
+    [Button("Add Conditions, Snap, Check Conditions Item && Slot", ButtonSizes.Large)]
     private void CheckStateReadyItemAndSlot()
     {
-        if (allItems.Count == 0)
+        if (allItems.Count == 0 || allShadows.Count == 0)
         {
-            Debug.Log("allItems count = 0");
+            Debug.LogWarning("Cannot setup: Items or Shadows list is empty!");
             return;
         }
+        
         inactiveShadows.Clear();
-        foreach (var item in allItems)
+        for (int i = 0; i < allItems.Count; i++)
         {
-            item.SetStateItem();
-            // ReSharper disable once Unity.UnknownLayer
-            item.gameObject.layer = LayerMask.NameToLayer(LayerMaskName.ITEM_UNPLACED);
-        }
-
-        if (allShadows.Count == 0)
-        {
-            Debug.Log("shadows count = 0");
-            return;
+            allItems[i].AddSnapSlot(allShadows[i]);
+            allItems[i].AddConditionSlot(allShadows[i].conditionSlots);
+            allItems[i].gameObject.layer = LayerMask.NameToLayer(LayerMaskName.ITEM_UNPLACED);
+            allItems[i].SetStateItem();
         }
 
         foreach (var shadow in allShadows)

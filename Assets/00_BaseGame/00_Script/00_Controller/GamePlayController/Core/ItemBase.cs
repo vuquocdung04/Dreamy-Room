@@ -51,10 +51,10 @@ public class ItemBase : MonoBehaviour
         slotsSnap.Add(slot);
     }
 
-    public void AddConditionSlot(ItemSlot slot)
+    public void AddConditionSlot(List<ItemSlot> slots)
     {
         conditionSlots.Clear();
-        conditionSlots.Add(slot);
+        conditionSlots.AddRange(slots);
     }
 
     public Sprite GetSprite() => spriteRenderer.sprite;
