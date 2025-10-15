@@ -12,10 +12,12 @@ public class ItemBase : MonoBehaviour
     [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
     [SerializeField]
     protected bool isUnlocked = true;
+
     [Tooltip("DANH SÁCH các slot mục tiêu mà vật này có thể snap vào")] [SerializeField]
     protected List<ItemSlot> slotsSnap;
 
     [Space(5)] [SerializeField] protected List<ItemSlot> conditionSlots;
+    [SerializeField] protected Transform shadowItem;
 
     [Space(5)] [Header("Visuals & Physics")] [SerializeField]
     protected ItemSize itemSize;
@@ -28,6 +30,7 @@ public class ItemBase : MonoBehaviour
     [SerializeField] protected Sprite sprAnim;
     [SerializeField] protected Sprite sprPlaced;
     [SerializeField] protected Sprite sprUpdate;
+
     [Tooltip("Item sẽ đổi sprite (sang sprPlaced) khi item này được đặt đúng.")] [SerializeField]
     protected ItemBase targetItemToUpdate;
 
@@ -36,7 +39,7 @@ public class ItemBase : MonoBehaviour
     private Tween idleTween;
     private Tween restoreIdleTween;
     private Vector3 originalScale;
-    
+
     private Vector3 newPosition;
     private bool toggleChangAnim;
     public int GetIndexLayer() => indexLayer;
@@ -50,11 +53,13 @@ public class ItemBase : MonoBehaviour
     public Sprite GetSprite() => spriteRenderer.sprite;
 
     #endregion
+
     public void Init(Transform pos)
     {
         originalScale = transform.localScale;
         transform.localPosition = pos.position;
         gameObject.SetActive(false);
+        shadowItem.gameObject.SetActive(false);
     }
 
 
@@ -112,7 +117,7 @@ public class ItemBase : MonoBehaviour
 
         ItemSlot bestSlot = null;
         float minDistance = float.MaxValue;
-        
+
         foreach (var slot in slotsSnap)
         {
             if (slot == null || slot.isFullSlot)
@@ -146,7 +151,9 @@ public class ItemBase : MonoBehaviour
         transform.DORotate(Vector3.zero, 0.2f);
         transform.DOMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
         {
-            if (targetItemToUpdate == null)
+            if (shadowItem)
+                shadowItem.gameObject.SetActive(true);
+            if (!targetItemToUpdate)
                 targetSlot.SetActive();
             if (isInteractableAfterPlacement)
                 coll2D.enabled = true;
@@ -158,6 +165,7 @@ public class ItemBase : MonoBehaviour
             {
                 specialItem.HandlePostPlacementAction();
             }
+
             this.PostEvent(EventID.SPAWN_STAR, this);
         });
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
@@ -165,8 +173,7 @@ public class ItemBase : MonoBehaviour
         isPlaced = true;
     }
 
-    
-    
+
     private void UpdateSpriteToPlaced()
     {
         if (sprPlaced == null) return;
