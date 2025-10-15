@@ -12,7 +12,7 @@ public class ItemBase : MonoBehaviour
     [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
     [SerializeField]
     protected bool isUnlocked = true;
-
+    [SerializeField] protected bool isPlacedByPlayer = true;
     [Tooltip("DANH SÁCH các slot mục tiêu mà vật này có thể snap vào")] [SerializeField]
     protected List<ItemSlot> slotsSnap;
 
@@ -43,7 +43,8 @@ public class ItemBase : MonoBehaviour
     private Vector3 newPosition;
     private bool toggleChangAnim;
     public int GetIndexLayer() => indexLayer;
-
+    public bool GetPlacedByPlayer() => isPlacedByPlayer;
+    public void SetPlacedByPlayer(bool state) => isPlacedByPlayer = state;
     public void AddSnapSlot(ItemSlot slot)
     {
         slotsSnap.Clear();
@@ -59,7 +60,8 @@ public class ItemBase : MonoBehaviour
         originalScale = transform.localScale;
         transform.localPosition = pos.position;
         gameObject.SetActive(false);
-        shadowItem.gameObject.SetActive(false);
+        if (shadowItem)
+            shadowItem.gameObject.SetActive(false);
     }
 
 
@@ -151,6 +153,7 @@ public class ItemBase : MonoBehaviour
         transform.DORotate(Vector3.zero, 0.2f);
         transform.DOMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
         {
+            GameController.Instance.effectController.FxEffect(this.transform.position);
             if (shadowItem)
                 shadowItem.gameObject.SetActive(true);
             if (!targetItemToUpdate)

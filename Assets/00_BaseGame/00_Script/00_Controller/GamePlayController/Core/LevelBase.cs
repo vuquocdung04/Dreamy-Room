@@ -7,6 +7,7 @@ using EventDispatcher;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+
 public abstract class LevelBase : MonoBehaviour
 {
     [SerializeField] protected bool isBoxReadyForInteraction;
@@ -32,7 +33,7 @@ public abstract class LevelBase : MonoBehaviour
 
     [Header("Combo")] [SerializeField] protected float comboThreshold = 2f;
     private float lastPlacementTime;
-    
+
     // Cache trạng thái
     private bool lastHasItemOutOfBox;
     private bool lastHasReadyShadows;
@@ -51,11 +52,13 @@ public abstract class LevelBase : MonoBehaviour
             Debug.Log("GamePlayController is null");
             return;
         }
+
         effectBoosterController = gamePlayController.effectBoosterController;
         foreach (var item in allItems)
         {
             item.Init(box.GetSpawnPos());
         }
+
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
@@ -100,7 +103,7 @@ public abstract class LevelBase : MonoBehaviour
             Debug.Log("items out of box full");
             return;
         }
-        
+
         if (allItems == null || allItems.Count == 0) return;
         ItemBase item = allItems[0];
         item.gameObject.SetActive(true);
@@ -145,6 +148,7 @@ public abstract class LevelBase : MonoBehaviour
             foreach (var slot in item.GetTargetSlot())
                 if (slot != null && !slot.isFullSlot && slot.isReadyShow)
                 {
+                    item.SetPlacedByPlayer(false);
                     item.OnDoneSnap(slot);
                     return;
                 }
@@ -192,12 +196,13 @@ public abstract class LevelBase : MonoBehaviour
         if (!itemsOutOfBox.Contains(item))
             itemsOutOfBox.Add(item);
     }
-    
+
     private void OnItemPlacedCorrectly(object obj = null)
     {
         if (obj is ItemBase placedItem)
         {
-            SpawnCongratulationsEffect(placedItem);   
+            if (placedItem.GetPlacedByPlayer())
+                SpawnCongratulationsEffect(placedItem);
             if (itemsOutOfBox.Contains(placedItem))
             {
                 itemsOutOfBox.Remove(placedItem);
@@ -210,6 +215,7 @@ public abstract class LevelBase : MonoBehaviour
 
                 CheckAndPostBoosterConditionChanged();
             }
+
             foreach (var item in itemsOutOfBox)
                 item.ValidateUnlockState();
         }
@@ -223,22 +229,22 @@ public abstract class LevelBase : MonoBehaviour
             gameController.effectController.CongratulationEffect(placedItem.transform.position);
         lastPlacementTime = currentTime;
     }
+
     private void SpawnStarEffect(object obj = null)
     {
-        if(!UseProfile.HasCompletedLevelTutorial) return;
-        if(gamePlayController.IsWin) return;
+        if (!UseProfile.HasCompletedLevelTutorial) return;
+        if (gamePlayController.IsWin) return;
         if (obj is not ItemBase item) return;
         var targetPos = gamePlayController.gameScene.GetStarBar();
         var spawnPos = item.transform.position;
-        
+
         if (itemsPlacedCorrectly % 3 == 0)
         {
-            gameController.effectController.StarEffect(spawnPos,targetPos.position, delegate
-            {
-                gamePlayController.gameScene.IncreaseStarAmount();
-            });
+            gameController.effectController.StarEffect(spawnPos, targetPos.position,
+                delegate { gamePlayController.gameScene.IncreaseStarAmount(); });
         }
     }
+
     private void CheckAndReopenBox()
     {
         if (itemsOutOfBox.Count < maxItemOutOfBox)
@@ -260,11 +266,11 @@ public abstract class LevelBase : MonoBehaviour
             ExecuteWinSequence().Forget();
         }
     }
-    
+
     private async UniTask ExecuteWinSequence()
     {
         await PreWinGameLogic();
-        
+
         await HandleAfterWinGame();
     }
 
