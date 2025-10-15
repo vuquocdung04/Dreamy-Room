@@ -39,10 +39,12 @@ public abstract class LevelBase : MonoBehaviour
 
     private EffectBoosterController effectBoosterController;
     private GamePlayController gamePlayController;
+    private GameController gameController;
 
     public virtual void Init()
     {
         lastPlacementTime = -comboThreshold;
+        gameController = GameController.Instance;
         gamePlayController = GamePlayController.Instance;
         if (gamePlayController == null)
         {
@@ -217,12 +219,8 @@ public abstract class LevelBase : MonoBehaviour
     {
         float currentTime = Time.time;
         float timeDelta = currentTime - lastPlacementTime;
-        Debug.LogWarning($"Time Delta: {timeDelta:F3} | Combo Threshold: {comboThreshold} | Is Combo: {timeDelta < comboThreshold && lastPlacementTime > 0}");
         if (timeDelta < comboThreshold)
-        {
-            Debug.Log("COMBO! Spawning Congratulation Effect.");
-            GameController.Instance.effectController.CongratulationEffect(placedItem.transform.position);
-        }
+            gameController.effectController.CongratulationEffect(placedItem.transform.position);
         lastPlacementTime = currentTime;
     }
     private void SpawnStarEffect(object obj = null)
@@ -235,7 +233,7 @@ public abstract class LevelBase : MonoBehaviour
         
         if (itemsPlacedCorrectly % 3 == 0)
         {
-            GameController.Instance.effectController.StarEffect(spawnPos,targetPos.position, delegate
+            gameController.effectController.StarEffect(spawnPos,targetPos.position, delegate
             {
                 gamePlayController.gameScene.IncreaseStarAmount();
             });
@@ -259,17 +257,31 @@ public abstract class LevelBase : MonoBehaviour
         if (itemsPlacedCorrectly == totalItemsRequired)
         {
             Debug.Log("WinGame");
-            HandleAfterWinGame().Forget();
+            ExecuteWinSequence().Forget();
         }
+    }
+    
+    private async UniTask ExecuteWinSequence()
+    {
+        await PreWinGameLogic();
+        
+        await HandleAfterWinGame();
+    }
+
+    protected virtual async UniTask PreWinGameLogic()
+    {
+        transform.position = Vector3.zero;
+        gamePlayController.WinGame();
+        var duration = 0.75f;
+        gamePlayController.playerContains.mainCamera.DOOrthoSize(14f, duration).SetEase(Ease.Linear);
+        await UniTask.Delay(TimeSpan.FromSeconds(duration));
+        //NOTE: Viet o day
     }
 
     protected virtual async UniTask HandleAfterWinGame()
     {
-        gamePlayController.WinGame();
-        transform.position = Vector3.zero;
-        await UniTask.Delay(TimeSpan.FromSeconds(1f));
-        gamePlayController.playerContains.mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(
-            delegate { WinBox.Setup().Show(); });
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+        WinBox.Setup().Show();
     }
 
     [Button("Setup Item", ButtonSizes.Large)]
