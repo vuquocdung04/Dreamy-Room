@@ -66,7 +66,7 @@ public class GameScene : MonoBehaviour
         StartTimer(300);
     }
     public RectTransform GetStarBar() => starBar;
-
+    public int GetStarAmount() => starAmount;
     public void IncreaseStarAmount()
     {
         starAmount++;

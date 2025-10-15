@@ -8,6 +8,7 @@ public class CongratulationPrefab : MonoBehaviour
     public void Random(Sprite sprite)
     {
         spr.sprite = sprite;
+        spr.color = Color.white;
     }
     
 }

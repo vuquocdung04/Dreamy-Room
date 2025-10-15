@@ -54,6 +54,7 @@ public class WinBox : BoxSingleton<WinBox>
     private void OnClickNext()
     {
         Close();
+        UseProfile.Star += GamePlayController.Instance.gameScene.GetStarAmount();
         GameController.Instance.NextLevel();
     }
 

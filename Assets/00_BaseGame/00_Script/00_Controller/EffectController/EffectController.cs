@@ -15,19 +15,18 @@ public class EffectController : MonoBehaviour
 
     public void CongratulationEffect(Vector3 spawnPos)
     {
-        // var congratulationClone = SimplePool2.Spawn(congratulationPrefab, spawnPos, Quaternion.identity);
-        // congratulationClone.Random(lsCongratulations[Random.Range(0,lsCongratulations.Count)]);
-        //
-        // var mySequence = DOTween.Sequence();
-        // var trans = congratulationClone.transform;
-        // var spr = congratulationClone.spr;
-        //
-        // mySequence.Append(trans.DOMoveY(spawnPos.y + 1f,2f).SetEase(Ease.OutBack));
-        // mySequence.Join(spr.DOFade(0f,2.25f).SetEase(Ease.OutBack));
-        // mySequence.OnComplete(delegate
-        // {
-        //     SimplePool2.Despawn(congratulationClone.gameObject);
-        // });
+        var congratulationClone = SimplePool2.Spawn(congratulationPrefab, spawnPos, Quaternion.identity);
+        congratulationClone.Random(lsCongratulations[Random.Range(0,lsCongratulations.Count)]);
+        var mySequence = DOTween.Sequence();
+        var trans = congratulationClone.transform;
+        var spr = congratulationClone.spr;
+        
+        mySequence.Append(trans.DOMoveY(spawnPos.y + 1f,2f).SetEase(Ease.OutBack));
+        mySequence.Join(spr.DOFade(0f,2.25f).SetEase(Ease.OutBack));
+        mySequence.OnComplete(delegate
+        {
+            SimplePool2.Despawn(congratulationClone.gameObject);
+        });
 
     }
     

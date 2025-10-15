@@ -30,6 +30,9 @@ public abstract class LevelBase : MonoBehaviour
 
     [SerializeField] protected int itemsPlacedCorrectly;
 
+    [Header("Combo")] [SerializeField] protected float comboThreshold = 2f;
+    private float lastPlacementTime;
+    
     // Cache trạng thái
     private bool lastHasItemOutOfBox;
     private bool lastHasReadyShadows;
@@ -39,6 +42,7 @@ public abstract class LevelBase : MonoBehaviour
 
     public virtual void Init()
     {
+        lastPlacementTime = -comboThreshold;
         gamePlayController = GamePlayController.Instance;
         if (gamePlayController == null)
         {
@@ -191,6 +195,7 @@ public abstract class LevelBase : MonoBehaviour
     {
         if (obj is ItemBase placedItem)
         {
+            SpawnCongratulationsEffect(placedItem);   
             if (itemsOutOfBox.Contains(placedItem))
             {
                 itemsOutOfBox.Remove(placedItem);
@@ -208,6 +213,18 @@ public abstract class LevelBase : MonoBehaviour
         }
     }
 
+    private void SpawnCongratulationsEffect(ItemBase placedItem)
+    {
+        float currentTime = Time.time;
+        float timeDelta = currentTime - lastPlacementTime;
+        Debug.LogWarning($"Time Delta: {timeDelta:F3} | Combo Threshold: {comboThreshold} | Is Combo: {timeDelta < comboThreshold && lastPlacementTime > 0}");
+        if (timeDelta < comboThreshold)
+        {
+            Debug.Log("COMBO! Spawning Congratulation Effect.");
+            GameController.Instance.effectController.CongratulationEffect(placedItem.transform.position);
+        }
+        lastPlacementTime = currentTime;
+    }
     private void SpawnStarEffect(object obj = null)
     {
         if(!UseProfile.HasCompletedLevelTutorial) return;
