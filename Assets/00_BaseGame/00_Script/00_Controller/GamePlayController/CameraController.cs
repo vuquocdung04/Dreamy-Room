@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     
     private Vector3 cameraPosition;
     [SerializeField] private float limit = 6f;
-
+    public float GetLimitSize() => limit;
     public void Init()
     {
         mainCamera = GamePlayController.Instance.playerContains.mainCamera;

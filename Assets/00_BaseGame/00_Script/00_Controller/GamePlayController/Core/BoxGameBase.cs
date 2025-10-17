@@ -28,9 +28,15 @@ public class BoxGameBase : MonoBehaviour
     public Transform GetSpawnPos() => spawnPos;
     public bool HasBoxOpened() => hasBoxOpened;
 
-    public void Start()
+    public void Init()
     {
+        enabled = false;
         originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
+        transform.DOScale(originalScale,0.4f).SetEase(Ease.OutCubic).OnComplete(delegate
+        {
+            coll.enabled = true;
+        });
     }
 
     public void SetColor(Color color)

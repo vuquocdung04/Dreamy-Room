@@ -64,6 +64,16 @@ public abstract class LevelBase : MonoBehaviour
         this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
 
+    public void InitStateBox()
+    {
+        box.gameObject.SetActive(true);
+        box.Init();
+    }
+
+    public void HideBox()
+    {
+        box.gameObject.SetActive(false);
+    }
 
     private void OnDestroy()
     {

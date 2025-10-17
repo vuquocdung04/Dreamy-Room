@@ -50,7 +50,7 @@ public class EffectChangeScene2 : MonoBehaviour
             isBusy = false;
             parent.gameObject.SetActive(false);
             if (sceneName.Equals(SceneName.GAME_PLAY))
-                GamePlayController.Instance.ResumeGame();
+                GamePlayController.Instance.InitEffect();
         }
         catch (Exception e)
         {

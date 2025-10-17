@@ -71,19 +71,24 @@ public class GameScene : MonoBehaviour
     {
         starAmount++;
         txtStar.text = starAmount.ToString();
-    } 
-    public void HideTopBar()
+    }
+    public void DisplayTopBar()
+    {
+        topBar.gameObject.SetActive(true);
+    }
+
+    public void DisplayBottomBar()
+    {
+        bottomBar.gameObject.SetActive(true);
+    }
+    public void DisplayBoosterBar()
+    {
+        boosterBar.gameObject.SetActive(true);
+    }
+    public void HideAllBar()
     {
         topBar.gameObject.SetActive(false);
-    }
-
-    public void HideBottomBar()
-    {
         bottomBar.gameObject.SetActive(false);
-    }
-
-    public void HideBoosterBar()
-    {
         boosterBar.gameObject.SetActive(false);
     }
     

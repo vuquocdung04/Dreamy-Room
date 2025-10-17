@@ -1,5 +1,7 @@
 
 
+using DG.Tweening;
+
 public class GamePlayController : Singleton<GamePlayController>
 {
     public GameScene gameScene;
@@ -21,10 +23,26 @@ public class GamePlayController : Singleton<GamePlayController>
         playerContains.Init();
         effectBoosterController.Init();
         
-        HandleUnlockBar();
-        HandleUnlockCamera();
+        PrevPlayGame();
     }
-
+    private void PrevPlayGame()
+    {
+        playerContains.mainCamera.orthographicSize = 15f;
+        gameScene.HideAllBar();
+        levelController.currentLevel.HideBox();
+    }
+    public void InitEffect()
+    {
+        var targetSize = playerContains.cameraController.GetLimitSize();
+        playerContains.mainCamera.DOOrthoSize(targetSize,0.5f).OnComplete(delegate
+        {
+             levelController.currentLevel.InitStateBox();
+             HandleUnlockBar();
+             HandleUnlockCamera();
+             ResumeGame();
+        });
+    }
+    
     private void HandleUnlockCamera()
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
@@ -37,13 +55,14 @@ public class GamePlayController : Singleton<GamePlayController>
         
         if (!UseProfile.HasCompletedLevelTutorial)
         {
-            gameScene.HideBottomBar();
-            gameScene.HideTopBar();
+            //Note: hide all roi
         }
         else
         {
+            gameScene.DisplayTopBar();
+            gameScene.DisplayBottomBar();
             if(maxLevel < 2)
-                gameScene.HideBoosterBar();
+                gameScene.DisplayBoosterBar();
         }
     }
 
@@ -55,8 +74,7 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         IsWin = true;
         playerContains.inputManager.SetWin(true);
-        gameScene.HideBottomBar();
-        gameScene.HideTopBar();
+        gameScene.HideAllBar();
     }
     
     public void PauseGame()
