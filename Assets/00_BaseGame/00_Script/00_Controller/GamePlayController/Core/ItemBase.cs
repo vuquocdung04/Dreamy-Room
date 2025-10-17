@@ -45,6 +45,7 @@ public class ItemBase : MonoBehaviour
     public int GetIndexLayer() => indexLayer;
     public bool GetPlacedByPlayer() => isPlacedByPlayer;
     public void SetPlacedByPlayer(bool state) => isPlacedByPlayer = state;
+    public bool GetItemPlaced() =>  isPlaced;
     public void AddSnapSlot(ItemSlot slot)
     {
         slotsSnap.Clear();
@@ -61,7 +62,7 @@ public class ItemBase : MonoBehaviour
 
     #endregion
 
-    public void Init(Transform pos)
+    public virtual void Init(Transform pos)
     {
         originalScale = transform.localScale;
         transform.localPosition = pos.position;
@@ -97,7 +98,7 @@ public class ItemBase : MonoBehaviour
         });
     }
 
-    public void ValidateUnlockState()
+    public virtual void ValidateUnlockState()
     {
         if (isUnlocked) return;
 
@@ -159,6 +160,7 @@ public class ItemBase : MonoBehaviour
         transform.DORotate(Vector3.zero, 0.2f);
         transform.DOMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
         {
+            isPlaced = true;
             GameController.Instance.effectController.FxEffect(this.transform.position);
             if (shadowItem)
                 shadowItem.gameObject.SetActive(true);
@@ -179,7 +181,6 @@ public class ItemBase : MonoBehaviour
         });
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);
         this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
-        isPlaced = true;
     }
 
 
@@ -208,7 +209,7 @@ public class ItemBase : MonoBehaviour
 
     #region Drag & Drop
 
-    public void OnStartDrag(float top, Vector3 mousePosition)
+    public virtual void OnStartDrag(float top, Vector3 mousePosition)
     {
         if (!isPlaced)
         {

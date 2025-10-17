@@ -90,10 +90,7 @@ public abstract class LevelBase : MonoBehaviour
     {
         if (!isBoxReadyForInteraction) return false;
 
-        return allShadows.Exists(shadow =>
-            shadow.isReadyShow &&
-            !shadow.isFullSlot &&
-            !shadow.IsActive());
+        return allShadows.Exists(shadow => shadow.IsAvailableForMagicWand());
     }
 
     private void TakeItemOutOfBox(object obj = null)
@@ -279,7 +276,7 @@ public abstract class LevelBase : MonoBehaviour
         transform.position = Vector3.zero;
         gamePlayController.WinGame();
         var duration = 0.75f;
-        gamePlayController.playerContains.mainCamera.DOOrthoSize(14f, duration).SetEase(Ease.Linear);
+        gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
         await UniTask.Delay(TimeSpan.FromSeconds(duration));
         //NOTE: Viet o day
     }
