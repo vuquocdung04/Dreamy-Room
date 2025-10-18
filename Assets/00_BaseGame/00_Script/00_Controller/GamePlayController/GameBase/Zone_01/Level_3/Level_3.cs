@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class Level_3 : LevelBase
         character.gameObject.SetActive(true);
         character.localScale = Vector3.zero;
         Tween charTween = character.DOScale(Vector3.one * 0.675f, 0.5f).SetEase(Ease.OutElastic);
-        await charTween.AsyncWaitForCompletion();
+        await charTween.ToUniTask();
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
     }
 }

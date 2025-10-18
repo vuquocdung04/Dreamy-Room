@@ -290,7 +290,7 @@ public abstract class LevelBase : MonoBehaviour
         transform.position = Vector3.zero;
         gamePlayController.WinGame();
         var duration = 0.75f;
-        gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
+        await gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
         await UniTask.Delay(TimeSpan.FromSeconds(duration));
         //NOTE: Viet o day
     }

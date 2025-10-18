@@ -92,12 +92,12 @@ public class LevelTut : LevelBase
     protected override async UniTask HandleAfterWinGame()
     {
         GamePlayController.Instance.WinGame();
-        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
-        mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate
+        await mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate
         {
             GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
             UseProfile.HasCompletedLevelTutorial = true;
         });
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
     }
 
     private void CheckDoneTut()

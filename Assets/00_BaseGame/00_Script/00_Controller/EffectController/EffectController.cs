@@ -1,7 +1,10 @@
 
+using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EffectController : MonoBehaviour
 {
@@ -26,26 +29,46 @@ public class EffectController : MonoBehaviour
         {
             var randomOffset = Random.insideUnitCircle * spawnRadius;
             var spawnPosition = centerPoint + new Vector3(randomOffset.x, randomOffset.y);
-            
-            var effectClone = SimplePool2.Spawn(fxStarPrefab,spawnPosition,Quaternion.identity);
-            
+        
+            var effectClone = SimplePool2.Spawn(fxStarPrefab, spawnPosition, Quaternion.identity);
+        
             float randScale = Random.Range(0.4f, 0.8f);
             effectClone.Init(randScale);
-            
+        
             var direction = (spawnPosition - centerPoint).normalized;
             var targetPosition = spawnPosition + direction * moveDistance;
-            
-            var seq =  DOTween.Sequence();
-            seq.Append(effectClone.transform.DOMove(targetPosition, fxMoveDuration).SetEase(Ease.OutQuad));
-            seq.Join(effectClone.spr.DOFade(0f, fxMoveDuration).SetEase(Ease.InQuad));
-
-            seq.OnComplete(delegate
-            {
-                SimplePool2.Despawn(effectClone.gameObject);
-            });
+    
+            PlayEffectAsync(effectClone, targetPosition).Forget();
         }
     }
-    
+
+    private async UniTaskVoid PlayEffectAsync(FxStarPrefab effect, Vector3 targetPosition)
+    {
+        try
+        {
+            var ct = effect.GetCancellationTokenOnDestroy();
+            
+            await UniTask.WhenAll(
+                effect.transform.DOMove(targetPosition, fxMoveDuration)
+                    .SetEase(Ease.OutQuad)
+                    .SetRecyclable(true)
+                    .SetLink(effect.gameObject)
+                    .ToUniTask(cancellationToken: ct),
+                
+                effect.spr.DOFade(0f, fxMoveDuration)
+                    .SetEase(Ease.InQuad)
+                    .SetRecyclable(true)
+                    .SetLink(effect.gameObject)
+                    .ToUniTask(cancellationToken: ct)
+            );
+        
+            SimplePool2.Despawn(effect.gameObject);
+        }
+        catch (OperationCanceledException)
+        {
+            
+        }
+    }
     
     public void CongratulationEffect(Vector3 spawnPos)
     {
@@ -64,7 +87,7 @@ public class EffectController : MonoBehaviour
 
     }
     
-    public void StarEffect(Vector3 spawnPos, Vector3 worldTargetPos, System.Action callback = null)
+    public void StarEffect(Vector3 spawnPos, Vector3 worldTargetPos, Action callback = null)
     {
         var starClone = SimplePool2.Spawn(starPrefab, spawnPos, Quaternion.identity);
         starClone.localScale = Vector3.zero;
