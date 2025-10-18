@@ -63,25 +63,29 @@ public abstract class LevelBase : MonoBehaviour
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
-
-    public void InitStateBox()
-    {
-        box.gameObject.SetActive(true);
-        box.Init();
-    }
-
-    public void HideBox()
-    {
-        box.gameObject.SetActive(false);
-    }
-
     private void OnDestroy()
     {
         this.RemoveListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RemoveListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
+    public void InitStateBox()
+    {
+        if(!isBoxReadyForInteraction) return;
+        box.gameObject.SetActive(true);
+        box.Init();
+    }
+    
+    public void HideBox()
+    {
+        box.gameObject.SetActive(false);
+    }
 
+    public void SetActiveBox()
+    {
+        isBoxReadyForInteraction = true;
+        InitStateBox();
+    }
 
     public void SetColorBox(Color color)
     {
@@ -378,7 +382,11 @@ public abstract class LevelBase : MonoBehaviour
             Debug.LogWarning("Cannot setup: Items or Shadows list is empty!");
             return;
         }
-        
+
+        for (int i = 0; i < allShadows.Count; i++)
+        {
+            allShadows[i].transform.localScale = allItems[i].transform.localScale;
+        }
         inactiveShadows.Clear();
         for (int i = 0; i < allItems.Count; i++)
         {
