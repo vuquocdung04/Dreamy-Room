@@ -1,4 +1,5 @@
 
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -36,7 +37,7 @@ public class GameController : Singleton<GameController>
 
     public void ChangeScene2(string sceneName)
     {
-        effectChangeScene2.RunEffect(sceneName);
+        effectChangeScene2.RunEffect(sceneName).Forget();
     }
 
     public void NextLevel()

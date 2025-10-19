@@ -86,7 +86,6 @@ public abstract class BoosterBase : MonoBehaviour
             return;
         }
         bool canUse = CheckBoosterSpecificConditions();
-        Debug.Log($"Booster {boosterType} - Can use: {canUse}");
         btn.interactable = canUse;
     }
     #endregion
