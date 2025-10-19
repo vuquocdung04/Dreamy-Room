@@ -191,6 +191,10 @@ public class InputManager : MonoBehaviour
             currentDraggingItem.OnEndDrag(1.25f);
             currentDraggingItem = null;
         }
+        else if (currentPreGameDraggingItem != null)
+        {
+            currentPreGameDraggingItem.OnEndDrag(1f);
+        }
 
         UpdateBounds();
         isDraggingCamera = false;

@@ -43,7 +43,7 @@ public class ItemRemoverBase : MonoBehaviour
     private int stampHaftWidth;
     private int stampHaftHeight;
 
-    private void Start()
+    public virtual void Init()
     {
         // Cache stamp data
         if (stampSprite != null)

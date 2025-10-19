@@ -4,20 +4,21 @@ using UnityEngine;
 
 public abstract class PreGameItem : MonoBehaviour
 {
-    [SerializeField] private Collider2D coll2D;
+    [SerializeField] protected Collider2D coll2D;
     private float angleZ;
     private Vector3 newPosition;
-    public void Init()
+    protected Transform Target;
+    public virtual void Init()
     {
         angleZ = transform.localEulerAngles.z;
     }
 
-    private void CheckItemPlacement(Collider2D placement, System.Action callback)
+    private void CheckItemPlacement(float threshold)
     {
-        if (coll2D.IsTouching(placement))
+        var distance = Vector3.Distance(transform.position,Target.position);
+        if (distance <= threshold && transform.position.y > Target.position.y)
         {
             OnDoneSnap();
-            callback?.Invoke();
         }
         else
         {
@@ -44,9 +45,9 @@ public abstract class PreGameItem : MonoBehaviour
         transform.position = newPosition;
     }
 
-    public void OnEndDrag(Collider2D placement, System.Action callback = null)
+    public void OnEndDrag(float threshHold)
     {
-        CheckItemPlacement(placement, callback);
+        CheckItemPlacement(threshHold);
     }
 
     protected abstract void OnDoneSnap();
