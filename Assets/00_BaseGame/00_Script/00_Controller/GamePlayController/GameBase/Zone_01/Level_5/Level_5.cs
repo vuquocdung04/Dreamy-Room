@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class Level_5 : LevelBase
     public int curProgressPrev;
     public ItemRemover_5_Broom broom;
     public Transform targetPlacedPrevItem;
-
+    private int maxLevel;
+    private int currentLevel;
     public override void Init()
     {
         base.Init();
@@ -18,6 +20,18 @@ public class Level_5 : LevelBase
         foreach (var prevItem in lsPrevItems)
         {
             prevItem.Init();
+        }
+
+        maxLevel = UseProfile.MaxUnlockedLevel;
+        currentLevel = UseProfile.CurrentLevel;
+    }
+
+    private void Update()
+    {
+        if(maxLevel != 5 && currentLevel == 5) return;
+        if (Input.GetMouseButtonDown(0))
+        {
+            GamePlayController.Instance.gameScene.HideSwipeCam();
         }
     }
 

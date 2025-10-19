@@ -143,20 +143,20 @@ public class InputManager : MonoBehaviour
         }
         else if (currentDrawingItem != null)
         {
-            // Logic vẽ
             mouseDelta = currentMousePosition - prevMousePosition;
             currentDrawingItem.transform.position += mouseDelta;
-            
-            // Vẽ tại vị trí hiện tại (có thể thêm offset nếu cần)
-            currentDrawingItem.DrawAtPosition(currentDrawingItem.transform.position);
-            
-            // Apply changes với interval để tối ưu
-            if (Time.time - lastDrawApplyTime >= drawApplyInterval)
+            float distance = mouseDelta.magnitude;
+            if (distance > 0.02f) // Threshold ~2cm trong world space
             {
-                currentDrawingItem.ApplyMaskChanges();
-                lastDrawApplyTime = Time.time;
+                currentDrawingItem.DrawAtPosition(currentDrawingItem.transform.position);
+        
+                if (Time.time - lastDrawApplyTime >= drawApplyInterval)
+                {
+                    currentDrawingItem.ApplyMaskChanges();
+                    lastDrawApplyTime = Time.time;
+                }
             }
-            
+    
             prevMousePosition = currentMousePosition;
         }
         else if (currentDraggingItem != null)
@@ -194,6 +194,7 @@ public class InputManager : MonoBehaviour
         else if (currentPreGameDraggingItem != null)
         {
             currentPreGameDraggingItem.OnEndDrag(1f);
+            currentPreGameDraggingItem = null;
         }
 
         UpdateBounds();

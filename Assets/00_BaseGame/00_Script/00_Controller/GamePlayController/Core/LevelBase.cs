@@ -274,6 +274,7 @@ public abstract class LevelBase : MonoBehaviour
         if (itemsPlacedCorrectly == totalItemsRequired)
         {
             Debug.Log("WinGame");
+            gameController.IncreaseLevel();
             ExecuteWinSequence().Forget();
         }
     }

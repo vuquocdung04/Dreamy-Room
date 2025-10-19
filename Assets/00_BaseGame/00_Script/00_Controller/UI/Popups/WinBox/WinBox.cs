@@ -55,7 +55,7 @@ public class WinBox : BoxSingleton<WinBox>
     {
         Close();
         UseProfile.Star += GamePlayController.Instance.gameScene.GetStarAmount();
-        GameController.Instance.NextLevel();
+        GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
     }
 
     private void OnClickClaim(bool isX2 = false)

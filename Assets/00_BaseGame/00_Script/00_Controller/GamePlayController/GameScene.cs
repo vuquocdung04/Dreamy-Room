@@ -20,6 +20,7 @@ public class GameScene : MonoBehaviour
     [SerializeField] private RectTransform boosterBar;
     [SerializeField] private RectTransform starBar;
     [SerializeField] private TextMeshProUGUI txtStar;
+    [SerializeField] private RectTransform swipeCamera;
     
     [SerializeField] private Image fillProgressBar;
     [SerializeField] private TextMeshProUGUI txtTiming;
@@ -72,6 +73,11 @@ public class GameScene : MonoBehaviour
         starAmount++;
         txtStar.text = starAmount.ToString();
     }
+
+    public void DisplaySwipeCam()
+    {
+        swipeCamera.gameObject.SetActive(true);
+    }
     public void DisplayTopBar()
     {
         topBar.gameObject.SetActive(true);
@@ -90,6 +96,11 @@ public class GameScene : MonoBehaviour
         topBar.gameObject.SetActive(false);
         bottomBar.gameObject.SetActive(false);
         boosterBar.gameObject.SetActive(false);
+    }
+
+    public void HideSwipeCam()
+    {
+        swipeCamera.gameObject.SetActive(false);
     }
     
     private void StartTimer(float seconds)

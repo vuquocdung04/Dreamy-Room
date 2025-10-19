@@ -22,7 +22,7 @@ public abstract class PreGameItem : MonoBehaviour
         }
         else
         {
-            transform.DOMove(new Vector3(0,0,angleZ), 0.2f).SetEase(Ease.OutSine);
+            transform.eulerAngles = new Vector3(0, 0, angleZ);
         }
     }
 

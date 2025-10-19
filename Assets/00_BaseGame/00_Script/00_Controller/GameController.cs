@@ -1,5 +1,4 @@
 
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -37,16 +36,14 @@ public class GameController : Singleton<GameController>
 
     public void ChangeScene2(string sceneName)
     {
-        effectChangeScene2.RunEffect(sceneName).Forget();
+        effectChangeScene2.ChangeScene(sceneName);
     }
-
-    public void NextLevel()
+    public void IncreaseLevel()
     {
         if (UseProfile.CurrentLevel == UseProfile.MaxUnlockedLevel)
         {
             UseProfile.MaxUnlockedLevel++;
         }
         UseProfile.CurrentLevel++;
-        ChangeScene2(SceneName.GAME_PLAY);
     }
 }

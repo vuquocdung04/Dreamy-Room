@@ -33,7 +33,12 @@ public class EffectChangeScene2 : MonoBehaviour
         imgMask.sprite = icon;
     }
 
-    public async UniTask RunEffect(string sceneName)
+    public void ChangeScene(string sceneName)
+    {
+        RunEffect(sceneName).Forget();
+    }
+    
+    private async UniTask RunEffect(string sceneName)
     {
             parent.gameObject.SetActive(true);
             SetImage();

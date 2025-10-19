@@ -37,8 +37,8 @@ public class GamePlayController : Singleton<GamePlayController>
         playerContains.mainCamera.DOOrthoSize(targetSize,0.5f).OnComplete(delegate
         {
              levelController.currentLevel.InitStateBox();
-             HandleUnlockBar();
              HandleUnlockCamera();
+             HandleUnlockBar();
              ResumeGame();
         });
     }
@@ -46,13 +46,19 @@ public class GamePlayController : Singleton<GamePlayController>
     private void HandleUnlockCamera()
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
-        playerContains.inputManager.SetCanMoveCamera(maxLevel >= 5);
+        var currentLevel = UseProfile.CurrentLevel;
+        
+        bool hasUnlockedFeature = maxLevel > 5;
+        
+        bool isPreviewingOnLevel5 = (currentLevel == 5 && maxLevel == 5);
+        
+        playerContains.inputManager.SetCanMoveCamera(hasUnlockedFeature || isPreviewingOnLevel5);
     }
     
     private void HandleUnlockBar()
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
-        
+        var currentLevel = UseProfile.CurrentLevel;
         if (!UseProfile.HasCompletedLevelTutorial)
         {
             //Note: hide all roi
@@ -61,8 +67,13 @@ public class GamePlayController : Singleton<GamePlayController>
         {
             gameScene.DisplayTopBar();
             gameScene.DisplayBottomBar();
-            if(maxLevel < 2)
+            if(maxLevel >= 2)
                 gameScene.DisplayBoosterBar();
+
+            if (currentLevel == 5 && maxLevel == 5)
+            {
+                gameScene.DisplaySwipeCam();
+            }
         }
     }
 
