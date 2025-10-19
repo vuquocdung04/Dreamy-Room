@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ItemRemover_5_Broom : ItemRemoverBase
 {
+    [SerializeField] private Collider2D coll;
     private Level_5 currentLevel;
     public override void Init()
     {
@@ -12,9 +13,11 @@ public class ItemRemover_5_Broom : ItemRemoverBase
 
     protected override void OnAllStagesComplete()
     {
+        coll.enabled = false;
         currentLevel.CleanDirtCompleted();
-        
-        transform.DOScale(Vector3.zero, 0.5f);
-        gameObject.SetActive(false);
+        transform.DOScale(Vector3.zero, 0.5f).OnComplete(delegate
+        {
+            gameObject.SetActive(false);
+        });
     }
 }

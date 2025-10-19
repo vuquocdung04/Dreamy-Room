@@ -19,6 +19,10 @@ public class EffectController : MonoBehaviour
     public float scaleDuration = 0.4f;
     public float moveDuration = 0.5f;
     public Transform starPrefab;
+    [Header("Star Spark Effect")]
+    public SpriteRenderer sparkRenderer;
+    
+    
     [Header("Congratulations")]
     public CongratulationPrefab congratulationPrefab;
     public List<Sprite> lsCongratulations;

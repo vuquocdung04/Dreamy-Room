@@ -563,6 +563,8 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 7021420162478428752}
+  - {fileID: 4526830780917690105}
+  - {fileID: 8516304466247989062}
   conditionSlots:
   - {fileID: 2659885070398238944}
   shadowItem: {fileID: 0}
@@ -825,11 +827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f94d91c2414c31b2b5e219faab64a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 7376696125051253305}
-  conditionSlots: []
+  conditionSlots:
+  - {fileID: 3185080456776599521}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 23
@@ -1146,167 +1149,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8009240471109861695}
   conditionSlots: []
   isActive: 0
---- !u!1 &961040846930228791
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8721907598483145046}
-  - component: {fileID: 3808716585454142508}
-  - component: {fileID: 4360885598373369967}
-  - component: {fileID: 3143671366413574735}
-  m_Layer: 6
-  m_Name: plant_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8721907598483145046
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961040846930228791}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5943, y: 5.4672, z: 0}
-  m_LocalScale: {x: 0.60376555, y: 0.60312456, z: 0.64645}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7209484466409305120}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3808716585454142508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961040846930228791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f94d91c2414c31b2b5e219faab64a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isUnlocked: 1
-  isPlacedByPlayer: 1
-  slotsSnap:
-  - {fileID: 8343222546661468638}
-  conditionSlots: []
-  shadowItem: {fileID: 0}
-  itemSize: 0
-  indexLayer: 13
-  angle: 0
-  coll2D: {fileID: 3143671366413574735}
-  spriteRenderer: {fileID: 4360885598373369967}
-  sprOriginal: {fileID: 0}
-  sprAnim: {fileID: 0}
-  sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
-  isInteractableAfterPlacement: 0
-  isPlaced: 0
---- !u!212 &4360885598373369967
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961040846930228791}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 963605235
-  m_SortingLayer: 1
-  m_SortingOrder: 13
-  m_Sprite: {fileID: 1236702982, guid: 875d5e7fecb3a614e811152d0663a591, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.97, y: 1.23}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!61 &3143671366413574735
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961040846930228791}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.89, y: 2.94}
-    newSize: {x: 0.97, y: 1.23}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.89, y: 2.94}
-  m_EdgeRadius: 0
 --- !u!1 &1088254100632434250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,11 +2630,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f94d91c2414c31b2b5e219faab64a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5891501872902444983}
-  conditionSlots: []
+  conditionSlots:
+  - {fileID: 7713005744199013596}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 21
@@ -3631,6 +3474,8 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8516304466247989062}
+  - {fileID: 4526830780917690105}
+  - {fileID: 7021420162478428752}
   conditionSlots:
   - {fileID: 2659885070398238944}
   shadowItem: {fileID: 0}
@@ -3808,6 +3653,7 @@ MonoBehaviour:
   targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
+  isInsideMask: 0
 --- !u!212 &715661873736928340
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4466,109 +4312,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 0.66}
   m_EdgeRadius: 0
---- !u!1 &3502878667922635826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5645551114806982587}
-  - component: {fileID: 208349518337469258}
-  - component: {fileID: 8343222546661468638}
-  m_Layer: 0
-  m_Name: plant_2_shadow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5645551114806982587
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3502878667922635826}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5943, y: 5.4672, z: 0}
-  m_LocalScale: {x: 0.60376555, y: 0.60312456, z: 0.64645}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8953842329312250608}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &208349518337469258
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3502878667922635826}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 12
-  m_Sprite: {fileID: 1236702982, guid: 875d5e7fecb3a614e811152d0663a591, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.3}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.89, y: 2.94}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &8343222546661468638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3502878667922635826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3502f9a6f0d942eaaedfd8dc24962653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFullSlot: 0
-  isReadyShow: 1
-  indexOrder: 12
-  spriteRenderer: {fileID: 208349518337469258}
-  conditionSlots: []
-  isActive: 0
 --- !u!1 &3521144709491320814
 GameObject:
   m_ObjectHideFlags: 0
@@ -5308,10 +5051,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFullSlot: 0
-  isReadyShow: 1
+  isReadyShow: 0
   indexOrder: 22
   spriteRenderer: {fileID: 2670762824719964683}
-  conditionSlots: []
+  conditionSlots:
+  - {fileID: 3185080456776599521}
   isActive: 0
 --- !u!1 &3956583355042842379
 GameObject:
@@ -5949,6 +5693,7 @@ MonoBehaviour:
   targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
+  isInsideMask: 1
 --- !u!212 &1096899621206694353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5999,7 +5744,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &4700104282650599424
 BoxCollider2D:
@@ -6111,6 +5856,7 @@ MonoBehaviour:
   targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
+  isInsideMask: 1
 --- !u!212 &2431029584715710307
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6161,7 +5907,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &3903156362232541337
 BoxCollider2D:
@@ -6730,7 +6476,6 @@ Transform:
   - {fileID: 3870932705596088417}
   - {fileID: 6858032045989716459}
   - {fileID: 5516713928470456274}
-  - {fileID: 5645551114806982587}
   - {fileID: 5005721316743242733}
   - {fileID: 6953575308153869918}
   - {fileID: 7871208890407845548}
@@ -7667,7 +7412,8 @@ MonoBehaviour:
     maskDraw: {fileID: 8342400545702572203}
   drawRadius: 100
   drawColor: {r: 1, g: 1, b: 1, a: 1}
-  completePercent: 0.9
+  completePercent: 0.75
+  coll: {fileID: 7696524382708888690}
 --- !u!212 &5089112134091373762
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8466,6 +8212,7 @@ MonoBehaviour:
   targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
+  isInsideMask: 1
 --- !u!212 &5304212885746090597
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8516,7 +8263,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &941386029128688976
 BoxCollider2D:
@@ -8928,7 +8675,6 @@ MonoBehaviour:
   - {fileID: 8516304466247989062}
   - {fileID: 4459060026125616153}
   - {fileID: 5448273339396004330}
-  - {fileID: 8343222546661468638}
   - {fileID: 7713005744199013596}
   - {fileID: 7376696125051253305}
   - {fileID: 5891501872902444983}
@@ -8960,7 +8706,6 @@ MonoBehaviour:
   - {fileID: 122930708448141491}
   - {fileID: 6689947160720639721}
   - {fileID: 8248428588123976049}
-  - {fileID: 3808716585454142508}
   - {fileID: 7418045518419625938}
   - {fileID: 8469825086045457163}
   - {fileID: 8748602287392147631}
@@ -8979,6 +8724,8 @@ MonoBehaviour:
   - {fileID: 4526830780917690105}
   - {fileID: 8516304466247989062}
   - {fileID: 4459060026125616153}
+  - {fileID: 7376696125051253305}
+  - {fileID: 5891501872902444983}
   - {fileID: 1682826520650689968}
   - {fileID: 8571226885219777990}
   - {fileID: 1564711820856657468}
@@ -8988,7 +8735,7 @@ MonoBehaviour:
   slots: {fileID: 8953842329312250608}
   items: {fileID: 7209484466409305120}
   box: {fileID: 8483777735378891440}
-  totalItemsRequired: 31
+  totalItemsRequired: 30
   itemsPlacedCorrectly: 0
   comboThreshold: 2
   lsPrevItems:
@@ -9907,10 +9654,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFullSlot: 0
-  isReadyShow: 1
+  isReadyShow: 0
   indexOrder: 20
   spriteRenderer: {fileID: 6128318489242678955}
-  conditionSlots: []
+  conditionSlots:
+  - {fileID: 7713005744199013596}
   isActive: 0
 --- !u!1 &8539804991417680638
 GameObject:
@@ -10492,6 +10240,8 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 4526830780917690105}
+  - {fileID: 7021420162478428752}
+  - {fileID: 8516304466247989062}
   conditionSlots:
   - {fileID: 2659885070398238944}
   shadowItem: {fileID: 0}
@@ -11166,7 +10916,6 @@ Transform:
   - {fileID: 3293777651752233566}
   - {fileID: 7018269301029364348}
   - {fileID: 9219494459426492022}
-  - {fileID: 8721907598483145046}
   - {fileID: 1585666471067145300}
   - {fileID: 513822406894288184}
   - {fileID: 924382676037341738}
