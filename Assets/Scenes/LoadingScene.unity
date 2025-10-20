@@ -418,6 +418,12 @@ MonoBehaviour:
   scaleDuration: 0.2
   moveDuration: 0.6
   starPrefab: {fileID: 4996462301622789318, guid: ab21d0cf9e9597043a53806025b4872a, type: 3}
+  sparkFxPrefab: {fileID: 4027884453734658891, guid: b50a0b5b9aacc824da74bbeed1adcbe6, type: 3}
+  sparkSpawnInterval: 0.05
+  sparkMoveDistance: 0.5
+  sparkFadeDuration: 0.2
+  sparkMinScale: 0.5
+  sparkMaxScale: 1
   congratulationPrefab: {fileID: 8990315898723799716, guid: eba70f2260e70584490204a3461188eb, type: 3}
   lsCongratulations:
   - {fileID: 21300000, guid: 3fb86df743f557e4d878ebdfd258a246, type: 3}
