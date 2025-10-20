@@ -22,7 +22,21 @@
         {
             return isReadyShow && !isFullSlot && !isActive;
         }
-        
+        public bool IsReadyToReceiveItem()
+        {
+            if (isFullSlot)
+            {
+                return false;
+            }
+            if (conditionSlots != null && conditionSlots.Count > 0)
+            {
+                if (conditionSlots.All(slot => slot == null || !slot.isFullSlot))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public virtual void ValidateReadyState()
         {
             bool allConditionsMet = conditionSlots.All(slot => slot.isFullSlot);

@@ -64,19 +64,21 @@ public abstract class LevelBase : MonoBehaviour
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
+
     private void OnDestroy()
     {
         this.RemoveListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RemoveListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RemoveListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
+
     public void InitStateBox()
     {
-        if(!isBoxReadyForInteraction) return;
+        if (!isBoxReadyForInteraction) return;
         box.gameObject.SetActive(true);
         box.Init();
     }
-    
+
     public void HideBox()
     {
         box.gameObject.SetActive(false);
@@ -289,10 +291,9 @@ public abstract class LevelBase : MonoBehaviour
 
     protected virtual async UniTask PreWinGameLogic()
     {
-        var position = room.localPosition;
-        transform.position = position;
-        gamePlayController.WinGame();
         var duration = 0.75f;
+        gamePlayController.playerContains.mainCamera.transform.position = new Vector3(0, 1, -10f);
+        gamePlayController.WinGame();
         await gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
         await UniTask.Delay(TimeSpan.FromSeconds(duration));
         //NOTE: Viet o day
@@ -354,7 +355,7 @@ public abstract class LevelBase : MonoBehaviour
                     continue;
                 }
             }
-            
+
             int targetOrder = item.GetIndexLayer() - 1;
             shadowSlot.SetupOdin(targetOrder, newSpr, item.GetSprite());
             shadowSlot.transform.SetParent(slots);
@@ -390,11 +391,12 @@ public abstract class LevelBase : MonoBehaviour
         {
             allShadows[i].transform.localScale = allItems[i].transform.localScale;
         }
+
         inactiveShadows.Clear();
         for (int i = 0; i < allItems.Count; i++)
         {
-            allItems[i].AddSnapSlot(allShadows[i]);
-            allItems[i].AddConditionSlot(allShadows[i].conditionSlots);
+            if (allItems[i].GetCountSnapsSlot() <= 1)
+                allItems[i].AddSnapSlot(allShadows[i]);
             allItems[i].gameObject.layer = LayerMask.NameToLayer(LayerMaskName.ITEM_UNPLACED);
             allItems[i].SetStateItem();
         }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+
 using System.Linq;
 using UnityEngine;
 
@@ -11,13 +11,9 @@ public class Item_4_InTheFridge : Item_4, IPostPlacementAction
     public override void ValidateUnlockState()
     {
         if (isUnlocked) return;
+        if (slotsSnap == null) return;
 
-        if (conditionSlots == null || conditionSlots.Count == 0) return;
-
-        bool allConditionsMet = conditionSlots.All(slot => slot != null && slot.isFullSlot);
-
-        if (allConditionsMet && isDoorOpened)
-            isUnlocked = true;
+        isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem() && isDoorOpened);
     }
 
     public void HandlePostPlacementAction()

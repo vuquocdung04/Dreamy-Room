@@ -12,11 +12,12 @@ public class ItemBase : MonoBehaviour
     [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
     [SerializeField]
     protected bool isUnlocked = true;
+
     [SerializeField] protected bool isPlacedByPlayer = true;
+
     [Tooltip("DANH SÁCH các slot mục tiêu mà vật này có thể snap vào")] [SerializeField]
     protected List<ItemSlot> slotsSnap;
 
-    [Space(5)] [SerializeField] protected List<ItemSlot> conditionSlots;
     [SerializeField] protected Transform shadowItem;
 
     [Space(5)] [Header("Visuals & Physics")] [SerializeField]
@@ -45,17 +46,13 @@ public class ItemBase : MonoBehaviour
     public int GetIndexLayer() => indexLayer;
     public bool GetPlacedByPlayer() => isPlacedByPlayer;
     public void SetPlacedByPlayer(bool state) => isPlacedByPlayer = state;
-    public bool GetItemPlaced() =>  isPlaced;
+    public bool GetItemPlaced() => isPlaced;
+    public int GetCountSnapsSlot() => slotsSnap.Count;
+
     public void AddSnapSlot(ItemSlot slot)
     {
         slotsSnap.Clear();
         slotsSnap.Add(slot);
-    }
-
-    public void AddConditionSlot(List<ItemSlot> slots)
-    {
-        conditionSlots.Clear();
-        conditionSlots.AddRange(slots);
     }
 
     public Sprite GetSprite() => spriteRenderer.sprite;
@@ -101,23 +98,13 @@ public class ItemBase : MonoBehaviour
     public virtual void ValidateUnlockState()
     {
         if (isUnlocked) return;
+        if (slotsSnap == null) return;
 
-        if (conditionSlots == null || conditionSlots.Count == 0) return;
-
-        bool allConditionsMet = conditionSlots.All(slot => slot != null && slot.isFullSlot);
-
-        if (allConditionsMet)
-            isUnlocked = true;
+        isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem());
     }
 
-    protected virtual void CheckItemPlacement(float threshold)
+    private void CheckItemPlacement(float threshold)
     {
-        if (!isUnlocked)
-        {
-            OnFailSnap();
-            return;
-        }
-
         if (slotsSnap == null || slotsSnap.Count == 0)
         {
             OnFailSnap();
@@ -142,7 +129,12 @@ public class ItemBase : MonoBehaviour
 
         // Kiểm tra xem slot tốt nhất tìm được có đủ gần không
         if (bestSlot != null && minDistance <= threshold)
-            OnDoneSnap(bestSlot);
+        {
+            if (bestSlot.IsReadyToReceiveItem())
+                OnDoneSnap(bestSlot);
+            else
+                OnFailSnap();
+        }
         else
             OnFailSnap();
     }
@@ -296,8 +288,8 @@ public class ItemBase : MonoBehaviour
 
     public void SetStateItem()
     {
-        if (conditionSlots.Count > 0) isUnlocked = false;
-
+        if (slotsSnap != null && slotsSnap.Count > 0)
+            isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem());
         if (sprOriginal == null || sprAnim == null)
             isInteractableAfterPlacement = false;
         else
