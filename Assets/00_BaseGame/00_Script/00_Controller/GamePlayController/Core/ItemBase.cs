@@ -30,11 +30,6 @@ public class ItemBase : MonoBehaviour
     [SerializeField] protected Sprite sprOriginal;
     [SerializeField] protected Sprite sprAnim;
     [SerializeField] protected Sprite sprPlaced;
-    [SerializeField] protected Sprite sprUpdate;
-
-    [Tooltip("Item sẽ đổi sprite (sang sprPlaced) khi item này được đặt đúng.")] [SerializeField]
-    protected ItemBase targetItemToUpdate;
-
     [SerializeField] protected bool isInteractableAfterPlacement;
     [SerializeField] protected bool isPlaced;
     private Tween idleTween;
@@ -156,11 +151,9 @@ public class ItemBase : MonoBehaviour
             GameController.Instance.effectController.FxEffect(this.transform.position);
             if (shadowItem)
                 shadowItem.gameObject.SetActive(true);
-            if (!targetItemToUpdate)
-                targetSlot.SetActive();
+            targetSlot.SetActive();
             if (isInteractableAfterPlacement)
                 coll2D.enabled = true;
-            UpdateTargetItemSpriteAfterPlacement();
             UpdateSpriteToPlaced();
 
             // ReSharper disable once SuspiciousTypeConversion.Global
@@ -181,15 +174,6 @@ public class ItemBase : MonoBehaviour
         if (sprPlaced == null) return;
         spriteRenderer.sprite = sprPlaced;
     }
-
-    private void UpdateTargetItemSpriteAfterPlacement()
-    {
-        if (!targetItemToUpdate) return;
-        if (targetItemToUpdate.sprUpdate == null) return;
-        gameObject.SetActive(false);
-        targetItemToUpdate.spriteRenderer.sprite = targetItemToUpdate.sprUpdate;
-    }
-
     protected void OnFailSnap()
     {
         spriteRenderer.sortingOrder = indexLayer;
