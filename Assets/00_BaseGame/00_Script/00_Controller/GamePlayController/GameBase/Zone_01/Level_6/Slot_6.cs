@@ -1,5 +1,6 @@
 using UnityEngine;
 
-public class Slot_6 : MonoBehaviour
+public class Slot_6 : ItemSlot
 {
+    
 }

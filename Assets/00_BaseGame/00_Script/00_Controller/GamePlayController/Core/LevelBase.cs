@@ -10,6 +10,7 @@ using UnityEngine;
 
 public abstract class LevelBase : MonoBehaviour
 {
+    [SerializeField] private Transform room;
     [SerializeField] protected bool isBoxReadyForInteraction;
     [SerializeField] protected int maxItemOutOfBox = 10;
     [SerializeField] protected List<ItemSlot> allShadows;
@@ -81,7 +82,7 @@ public abstract class LevelBase : MonoBehaviour
         box.gameObject.SetActive(false);
     }
 
-    public void SetActiveBox()
+    protected void SetActiveBox()
     {
         isBoxReadyForInteraction = true;
         InitStateBox();
@@ -208,7 +209,7 @@ public abstract class LevelBase : MonoBehaviour
             itemsOutOfBox.Add(item);
     }
 
-    private void OnItemPlacedCorrectly(object obj = null)
+    protected virtual void OnItemPlacedCorrectly(object obj = null)
     {
         if (obj is ItemBase placedItem)
         {
@@ -288,7 +289,8 @@ public abstract class LevelBase : MonoBehaviour
 
     protected virtual async UniTask PreWinGameLogic()
     {
-        transform.position = Vector3.zero;
+        var position = room.localPosition;
+        transform.position = position;
         gamePlayController.WinGame();
         var duration = 0.75f;
         await gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);

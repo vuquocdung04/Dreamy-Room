@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5942170246063520442}
   conditionSlots:
   - {fileID: 3991623966822390376}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 6
   angle: 0
@@ -366,9 +368,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1446050753096805513}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 7
   angle: 0
@@ -525,12 +529,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6561428922992647585}
   - {fileID: 8426404539756928184}
   - {fileID: 1214294478637519261}
   conditionSlots:
   - {fileID: 3871837545523778326}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 6
   angle: 0
@@ -978,9 +984,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 4309353401727488246}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 9
   angle: 0
@@ -1137,10 +1145,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1379487315251211140}
   - {fileID: 922067538114127521}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
   angle: 0
@@ -1297,12 +1307,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6561428922992647585}
   - {fileID: 8426404539756928184}
   - {fileID: 1214294478637519261}
   conditionSlots:
   - {fileID: 3871837545523778326}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 7
   angle: 0
@@ -1872,9 +1884,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 4531189159305827328}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 3
   angle: 0
@@ -2031,9 +2045,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2351926988003567939}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
   angle: 0
@@ -2294,10 +2310,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 922067538114127521}
   - {fileID: 1379487315251211140}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
   angle: 0
@@ -2764,9 +2782,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3871837545523778326}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 4
   angle: 0
@@ -2923,10 +2943,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6493538200284069280}
   conditionSlots:
   - {fileID: 8771745264238254691}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 12
   angle: 0
@@ -3083,9 +3105,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 279431900959569108}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 18
   angle: 0
@@ -3242,10 +3266,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 7095280409241073476}
   conditionSlots:
   - {fileID: 4359791885381984747}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 12
   angle: 0
@@ -3486,9 +3512,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 7519320431482396004}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 14
   angle: 0
@@ -3809,9 +3837,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2448186067119750350}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 9
   angle: 0
@@ -4259,9 +4289,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8791244055919706268}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 11
   angle: 0
@@ -4418,10 +4450,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3080422109243127336}
   conditionSlots:
   - {fileID: 1446050753096805513}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 11
   angle: 0
@@ -4580,9 +4614,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3991623966822390376}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 4
   angle: 0
@@ -5648,9 +5684,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 862743947096716003}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
   angle: 0
@@ -5910,12 +5948,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6561428922992647585}
   - {fileID: 8426404539756928184}
   - {fileID: 1214294478637519261}
   conditionSlots:
   - {fileID: 3871837545523778326}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
   angle: 0
@@ -6343,10 +6383,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 9182937472819328113}
   conditionSlots:
   - {fileID: 4531189159305827328}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 4
   angle: 0
@@ -6503,9 +6545,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5697383359299140204}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 10
   angle: 0
@@ -6910,10 +6954,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6183687167759912418}
   - {fileID: 2534029203330944645}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 12
   angle: 0
@@ -7071,9 +7117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 4359791885381984747}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 11
   angle: 0
@@ -7179,6 +7227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd83ed5f2d488ca67380acd715fef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 7345673571245414053}
   isBoxReadyForInteraction: 1
   maxItemOutOfBox: 10
   allShadows:
@@ -7569,9 +7618,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3666457012108087023}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 8
   angle: 0
@@ -7935,10 +7986,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6183687167759912418}
   - {fileID: 2534029203330944645}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 12
   angle: 0
@@ -8095,10 +8148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1395270955951987022}
   conditionSlots:
   - {fileID: 8771745264238254691}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 11
   angle: 0
@@ -8255,10 +8310,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6060359680501603206}
   conditionSlots:
   - {fileID: 1446050753096805513}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 8
   angle: 0
@@ -8808,10 +8865,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8771745264238254691}
   conditionSlots:
   - {fileID: 1446050753096805513}
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 10
   angle: 0
@@ -8968,9 +9027,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3264368724052998606}
   conditionSlots: []
+  shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: -1
   angle: 0

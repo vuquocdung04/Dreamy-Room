@@ -54,8 +54,7 @@ public class Level_5 : LevelBase
     public void CleanDirtCompleted()
     {
         broom.gameObject.SetActive(true);
-        isBoxReadyForInteraction = true;
-        InitStateBox();
+        SetActiveBox();
     }
     
 }

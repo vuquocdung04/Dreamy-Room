@@ -110,7 +110,7 @@ public class ItemBase : MonoBehaviour
             isUnlocked = true;
     }
 
-    private void CheckItemPlacement(float threshold)
+    protected virtual void CheckItemPlacement(float threshold)
     {
         if (!isUnlocked)
         {
@@ -198,7 +198,7 @@ public class ItemBase : MonoBehaviour
         targetItemToUpdate.spriteRenderer.sprite = targetItemToUpdate.sprUpdate;
     }
 
-    private void OnFailSnap()
+    protected void OnFailSnap()
     {
         spriteRenderer.sortingOrder = indexLayer;
         transform.eulerAngles = new Vector3(0, 0, angle);

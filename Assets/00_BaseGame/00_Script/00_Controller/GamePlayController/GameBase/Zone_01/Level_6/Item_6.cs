@@ -1,6 +1,6 @@
 using UnityEngine;
 
-    public class Item_6 : MonoBehaviour
+    public class Item_6 : ItemBase
     {
         
     }
