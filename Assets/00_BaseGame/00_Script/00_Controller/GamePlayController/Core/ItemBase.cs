@@ -152,6 +152,8 @@ public class ItemBase : MonoBehaviour
             if (shadowItem)
                 shadowItem.gameObject.SetActive(true);
             targetSlot.SetActive();
+            if(targetSlot.gameObject.activeSelf)
+                targetSlot.DeActiveObj();
             if (isInteractableAfterPlacement)
                 coll2D.enabled = true;
             UpdateSpriteToPlaced();

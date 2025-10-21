@@ -50,7 +50,6 @@
         {
             gameObject.SetActive(true);
         }
-
         public void DeActiveObj()
         {
             gameObject.SetActive(false);
