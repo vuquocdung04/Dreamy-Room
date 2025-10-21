@@ -10,7 +10,6 @@ using UnityEngine;
 
 public abstract class LevelBase : MonoBehaviour
 {
-    [SerializeField] private Transform room;
     [SerializeField] protected bool isBoxReadyForInteraction;
     [SerializeField] protected int maxItemOutOfBox = 10;
     [SerializeField] protected List<ItemSlot> allShadows;
@@ -40,7 +39,7 @@ public abstract class LevelBase : MonoBehaviour
     private bool lastHasReadyShadows;
 
     private EffectBoosterController effectBoosterController;
-    private GamePlayController gamePlayController;
+    protected GamePlayController gamePlayController;
     private GameController gameController;
 
     public virtual void Init()
@@ -267,7 +266,7 @@ public abstract class LevelBase : MonoBehaviour
         }
     }
 
-    private void HandleFillProgress()
+    protected void HandleFillProgress()
     {
         gamePlayController.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
     }
@@ -277,22 +276,21 @@ public abstract class LevelBase : MonoBehaviour
         if (itemsPlacedCorrectly == totalItemsRequired)
         {
             Debug.Log("WinGame");
-            gameController.IncreaseLevel();
             ExecuteWinSequence().Forget();
         }
     }
 
     private async UniTask ExecuteWinSequence()
     {
-        await PreWinGameLogic();
+        await HandlePrevWinGame();
 
         await HandleAfterWinGame();
     }
 
-    protected virtual async UniTask PreWinGameLogic()
+    protected virtual async UniTask HandlePrevWinGame()
     {
         var duration = 0.75f;
-        gamePlayController.playerContains.mainCamera.transform.position = new Vector3(0, 1, -10f);
+        await gamePlayController.playerContains.mainCamera.transform.DOMoveX(0f,0.5f).SetEase(Ease.OutBack);
         gamePlayController.WinGame();
         await gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
         await UniTask.Delay(TimeSpan.FromSeconds(duration));
@@ -302,6 +300,7 @@ public abstract class LevelBase : MonoBehaviour
     protected virtual async UniTask HandleAfterWinGame()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+        gameController.IncreaseLevel();
         WinBox.Setup().Show();
     }
 

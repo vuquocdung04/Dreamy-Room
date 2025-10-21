@@ -38,6 +38,7 @@ public class ItemBase : MonoBehaviour
 
     private Vector3 newPosition;
     private bool toggleChangAnim;
+    private PlayerContains playerContains;
     public int GetIndexLayer() => indexLayer;
     public bool GetPlacedByPlayer() => isPlacedByPlayer;
     public void SetPlacedByPlayer(bool state) => isPlacedByPlayer = state;
@@ -61,6 +62,7 @@ public class ItemBase : MonoBehaviour
         gameObject.SetActive(false);
         if (shadowItem)
             shadowItem.gameObject.SetActive(false);
+        playerContains = GamePlayController.Instance.playerContains;
     }
 
 
@@ -82,7 +84,7 @@ public class ItemBase : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, 0, angle);
         transform.DOScale(originalScale, 0.3f).SetEase(Ease.OutBack);
         float randY = Random.Range(4f, 6f);
-        float randX = Random.Range(-3.5f, 3.5f);
+        float randX = Random.Range(playerContains.left.position.x + 0.2f, playerContains.right.position.x-0.2f);
         transform.DOLocalMove(new Vector3(randX, randY), 0.2f).OnComplete(delegate
         {
             coll2D.enabled = true;

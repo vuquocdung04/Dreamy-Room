@@ -11,9 +11,9 @@ public class Level_3 : LevelBase
         return go.AddComponent<Slot_3>();
     }
 
-    protected override async UniTask PreWinGameLogic()
+    protected override async UniTask HandlePrevWinGame()
     {
-        await base.PreWinGameLogic();
+        await base.HandlePrevWinGame();
         character.gameObject.SetActive(true);
         character.localScale = Vector3.zero;
         Tween charTween = character.DOScale(Vector3.one * 0.675f, 0.5f).SetEase(Ease.OutElastic);
