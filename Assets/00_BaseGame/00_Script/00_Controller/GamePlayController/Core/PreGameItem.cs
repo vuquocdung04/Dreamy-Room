@@ -11,6 +11,8 @@ public abstract class PreGameItem : MonoBehaviour
     public virtual void Init()
     {
         angleZ = transform.localEulerAngles.z;
+        if (coll2D == null)
+            coll2D.GetComponent<Collider2D>();
     }
 
     private void CheckItemPlacement(float threshold)

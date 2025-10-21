@@ -31,7 +31,7 @@ public class LevelController : MonoBehaviour
         currentLevel.Init();
         int rand = Random.Range(0, lsColors.Count);
         currentLevel.SetColorBox(lsColors[rand]);
-        
+        imgBg.gameObject.SetActive(true);
         RandomSpriteBg();
     }
 

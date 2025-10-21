@@ -153,7 +153,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6906026206634634598}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 7
@@ -163,8 +162,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &2214899386866813484
@@ -314,7 +311,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6924284952396446615}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 8
@@ -324,8 +320,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &6131028773852767352
@@ -476,8 +470,6 @@ MonoBehaviour:
   slotsSnap:
   - {fileID: 391417614204429446}
   - {fileID: 8856237618809487620}
-  conditionSlots:
-  - {fileID: 3896261576347635359}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
@@ -487,8 +479,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &9187387959873864973
@@ -844,7 +834,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2880207777692639857}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 3
@@ -854,8 +843,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &5568715283849745525
@@ -1005,7 +992,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3896261576347635359}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 2
@@ -1015,8 +1001,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &7253342228514952982
@@ -1166,9 +1150,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2635981422418601230}
-  conditionSlots:
-  - {fileID: 3896261576347635359}
-  - {fileID: 3317449355943046652}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 9
@@ -1178,8 +1159,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &8805625689789773852
@@ -1378,7 +1357,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 398207050155056537}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 7
@@ -1388,8 +1366,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &3975480690893379118
@@ -1539,7 +1515,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2510429444724013271}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 4
@@ -1549,8 +1524,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &6160259101962912834
@@ -1700,7 +1673,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2705754839575198572}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
@@ -1710,8 +1682,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &4682443883217779994
@@ -1861,7 +1831,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2412361336148583895}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
@@ -1871,8 +1840,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &2642391963745175255
@@ -2125,7 +2092,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1445918821657206376}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 9
@@ -2135,8 +2101,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &8341798775717198760
@@ -2801,7 +2765,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 554896512907254273}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 5
@@ -2811,8 +2774,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &1802237504167339035
@@ -2962,8 +2923,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3303764118460985397}
-  conditionSlots:
-  - {fileID: 3184537647969855427}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 8
@@ -2973,8 +2932,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &5705598215129860674
@@ -3227,7 +3184,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6679748641498000740}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 8
@@ -3237,8 +3193,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &1251012543825961931
@@ -3680,8 +3634,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3317449355943046652}
-  conditionSlots:
-  - {fileID: 3896261576347635359}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 7
@@ -3691,8 +3643,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &8674519669022749459
@@ -4202,8 +4152,6 @@ MonoBehaviour:
   slotsSnap:
   - {fileID: 391417614204429446}
   - {fileID: 8856237618809487620}
-  conditionSlots:
-  - {fileID: 3896261576347635359}
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 4
@@ -4213,8 +4161,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &5253419625155496437
@@ -4549,7 +4495,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.95757, y: 0.95757, z: 0.95757}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2020152293449338199}
@@ -4822,7 +4768,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2193428977159968716}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 7
@@ -4832,8 +4777,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &4781667701184421656
@@ -4983,7 +4926,6 @@ MonoBehaviour:
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3184537647969855427}
-  conditionSlots: []
   shadowItem: {fileID: 0}
   itemSize: 0
   indexLayer: 6
@@ -4993,8 +4935,6 @@ MonoBehaviour:
   sprOriginal: {fileID: 0}
   sprAnim: {fileID: 0}
   sprPlaced: {fileID: 0}
-  sprUpdate: {fileID: 0}
-  targetItemToUpdate: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
 --- !u!212 &806266328523329093

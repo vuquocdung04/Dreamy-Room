@@ -83,7 +83,7 @@ public class ItemBase : MonoBehaviour
         transform.DOScale(originalScale, 0.3f).SetEase(Ease.OutBack);
         float randY = Random.Range(4f, 6f);
         float randX = Random.Range(-3.5f, 3.5f);
-        transform.DOMove(new Vector3(randX, randY), 0.2f).OnComplete(delegate
+        transform.DOLocalMove(new Vector3(randX, randY), 0.2f).OnComplete(delegate
         {
             coll2D.enabled = true;
             PlayIdleTween();
@@ -145,10 +145,10 @@ public class ItemBase : MonoBehaviour
         spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
         gameObject.layer = LayerMask.NameToLayer(LayerMaskName.DEFAULT);
         transform.DORotate(Vector3.zero, 0.2f);
-        transform.DOMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
+        transform.DOLocalMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
         {
             isPlaced = true;
-            GameController.Instance.effectController.FxEffect(this.transform.position);
+            GameController.Instance.effectController.FxEffect(transform.localPosition);
             if (shadowItem)
                 shadowItem.gameObject.SetActive(true);
             targetSlot.SetActive();
@@ -249,7 +249,7 @@ public class ItemBase : MonoBehaviour
     {
         if (this == null || !gameObject.activeInHierarchy) return;
         var posY = transform.position.y;
-        idleTween = transform.DOMoveY(posY + 0.3f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        idleTween = transform.DOLocalMoveY(posY + 0.15f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void StopIdleTween()
