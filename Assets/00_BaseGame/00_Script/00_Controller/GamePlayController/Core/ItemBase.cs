@@ -64,13 +64,7 @@ public class ItemBase : MonoBehaviour
             shadowItem.gameObject.SetActive(false);
         playerContains = GamePlayController.Instance.playerContains;
     }
-
-
-    #region Properties
-
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
-
-    #endregion
 
     #region Item Placement
 
