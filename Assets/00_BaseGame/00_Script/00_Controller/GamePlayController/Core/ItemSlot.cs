@@ -22,7 +22,7 @@
         {
             return isReadyShow && !isFullSlot && !isActive;
         }
-        public bool IsReadyToReceiveItem()
+        public virtual bool IsReadyToReceiveItem()
         {
             if (isFullSlot)
             {

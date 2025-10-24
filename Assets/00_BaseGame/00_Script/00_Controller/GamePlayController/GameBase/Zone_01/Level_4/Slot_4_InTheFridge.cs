@@ -5,6 +5,13 @@ public class Slot_4_InTheFridge : Slot_4
 {
     [SerializeField] private bool isDoorOpened;
     public void SetActiveWhenOpened() => isDoorOpened = true;
+
+    public override bool IsReadyToReceiveItem()
+    {
+        if(!isDoorOpened) return false;
+        return base.IsReadyToReceiveItem();
+    }
+
     public override bool IsAvailableForMagicWand()
     {
         return base.IsAvailableForMagicWand() && isDoorOpened;

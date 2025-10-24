@@ -4,16 +4,16 @@ using UnityEngine;
 public class Item_10_InTheWardore : ItemBase, IPostPlacementAction
 {
     [SerializeField] private bool isInsideMask;
-    [SerializeField] private bool isDoorOpened;
+    [SerializeField] private bool isWardrobeOpen;
 
     public static System.Action postEvent;
-    public void SetIsDoorOpened(bool state)  => this.isDoorOpened = state;
+    public void SetIsDoorOpened(bool state)  => this.isWardrobeOpen = state;
     public override void ValidateUnlockState()
     {
-        if (isUnlocked) return;
+        if (isAvailableForHint) return;
         if (slotsSnap == null) return;
 
-        isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem()) && isDoorOpened;
+        isAvailableForHint = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem() && isWardrobeOpen);
     }
 
     public void HandlePostPlacementAction()

@@ -214,6 +214,8 @@ public class InputManager : MonoBehaviour
         bottom = GameController.Instance.useProfile.IsRemoveAds
             ? playerContains.bottom.transform.position.y
             : playerContains.bottom.transform.position.y + 2f;
+        
+        playerContains.CacheBounds();
     }
 
     public void SetWin(bool state) => isWin = state;

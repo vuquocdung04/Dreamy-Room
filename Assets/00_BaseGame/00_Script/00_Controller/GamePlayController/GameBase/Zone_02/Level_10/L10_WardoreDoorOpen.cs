@@ -33,12 +33,14 @@ public class L10_WardoreDoorOpen : MonoBehaviour
         {
             if(item.GetItemPlaced()) continue;
             item.SetIsDoorOpened(state);
+            item.ValidateUnlockState();
         }
 
         foreach (var slot in lsSlots)
         {
             if(slot.isFullSlot) continue;
             slot.SetIsDoorOpened(state);
+            slot.ValidateReadyState();
         }
     }
     

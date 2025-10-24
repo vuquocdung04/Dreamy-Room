@@ -8,6 +8,8 @@ public class Item_10_Wardore : ItemBase, IPostPlacementAction
     public L10_WardoreDoorClose doorCloseLeft;
     public L10_WardoreDoorClose doorCloseRight;
 
+    public Transform hanger1;
+    public Transform hanger2;
     public void HandlePostPlacementAction()
     {
         doorOpenLeft.Init();
@@ -16,5 +18,7 @@ public class Item_10_Wardore : ItemBase, IPostPlacementAction
         doorCloseRight.Init();
         doorCloseLeft.EnableColl();
         doorCloseRight.EnableColl();
+        hanger1.gameObject.SetActive(true);
+        hanger2.gameObject.SetActive(true);
     }
 }

@@ -13,7 +13,11 @@ public class PlayerContains : MonoBehaviour
     public Transform left;
     public Transform right;
     
-    
+    // Cache boundaries
+    private float cachedLeftBound;
+    private float cachedRightBound;
+    private float cachedMargin;
+    private bool isBoundsCached;
     public void Init()
     {
         cameraController.Init();
@@ -44,5 +48,21 @@ public class PlayerContains : MonoBehaviour
     {
         AdjustCamera();
         Debug.Log("Dieu chin cam");
+    }
+    
+    public void CacheBounds()
+    {
+        cachedLeftBound = left.position.x;
+        cachedRightBound = right.position.x;
+        float screenWidth = Mathf.Abs(cachedRightBound - cachedLeftBound);
+        cachedMargin = screenWidth * 0.05f;
+        isBoundsCached = true;
+    }
+    public float GetRandomSpawnX()
+    {
+        if (!isBoundsCached)
+            CacheBounds();
+            
+        return Random.Range(cachedLeftBound + cachedMargin, cachedRightBound - cachedMargin);
     }
 }

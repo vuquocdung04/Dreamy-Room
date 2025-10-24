@@ -10,10 +10,10 @@ public class Item_4_InTheFridge : Item_4, IPostPlacementAction
     public void SetDoorOpened() => isDoorOpened = true;
     public override void ValidateUnlockState()
     {
-        if (isUnlocked) return;
+        if (isAvailableForHint) return;
         if (slotsSnap == null) return;
 
-        isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem() && isDoorOpened);
+        isAvailableForHint = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem() && isDoorOpened);
     }
 
     public void HandlePostPlacementAction()

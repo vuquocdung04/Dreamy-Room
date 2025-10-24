@@ -11,7 +11,7 @@ public class ItemBase : MonoBehaviour
     [Header("Behavior Settings")]
     [Tooltip("Vật có thể đặt được ngay từ đầu không? Tắt nếu nó cần được mở khóa bởi vật khác.")]
     [SerializeField]
-    protected bool isUnlocked = true;
+    protected bool isAvailableForHint = true;
 
     [SerializeField] protected bool isPlacedByPlayer = true;
 
@@ -78,7 +78,7 @@ public class ItemBase : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, 0, angle);
         transform.DOScale(originalScale, 0.3f).SetEase(Ease.OutBack);
         float randY = Random.Range(4f, 6f);
-        float randX = Random.Range(playerContains.left.position.x + 0.2f, playerContains.right.position.x-0.2f);
+        float randX = playerContains.GetRandomSpawnX();
         transform.DOLocalMove(new Vector3(randX, randY), 0.2f).OnComplete(delegate
         {
             coll2D.enabled = true;
@@ -88,10 +88,10 @@ public class ItemBase : MonoBehaviour
 
     public virtual void ValidateUnlockState()
     {
-        if (isUnlocked) return;
+        if (isAvailableForHint) return;
         if (slotsSnap == null) return;
 
-        isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem());
+        isAvailableForHint = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem());
     }
 
     private void CheckItemPlacement(float threshold)
@@ -101,7 +101,6 @@ public class ItemBase : MonoBehaviour
             OnFailSnap();
             return;
         }
-
         ItemSlot bestSlot = null;
         float minDistance = float.MaxValue;
 
@@ -183,7 +182,7 @@ public class ItemBase : MonoBehaviour
 
     #region Drag & Drop
 
-    public virtual void OnStartDrag(float top, Vector3 mousePosition)
+    public void OnStartDrag(float top, Vector3 mousePosition)
     {
         if (!isPlaced)
         {
@@ -246,8 +245,8 @@ public class ItemBase : MonoBehaviour
     private void PlayIdleTween()
     {
         if (this == null || !gameObject.activeInHierarchy) return;
-        var posY = transform.position.y;
-        idleTween = transform.DOLocalMoveY(posY + 0.15f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        var posY = transform.localPosition.y;
+        idleTween = transform.DOLocalMoveY(posY + 0.3f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void StopIdleTween()
@@ -271,7 +270,7 @@ public class ItemBase : MonoBehaviour
     public void SetStateItem()
     {
         if (slotsSnap != null && slotsSnap.Count > 0)
-            isUnlocked = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem());
+            isAvailableForHint = slotsSnap.All(slot => slot != null && slot.IsReadyToReceiveItem());
         if (sprOriginal == null || sprAnim == null)
             isInteractableAfterPlacement = false;
         else

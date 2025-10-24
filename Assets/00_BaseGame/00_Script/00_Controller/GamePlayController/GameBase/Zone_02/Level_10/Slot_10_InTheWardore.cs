@@ -3,12 +3,23 @@ using UnityEngine;
 
     public class Slot_10_InTheWardore : ItemSlot
     {
-        [SerializeField] private bool isDoorOpened;
-        public void SetIsDoorOpened(bool isOpen) => this.isDoorOpened = isOpen;
+        [SerializeField] private bool isWardrobeOpen;
+        public void SetIsDoorOpened(bool isOpen) => isWardrobeOpen = isOpen;
+        
+        
+        public override bool IsReadyToReceiveItem()
+        {
+            if (!isWardrobeOpen)
+            {
+                return false;
+            }
+            return base.IsReadyToReceiveItem();
+        }
+        
         public override void ValidateReadyState()
         {
-            bool allConditionsMet = conditionSlots.All(slot => slot.isFullSlot) && isDoorOpened;
-            if (allConditionsMet)
+            bool allConditionsMet = conditionSlots.All(slot => slot.isFullSlot);
+            if (allConditionsMet && isWardrobeOpen)
             {
                 isReadyShow = true;
             }
@@ -16,6 +27,6 @@ using UnityEngine;
 
         public override bool IsAvailableForMagicWand()
         {
-            return base.IsAvailableForMagicWand() && isDoorOpened;
+            return base.IsAvailableForMagicWand() && isWardrobeOpen;
         }
     }

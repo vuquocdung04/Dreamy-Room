@@ -47,6 +47,8 @@ public abstract class LevelBase : MonoBehaviour
         lastPlacementTime = -comboThreshold;
         gameController = GameController.Instance;
         gamePlayController = GamePlayController.Instance;
+        gamePlayController.playerContains.CacheBounds();
+        
         if (gamePlayController == null)
         {
             Debug.Log("GamePlayController is null");
