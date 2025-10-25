@@ -11,6 +11,7 @@ public class GameController : Singleton<GameController>
     public EffectChangeScene effectChangeScene;
     public EffectChangeScene2 effectChangeScene2;
     public EffectController effectController;
+    public HeartGame heartGame;
     protected override void OnAwake()
     {
         Init();
@@ -23,7 +24,7 @@ public class GameController : Singleton<GameController>
         dataContains.Init();
         musicController.Init();
         effectChangeScene2.Init();
-        
+        heartGame.Init();
         
         startLoading.Init();
     }

@@ -995,6 +995,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780bbe1dfe614cf08fc6c0ef0fa9e8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHearts: 5
+  timeToNextHeart: 0
+  debugUnlimitedEnd: 
 --- !u!1 &643601518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1061,7 @@ MonoBehaviour:
   effectChangeScene: {fileID: 147412200}
   effectChangeScene2: {fileID: 739310044}
   effectController: {fileID: 180924658}
+  heartGame: {fileID: 0}
 --- !u!1 &703878243
 GameObject:
   m_ObjectHideFlags: 0
