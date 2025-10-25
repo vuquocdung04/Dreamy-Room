@@ -11,6 +11,9 @@ public class HeartGame : MonoBehaviour
     [Header("Debug")] [SerializeField] private double timeToNextHeart;
     [SerializeField] private string debugUnlimitedEnd;
 
+    public double GetTimeToNextHeart() => timeToNextHeart;
+    public TimeSpan GetTimeToUnlimitedEnd() => timeToUnlimitedEnd;
+    
     private CancellationTokenSource cts;
     private TimeSpan timeToUnlimitedEnd;
 
