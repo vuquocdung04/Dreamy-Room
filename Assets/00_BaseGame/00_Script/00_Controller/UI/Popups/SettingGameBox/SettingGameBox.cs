@@ -9,38 +9,39 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
     }
 
     public Canvas canvas;
-    
+
     public Button btnClose;
     public Button btnGoHome;
     public Button btnRetry;
-    [Space(5)]
-    public Sprite spriteOn;
+    [Space(5)] public Sprite spriteOn;
     public Sprite spriteOff;
-    [Space(5)]
-    public Button btnVib;
+    [Space(5)] public Button btnVib;
     public Button btnSound;
     public Button btnMusic;
 
     public Image imgVib;
     public Image imgSound;
     public Image imgMusic;
-    
-    
+
+
     protected override void Init()
     {
         canvas.worldCamera = GamePlayController.Instance.playerContains.mainCamera;
         UpdateStateVib_Music_Sound();
-        
+
         ActionBtnClick(btnClose, delegate
         {
             Close();
             GamePlayController.Instance.ResumeGame();
         });
-        ActionBtnClick(btnGoHome, ()=> QuitLevelBox.Setup().Show());
-        ActionBtnClick(btnRetry, () =>
+        ActionBtnClick(btnGoHome, delegate
         {
-            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
+            if (GameController.Instance.curGameModeName.Equals(GameMode.NORMAL))
+                QuitLevelBox.Setup().Show();
+            else
+                GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
         });
+        ActionBtnClick(btnRetry, () => { GameController.Instance.ChangeScene2(SceneName.GAME_PLAY); });
         ActionBtnClick(btnVib, () =>
         {
             bool newState = ToggleSetting(GameController.Instance.useProfile.OnVib, imgVib);
@@ -60,15 +61,11 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
 
     protected override void InitState()
     {
-        
     }
 
     private void ActionBtnClick(Button btn, System.Action callback = null)
     {
-        btn.onClick.AddListener(delegate
-        {
-            callback?.Invoke();
-        });
+        btn.onClick.AddListener(delegate { callback?.Invoke(); });
     }
 
     private bool ToggleSetting(bool currentValue, Image img)
@@ -77,7 +74,7 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         img.sprite = newValue ? spriteOn : spriteOff;
         return newValue;
     }
-    
+
     private void UpdateStateVib_Music_Sound()
     {
         var onVib = GameController.Instance.useProfile.OnVib;
@@ -88,6 +85,4 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         imgMusic.sprite = onMusic ? spriteOn : spriteOff;
         imgSound.sprite = onSound ? spriteOn : spriteOff;
     }
-    
-    
 }

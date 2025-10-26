@@ -31,7 +31,6 @@ public class LevelHomeController : MonoBehaviour
     public async void Init()
     {
         isBusy = false;
-        var maxLevel = UseProfile.MaxUnlockedLevel;
         try
         {
             cts?.Cancel();
@@ -43,21 +42,22 @@ public class LevelHomeController : MonoBehaviour
             {
                 category.Init(
                     dataLevel,
-                    maxLevel,
+                    UseProfile.MaxUnlockedLevel,
                     colorLockIcon,
                     sprLockSmall,
                     sprLockLarge,
                     (item) => HandleSelection(item, delegate
                     {
                         UseProfile.CurrentLevel = item.GetId();
-                        if (item.GetId() == maxLevel)
+                        if (UseProfile.CurrentLevel == UseProfile.MaxUnlockedLevel)
                         {
-                            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
                             GameController.Instance.curGameModeName = GameMode.NORMAL;
+                            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
                         }
-                        else
+                        else if(UseProfile.CurrentLevel < UseProfile.MaxUnlockedLevel)
                         {
-                            
+                            SelectGameModeBox.Setup().Show();
+                            isBusy = false;
                         }
                     })
                 );

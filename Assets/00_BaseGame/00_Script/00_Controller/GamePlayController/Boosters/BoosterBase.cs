@@ -18,10 +18,8 @@ public abstract class BoosterBase : MonoBehaviour
     private BoosterConflict cachedDataConflict;
     private int cachedMaxLevel;
     #endregion
-
-    #region Properties
+    
     public GiftType GetBoosterType() => boosterType;
-    #endregion
 
     #region Initialization
     public virtual void Init(int curBoosterAmount)

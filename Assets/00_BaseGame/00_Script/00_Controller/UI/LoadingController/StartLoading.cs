@@ -22,6 +22,7 @@ public class StartLoading : MonoBehaviour
     {
         yield return null;
         var sceneName = UseProfile.HasCompletedLevelTutorial ? SceneName.HOME_SCENE : SceneName.GAME_PLAY;
+        GameController.Instance.curSceneName = sceneName;
         var asyncOperation = SceneManager.LoadSceneAsync(sceneName);
 
         yield return null;

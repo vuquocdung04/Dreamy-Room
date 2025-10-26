@@ -41,7 +41,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     private void IncreaseAmountBooster()
     {
         gameController.dataContains.giftData.Claim(currentBoosterType, 1);
-        
+
         if (gameController.curSceneName.Equals(SceneName.GAME_PLAY))
         {
             GamePlayController.Instance.playerContains.boosterController.UpdateAmountBooster(currentBoosterType);
@@ -49,7 +49,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         }
         else if (gameController.curSceneName.Equals(SceneName.HOME_SCENE))
         {
-            
+            this.PostEvent(EventID.HOME_BOOSTER_CHANGED);
         }
     }
 
@@ -58,7 +58,8 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         btn.onClick.AddListener(delegate
         {
             Close();
-            GamePlayController.Instance.ResumeGame();
+            if (gameController.curSceneName.Equals(SceneName.GAME_PLAY))
+                GamePlayController.Instance.ResumeGame();
             callback?.Invoke();
         });
     }
@@ -81,7 +82,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         txtPrice.text = priceInformation.ToString();
         txtDescription.text = descriptionInformation;
         imgIcon.sprite = sprIcon;
-        UIImageUtils.FitToTargetHeight(imgIcon,200);
+        UIImageUtils.FitToTargetHeight(imgIcon, 200);
     }
 
     private bool IsNewBoosterSelected(GiftType newBoosterType)
