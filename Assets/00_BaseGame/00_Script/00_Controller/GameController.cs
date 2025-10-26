@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -12,6 +11,8 @@ public class GameController : Singleton<GameController>
     public EffectChangeScene2 effectChangeScene2;
     public EffectController effectController;
     public HeartGame heartGame;
+    public string curSceneName;
+    public string curGameModeName;
     protected override void OnAwake()
     {
         Init();
@@ -25,7 +26,6 @@ public class GameController : Singleton<GameController>
         musicController.Init();
         effectChangeScene2.Init();
         heartGame.Init();
-        
         startLoading.Init();
     }
 
@@ -38,6 +38,7 @@ public class GameController : Singleton<GameController>
     public void ChangeScene2(string sceneName)
     {
         effectChangeScene2.ChangeScene(sceneName);
+        curSceneName = sceneName;
     }
     public void IncreaseLevel()
     {
@@ -48,3 +49,5 @@ public class GameController : Singleton<GameController>
         UseProfile.CurrentLevel++;
     }
 }
+
+

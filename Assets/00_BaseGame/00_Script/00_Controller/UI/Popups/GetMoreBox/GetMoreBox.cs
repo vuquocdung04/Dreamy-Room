@@ -19,7 +19,9 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     public TextMeshProUGUI txtPrice;
 
     private GiftType currentBoosterType;
+    private GameController gameController;
     private DataBoosterBase dataBooster;
+
     protected override void Init()
     {
         currentBoosterType = GiftType.None;
@@ -27,7 +29,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         ActionClick(btnCloseByPanel);
         ActionClick(btnBuyByCoin, IncreaseAmountBooster);
         ActionClick(btnBuyByAds, IncreaseAmountBooster);
-        
+
         CacheDataBoosterReference();
     }
 
@@ -38,23 +40,19 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
 
     private void IncreaseAmountBooster()
     {
-        switch (currentBoosterType)
+        gameController.dataContains.giftData.Claim(currentBoosterType, 1);
+        
+        if (gameController.curSceneName.Equals(SceneName.GAME_PLAY))
         {
-            case GiftType.BoosterHint:
-                UseProfile.Booster_Hint++;
-                break;
-            case GiftType.BoosterMagicWand:
-                UseProfile.Booster_MagicWand++;
-                break;
-            case GiftType.BoosterFrozenTime:
-                UseProfile.Booster_FrozeTime++;
-                break;
+            GamePlayController.Instance.playerContains.boosterController.UpdateAmountBooster(currentBoosterType);
+            this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         }
-
-        Debug.LogError("IncreaseBooster");
-        GamePlayController.Instance.playerContains.boosterController.UpdateAmountBooster(currentBoosterType);
-        this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
+        else if (gameController.curSceneName.Equals(SceneName.HOME_SCENE))
+        {
+            
+        }
     }
+
     private void ActionClick(Button btn, System.Action callback = null)
     {
         btn.onClick.AddListener(delegate
@@ -64,15 +62,17 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
             callback?.Invoke();
         });
     }
-    
+
     private void CacheDataBoosterReference()
     {
-        dataBooster = GameController.Instance.dataContains.dataBooster;
+        gameController = GameController.Instance;
+        dataBooster = gameController.dataContains.dataBooster;
     }
+
     private void UpdatePopupUI()
     {
         var typeSelected = dataBooster.boosterTypeSeleced;
-        if(!IsNewBoosterSelected(typeSelected)) return;
+        if (!IsNewBoosterSelected(typeSelected)) return;
         var boosterConflict = dataBooster.GetBoosterConflict(currentBoosterType);
         var sprIcon = boosterConflict.GetIcon();
         var priceInformation = boosterConflict.GetPrice();
@@ -81,7 +81,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         txtPrice.text = priceInformation.ToString();
         txtDescription.text = descriptionInformation;
         imgIcon.sprite = sprIcon;
-        imgIcon.SetNativeSize();
+        UIImageUtils.FitToTargetHeight(imgIcon,200);
     }
 
     private bool IsNewBoosterSelected(GiftType newBoosterType)
@@ -90,6 +90,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         {
             return false;
         }
+
         currentBoosterType = newBoosterType;
         return true;
     }

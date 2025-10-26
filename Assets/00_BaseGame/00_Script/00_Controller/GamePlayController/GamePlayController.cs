@@ -59,6 +59,7 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
         var currentLevel = UseProfile.CurrentLevel;
+        var isNormalMode = GameController.Instance.curGameModeName.Equals(GameMode.NORMAL);
         if (!UseProfile.HasCompletedLevelTutorial)
         {
             //Note: hide all roi
@@ -67,9 +68,14 @@ public class GamePlayController : Singleton<GamePlayController>
         {
             gameScene.DisplayTopBar();
             gameScene.DisplayBottomBar();
-            if(maxLevel >= 2)
-                gameScene.DisplayBoosterBar();
 
+            if (isNormalMode)
+            {
+                gameScene.DisplayProgressBar();
+                if(maxLevel >= 2)
+                    gameScene.DisplayBoosterBar();
+            }
+            
             if (currentLevel == 5 && maxLevel == 5)
             {
                 gameScene.DisplaySwipeCam();

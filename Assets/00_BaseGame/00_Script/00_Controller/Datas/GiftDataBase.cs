@@ -67,22 +67,17 @@ public class GiftDataBase : ScriptableObject
             case GiftType.BoosterX2Star:
                 UseProfile.Booster_X2Star += amount;
                 break;
-            case GiftType.HeartUnlimit:
-                UseProfile.TimeUnlimitedHeart = DateTime.Now.AddHours(1);
-                UseProfile.Heart = 5;
-                UseProfile.IsUnlimitedHeart = true;
-                break;
         }
     }
 
 }
-[System.Serializable]
+[Serializable]
 public class GiftDataEntry
 {
     public GiftType type;
     public Gift giftData;
 }
-[System.Serializable]
+[Serializable]
 public class Gift
 {
     public Sprite giftSprite;

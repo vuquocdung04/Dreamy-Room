@@ -52,6 +52,13 @@ public class SceneName
     public const string HOME_SCENE = "HomeScene";
     public const string GAME_PLAY = "GamePlayScene";
 }
+
+public class GameMode
+{
+    public const string NORMAL = "Normal";
+    public const string RELAX = "Relax";
+}
+
 public class PathPrefabs
 {
     public const string SHOP_BOX = "UI/Popups/ShopBox";
@@ -81,6 +88,7 @@ public class PathPrefabs
     public const string HINT_BOX = "UI/Popups/HintBox";
     public const string REMOVE_ADS_BOX = "UI/Popups/RemoveAdsBox";
     public const string GET_MORE_BOX = "UI/Popups/GetMoreBox";
+    public const string SELECT_GAME_MODE_BOX = "UI/Popups/SelectGameModeBox";
 }
 
 public class SortingLayerName

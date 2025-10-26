@@ -16,6 +16,7 @@ public class GameScene : MonoBehaviour
     [SerializeField] private Sprite sprZoomOut;
 
     [SerializeField] private RectTransform topBar;
+    [SerializeField] private RectTransform rectProgress;
     [SerializeField] private RectTransform bottomBar;
     [SerializeField] private RectTransform boosterBar;
     [SerializeField] private RectTransform starBar;
@@ -82,7 +83,6 @@ public class GameScene : MonoBehaviour
     {
         topBar.gameObject.SetActive(true);
     }
-
     public void DisplayBottomBar()
     {
         bottomBar.gameObject.SetActive(true);
@@ -91,11 +91,16 @@ public class GameScene : MonoBehaviour
     {
         boosterBar.gameObject.SetActive(true);
     }
+    public void DisplayProgressBar()
+    {
+        rectProgress.gameObject.SetActive(true);
+    }
     public void HideAllBar()
     {
         topBar.gameObject.SetActive(false);
         bottomBar.gameObject.SetActive(false);
         boosterBar.gameObject.SetActive(false);
+        rectProgress.gameObject.SetActive(false);
     }
 
     public void HideSwipeCam()

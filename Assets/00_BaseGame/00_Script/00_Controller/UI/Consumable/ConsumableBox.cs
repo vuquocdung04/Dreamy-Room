@@ -136,7 +136,7 @@ public class ConsumableBox : MonoBehaviour
         this.RemoveListener(EventID.CHANGE_STAR, UpdateTextStar);
         this.RemoveListener(EventID.CHANGE_HEART, OnHeartAmountChanged);
         
-        cts?.Dispose();
         cts?.Cancel();
+        cts?.Dispose();
     }
 }

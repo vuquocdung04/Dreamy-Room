@@ -20,6 +20,7 @@ public class CollectionDetailItem : MonoBehaviour
     public void Init(Sprite icon, Sprite bg, bool isActive)
     {
         imgIcon.sprite = icon;
+        UIImageUtils.FitToTargetHeight(imgIcon,170);
         if (isActive)
             imgBg.sprite = bg;
         imgIcon.color = isActive ? Color.white : new Color(0, 0, 0, 0.5f);
