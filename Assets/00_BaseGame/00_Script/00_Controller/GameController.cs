@@ -48,6 +48,26 @@ public class GameController : Singleton<GameController>
         }
         UseProfile.CurrentLevel++;
     }
+
+    public bool IsGameModeRelax()
+    {
+        return curGameModeName.Equals(GameMode.RELAX);
+    }
+
+    public bool IsGameModeNormal()
+    {
+        return curGameModeName.Equals(GameMode.NORMAL);
+    }
+
+    public bool IsSceneHome()
+    {
+        return curSceneName.Equals(SceneName.HOME_SCENE);
+    }
+
+    public bool IsSceneGamePlay()
+    {
+        return curSceneName.Equals(SceneName.GAME_PLAY);
+    }
 }
 
 

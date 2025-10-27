@@ -55,8 +55,9 @@ public class WinBox : BoxSingleton<WinBox>
     {
         Close();
         UseProfile.Star += GamePlayController.Instance.gameScene.GetStarAmount();
-        GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
+        SelectGameModeBox.Setup().Show();
     }
+    
 
     private void OnClickClaim(bool isX2 = false)
     {
@@ -67,7 +68,8 @@ public class WinBox : BoxSingleton<WinBox>
         
         giftData.Claim(GiftType.Coin, coinAmount * multiplier);
         
-        giftData.Claim(GiftType.Heart, heartMinutes * multiplier); 
+        giftData.Claim(GiftType.Heart, heartMinutes * multiplier);
+        SelectGameModeBox.Setup().Show();
     }
     
     private void OnClickGift()

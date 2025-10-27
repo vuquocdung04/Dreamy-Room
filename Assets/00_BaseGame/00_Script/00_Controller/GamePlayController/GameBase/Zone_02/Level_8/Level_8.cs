@@ -21,7 +21,7 @@ using UnityEngine;
         protected override async UniTask HandlePrevWinGame()
         {
             GamePlayController.Instance.PauseGame();
-            var cameraMain = gamePlayController.playerContains.mainCamera;
+            var cameraMain = GamePlayController.playerContains.mainCamera;
             await cameraMain.transform.DOMoveX(0f,0.5f).SetEase(Ease.Linear);
             await  cameraMain.transform.DOMoveX(3.35f,1f).SetEase(Ease.Linear);
         }

@@ -42,7 +42,7 @@ public class HomeBox : BoxSingleton<HomeBox>
     
     protected override void Init()
     {
-        levelHomeController.Init();
+        levelHomeController.Init().Forget();
         canvas.worldCamera = Camera.main;
         
         SetupBtnOnClick(btnDailylogin, () => DailyLoginBox.Setup().Show());

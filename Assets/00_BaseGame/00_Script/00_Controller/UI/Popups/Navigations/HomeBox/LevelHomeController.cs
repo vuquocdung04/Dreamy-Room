@@ -28,7 +28,7 @@ public class LevelHomeController : MonoBehaviour
 
     private bool isBusy; // Anti spam
 
-    public async void Init()
+    public async UniTaskVoid  Init()
     {
         isBusy = false;
         try
@@ -49,16 +49,9 @@ public class LevelHomeController : MonoBehaviour
                     (item) => HandleSelection(item, delegate
                     {
                         UseProfile.CurrentLevel = item.GetId();
-                        if (UseProfile.CurrentLevel == UseProfile.MaxUnlockedLevel)
-                        {
-                            GameController.Instance.curGameModeName = GameMode.NORMAL;
-                            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
-                        }
-                        else if(UseProfile.CurrentLevel < UseProfile.MaxUnlockedLevel)
-                        {
-                            SelectGameModeBox.Setup().Show();
-                            isBusy = false;
-                        }
+                        SelectGameModeBox.Setup().Show();
+                        UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+                        isBusy = false;
                     })
                 );
             }

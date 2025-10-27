@@ -42,12 +42,12 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     {
         gameController.dataContains.giftData.Claim(currentBoosterType, 1);
 
-        if (gameController.curSceneName.Equals(SceneName.GAME_PLAY))
+        if (gameController.IsSceneGamePlay())
         {
             GamePlayController.Instance.playerContains.boosterController.UpdateAmountBooster(currentBoosterType);
             this.PostEvent(EventID.ON_BOOSTER_CONDITION_CHANGED);
         }
-        else if (gameController.curSceneName.Equals(SceneName.HOME_SCENE))
+        else if (gameController.IsSceneHome())
         {
             this.PostEvent(EventID.HOME_BOOSTER_CHANGED);
         }
@@ -58,7 +58,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         btn.onClick.AddListener(delegate
         {
             Close();
-            if (gameController.curSceneName.Equals(SceneName.GAME_PLAY))
+            if (gameController.IsSceneGamePlay())
                 GamePlayController.Instance.ResumeGame();
             callback?.Invoke();
         });

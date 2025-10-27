@@ -39,28 +39,28 @@ public abstract class LevelBase : MonoBehaviour
     private bool lastHasReadyShadows;
 
     private EffectBoosterController effectBoosterController;
-    protected GamePlayController gamePlayController;
+    protected GamePlayController GamePlayController;
     private GameController gameController;
-
+    private bool isGameModeRelax;
     public virtual void Init()
     {
         lastPlacementTime = -comboThreshold;
         gameController = GameController.Instance;
-        gamePlayController = GamePlayController.Instance;
-        gamePlayController.playerContains.CacheBounds();
+        GamePlayController = GamePlayController.Instance;
+        GamePlayController.playerContains.CacheBounds();
         
-        if (gamePlayController == null)
+        if (GamePlayController == null)
         {
             Debug.Log("GamePlayController is null");
             return;
         }
 
-        effectBoosterController = gamePlayController.effectBoosterController;
+        effectBoosterController = GamePlayController.effectBoosterController;
         foreach (var item in allItems)
         {
             item.Init(box.GetSpawnPos());
         }
-
+        isGameModeRelax = gameController.IsGameModeRelax();
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
@@ -152,7 +152,7 @@ public abstract class LevelBase : MonoBehaviour
 
     public void UseFrozeBooster()
     {
-        effectBoosterController.EffectBooster(delegate { gamePlayController.gameScene.ActivateFrozeBooster(); });
+        effectBoosterController.EffectBooster(delegate { GamePlayController.gameScene.ActivateFrozeBooster(); });
     }
 
     public void UseHintBooster()
@@ -248,15 +248,18 @@ public abstract class LevelBase : MonoBehaviour
     private void SpawnStarEffect(object obj = null)
     {
         if (!UseProfile.HasCompletedLevelTutorial) return;
-        if (gamePlayController.IsWin) return;
+        if(isGameModeRelax) return;
+        
+        
+        if (GamePlayController.IsWin) return;
         if (obj is not ItemBase item) return;
-        var targetPos = gamePlayController.gameScene.GetStarBar();
+        var targetPos = GamePlayController.gameScene.GetStarBar();
         var spawnPos = item.transform.position;
 
         if (itemsPlacedCorrectly % 3 == 0)
         {
             gameController.effectController.StarEffect(spawnPos, targetPos.position,
-                delegate { gamePlayController.gameScene.IncreaseStarAmount(); });
+                delegate { GamePlayController.gameScene.IncreaseStarAmount(); });
         }
     }
 
@@ -270,7 +273,7 @@ public abstract class LevelBase : MonoBehaviour
 
     protected void HandleFillProgress()
     {
-        gamePlayController.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
+        GamePlayController.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
     }
 
     private void CheckWin()
@@ -292,9 +295,9 @@ public abstract class LevelBase : MonoBehaviour
     protected virtual async UniTask HandlePrevWinGame()
     {
         var duration = 0.75f;
-        await gamePlayController.playerContains.mainCamera.transform.DOMoveX(0f,0.5f).SetEase(Ease.OutBack);
-        gamePlayController.WinGame();
-        await gamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
+        await GamePlayController.playerContains.mainCamera.transform.DOMoveX(0f,0.5f).SetEase(Ease.OutBack);
+        GamePlayController.WinGame();
+        await GamePlayController.playerContains.mainCamera.DOOrthoSize(13f, duration).SetEase(Ease.Linear);
         await UniTask.Delay(TimeSpan.FromSeconds(duration));
         //NOTE: Viet o day
     }

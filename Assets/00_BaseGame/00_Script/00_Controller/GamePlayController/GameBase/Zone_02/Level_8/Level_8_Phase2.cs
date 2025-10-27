@@ -5,7 +5,7 @@ using UnityEngine;
         public override void Init()
         {
             base.Init();
-            var currentLevel = (Level_8)gamePlayController.levelController.currentLevel;
+            var currentLevel = (Level_8)GamePlayController.levelController.currentLevel;
             itemsPlacedCorrectly = currentLevel.GetTotalItemsRequired();
             totalItemsRequired += currentLevel.GetTotalItemsRequired();
             HandleFillProgress();

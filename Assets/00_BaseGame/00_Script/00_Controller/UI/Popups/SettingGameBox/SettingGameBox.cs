@@ -36,7 +36,7 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         });
         ActionBtnClick(btnGoHome, delegate
         {
-            if (GameController.Instance.curGameModeName.Equals(GameMode.NORMAL))
+            if (GameController.Instance.IsGameModeNormal())
                 QuitLevelBox.Setup().Show();
             else
                 GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);

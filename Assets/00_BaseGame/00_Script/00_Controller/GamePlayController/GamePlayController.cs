@@ -59,7 +59,7 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
         var currentLevel = UseProfile.CurrentLevel;
-        var isNormalMode = GameController.Instance.curGameModeName.Equals(GameMode.NORMAL);
+        var isNormalMode = GameController.Instance.IsGameModeNormal();
         if (!UseProfile.HasCompletedLevelTutorial)
         {
             //Note: hide all roi
