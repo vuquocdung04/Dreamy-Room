@@ -30,7 +30,7 @@ public class GameScene : MonoBehaviour
     private CameraController cameraController;
 
     [Header("Time Setting")]
-
+    [SerializeField] private float totalTime = 300f;
     [SerializeField] private float currentTime;
     [SerializeField] private bool isTimerRunning;
 
@@ -64,14 +64,19 @@ public class GameScene : MonoBehaviour
         });
 
         btnZoom.onClick.AddListener(HandleToggleZoomInOut);
+        ApplyPreGameBoosters();
+    }
 
-        StartTimer(300);
+    private void ApplyPreGameBoosters()
+    {
+        totalTime = GameController.Instance.dataContains.dataPlayer.isUsedTimeBuffer ? 600 : 300;
+        StartTimer(totalTime);
     }
     public RectTransform GetStarBar() => starBar;
     public int GetStarAmount() => starAmount;
-    public void IncreaseStarAmount()
+    public void IncreaseStarAmount(int amount)
     {
-        starAmount++;
+        starAmount += amount;
         txtStar.text = starAmount.ToString();
     }
 

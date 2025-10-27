@@ -54,7 +54,7 @@ public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
             Close();
         });
     }
-
+    
     protected override void InitState()
     {
         txtTitle.text = $"Level {UseProfile.CurrentLevel}";

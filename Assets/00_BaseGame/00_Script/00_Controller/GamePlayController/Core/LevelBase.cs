@@ -12,6 +12,7 @@ public abstract class LevelBase : MonoBehaviour
 {
     [SerializeField] protected bool isBoxReadyForInteraction;
     [SerializeField] protected int maxItemOutOfBox = 10;
+    [SerializeField] protected int amountStarHit = 1;
     [SerializeField] protected List<ItemSlot> allShadows;
     [SerializeField] protected List<ItemBase> allItems;
 
@@ -61,6 +62,10 @@ public abstract class LevelBase : MonoBehaviour
             item.Init(box.GetSpawnPos());
         }
         isGameModeRelax = gameController.IsGameModeRelax();
+        
+        ApplyPreGameBoosters();
+        
+        
         this.RegisterListener(EventID.REQUEST_TAKE_ITEM_FROM_BOX, TakeItemOutOfBox);
         this.RegisterListener(EventID.ITEM_PLACED_CORRECTLY, OnItemPlacedCorrectly);
         this.RegisterListener(EventID.SPAWN_STAR, SpawnStarEffect);
@@ -73,6 +78,16 @@ public abstract class LevelBase : MonoBehaviour
         this.RemoveListener(EventID.SPAWN_STAR, SpawnStarEffect);
     }
 
+    private void ApplyPreGameBoosters()
+    {
+        if(isGameModeRelax) return;
+        if (gameController.dataContains.dataPlayer.isUsedBoxBuffer)
+            maxItemOutOfBox = 15;
+        if (gameController.dataContains.dataPlayer.isUsedX2Star)
+            amountStarHit = 2;
+
+    }
+    
     public void InitStateBox()
     {
         if (!isBoxReadyForInteraction) return;
@@ -249,8 +264,6 @@ public abstract class LevelBase : MonoBehaviour
     {
         if (!UseProfile.HasCompletedLevelTutorial) return;
         if(isGameModeRelax) return;
-        
-        
         if (GamePlayController.IsWin) return;
         if (obj is not ItemBase item) return;
         var targetPos = GamePlayController.gameScene.GetStarBar();
@@ -259,7 +272,7 @@ public abstract class LevelBase : MonoBehaviour
         if (itemsPlacedCorrectly % 3 == 0)
         {
             gameController.effectController.StarEffect(spawnPos, targetPos.position,
-                delegate { GamePlayController.gameScene.IncreaseStarAmount(); });
+                delegate { GamePlayController.gameScene.IncreaseStarAmount(amountStarHit); });
         }
     }
 

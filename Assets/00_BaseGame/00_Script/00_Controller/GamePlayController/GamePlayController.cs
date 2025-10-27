@@ -1,5 +1,3 @@
-
-
 using DG.Tweening;
 
 public class GamePlayController : Singleton<GamePlayController>
@@ -8,53 +6,66 @@ public class GamePlayController : Singleton<GamePlayController>
     public PlayerContains playerContains;
     public LevelController levelController;
     public EffectBoosterController effectBoosterController;
-    public bool IsWin {get; private set; }
+    public bool IsWin { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
         m_DontDestroyOnLoad = false;
         Init();
     }
-    
+
     private void Init()
     {
         gameScene.Init();
         levelController.Init();
         playerContains.Init();
         effectBoosterController.Init();
-        
+
         PrevPlayGame();
     }
+
     private void PrevPlayGame()
     {
         playerContains.mainCamera.orthographicSize = 15f;
         gameScene.HideAllBar();
         levelController.currentLevel.HideBox();
     }
+
     public void InitEffect()
     {
         var targetSize = playerContains.cameraController.GetLimitSize();
-        playerContains.mainCamera.DOOrthoSize(targetSize,0.5f).OnComplete(delegate
+        playerContains.mainCamera.DOOrthoSize(targetSize, 0.5f).OnComplete(delegate
         {
-             levelController.currentLevel.InitStateBox();
-             HandleUnlockCamera();
-             HandleUnlockBar();
-             ResumeGame();
+            levelController.currentLevel.InitStateBox();
+            HandleUnlockCamera();
+            HandleUnlockBar();
+            ResumeGame();
+            ConsumeUsedBoosters();
         });
     }
-    
+
+    private void ConsumeUsedBoosters()
+    {
+        if (GameController.Instance.IsGameModeRelax()) return;
+        var dataPlayer = GameController.Instance.dataContains.dataPlayer;
+        dataPlayer.isUsedX2Star = false;
+        dataPlayer.isUsedBoxBuffer = false;
+        dataPlayer.isUsedTimeBuffer = false;
+    }
+
     private void HandleUnlockCamera()
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
         var currentLevel = UseProfile.CurrentLevel;
-        
+
         bool hasUnlockedFeature = maxLevel > 5;
-        
+
         bool isPreviewingOnLevel5 = (currentLevel == 5 && maxLevel == 5);
-        
+
         playerContains.inputManager.SetCanMoveCamera(hasUnlockedFeature || isPreviewingOnLevel5);
     }
-    
+
     private void HandleUnlockBar()
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
@@ -72,10 +83,10 @@ public class GamePlayController : Singleton<GamePlayController>
             if (isNormalMode)
             {
                 gameScene.DisplayProgressBar();
-                if(maxLevel >= 2)
+                if (maxLevel >= 2)
                     gameScene.DisplayBoosterBar();
             }
-            
+
             if (currentLevel == 5 && maxLevel == 5)
             {
                 gameScene.DisplaySwipeCam();
@@ -87,16 +98,17 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         playerContains.inputManager.SetLose(true);
     }
+
     public void WinGame()
     {
         IsWin = true;
         playerContains.inputManager.SetWin(true);
         gameScene.HideAllBar();
     }
-    
+
     public void PauseGame()
     {
-        gameScene.PauseTime();   
+        gameScene.PauseTime();
         playerContains.PauseGame(true);
     }
 

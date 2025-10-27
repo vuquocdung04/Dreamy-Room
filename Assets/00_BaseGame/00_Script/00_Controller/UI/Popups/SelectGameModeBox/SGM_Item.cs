@@ -14,15 +14,17 @@ public class SGM_Item : MonoBehaviour
     public Button btn;
     private int curAmount;
     private bool isUsed;
+    private DataPlayer playerData;
 
     public void Init()
     {
+        playerData = GameController.Instance.dataContains.dataPlayer;
         curAmount = GetBoosterAmountFromProfile(type);
+        isUsed = GetBoosterUsedState(type); 
         UpdateUI();
         btn.onClick.AddListener(HandleAction);
         this.RegisterListener(EventID.HOME_BOOSTER_CHANGED, BoughtItem);
     }
-
     private void OnDestroy()
     {
         this.RemoveListener(EventID.HOME_BOOSTER_CHANGED, BoughtItem);
@@ -48,6 +50,7 @@ public class SGM_Item : MonoBehaviour
         {
             isUsed = true;
             HandleAmountFromProfile(-1);
+            SetBoosterUsedState(type, true);
             UpdateUI();
         }
         else
@@ -80,5 +83,30 @@ public class SGM_Item : MonoBehaviour
             GiftType.BoosterBoxBuffet => UseProfile.Booster_BoxBuffer,
             _ => 0
         };
+    }
+    private bool GetBoosterUsedState(GiftType giftType)
+    {
+        return giftType switch
+        {
+            GiftType.BoosterX2Star => playerData.isUsedX2Star,
+            GiftType.BoosterTimeBuffer => playerData.isUsedTimeBuffer,
+            GiftType.BoosterBoxBuffet => playerData.isUsedBoxBuffer,
+            _ => false
+        };
+    }
+    private void SetBoosterUsedState(GiftType giftType, bool state)
+    {
+        switch (giftType)
+        {
+            case GiftType.BoosterX2Star:
+                playerData.isUsedX2Star = state;
+                break;
+            case GiftType.BoosterTimeBuffer:
+                playerData.isUsedTimeBuffer = state;
+                break;
+            case GiftType.BoosterBoxBuffet:
+                playerData.isUsedBoxBuffer = state;
+                break;
+        }
     }
 }

@@ -38,5 +38,4 @@ public class QuitLevelBox : BoxSingleton<QuitLevelBox>
         gameController.ChangeScene2(SceneName.HOME_SCENE);
         gameController.heartGame.TryUseHeart();
     }
-
 }
