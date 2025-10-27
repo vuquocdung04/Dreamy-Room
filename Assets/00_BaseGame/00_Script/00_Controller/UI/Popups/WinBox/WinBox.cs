@@ -40,10 +40,12 @@ public class WinBox : BoxSingleton<WinBox>
         btnClaim.onClick.AddListener(delegate
         {
             OnClickClaim();
+            Close();
         });
         btnClaimX2.onClick.AddListener(delegate
         {
             OnClickClaim(true);
+            Close();
         });
     }
 

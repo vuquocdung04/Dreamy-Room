@@ -12,6 +12,7 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     }
 
     public CollectionType type;
+    public Canvas canvas;
     [Header("Title")] public Image imgTitle;
     public TextMeshProUGUI txtTitle;
     [Header("Progress")] public Image fill;
@@ -27,15 +28,16 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     private int currentLevelCompleted;
     protected override void Init()
     {
+        canvas.worldCamera = Camera.main;
         var dataCollection = GameController.Instance.dataContains.dataCollection;
         type = dataCollection.GetCollectionType();
         btnClose.onClick.AddListener(Close);
 
         OnClick(lsItems, (item) => HandleSelection(delegate
         {
-            //NOTE: PLAY LEVEL
-            
             Debug.Log("PLAY LEVEL: "  + item.GetId());
+            GameController.Instance.curGameModeName = GameMode.RELAX;
+            GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
         }));
     }
 

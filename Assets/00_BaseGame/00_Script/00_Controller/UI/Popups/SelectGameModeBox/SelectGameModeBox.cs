@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
@@ -8,7 +9,7 @@ public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
     {
         return Path(PathPrefabs.SELECT_GAME_MODE_BOX);
     }
-
+    public Canvas canvas;
     public TextMeshProUGUI txtTitle;
     public Button btnPlay;
     public Button btnPlayWithAds;
@@ -19,6 +20,7 @@ public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
     
     protected override void Init()
     {
+        canvas.worldCamera = Camera.main;
         foreach (var item in lsItems)
         {
             item.Init();
@@ -39,19 +41,16 @@ public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
         {
             GameController.Instance.curGameModeName = GameMode.NORMAL;
             GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
-            Close();
         });
         AddOnClickListener(btnRelax, delegate
         {
             GameController.Instance.curGameModeName = GameMode.RELAX;
             GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
-            Close();
         });
         AddOnClickListener(btnPlayWithAds, delegate
         {
             GameController.Instance.curGameModeName = GameMode.NORMAL;
             GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
-            Close();
         });
     }
     
