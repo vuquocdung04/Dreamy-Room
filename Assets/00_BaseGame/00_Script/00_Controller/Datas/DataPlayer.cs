@@ -13,7 +13,7 @@ public class DataPlayer : ScriptableObject
     [Header("DAILY TIERED REWARDS")]
     public bool isFreeClaimedToday;
     public int adRewardsClaimedCount;
-
+    
     public DataPlayer()
     {
         isUsedX2Star = false;
@@ -30,8 +30,8 @@ public class DataPlayer : ScriptableObject
         JsonSaveSystem.Save(this, "PlayerData");
     }
 
-    public static DataPlayer Load()
+    public void Load()
     {
-        return JsonSaveSystem.Load<DataPlayer>("PlayerData");
+        JsonSaveSystem.LoadInto(this,"PlayerData");
     }
 }
