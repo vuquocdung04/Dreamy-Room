@@ -10,10 +10,10 @@ public class DataContains : MonoBehaviour
     public DataLevelBase dataLevel;
     public DataCollectionBase dataCollection;
     public DataBoosterBase dataBooster;
+    public DataPlayer dataPlayer;
     public void Init()
     {
         dataLevel.Init();
-        
         HasPassedDay();
     }
 
