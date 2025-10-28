@@ -157,10 +157,4 @@ public class HeartGame : MonoBehaviour
 
         Debug.Log($"Đã kích hoạt {minutes} phút unlimited. Hết hạn vào: {newEndTime}");
     }
-
-    private void OnDestroy()
-    {
-        cts?.Cancel();
-        cts?.Dispose();
-    }
 }

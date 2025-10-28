@@ -55,7 +55,7 @@ public class ItemBase : MonoBehaviour
 
     #endregion
 
-    public virtual void Init(Transform pos)
+    public void Init(Transform pos)
     {
         originalScale = transform.localScale;
         transform.localPosition = pos.position;

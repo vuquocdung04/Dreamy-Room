@@ -291,19 +291,24 @@ public abstract class LevelBase : MonoBehaviour
 
     private void CheckWin()
     {
-        if (itemsPlacedCorrectly == totalItemsRequired)
+        if (IsCurrentPhaseCompleted())
         {
             Debug.Log("WinGame");
             ExecuteWinSequence().Forget();
         }
     }
-
     private async UniTask ExecuteWinSequence()
     {
         await HandlePrevWinGame();
 
         await HandleAfterWinGame();
     }
+
+    protected virtual bool IsCurrentPhaseCompleted()
+    {
+        return itemsPlacedCorrectly == totalItemsRequired;
+    }
+
 
     protected virtual async UniTask HandlePrevWinGame()
     {
