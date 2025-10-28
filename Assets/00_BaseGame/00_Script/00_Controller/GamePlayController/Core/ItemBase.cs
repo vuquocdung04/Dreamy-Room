@@ -59,6 +59,7 @@ public class ItemBase : MonoBehaviour
     {
         originalScale = transform.localScale;
         transform.localPosition = pos.position;
+        spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
         gameObject.SetActive(false);
         if (shadowItem)
             shadowItem.gameObject.SetActive(false);
