@@ -284,14 +284,14 @@ public abstract class LevelBase : MonoBehaviour
         }
     }
 
-    protected void HandleFillProgress()
+    protected virtual void HandleFillProgress()
     {
         GamePlayController.gameScene.SetFillProgressGame(itemsPlacedCorrectly, totalItemsRequired);
     }
 
     private void CheckWin()
     {
-        if (IsCurrentPhaseCompleted())
+        if (itemsPlacedCorrectly == totalItemsRequired)
         {
             Debug.Log("WinGame");
             ExecuteWinSequence().Forget();
@@ -303,13 +303,6 @@ public abstract class LevelBase : MonoBehaviour
 
         await HandleAfterWinGame();
     }
-
-    protected virtual bool IsCurrentPhaseCompleted()
-    {
-        return itemsPlacedCorrectly == totalItemsRequired;
-    }
-
-
     protected virtual async UniTask HandlePrevWinGame()
     {
         var duration = 0.75f;
