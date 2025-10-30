@@ -227,7 +227,7 @@ public abstract class LevelBase : MonoBehaviour
             itemsOutOfBox.Add(item);
     }
 
-    protected virtual void OnItemPlacedCorrectly(object obj = null)
+    private void OnItemPlacedCorrectly(object obj = null)
     {
         if (obj is ItemBase placedItem)
         {
