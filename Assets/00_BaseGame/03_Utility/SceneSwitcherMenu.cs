@@ -26,7 +26,11 @@ public class SceneSwitcherMenu
     {
         OpenScene(SCENE_FOLDER_PATH + "GamePlayScene.unity");
     }
-
+    [MenuItem("Open Scene/Test Async", priority = 4)]
+    static void OpenTestAsyncScene()
+    {
+        OpenScene(SCENE_FOLDER_PATH + "TestAsync.unity");
+    }
     // Hàm trợ giúp để mở scene và xử lý việc lưu các thay đổi
     static void OpenScene(string scenePath)
     {
