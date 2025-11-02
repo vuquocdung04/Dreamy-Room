@@ -328,6 +328,7 @@ public abstract class LevelBase : MonoBehaviour
         ItemBase[] itemComponents = items.GetComponentsInChildren<ItemBase>(true);
         allItems.AddRange(itemComponents);
         totalItemsRequired = allItems.Count;
+
         foreach (var item in this.allItems)
         {
             item.SetupOdin();

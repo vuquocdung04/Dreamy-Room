@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using EventDispatcher;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour
@@ -44,6 +45,7 @@ public class ItemBase : MonoBehaviour
     public void SetPlacedByPlayer(bool state) => isPlacedByPlayer = state;
     public bool GetItemPlaced() => isPlaced;
     public int GetCountSnapsSlot() => slotsSnap.Count;
+    
 
     public void AddSnapSlot(ItemSlot slot)
     {
@@ -264,6 +266,9 @@ public class ItemBase : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         coll2D = GetComponent<Collider2D>();
+        if (coll2D == null)
+            coll2D = gameObject.AddComponent<BoxCollider2D>();
+        
         indexLayer = spriteRenderer.sortingOrder;
         spriteRenderer.sortingLayerName = SortingLayerName.ITEM_UNPLACED;
     }
@@ -278,5 +283,11 @@ public class ItemBase : MonoBehaviour
             isInteractableAfterPlacement = true;
     }
 
+    private void OnDestroy()
+    {
+        idleTween?.Kill();
+        restoreIdleTween?.Kill();
+        transform.DOKill();
+    }
     #endregion
 }

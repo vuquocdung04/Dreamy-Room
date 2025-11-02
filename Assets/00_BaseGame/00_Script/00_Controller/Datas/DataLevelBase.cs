@@ -43,23 +43,34 @@ public class DataLevelBase : ScriptableObject
 
     public Sprite GetBgSpriteById(int id)
     {
-        if (levelDictionary.TryGetValue(id, out LevelConflict levelConflict)) return levelConflict.backGround;
-        return null;
+        return levelDictionary.TryGetValue(id, out LevelConflict levelConflict) ? levelConflict.backGround : null;
+    }
+
+    public Sprite GetPatternById(int id)
+    {
+        return levelDictionary.TryGetValue(id, out LevelConflict levelConflict) ? levelConflict.pattern : null;
     }
 }
 
 [System.Serializable]
 public class LevelConflict
 {
-    [HorizontalGroup("Main", Width = 0.3f), HideLabel]
+    [HorizontalGroup("Row1")]
+    [VerticalGroup("Row1/Col1"), Title("ID"), HideLabel]
     public int idLevel;
 
-    [HorizontalGroup("Main", Width = 0.4f), HideLabel]
+    [VerticalGroup("Row1/Col2"), Title("Level Prefab"), HideLabel]
     public GameObject prefab;
 
-    [HorizontalGroup("Main"), HideLabel] [PreviewField(50, ObjectFieldAlignment.Right)]
+    [VerticalGroup("Row1/Col3"), Title("Thumbnail"), HideLabel]
+    [PreviewField(70, ObjectFieldAlignment.Center)]
     public Sprite thumbnailIcon;
 
-    [HorizontalGroup("Main"), HideLabel] [PreviewField(50, ObjectFieldAlignment.Right)]
+    [VerticalGroup("Row1/Col4"), Title("Background"), HideLabel]
+    [PreviewField(70, ObjectFieldAlignment.Center)]
     public Sprite backGround;
+    
+    [VerticalGroup("Row1/Col5"), Title("Pattern"), HideLabel]
+    [PreviewField(70, ObjectFieldAlignment.Center)]
+    public Sprite pattern;
 }

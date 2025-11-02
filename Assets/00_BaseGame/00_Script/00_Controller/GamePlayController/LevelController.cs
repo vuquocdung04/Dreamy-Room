@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
     public Sprite sprBgTut;
     public List<Color> lsColors;
     public Image imgBg;
+    public Image imgPattern;
     private int idLevel;
     public void Init()
     {
@@ -42,6 +43,11 @@ public class LevelController : MonoBehaviour
         imgBg.gameObject.SetActive(true);
         var gameController = GameController.Instance;
         imgBg.sprite = !isTut ? sprBgTut : gameController.dataContains.dataLevel.GetBgSpriteById(idLevel);
+        
+        var pattern = gameController.dataContains.dataLevel.GetPatternById(idLevel);
+        if(pattern == null) return;
+        imgPattern.gameObject.SetActive(true);
+        imgPattern.sprite = pattern;
     }
 
     public bool HasItemOutOfBox()
