@@ -89,7 +89,7 @@ public class LevelTut : LevelBase
         }
     }
 
-    protected override async UniTask HandleAfterWinGame()
+    protected override async UniTask OnLevelFinished()
     {
         GamePlayController.Instance.WinGame();
         await mainCamera.DOOrthoSize(14f, 0.75f).SetEase(Ease.Linear).OnComplete(delegate

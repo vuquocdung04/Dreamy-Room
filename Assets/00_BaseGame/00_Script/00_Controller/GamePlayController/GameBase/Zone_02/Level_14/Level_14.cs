@@ -19,7 +19,7 @@ public class Level_14 : LevelBase
         return go.AddComponent<Slot_14>();
     }
 
-    protected override async UniTask HandleAfterWinGame()
+    protected override async UniTask OnLevelFinished()
     {
         await UniTask.Yield();
         level14Phase2.gameObject.SetActive(true);
@@ -27,7 +27,7 @@ public class Level_14 : LevelBase
         GamePlayController.ResumeGame();
     }
 
-    protected override async UniTask HandlePrevWinGame()
+    protected override async UniTask OnBeforeWinCompleted()
     {
         GamePlayController.PauseGame();
         await UniTask.Yield();

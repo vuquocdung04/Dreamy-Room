@@ -12,9 +12,9 @@ public class Level_2 : LevelBase
     }
     
 
-    protected override async UniTask HandlePrevWinGame()
+    protected override async UniTask OnBeforeWinCompleted()
     {
-        await base.HandlePrevWinGame();
+        await base.OnBeforeWinCompleted();
         
         var duckSpr = duckTrans.GetComponent<SpriteRenderer>();
 

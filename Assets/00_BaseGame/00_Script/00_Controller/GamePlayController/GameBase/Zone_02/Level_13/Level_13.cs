@@ -19,9 +19,9 @@ public class Level_13 : LevelBase
         return go.AddComponent<Slot_13>();
     }
 
-    protected override async UniTask HandlePrevWinGame()
+    protected override async UniTask OnBeforeWinCompleted()
     {
-        await base.HandlePrevWinGame();
+        await base.OnBeforeWinCompleted();
     
         holderMoon.gameObject.SetActive(true);
         var posR = rightCloud.transform.localPosition;

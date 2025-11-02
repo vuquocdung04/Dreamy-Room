@@ -18,14 +18,14 @@ using UnityEngine;
             return go.AddComponent<Slot_8>();
         }
 
-        protected override async UniTask HandlePrevWinGame()
+        protected override async UniTask OnBeforeWinCompleted()
         {
             GamePlayController.Instance.PauseGame();
             var cameraMain = GamePlayController.playerContains.mainCamera;
             await cameraMain.transform.DOMoveX(0f,0.5f).SetEase(Ease.Linear);
             await  cameraMain.transform.DOMoveX(3.35f,1f).SetEase(Ease.Linear);
         }
-        protected override async UniTask HandleAfterWinGame()
+        protected override async UniTask OnLevelFinished()
         {
             await UniTask.Yield();
             level8Phase2.gameObject.SetActive(true);

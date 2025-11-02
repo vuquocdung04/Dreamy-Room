@@ -299,11 +299,11 @@ public abstract class LevelBase : MonoBehaviour
     }
     private async UniTask ExecuteWinSequence()
     {
-        await HandlePrevWinGame();
+        await OnBeforeWinCompleted();
 
-        await HandleAfterWinGame();
+        await OnLevelFinished();
     }
-    protected virtual async UniTask HandlePrevWinGame()
+    protected virtual async UniTask OnBeforeWinCompleted()
     {
         var duration = 0.75f;
         await GamePlayController.playerContains.mainCamera.transform.DOMoveX(0f,0.5f).SetEase(Ease.OutBack);
@@ -313,7 +313,7 @@ public abstract class LevelBase : MonoBehaviour
         //NOTE: Viet o day
     }
 
-    protected virtual async UniTask HandleAfterWinGame()
+    protected virtual async UniTask OnLevelFinished()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         gameController.IncreaseLevel();

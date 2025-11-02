@@ -23,7 +23,7 @@ public class Level_12 : LevelBase
         return go.AddComponent<Slot_12>();
     }
 
-    protected override async UniTask HandleAfterWinGame()
+    protected override async UniTask OnLevelFinished()
     {
         await UniTask.Yield();
         level12Phase2.gameObject.SetActive(true);
@@ -31,7 +31,7 @@ public class Level_12 : LevelBase
         GamePlayController.ResumeGame();
     }
 
-    protected override async UniTask HandlePrevWinGame()
+    protected override async UniTask OnBeforeWinCompleted()
     {
         GamePlayController.PauseGame();
         rabbit.gameObject.SetActive(true);
