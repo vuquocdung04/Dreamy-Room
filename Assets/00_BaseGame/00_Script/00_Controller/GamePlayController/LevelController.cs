@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class LevelController : MonoBehaviour
 {
     public LevelBase currentLevel;
+    public Sprite sprBgTut;
     public List<Color> lsColors;
-    public List<Sprite> lsSpritesBg;
     public Image imgBg;
-
+    private int idLevel;
     public void Init()
     {
         GenerateLevel();
@@ -17,9 +17,12 @@ public class LevelController : MonoBehaviour
     private void GenerateLevel()
     {
         var dataLevel = GameController.Instance.dataContains.dataLevel;
-        var levelPrefab = Instantiate(!UseProfile.HasCompletedLevelTutorial
+        idLevel = UseProfile.CurrentLevel;
+        bool hasCompletedLevelTut = UseProfile.HasCompletedLevelTutorial;
+        
+        var levelPrefab = Instantiate(!hasCompletedLevelTut
             ? dataLevel.levelTutorial
-            : dataLevel.GetLevelPrefabById(UseProfile.CurrentLevel));
+            : dataLevel.GetLevelPrefabById(idLevel));
 
         if (levelPrefab == null)
         {
@@ -31,14 +34,14 @@ public class LevelController : MonoBehaviour
         currentLevel.Init();
         int rand = Random.Range(0, lsColors.Count);
         currentLevel.SetColorBox(lsColors[rand]);
-        imgBg.gameObject.SetActive(true);
-        RandomSpriteBg();
+        SetSpriteBg(dataLevel.levelTutorial);
     }
 
-    private void RandomSpriteBg()
+    private void SetSpriteBg(bool isTut)
     {
-        int rand = Random.Range(0, lsSpritesBg.Count);
-        imgBg.sprite = lsSpritesBg[rand];
+        imgBg.gameObject.SetActive(true);
+        var gameController = GameController.Instance;
+        imgBg.sprite = !isTut ? sprBgTut : gameController.dataContains.dataLevel.GetBgSpriteById(idLevel);
     }
 
     public bool HasItemOutOfBox()
