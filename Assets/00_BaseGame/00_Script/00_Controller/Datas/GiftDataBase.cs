@@ -22,6 +22,19 @@ public class GiftDataBase : ScriptableObject
         return false;
     }
 
+    public void DeDuct(GiftType giftType, int amount)
+    {
+        switch (giftType)
+        {
+            case GiftType.Coin:
+                UseProfile.Coin -= amount;
+                break;
+            case GiftType.Star:
+                UseProfile.Star -= amount;
+                break;
+        }
+    }
+
     public void Claim(GiftType giftType, int amount, Reason reason = Reason.None)
     {
         switch (giftType)
@@ -53,7 +66,7 @@ public class GiftDataBase : ScriptableObject
                 UseProfile.Booster_Hint += amount;
                 break;
             case GiftType.BoosterMagicWand:
-                UseProfile.Booster_MagicWand +=  amount;
+                UseProfile.Booster_MagicWand += amount;
                 break;
             case GiftType.BoosterMagnet:
                 UseProfile.Booster_Maget += amount;
@@ -69,14 +82,15 @@ public class GiftDataBase : ScriptableObject
                 break;
         }
     }
-
 }
+
 [Serializable]
 public class GiftDataEntry
 {
     public GiftType type;
     public Gift giftData;
 }
+
 [Serializable]
 public class Gift
 {
