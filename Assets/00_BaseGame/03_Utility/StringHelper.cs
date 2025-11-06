@@ -83,6 +83,7 @@ public class PathPrefabs
     public const string LOSE_BOX = "UI/Popups/LoseBox";
     public const string SETTING_HOME_BOX = "UI/Popups/SettingHomeBox";
     public const string SETTING_GAME_BOX = "UI/Popups/SettingGameBox";
+    public const string LOCALIZATION_BOX = "UI/Popups/LocalizationBox";
     public const string ADS_UNLOCK_BOX = "UI/Popups/AdsUnlockBox";
     public const string THUMB_UP_BOX = "UI/Popups/ThumbUpBox";
     public const string HINT_BOX = "UI/Popups/HintBox";

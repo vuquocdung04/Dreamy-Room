@@ -11,6 +11,7 @@ public class GameController : Singleton<GameController>
     public EffectChangeScene2 effectChangeScene2;
     public EffectController effectController;
     public HeartGame heartGame;
+    public LocalizationController localizationController;
     public string curSceneName;
     public string curGameModeName;
     protected override void OnAwake()
@@ -26,6 +27,7 @@ public class GameController : Singleton<GameController>
         musicController.Init();
         effectChangeScene2.Init();
         heartGame.Init();
+        localizationController.Init();
         startLoading.Init();
     }
 

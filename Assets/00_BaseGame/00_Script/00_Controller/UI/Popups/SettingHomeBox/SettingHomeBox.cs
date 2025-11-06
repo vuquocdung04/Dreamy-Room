@@ -59,6 +59,7 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
         btnChooseLanguage.onClick.AddListener(delegate
         {
             Close();
+            LocalizationBox.Setup().Show();
         });
         
         btnFps30.onClick.AddListener(delegate

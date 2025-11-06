@@ -36,6 +36,7 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
         OnClick(lsItems, (item) => HandleSelection(delegate
         {
             Debug.Log("PLAY LEVEL: "  + item.GetId());
+            if(item.GetId() >= UseProfile.MaxUnlockedLevel) return;
             GameController.Instance.curGameModeName = GameMode.RELAX;
             GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
         }));

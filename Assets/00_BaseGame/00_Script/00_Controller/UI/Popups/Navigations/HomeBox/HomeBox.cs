@@ -65,6 +65,7 @@ public class HomeBox : BoxSingleton<HomeBox>
         UpdateNotifyDailyLogin();
         UpdateProgressTreasure();
         UpdateProgressPigBank();
+        this.RegisterListener(EventID.UPDATE_TREASURE_PROGRESS, UpdateProgressTreasure);
     }
 
     protected override void InitState()
@@ -80,7 +81,7 @@ public class HomeBox : BoxSingleton<HomeBox>
         });
     }
 
-    private void UpdateProgressTreasure()
+    private void UpdateProgressTreasure(object obj = null)
     {
         var star = UseProfile.Star;
         var progress = (float)star / 400;
@@ -113,5 +114,6 @@ public class HomeBox : BoxSingleton<HomeBox>
     private void OnDestroy()
     {
         this.RemoveListener(EventID.UPDATE_NOTIFY_DAILYLOGIN,UpdateNotifyDailyLogin);
+        this.RemoveListener(EventID.UPDATE_TREASURE_PROGRESS, UpdateProgressTreasure);
     }
 }

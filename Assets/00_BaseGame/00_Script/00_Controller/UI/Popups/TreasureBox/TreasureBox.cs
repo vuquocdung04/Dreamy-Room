@@ -1,3 +1,4 @@
+using EventDispatcher;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,6 +34,8 @@ public class TreasureBox : BoxSingleton<TreasureBox>
         if (CanClaim())
         {
             GameController.Instance.dataContains.giftData.DeDuct(GiftType.Star, totalStar);
+            this.PostEvent(EventID.CHANGE_STAR);
+            this.PostEvent(EventID.UPDATE_TREASURE_PROGRESS);
             UpdateFillProgress();
         }
         else

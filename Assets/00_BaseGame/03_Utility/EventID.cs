@@ -12,8 +12,10 @@
     
     ANTI_SPAM_NAVIGATION_BAR = 200,
     
+    // HOME
     UPDATE_NOTIFY_DAILYLOGIN = 300,
     UPDATE_NOTIFY_DAILYREWARD = 301,
+    UPDATE_TREASURE_PROGRESS = 302,
     
     // ADS
     REWARDED_ADS_COMPLETED = 1000,
@@ -30,6 +32,9 @@
     ITEM_PLACED_CORRECTLY = 3002,
     
     //Star Effect
-    SPAWN_STAR = 4000
+    SPAWN_STAR = 4000,
+    
+    //Localization
+    CHANGE_LOCALIZATION = 4000,
     
 }

@@ -11,6 +11,7 @@ public class DataContains : MonoBehaviour
     public DataCollectionBase dataCollection;
     public DataBoosterBase dataBooster;
     public DataPlayer dataPlayer;
+    public LocalizationData  localizationData;
     public void Init()
     {
         dataLevel.Init();
