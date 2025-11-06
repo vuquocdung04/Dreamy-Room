@@ -1,21 +1,73 @@
+#if UNITY_EDITOR // Bọc toàn bộ lớp này lại
 using UnityEngine;
 using UnityEditor; 
-using System.IO;   
-
-// Đặt file này trong thư mục "Assets/Editor"
+using Cysharp.Threading.Tasks;
+using UnityEngine.Networking;
+using System.IO;
+using System.Text.RegularExpressions; // THÊM 1: Cần dùng cho Regex
+using System.Collections.Generic;    // THÊM 2: Cần dùng cho List<T>
 
 public class LocalizationImporter
 {
-    // 1. Đường dẫn đến file CSV của bạn
-    private static string csvPath = "Assets/00_BaseGame/00_Script/00_Controller/LocalizationController/Localcsv.csv"; 
+    private static string soPath = "Assets/00_BaseGame/02_DataSO/LocalizationData.asset";
     
-    // 2. Đường dẫn lưu ScriptableObject
-    private static string soPath = "Assets/00_BaseGame/00_Script/00_Controller/LocalizationController/LocalizationData.asset";
+    private static string localPath = "Assets/00_BaseGame/02_DataSO/CSV/localizationCSV.csv";
+    // Giữ nguyên URL .csv của bạn
+    private static string googleSheetUrl = "https://docs.google.com/spreadsheets/d/1QdVYWCZSUDpdcWH1JoGkIA7Svf1iWrXe4Rl06xYT-0g/export?format=csv&gid=633283787";
+    
+    private static readonly Regex CsvSplitRegex = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
-    [MenuItem("Localization/Import CSV (Skip 2 Headers)")]
-    public static void ImportCSV()
+    [MenuItem("Tools/Localization/Import Google Sheet (CSV)")]
+    public static async void ImportFromGoogleSheets()
     {
-        // 3. Tìm hoặc tạo mới ScriptableObject
+        if (string.IsNullOrEmpty(googleSheetUrl))
+        {
+            Debug.LogError("Chưa có URL Google Sheets!");
+            return;
+        }
+        Debug.Log("Đang tải từ Google Sheets...");
+        UnityWebRequest www = UnityWebRequest.Get(googleSheetUrl);
+        await www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError($"Lỗi: {www.error}");
+            return;
+        }
+
+        // Tải về csv về local 
+        string csvContent = www.downloadHandler.text;
+        
+        try
+        {
+            string directory = Path.GetDirectoryName(localPath);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory!);
+            }
+            File.WriteAllText(localPath, csvContent);
+            Debug.Log($"Đã lưu file local tại: {localPath}");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Lỗi khi lưu file local: {e.Message}");
+        }
+        
+        ImportCsv(csvContent);
+    }
+    
+    [MenuItem("Tools/Localization/Import CSV local")]
+    public static void ImportFromLocalFile()
+    {
+        if (!File.Exists(localPath))
+        {
+            Debug.LogError("Không tìm thấy file!");
+            return;
+        }
+        ImportCsv(File.ReadAllText(localPath));
+    }
+    
+    private static void ImportCsv(string csvContent)
+    {
         LocalizationData data = AssetDatabase.LoadAssetAtPath<LocalizationData>(soPath);
         if (data == null)
         {
@@ -23,52 +75,60 @@ public class LocalizationImporter
             AssetDatabase.CreateAsset(data, soPath);
         }
 
-        data.entries.Clear(); // Xóa dữ liệu cũ
-
-        // 4. Đọc file CSV
-        string[] lines;
-        try
+        // Dùng List để thêm dữ liệu, hiệu quả hơn
+        List<TranslationEntry> newEntries = new List<TranslationEntry>();
+        
+        // Tách dòng an toàn hơn, xử lý cả \n và \r\n
+        string[] lines = csvContent.Split(new[] { "\r\n", "\n" }, System.StringSplitOptions.None);
+        
+        int importedCount = 0;
+        for (int i = 2; i < lines.Length; i++) // Bỏ qua 2 dòng đầu
         {
-            lines = File.ReadAllLines(csvPath);
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Không tìm thấy file CSV tại: {csvPath}. Lỗi: {e.Message}");
-            return;
-        }
+            string line = lines[i]; // Không cần Trim() ở đây
+            if (string.IsNullOrEmpty(line)) continue;
 
-        // 5. THAY ĐỔI QUAN TRỌNG:
-        // Bắt đầu vòng lặp từ i = 2 (bỏ qua dòng 0 và 1)
-        for (int i = 2; i < lines.Length; i++)
-        {
-            string line = lines[i];
-            if (string.IsNullOrWhiteSpace(line)) continue; 
-
-            string[] values = line.Split(','); 
-
-            // Đảm bảo file của bạn có 3 cột
+            // SỬA 1: Dùng Regex để tách, thay vì line.Split(',')
+            string[] values = CsvSplitRegex.Split(line);
+            
             if (values.Length < 3)
             {
-                Debug.LogWarning($"Bỏ qua dòng {i}: Dòng không có đủ 3 cột.");
+                Debug.LogWarning($"Dòng {i+1} có định dạng CSV không hợp lệ, bỏ qua: {line}");
                 continue;
             }
 
-            // 6. Tạo mục nhập mới
-            TranslationEntry entry = new TranslationEntry();
-            
-            // Đổi tên cột ENG/VIE trong file CSV cho khớp
-            entry.key = values[0].Trim(); // Cột 0 là KEY
-            entry.EN = values[1].Trim();  // Cột 1 là ENG
-            entry.VI = values[2].Trim();  // Cột 2 là VIE
-            
-            data.entries.Add(entry);
-        }
+            // SỬA 2: Dùng hàm CleanValue để gỡ bỏ dấu "
+            TranslationEntry entry = new TranslationEntry
+            {
+                key = CleanValue(values[0]),
+                EN = CleanValue(values[1]),
+                VI = CleanValue(values[2])
+            };
 
-        // 7. Lưu lại thay đổi
-        EditorUtility.SetDirty(data); 
-        AssetDatabase.SaveAssets();   
-        AssetDatabase.Refresh();      
+            newEntries.Add(entry);
+            importedCount++;
+        }
         
-        Debug.Log($"Import CSV thành công! Đã thêm {data.entries.Count} mục.");
+        data.entries.Clear();
+        data.entries.AddRange(newEntries);
+        
+        EditorUtility.SetDirty(data);
+        AssetDatabase.SaveAssets();
+        
+        Debug.Log($"✅ Import thành công {importedCount} mục!");
+    }
+    private static string CleanValue(string value)
+    {
+        if (string.IsNullOrEmpty(value)) return "";
+
+        string result = value.Trim();
+        
+        if (result.Length > 1 && result.StartsWith("\"") && result.EndsWith("\""))
+        {
+            result = result.Substring(1, result.Length - 2);
+        }
+        result = result.Replace("\"\"", "\"");
+
+        return result;
     }
 }
+#endif

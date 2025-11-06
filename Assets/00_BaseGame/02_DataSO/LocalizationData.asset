@@ -1,0 +1,607 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ca081ebf7d4b79bf3bd691e4489fb2, type: 3}
+  m_Name: LocalizationData
+  m_EditorClassIdentifier: 
+  entries:
+  - key: ui_button_claim
+    EN: Claim Success
+    VI: "Nh\u1EADn"
+  - key: ui_button_free
+    EN: Free
+    VI: "Mi\u1EC5n Ph\xED"
+  - key: ui_button_ok
+    EN: Ok
+    VI: "\u0110\u1ED3ng \xDD"
+  - key: ui_button_retry
+    EN: Retry
+    VI: "Th\u1EED L\u1EA1i"
+  - key: ui_button_rate
+    EN: Rate
+    VI: "\u0110\xE1nh Gi\xE1"
+  - key: ui_button_quit
+    EN: Quit
+    VI: "Tho\xE1t"
+  - key: ui_button_continue
+    EN: Continue
+    VI: "Ti\u1EBFp T\u1EE5c"
+  - key: ui_button_close
+    EN: Close
+    VI: "\u0110\xF3ng"
+  - key: ui_button_play
+    EN: Play
+    VI: "Ch\u01A1i"
+  - key: ui_button_relax
+    EN: Relax
+    VI: "Th\u01B0 Gi\xE3n"
+  - key: ui_button_save
+    EN: Save
+    VI: "L\u01B0u"
+  - key: ui_claim_success
+    EN: Claim Success
+    VI: "Nh\u1EADn Th\xE0nh C\xF4ng"
+  - key: ui_collection_title
+    EN: Dreamy Collection
+    VI: "B\u1ED9 s\u01B0u t\u1EADp M\u1ED9ng m\u01A1"
+  - key: ui_collection_reward
+    EN: Grand Prize
+    VI: "Gi\u1EA3i th\u01B0\u1EDFng l\u1EDBn"
+  - key: ui_collection_dreamscape
+    EN: Dreamscape
+    VI: "Gi\u1EA5c M\u01A1"
+  - key: ui_collection_cloud_nine
+    EN: Cloud Nine
+    VI: "Bay B\u1ED5ng"
+  - key: ui_colection_poetic_muse
+    EN: Poetic Muse
+    VI: "N\xE0ng Th\u01A1"
+  - key: ui_collection_show_time
+    EN: Show Time!
+    VI: "S\u1EF1 Ki\u1EC7n"
+  - key: ui_collection_cozy_corner
+    EN: Cozy Corner
+    VI: "T\u1ED5 \u1EA4m"
+  - key: ui_collection_ease_side
+    EN: East Side
+    VI: "Ph\u01B0\u01A1ng \u0110\xF4ng"
+  - key: ui_collection_chill_glow
+    EN: Chill Glow
+    VI: "Th\u01B0 Gi\xE3n"
+  - key: ui_collection_sunny_days
+    EN: Sunny Days
+    VI: "Kh\xE1m Ph\xE1"
+  - key: ui_collection_wishful_heart
+    EN: Wishful Heart
+    VI: "\u01AF\u1EDBc M\u01A1"
+  - key: ui_collection_tasty_dream
+    EN: Tasty Dream
+    VI: "\u1EA8m th\u1EF1c"
+  - key: ui_collection_fantasy
+    EN: Fantasy
+    VI: "M\u1ED9ng \u1EA2o"
+  - key: ui_collection_evermore
+    EN: Evermore
+    VI: "Dinh Th\u1EF1"
+  - key: ui_collection_sea_breeze
+    EN: Sea Breeze
+    VI: "\u0110\u1EA1i D\u01B0\u01A1ng"
+  - key: ui_collection_wonderscape
+    EN: Wonderscape
+    VI: "Di\u1EC7u K\xEC"
+  - key: ui_collection_dream
+    EN: Dream
+    VI: "Mua S\u1EAFm"
+  - key: ui_collection_future
+    EN: Future
+    VI: "T\u01B0\u01A1ng Lai"
+  - key: ui_collection_green_vibes
+    EN: Green Vibes
+    VI: "Thi\xEAn Nhi\xEAn"
+  - key: ui_collection_grand
+    EN: Grand
+    VI: "B\xED M\u1EADt"
+  - key: ui_collection_fairytale_echo
+    EN: Fairytale Echo
+    VI: "C\u1ED5 T\xEDch"
+  - key: ui_collection_childhood
+    EN: Childhood
+    VI: "Tu\u1ED5i Th\u01A1"
+  - key: ui_collection_fabulous
+    EN: Fabulous
+    VI: "\u0110i\u1EC7n \u1EA2nh"
+  - key: ui_collection_souldmate
+    EN: Soulmate
+    VI: "Tri K\u1EC9"
+  - key: ui_collection_true
+    EN: True!
+    VI: "Qu\xFD \xD4ng"
+  - key: ui_collection_starry_skies
+    EN: Starry Skies
+    VI: "Ng\xE2n H\xE0"
+  - key: ui_collection_game_on
+    EN: Game On!
+    VI: "Chinh Ph\u1EE5c"
+  - key: ui_collection_detail_dreamscape_desc
+    EN: A soft, dreamy space where sweet dreams float by, peaceful and light as a
+      cloud.
+    VI: "N\u01A1i nh\u1EEFng v\xEC sao th\xEC th\u1EA7m c\xE2u chuy\u1EC7n c\u1ED5
+      t\xEDch, \u0111\u01B0a b\u1EA1n v\xE0o gi\u1EA5c ng\u1EE7 \xEAm \u0111\u1EC1m,
+      ng\u1ECDt ng\xE0o nh\u01B0 m\u1ED9t kh\xFAc ca."
+  - key: ui_collection_detail_cloud_nine_desc
+    EN: Your quiet spot where brilliant sparkle and grow, making every project a
+      delightfull adventure
+    VI: "Kh\xF4ng gian y\xEAn t\u0129nh, n\u01A1i nh\u1EEFng \xFD t\u01B0\u1EDFng
+      l\u1EA5p l\xE1nh \u0111\u01B0\u1EE3c \u01B0\u01A1m m\u1EA7m v\xE0 bay xa, bi\u1EBFn
+      m\u1ECDi \u0111i\u1EC1u th\xE0nh hi\u1EC7n th\u1EF1c."
+  - key: ui_collection_detail_poetic_muse_desc
+    EN: A tender, private space where every girl finds her peace and embraces unique
+      beauty, cherished and loved.
+    VI: "G\xF3c ri\xEAng t\u01B0 d\u1ECBu d\xE0ng, n\u01A1i m\u1ED7i c\xF4 g\xE1i
+      t\xECm th\u1EA5y s\u1EF1 b\xECnh y\xEAn v\xE0 v\u1EBB \u0111\u1EB9p c\u1EE7a
+      ch\xEDnh m\xECnh, \u0111\u01B0\u1EE3c n\xE2ng niu v\xE0 tr\xE2n tr\u1ECDng."
+  - key: ui_collection_detail_show_time_desc
+    EN: A sparkling room filled with laughter and joy, ready for the happiest parties
+      and unforgettable memories.
+    VI: "Kh\xF4ng gian r\u1EF1c r\u1EE1, tr\xE0n ng\u1EADp ni\u1EC1m vui v\xE0 ti\u1EBFng
+      c\u01B0\u1EDDi c\u1EE7a nh\u1EEFng b\u0169a ti\u1EC7c \u0111\xE1ng nh\u1EDB,
+      n\u01A1i b\u1EA1n l\xE0 t\xE2m \u0111i\u1EC3m."
+  - key: ui_collection_detail_cozy_corner_desc
+    EN: Small and sweet, where all worries fade away, leaving only peaceful moments
+      and warm, happy feelings.
+    VI: "\u1EA4m c\xFAng v\xE0 nh\u1ECF xinh, n\u01A1i m\u1ECDi lo \xE2u tan bi\u1EBFn,
+      ch\u1EC9 c\xF2n l\u1EA1i s\u1EF1 b\xECnh y\xEAn v\xE0 nh\u1EEFng kho\u1EA3nh
+      kh\u1EAFc ng\u1ECDt ng\xE0o."
+  - key: ui_collection_detail_east_side_desc
+    EN: A tranquit haven insprired by the East, bringing calm and gentle beauty to
+      your peaceful soul.
+    VI: "V\u1EBB \u0111\u1EB9p thanh b\xECnh, huy\u1EC1n b\xED t\u1EEB ph\u01B0\u01A1ng
+      \u0110\xF4ng, mang \u0111\u1EBFn s\u1EF1 t\u0129nh l\u1EB7ng v\xE0 an y\xEAn
+      cho t\xE2m h\u1ED3n."
+  - key: ui_collection_detail_chilll_glow_desc
+    EN: Sink into pure bliss, letting all your worries melt away in this perfectly
+      peaceful escape.
+    VI: "Th\u1EA3 m\xECnh v\xE0o s\u1EF1 b\xECnh y\xEAn, t\u1EADn h\u01B0\u1EDFng
+      nh\u1EEFng kho\u1EA3ng kh\u1EAFc th\u01B0 gi\xE3n tuy\u1EC7t v\u1EDDi nh\u1EA5t,
+      qu\xEAn \u0111i m\u1ECDi lo toan."
+  - key: ui_collection_detail_sunny_days_desc
+    EN: Embrace the sunshine and gentle breezes, like a never-ending picnic in your
+      gream out door space.
+    VI: "T\u1EADn h\u01B0\u1EDFng \xE1nh n\u1EAFng v\xE0 l\xE0n gi\xF3 tr\u1EDDi,
+      nh\u01B0 m\u1ED9t chuy\u1EBFn d\xE3 ngo\u1EA1i b\u1EA5t t\u1EADn ngay trong
+      ng\u1ED3i nh\xE0 m\u01A1 \u01B0\u1EDBc c\u1EE7a b\u1EA1n."
+  - key: ui_collection_detail_wishful_heart_desc
+    EN: Nurture your ambitions here, where every detail inspires you to reach for
+      your brightest professional dreams.
+    VI: "N\u01A1i \u01B0\u01A1m m\u1EA7m cho nh\u1EEFng ho\xE0i b\xE3o ngh\u1EC1
+      nghi\u1EC7p, m\u1ED7i v\u1EADt d\u1EE5ng \u0111\u1EC1u truy\u1EC1n c\u1EA3m
+      h\u1EE9ng \u0111\u1EC3 b\u1EA1n v\u01B0\u01A1n t\u1EDBi th\xE0nh c\xF4ng."
+  - key: ui_collection_detail_tasty_dream_desc
+    EN: Like a cozy little feast inside a dream - where every dish holds a story,
+      every scent brings back a memory, and the table always feels like it's waiting
+      just for you.
+    VI: "Nh\u01B0 m\u1ED9t b\u1EEFa ti\u1EC7c nh\u1ECF gi\u1EEFa gi\xE2c m\u01A1
+      d\u1ECBu d\xE0ng - n\u01A1i c\xE1c m\xF3n \u0103n th\xEC th\u1EA7m k\u1EC3
+      chuy\u1EC7n, m\xF9i h\u01B0\u01A1ng thoang tho\u1EA3ng \u0111\xE1nh th\u1EE9c
+      k\xFD \u1EE9c c\u0169, v\xE0 chi\u1EBFc b\xE0n d\u1ECBu d\xE0ng ch\u1EDD b\u1EA1n
+      ng\u1ED3i v\xE0o."
+  - key: ui_collection_detail_fantasy_desc
+    EN: A magical world without limits, where every impossible dream comes true,
+      surprising you with endless delight.
+    VI: "M\u1ED9t th\u1EBF gi\u1EDBi kh\xF4ng gi\u1EDBi h\u1EA1n, n\u01A1i m\u1ECDi
+      \u0111i\u1EC1u k\xEC di\u1EC7u \u0111\u1EC1u c\xF3 th\u1EC3 x\u1EA3y ra, v\u01B0\u1EE3t
+      xa m\u1ECDi t\u01B0\u1EDFng t\u01B0\u1EE3ng."
+  - key: ui_collection_detail_evermore_desc
+    EN: Experience pure luxury and spacious beauty, where every detail whispers of
+      timeless grace and sophistication.
+    VI: "S\u1EF1 sang tr\u1ECDng v\xE0 r\u1ED9ng l\u1EDBn, n\u01A1i m\u1ED7i chi
+      ti\u1EBFt \u0111\u1EC1u to\xE1t l\xEAn v\u1EBB \u0111\u1EB3ng c\u1EA5p v\xE0
+      tinh t\u1EBF, nh\u01B0 m\u1ED9t l\xE2u \u0111\xE0i trong m\u01A1."
+  - key: ui_collection_detail_sea_breeze_desc
+    EN: Feel the gentle sea breeze, listen to he calming waves and find pure tranquility
+      by the ocean's edge.
+    VI: "Hit th\u1EDF l\xE0n gi\xF3 bi\u1EC3n m\u1EB7n m\xF2i, l\u1EAFng nghe ti\u1EBFng
+      s\xF3ng v\u1ED7 r\xEC r\xE0o, b\xECnh y\xEAn \u0111\u1EBFn l\u1EA1 th\u01B0\u1EDDng."
+  - key: ui_collection_detail_wonderscape_desc
+    EN: Where magic happens with every touch, turning tiny treasures into beautiful,
+      inspiring creations.
+    VI: "N\u01A1i ph\xE9p thu\u1EADt c\u1EE7a s\u1EF1 s\xE1ng t\u1EA1o th\u0103ng
+      hoa, bi\u1EBFn nh\u1EEFng v\u1EADt d\u1EE5ng nh\u1ECF b\u1EBF th\xE0nh t\xE1c
+      ph\u1EA9n ngh\u1EC7 thu\u1EADt \u0111\u1EA7y c\u1EA3m h\u1EE9ng."
+  - key: ui_collection_detail_dream_desc
+    EN: Soft, sparkling, and full of tiny treasures -- Every ribbon, every shimmer,
+      every little thing seems to glow just a bit brighter, simply because it was
+      chosen, touched, and loved by you.
+    VI: "M\u1EC1m m\u1EA1i, l\u1EA5p l\xE1nh v\xE0 \u0111\u1EA7y \u1EAFp nh\u1EEFng
+      kho b\xE1u nh\u1ECF xinh - t\u1EEBng d\u1EA3i ruy b\u0103ng, t\u1EEBng tia
+      s\xE1ng, t\u1EEBng \u0111i\u1EC1u nh\u1ECF b\xE9 d\u01B0\u1EDDng nh\u01B0 r\u1EF1c
+      r\u1EE1 h\u01A1n m\u1ED9t ch\xFAt, ch\u1EC9 v\xEC \u0111\u01B0\u1EE3c b\u1EA1n
+      ch\u1ECDn l\u1EF1a, ch\u1EA1m v\xE0o v\xE0 y\xEAu th\u01B0\u01A1ng."
+  - key: ui_collection_detail_future_desc
+    EN: Where technology and creativity merge, opening doors to the future, full
+      of promise and delightful surprises.
+    VI: "N\u01A1i c\xF4ng ngh\u1EC7 v\xE0 s\u1EF1 s\xE1ng t\u1EA1o h\xF2a quy\u1EC7n,
+      m\u1EDF ra c\xE1nh c\u1EEDa \u0111\u1EBFn t\u01B0\u01A1ng lai, \u0111\u1EA7y
+      h\u1EE9a h\u1EB9n v\xE0 b\u1EA5t ng\u1EDD."
+  - key: ui_collection_detail_green_vibes_desc
+    EN: Breathe in the fresh air, surrounded by lush greenery, like a secret garden
+      just for you.
+    VI: "H\xEDt th\u1EDF kh\xF4ng kh\xED trong l\xE0nh, \u0111\u1EAFm m\xECnh trong
+      s\u1EAFc xanh t\u01B0\u01A1i m\xE1t c\u1EE7a thi\xEAn nghi\xEAn, nh\u01B0 m\u1ED9t
+      khu v\u01B0\u1EDDn b\xED m\u1EADt."
+  - key: ui_collection_detail_grand_desc
+    EN: Relive legendary moments and explore famous places, each corner holding a
+      charming secret.
+    VI: "T\xE1i hi\u1EC7n nh\u1EEFng kho\u1EA3nh kh\u1EAFc l\u1ECBch s\u1EED, nh\u1EEFng
+      \u0111\u1ECBa \u0111i\u1EC3m huy\u1EC1n tho\u1EA1i, \u0111\u1EA7y b\xED \u1EA9n
+      v\xE0 quy\u1EBFn r\u0169 \u0111\u1EBFn l\u1EA1 k\u1EF3."
+  - key: ui_collection_detail_fairytale_echo_desc
+    EN: Step into a whimsical story, where every wish can come true and you're the
+      princess of your own magical tale.
+    VI: "B\u01B0\u1EDBc v\xE0o th\u1EBF gi\u1EDBi c\u1ED5 t\xEDch, n\u01A1i m\u1ECDi
+      \u01B0\u1EDBc m\u01A1 \u0111\u1EC1u c\xF3 th\u1EC3 tr\u1EDF th\xE0nh hi\u1EC7n
+      th\u1EF1c, v\xE0 b\u1EA1n l\xE0 n\xE0ng c\xF4ng ch\xFAa c\u1EE7a ri\xEAng m\xECnh."
+  - key: ui_collection_detail_childhood_desc
+    EN: A colorful world of endless fun a laughter, where imagination soars and every
+      day is a new adventure for tiny dreamers.
+    VI: "\u1EDE \u0111\xF3, ai c\u0169ng t\u1EEBng l\xE0 m\u1ED9t \u0111\u1EE9a tr\u1EBB
+      h\u1ED3n nhi\xEAn, \u0111\u1EC3 r\u1ED3i khi l\u1EDBn l\xEAn, nh\u1EEFng k\u1EF7
+      ni\u1EC7m \u1EA5y tr\u1EDF th\xE0nh s\u1EE9c m\u1EA1nh d\u1ECBu d\xE0ng d\u1EABn
+      l\u1ED7i cho h\xE0nh tr\xECnh tr\u01B0\u1EDFng th\xE0nh."
+  - key: ui_collection_detail_fabulous_desc
+    EN: Dive into the enchanting world of films, where every scene is a wondrous
+      journey to far-off lands.
+    VI: "\u0110\u1EAFm ch\xECm v\xE0o th\u1EBF gi\u1EDBi \u0111i\u1EC7n \u1EA3nh,
+      n\u01A1i m\u1ED7i khung h\xECnh l\xE0 m\u1ED9t c\xE2u chuy\u1EC7n di\u1EC7u
+      k\u1EF3, \u0111\u01B0a b\u1EA1n \u0111\u1EBFn nh\u1EEFng v\xF9ng \u0111\u1EA5t
+      xa x\xF4i."
+  - key: ui_collection_detail_soulmate_desc
+    EN: A cozy corner filled with endless cuddles and happy purrs, where every pet
+      feels right at home.
+    VI: "G\xF3c nh\u1ECF \u1EA5m \xE1p, tr\xE0n ng\u1EADp t\xECnh y\xEAu th\u01B0\u01A1ng
+      v\xE0 ti\u1EBFng \u0111\xF9a vui c\u1EE7a nh\u1EEFng ng\u01B0\u1EDDi b\u1EA1n
+      b\u1ED1n ch\xE2n \u0111\xE1ng y\xEAu."
+  - key: ui_collection_detail_true_desc
+    EN: A stylish, private space where guys can relax and show off their unique personality,
+      perfectly tailored for them.
+    VI: "Kh\xF4ng gian ri\xEAng t\u01B0 \u0111\u1EA7y phong c\xE1ch, n\u01A1i c\xE1c
+      ch\xE0ng trai c\xF3 th\u1EC3 th\u01B0 gi\xE3n v\xE0 th\u1EC3 hi\u1EC7n c\xE1c
+      t\xEDnh \u0111\u1ED9c \u0111\xE1o c\u1EE7a m\xECnh."
+  - key: ui_collection_detail_starry_skies_desc
+    EN: Gaze at the twinkling galaxies, exploring the endless mysteries of the universe,
+      like a dream a mong the stars.
+    VI: "Ng\u1EAFm nh\xECn d\u1EA3i ng\xE2n h\xE0 l\u1EAFp l\xE1nh, kh\xE1m ph\xE1
+      nh\u1EEFng b\xED \u1EA9n v\xF4 t\u1EADn c\u1EE7a v\u0169 tr\u1EE5, nh\u01B0
+      m\u1ED9t gi\u1EA5c m\u01A1 gi\u1EEFa c\xE1c v\xEC sao."
+  - key: ui_collection_detail_game_on_desc
+    EN: Fele the thrill of the game, where every moment is about passion and celebrating
+      sweet victories.
+    VI: "N\u01A1i n\u0103ng l\u01B0\u1EE3ng b\xF9ng ch\xE1y, m\u1ED7i g\xF3c \u0111\u1EC1u
+      k\u1EC3 c\xE2u chuy\u1EC7n v\xE0 \u0111am m\xEA v\xE0 nh\u1EEFng chi\u1EBFn
+      th\u1EB1ng ng\u1ECDt ng\xE0o."
+  - key: ui_collection_detail_desc
+    EN: Tap to card to play & chill
+    VI: "Ch\u1EA1m v\xE0o th\u1EBB \u0111\u1EC3 ch\u01A1i v\xE0 th\u01B0 gi\xE3n"
+  - key: ui_collection_detail_dreamscape_title
+    EN: Dreamscape
+    VI: "Gi\u1EA5c M\u01A1"
+  - key: ui_collection_detail_cloud_nine_title
+    EN: Cloud Nine
+    VI: "Bay B\u1ED5ng"
+  - key: ui_colection_detail_poetic_muse_title
+    EN: Poetic Muse
+    VI: "N\xE0ng Th\u01A1"
+  - key: ui_collection_detail_show_time_title
+    EN: Show Time!
+    VI: "S\u1EF1 Ki\u1EC7n"
+  - key: ui_collection_detal_cozy_corner_tittle
+    EN: Cozy Corner
+    VI: "T\u1ED5 \u1EA4m"
+  - key: ui_collection_detal_ease_side_title
+    EN: East Side
+    VI: "Ph\u01B0\u01A1ng \u0110\xF4ng"
+  - key: ui_collection_detail_chill_glow_title
+    EN: Chill Glow
+    VI: "Th\u01B0 Gi\xE3n"
+  - key: ui_collection_detail_sunny_days_title
+    EN: Sunny Days
+    VI: "Kh\xE1m Ph\xE1"
+  - key: ui_collection_detail_wishful_heart_title
+    EN: Wishful Heart
+    VI: "\u01AF\u1EDBc M\u01A1"
+  - key: ui_collection_detail_tasty_dream_title
+    EN: Tasty Dream
+    VI: "\u1EA8m th\u1EF1c"
+  - key: ui_collection_detail_fantasy_title
+    EN: Fantasy
+    VI: "M\u1ED9ng \u1EA2o"
+  - key: ui_collection_detail_evermore_title
+    EN: Evermore
+    VI: "Dinh Th\u1EF1"
+  - key: ui_collection_detail_sea_breeze_title
+    EN: Sea Breeze
+    VI: "\u0110\u1EA1i D\u01B0\u01A1ng"
+  - key: ui_collection_detail_wonderscape_title
+    EN: Wonderscape
+    VI: "Di\u1EC7u K\xEC"
+  - key: ui_collection_detail_dream_title
+    EN: Dream
+    VI: "Mua S\u1EAFm"
+  - key: ui_collection_detail_future_title
+    EN: Future
+    VI: "T\u01B0\u01A1ng Lai"
+  - key: ui_collection_detail_green_vibes_title
+    EN: Green Vibes
+    VI: "Thi\xEAn Nhi\xEAn"
+  - key: ui_collection_detail_grand_title
+    EN: Grand
+    VI: "B\xED M\u1EADt"
+  - key: ui_collection_detail_fairytale_echo_title
+    EN: Fairytale Echo
+    VI: "C\u1ED5 T\xEDch"
+  - key: ui_collection_detail_childhood_title
+    EN: Childhood
+    VI: "Tu\u1ED5i Th\u01A1"
+  - key: ui_collection_detail_fabulous_title
+    EN: Fabulous
+    VI: "\u0110i\u1EC7n \u1EA2nh"
+  - key: ui_collection_detail_souldmate_title
+    EN: Soulmate
+    VI: "Tri K\u1EC9"
+  - key: ui_collection_detail_true_title
+    EN: True!
+    VI: "Qu\xFD \xD4ng"
+  - key: ui_collection_detail_starry_skies_title
+    EN: Starry Skies
+    VI: "Ng\xE2n H\xE0"
+  - key: ui_collection_detail_game_on_title
+    EN: Game On!
+    VI: "Chinh Ph\u1EE5c"
+  - key: ui_daily_login_title
+    EN: Daily Login
+    VI: "\u0110\u0103ng nh\u1EADp h\xE0ng ng\xE0y"
+  - key: ui_daily_login_day
+    EN: Day
+    VI: "Ng\xE0y"
+  - key: ui_daily_reward_title
+    EN: Daily Rewards
+    VI: "Ph\u1EA7n th\u01B0\u1EDFng h\xE0ng ng\xE0y"
+  - key: ui_edit_profile_title
+    EN: Edit Profile
+    VI: "Ch\u1EC9nh s\u1EEDa h\u1ED3 s\u01A1"
+  - key: ui_edit_profile_tab_frame
+    EN: Frame
+    VI: Khung
+  - key: ui_edit_profile_tab_avatar
+    EN: Avatar
+    VI: "\u0110\u1EA1i di\u1EC7n"
+  - key: ui_getmore_booster_title
+    EN: Get More
+    VI: "L\u1EA5y th\xEAm"
+  - key: ui_getmore_booster_hint_desc
+    EN: Move an item to the correct location
+    VI: "Di chuy\u1EC3n \u0111\u1ED1i t\u01B0\u1EE3ng \u0111\u1EBFn \u0111\xFAng
+      v\u1ECB tr\xED"
+  - key: ui_getmore_booster_magnifier_desc
+    EN: Show the shadows of some random items
+    VI: "Hi\u1EC3n th\u1ECB b\xF3ng c\u1EE7a m\u1ED9t s\u1ED1 v\u1EADt ph\u1EA9m
+      ng\u1EABu nhi\xEAn"
+  - key: ui_getmore_booster_frooze_desc
+    EN: Freeze time for 45 seconds
+    VI: "\u0110\xF3ng b\u0103ng th\u1EDDi gian trong 45 gi\xE2y"
+  - key: ui_getmore_booster_boxbuffer_desc
+    EN: Increase the limit of items in the box that can be opened
+    VI: "T\u0103ng gi\u1EDBi h\u1EA1n s\u1ED1 l\u01B0\u1EE3ng v\u1EADt ph\u1EA9m
+      c\xF3 th\u1EC3 m\u1EDF trong h\u1ED9p"
+  - key: ui_getmore_booster_timebuffer_desc
+    EN: Add 30 seconds time limit
+    VI: "Th\xEAm gi\u1EDBi h\u1EA1n th\u1EDDi gian th\xEAm 30s"
+  - key: ui_getmore_booster_doublestar_desc
+    EN: Double the number of stars earned in the level
+    VI: "Nh\xE2n \u0111\xF4i s\u1ED1 sao ki\u1EBFm \u0111\u01B0\u1EE3c trong m\xE0n
+      ch\u01A1i"
+  - key: ui_homescene_team
+    EN: Shop
+    VI: "C\u1EEDa h\xE0ng"
+  - key: ui_homescene_rank
+    EN: Rank
+    VI: "X\u1EBFp h\u1EA1ng"
+  - key: ui_homescene_home
+    EN: Home
+    VI: "Trang ch\u1EE7"
+  - key: ui_homescene_team
+    EN: Team
+    VI: "C\xE1c \u0111\u1ED9i"
+  - key: ui_homescene_collection
+    EN: Collection
+    VI: "B\u1ED9 s\u01B0u t\u1EADp"
+  - key: ui_information_title
+    EN: Information
+    VI: "Th\xF4ng tin"
+  - key: ui_information_relaxmode_title
+    EN: Relax Mode
+    VI: "Ch\u1EBF \u0111\u1ED9 th\u01B0 gi\xE3n"
+  - key: ui_information_stickermode_title
+    EN: Sticker Mode
+    VI: "Ch\u1EBF \u0111\u1ED9 nh\xE3n d\xE1n"
+  - key: ui_information_relaxmode_desc
+    EN: Play againlevel & chill with no limit time, no booster.
+    VI: "Ch\u01A1i l\u1EA1i c\u1EA5p \u0111\u1ED9 v\xE0 th\u01B0 gi\xE3n m\xE0 kh\xF4ng
+      gi\u1EDBi h\u1EA1n th\u1EDDi gian, kh\xF4ng c\xF3 ph\u1EA7n th\u01B0\u1EDFng."
+  - key: ui_information_stickermode_desc
+    EN: Freely decorate your favourite room with peel and sticker.
+    VI: "T\u1EF1 do trang tr\xED c\u0103n ph\xF2ng y\xEAu th\xEDch c\u1EE7a b\u1EA1n
+      b\u1EB1ng gi\u1EA5y d\xE1n t\u01B0\u1EDDng."
+  - key: ui_information_desc
+    EN: Both game modes can be played offline
+    VI: "C\u1EA3 hai ch\u1EBF \u0111\u1ED9 tr\xF2 ch\u01A1i \u0111\u1EC1u c\xF3 th\u1EC3
+      ch\u01A1i ngo\u1EA1i tuy\u1EBFn"
+  - key: ui_level_notunlock_desc
+    EN: Completed the previous level to unlock this one.
+    VI: "Ho\xE0nh th\xE0nh m\xE0n tr\u01B0\u1EDBc \u0111\u1EC3 m\u1EDF kh\xF3a m\xE0n
+      n\xE0y."
+  - key: ui_lose_desc
+    EN: No, Thanks!
+    VI: "Kh\xF4ng, c\u1EA3m \u01A1n!"
+  - key: ui_lose_title
+    EN: Level Failed
+    VI: "C\u1EA5p \u0111\u1ED9 th\u1EA5t b\u1EA1i"
+  - key: ui_pigbank_title
+    EN: Pig Bank
+    VI: "Heo \u0110\u1EA5t"
+  - key: ui_pigbank_desc
+    EN: Complete levels to add Golds to Piggy Bank. Fill it up to get the most Golds
+      for your money!
+    VI: "Ho\xE0n th\xE0nh c\xE1c c\u1EA5p \u0111\u1ED9 \u0111\u1EC3 th\xEAm V\xE0ng
+      v\xE0o Piggy Bank. H\xE3y l\u1EA5p \u0111\u1EA7y n\xF3 \u0111\u1EC3 nh\u1EADn
+      \u0111\u01B0\u1EE3c nhi\u1EC1u v\xE0ng nh\u1EA5t."
+  - key: ui_quitlevel_title
+    EN: Quit level?
+    VI: "Tho\xE1t m\xE0n ch\u01A1i"
+  - key: ui_quitlevel_desc
+    EN: About to lose these keep challenging!
+    VI: "S\u1EAFp thua r\u1ED3i, ti\u1EBFp t\u1EE5c th\u1EED th\xE1ch!"
+  - key: ui_rank_desc
+    EN: Reach level 20 to unlock Rank!
+    VI: "\u0110\u1EA1t c\u1EA5p 20 \u0111\u1EC3 m\u1EDF kh\xF3a X\u1EBFp h\u1EA1ng!"
+  - key: ui_rategame_title
+    EN: Rate us
+    VI: "\u0110\xE1nh gi\xE1 ch\xFAng t\xF4i"
+  - key: ui_rategame_desc
+    EN: How would you like this game!
+    VI: "B\u1EA1n c\xF3 th\xEDch tr\xF2 ch\u01A1i n\xE0y kh\xF4ng?"
+  - key: ui_removeads_title
+    EN: Remove Ads
+    VI: "B\u1ECF qua qu\u1EA3ng c\xE1o"
+  - key: ui_removeads_desc_line1
+    EN: Remove obligatory ads.
+    VI: "X\xF3a qu\u1EA3ng c\xE1o b\u1EAFt bu\u1ED9c."
+  - key: ui_removeads_desc_line2
+    EN: Remove bottom banner ads.
+    VI: "X\xF3a qu\u1EA3ng c\xE1o banner d\u01B0\u1EDBi."
+  - key: ui_removeads_desc_title3
+    EN: Keep optional ads for rewards
+    VI: "Gi\u1EEF qu\u1EA3ng c\xE1o t\xF9y ch\u1ECDn \u0111\u1EC3 nh\u1EADn ph\u1EA7n
+      th\u01B0\u1EDFng."
+  - key: ui_removeads_desc_tile4
+    EN: Bonus
+    VI: "Th\u01B0\u1EDFng"
+  - key: ui_selectgamemode_title
+    EN: Level
+    VI: "C\u1EA5p"
+  - key: ui_selectgamemode_desc
+    EN: Select Booster
+    VI: "Ch\u1ECDn v\u1EADt ph\u1EA9m h\u1ED7 tr\u1EE3"
+  - key: ui_selectgamemode_desc_bottom
+    EN: Pass level to unlock Relax Mode
+    VI: "V\u01B0\u1EE3t qua c\u1EA5p \u0111\u1EC3 m\u1EDF kh\xF3a ch\u1EBF \u0111\u1ED9
+      th\u01B0 gi\xE3n"
+  - key: ui_settinggameplay_title
+    EN: Pause
+    VI: "T\u1EA1m d\u1EEBng"
+  - key: ui_settinghomescene_title
+    EN: Settings
+    VI: "C\xE0i \u0111\u1EB7t"
+  - key: ui_settinghomescene_selected_language
+    EN: English
+    VI: "Ti\u1EBFng Vi\u1EC7t"
+  - key: ui_shop_removeads_title
+    EN: Remove Ads
+    VI: "B\u1ECF qu\u1EA3ng c\xE1o"
+  - key: ui_shop_removeads_desc_line1
+    EN: Remove obligatory ads.
+    VI: "X\xF3a qu\u1EA3ng c\xE1o b\u1EAFt bu\u1ED9c"
+  - key: ui_shop_removeads_desc_line2
+    EN: Remove bottom banner ads.
+    VI: "X\xF3a qu\u1EA3ng c\xE1o banner d\u01B0\u1EDBi"
+  - key: ui_shop_removeads_desc_line3
+    EN: Keep optional ads for rewards.
+    VI: "Gi\u1EEF qu\u1EA3ng c\xE1o t\xF9y ch\u1ECDn \u0111\u1EC3 nh\u1EADn ph\u1EA7n
+      th\u01B0\u1EDFng."
+  - key: ui_shop_removeads_desc_line4
+    EN: Bonus
+    VI: "Ti\u1EC1n th\u01B0\u1EDDng"
+  - key: ui_shop_vipdreamer_title
+    EN: VIP Dreamer
+    VI: "K\u1EBB m\u1ED9ng m\u01A1 VIP"
+  - key: ui_shop_vipdreamer_desc_line1
+    EN: Bonus 60s All Levels
+    VI: "Th\xEAm 60 gi\xE2y cho m\u1ECDi c\u1EA5p \u0111\u1ED9"
+  - key: ui_shop_vipdreamer_desc_line2
+    EN: Free 3 Boosters Daily
+    VI: "3 v\u1EADt ph\u1EA9m h\u1ED7 tr\u1EE3 h\xE0ng ng\xE0y"
+  - key: ui_shop_vipdreamer_desc_line3
+    EN: Free 3 Starting Boosters Daily
+    VI: "3 v\u1EADt ph\u1EA9m kh\u1EDFi \u0111\u1EA7u h\xE0ng ng\xE0y"
+  - key: ui_shop_vipdreamer_desc_line4
+    EN: Free Lives 30 minutes Daily
+    VI: "Nh\u1EADn l\u01B0\u1EE3t ch\u01A1i 30p h\xE0ng ng\xE0y"
+  - key: ui_shop_vipdreamer_desc_line5
+    EN: X2 Gold Reward
+    VI: "Ph\u1EA7n th\u01B0\u1EDFng v\xE0ng x2"
+  - key: ui_shop_starterpack_title
+    EN: Starter Pack
+    VI: "G\xF3i T\xE2n Th\u1EE7"
+  - key: ui_shop_chillpack_title
+    EN: Chill Pack
+    VI: "G\xF3i Th\u01B0 Gi\xE3n"
+  - key: ui_shop_dreamybundle_title
+    EN: Dreamy Bundle
+    VI: "G\xF3i M\u1ED9ng M\u01A1"
+  - key: ui_shop_discoverbundle_title
+    EN: Discover Bundle
+    VI: "G\xF3i Kh\xE1m Ph\xE1"
+  - key: ui_shop_creativebundle_title
+    EN: Creative Bundle
+    VI: "G\xF3i S\xE1ng T\u1EA1o"
+  - key: ui_shop_superiorbundle_title
+    EN: Superior Bundle
+    VI: "G\xF3i Cap C\u1EA5p"
+  - key: ui_shop_legendarybundle_title
+    EN: Legendary Bundle
+    VI: "G\xF3i Huy\u1EC1n Tho\u1EA1i"
+  - key: ui_teams_title
+    EN: Reach level 20 to Join Team!
+    VI: "\u0110\u1EA1t c\u1EA5p 20 \u0111\u1EC3 tham gia \u0111\u1ED9i"
+  - key: ui_teams_desc
+    EN: 'When you join a team you will get:'
+    VI: "Khi b\u1EA1n tham gia m\u1ED9t nh\xF3m, b\u1EA1n s\u1EBD nh\u1EADn \u0111\u01B0\u1EE3c:"
+  - key: ui_teams_reward_1
+    EN: Free Heart
+    VI: "TR\xC1I TIM MI\u1EC4N PH\xCD"
+  - key: ui_teams_reward_2
+    EN: Free Rewards
+    VI: "PH\u1EA6N TH\u01AF\u1EDENG MI\u1EC4N PH\xCD"
+  - key: ui_timeout_title
+    EN: Time Out
+    VI: "H\u1EBFt gi\u1EDD"
+  - key: ui_timeout_desc_top
+    EN: About to lose this, keep challenging!
+    VI: "\u0110\u1EEBng \u0111\u1EC3 m\u1EA5t \u0111\u1ED3, C\u1ED1 g\u1EAFng l\xEAn
+      n\xE0o!"
+  - key: ui_timeout_desc_mid
+    EN: Continue?
+    VI: "Ti\u1EBFp t\u1EE5c?"
+  - key: ui_treasurechest_title
+    EN: Star Chest
+    VI: "H\u1ED9p sao"
+  - key: ui_treasurechest_desc
+    EN: Collect star to open it and claim rewards
+    VI: "Thu th\u1EADp sao \u0111\u1EC3 m\u1EDF v\xE0 nh\u1EADn ph\u1EA7n th\u01B0\u1EDFng"
+  - key: ui_unlockreward_title
+    EN: Unlock Rewards
+    VI: "M\u1EDF kh\xF3a ph\u1EA7n th\u01B0\u1EDFng"
+  - key: ui_unlockreward_desc
+    EN: Tap to Open
+    VI: "Ch\u1EA1m \u0111\u1EC3 m\u1EDF"
+  - key: ui_win_title
+    EN: Level Completed!
+    VI: "Ho\xE0n th\xE0nh c\u1EA5p \u0111\u1ED9!"
