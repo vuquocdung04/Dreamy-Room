@@ -22,6 +22,8 @@ public class LocalizationController : MonoBehaviour
     public void Init()
     {
         var localizationData = GameController.Instance.dataContains.localizationData;
+        currentLanguage = GameController.Instance.dataContains.dataPlayer.currentLanguage;
+        
         var dataTable = localizationData.entries;
         foreach (var data in dataTable)
         {
@@ -29,7 +31,7 @@ public class LocalizationController : MonoBehaviour
             localizationDictionary[Language.Vi].TryAdd(data.key, data.VI);
         }
 
-        ChangeLanguage(Language.En);
+        ChangeLanguage(currentLanguage);
     }
 
     public void ChangeLanguage(Language language)
@@ -41,17 +43,18 @@ public class LocalizationController : MonoBehaviour
         }
 
         currentLanguage = language;
+        GameController.Instance.dataContains.dataPlayer.currentLanguage = language;
         this.PostEvent(EventID.CHANGE_LOCALIZATION);
         //PostEvent
     }
 
     public string GetString(string key)
     {
+        Debug.Log(currentLanguage);
         if (localizationDictionary[currentLanguage].TryGetValue(key, out string localizedString))
         {
             return localizedString;
         }
-
         Debug.LogError($"Missing Localize Key for: {key}");
         return "Missing Localization";
     }

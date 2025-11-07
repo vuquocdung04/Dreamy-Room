@@ -31,8 +31,7 @@ public class BoosterConflict
     [SerializeField] private int price = 800;
     
     [HorizontalGroup("BottomRow")]
-    [TextArea(3, 5), HideLabel] 
-    [SerializeField] string description;
+    [SerializeField] string localizeKey;
     
     [HorizontalGroup("BottomRow", Width = 60)]
     [PreviewField(57, ObjectFieldAlignment.Center), HideLabel]
@@ -40,7 +39,7 @@ public class BoosterConflict
 
     public int GetLevelUnlock() => levelUnlock;
     public int GetPrice() => price;
-    public string GetDescription() => description;
+    public string GetLocalizeKey() => localizeKey;
     public Sprite GetIcon() => icon;
     
 }

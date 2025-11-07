@@ -10,6 +10,8 @@ public class CollectionBox : BoxSingleton<CollectionBox>
         return Path(PathPrefabs.COLLECTION_BOX);
     }
 
+    public LocalizedText title;
+    public LocalizedText grandPrize;
     public List<CollectionItem> lsItems;
     protected override void Init()
     {
@@ -26,7 +28,14 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
     protected override void InitState()
     {
-        
+        HandleLocalization();
+    }
+
+    private void HandleLocalization()
+    {
+        Debug.Log("Check");
+        title.Init();
+        grandPrize.Init();
     }
 
     private void UpdateItemState()

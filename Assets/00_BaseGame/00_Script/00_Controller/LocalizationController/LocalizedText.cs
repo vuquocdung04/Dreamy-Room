@@ -1,4 +1,4 @@
-using System;
+
 using EventDispatcher;
 using TMPro;
 using UnityEngine;
@@ -11,11 +11,14 @@ public class LocalizedText : MonoBehaviour
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
-        this.RegisterListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
     }
 
-    private void OnEnable()
+    public void Init(string key = null)
     {
+        if(key != null)
+            SetLocalizeKey(key);
+        
+        this.RegisterListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
         Refresh();
     }
 
@@ -24,6 +27,11 @@ public class LocalizedText : MonoBehaviour
         this.RemoveListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
     }
 
+    private void SetLocalizeKey(string key)
+    {
+        localizeKey = key;
+    }
+    
     private void OnLanguageChanged(object obj = null)
     {
         Refresh();

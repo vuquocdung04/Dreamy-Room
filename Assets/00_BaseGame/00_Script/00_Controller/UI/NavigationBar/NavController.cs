@@ -125,10 +125,11 @@ public class NavController : MonoBehaviour
     
     private BaseBox GetBoxInstance(ENavType type)
     {
-        if (boxInstances.ContainsKey(type) && boxInstances[type] != null)
+        /*if (boxInstances.ContainsKey(type) && boxInstances[type] != null)
         {
             return boxInstances[type];
         }
+        */
 
         BaseBox newBox = null;
         switch (type)
@@ -140,10 +141,10 @@ public class NavController : MonoBehaviour
             case ENavType.Collection: newBox = CollectionBox.Setup(); break;
         }
 
-        if (newBox != null)
+        /*if (newBox != null)
         {
             boxInstances[type] = newBox;
-        }
+        }*/
         return newBox;
     }
 

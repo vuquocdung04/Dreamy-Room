@@ -11707,7 +11707,7 @@ GameObject:
   - component: {fileID: 3159002000374197936}
   - component: {fileID: 9099834676785729254}
   m_Layer: 5
-  m_Name: txt
+  m_Name: txtGrand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17676,6 +17676,8 @@ MonoBehaviour:
   hasAppearedBefore: 0
   durationSlide: 0.2
   canvas: {fileID: 900719146394237838}
+  title: {fileID: 6471440565954656250}
+  grandPrize: {fileID: 9099834676785729254}
   lsItems:
   - {fileID: 8653510289193562288}
   - {fileID: 3062390598121334157}

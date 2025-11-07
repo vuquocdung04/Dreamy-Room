@@ -12,7 +12,7 @@ public class LocalizationImporter
     private static string soPath = "Assets/00_BaseGame/02_DataSO/LocalizationData.asset";
     
     private static string localPath = "Assets/00_BaseGame/02_DataSO/CSV/localizationCSV.csv";
-    // Giữ nguyên URL .csv của bạn
+    
     private static string googleSheetUrl = "https://docs.google.com/spreadsheets/d/1QdVYWCZSUDpdcWH1JoGkIA7Svf1iWrXe4Rl06xYT-0g/export?format=csv&gid=633283787";
     
     private static readonly Regex CsvSplitRegex = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");

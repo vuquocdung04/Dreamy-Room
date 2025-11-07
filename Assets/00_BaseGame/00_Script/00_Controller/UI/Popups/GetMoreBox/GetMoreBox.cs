@@ -14,10 +14,14 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     public Button btnCloseByPanel;
     public Button btnBuyByCoin;
     public Button btnBuyByAds;
-    public TextMeshProUGUI txtDescription;
     [Header("Icon Information"), Space(5)] public Image imgIcon;
     public TextMeshProUGUI txtPrice;
 
+    [Header("Localization")]
+    public LocalizedText LocalizedTextTitle;
+    public LocalizedText localizedTextDesc;
+    
+    
     private GiftType currentBoosterType;
     private GameController gameController;
     private DataBoosterBase dataBooster;
@@ -77,12 +81,20 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         var boosterConflict = dataBooster.GetBoosterConflict(currentBoosterType);
         var sprIcon = boosterConflict.GetIcon();
         var priceInformation = boosterConflict.GetPrice();
-        var descriptionInformation = boosterConflict.GetDescription();
-
         txtPrice.text = priceInformation.ToString();
-        txtDescription.text = descriptionInformation;
+        
+        HandleLocalization(boosterConflict);
+        
         imgIcon.sprite = sprIcon;
         UIImageUtils.FitToTargetHeight(imgIcon, 200);
+    }
+
+    private void HandleLocalization(BoosterConflict boosterConflict)
+    {
+        var descKey = boosterConflict.GetLocalizeKey();
+        
+        localizedTextDesc.Init(descKey);
+        LocalizedTextTitle.Init();
     }
 
     private bool IsNewBoosterSelected(GiftType newBoosterType)

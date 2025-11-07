@@ -13,7 +13,8 @@ public class DataPlayer : ScriptableObject
     [Header("DAILY TIERED REWARDS")]
     public bool isFreeClaimedToday;
     public int adRewardsClaimedCount;
-    
+    [Header("Localization")]
+    public Language currentLanguage;
     public DataPlayer()
     {
         isUsedX2Star = false;
@@ -23,6 +24,7 @@ public class DataPlayer : ScriptableObject
         hasClaimedStreakToday = false;
         isFreeClaimedToday = false;
         adRewardsClaimedCount = 0;
+        currentLanguage = Language.En;
     }
 
     public void Save()
