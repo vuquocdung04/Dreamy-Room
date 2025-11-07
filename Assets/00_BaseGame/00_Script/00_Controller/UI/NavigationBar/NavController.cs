@@ -16,9 +16,8 @@ public class NavController : MonoBehaviour
     [Header("Debug"),Space(6)]
     [SerializeField] private NavButton currentNavButton;
     [SerializeField] private NavButton prevNavButton;
-    [SerializeField] bool isBusy = false;
+    [SerializeField] bool isBusy;
     public List<NavButton> lsButtons;
-    private Dictionary<ENavType, BaseBox> boxInstances = new();
 
     public void Init()
     {
@@ -125,12 +124,6 @@ public class NavController : MonoBehaviour
     
     private BaseBox GetBoxInstance(ENavType type)
     {
-        /*if (boxInstances.ContainsKey(type) && boxInstances[type] != null)
-        {
-            return boxInstances[type];
-        }
-        */
-
         BaseBox newBox = null;
         switch (type)
         {
@@ -140,11 +133,7 @@ public class NavController : MonoBehaviour
             case ENavType.Team: newBox = TeamBox.Setup(); break;
             case ENavType.Collection: newBox = CollectionBox.Setup(); break;
         }
-
-        /*if (newBox != null)
-        {
-            boxInstances[type] = newBox;
-        }*/
+        
         return newBox;
     }
 

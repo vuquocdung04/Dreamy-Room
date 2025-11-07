@@ -16,9 +16,7 @@ public class LocalizationController : MonoBehaviour
         { Language.Vi, new Dictionary<string, string>() },
     };
 
-    private Language currentLanguage = Language.En;
-    public Language CurrentLanguage => currentLanguage;
-
+    private Language currentLanguage;
     public void Init()
     {
         var localizationData = GameController.Instance.dataContains.localizationData;
@@ -45,12 +43,10 @@ public class LocalizationController : MonoBehaviour
         currentLanguage = language;
         GameController.Instance.dataContains.dataPlayer.currentLanguage = language;
         this.PostEvent(EventID.CHANGE_LOCALIZATION);
-        //PostEvent
     }
 
     public string GetString(string key)
     {
-        Debug.Log(currentLanguage);
         if (localizationDictionary[currentLanguage].TryGetValue(key, out string localizedString))
         {
             return localizedString;

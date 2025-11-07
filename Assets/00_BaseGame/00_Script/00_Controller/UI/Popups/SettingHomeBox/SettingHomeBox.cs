@@ -30,7 +30,9 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
     public Button btnGoToFbGroup;
     public Button btnGoToTikTok;
     public Button btnMail;
-    
+    [Header("Localization")]
+    public LocalizedText lcTitle;
+    public LocalizedText lcCurLanguage;
     private int curFrameRate;
     
     protected override void Init()
@@ -58,7 +60,6 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
         
         btnChooseLanguage.onClick.AddListener(delegate
         {
-            Close();
             LocalizationBox.Setup().Show();
         });
         
@@ -83,6 +84,7 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
         {
             Close();
         });
+        InitLocalization();
     }
 
     protected override void InitState()
@@ -90,6 +92,12 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
         
     }
 
+    private void InitLocalization()
+    {
+        lcTitle.Init();
+        lcCurLanguage.Init();
+    }
+    
     private bool ToggleSetting(bool currentValue, Image inactiveImage)
     {
         bool newValue = !currentValue;

@@ -7,14 +7,11 @@ public class LocalizedText : MonoBehaviour
 {
     [SerializeField] private string localizeKey;
     private TextMeshProUGUI text;
-
-    private void Awake()
-    {
-        text = GetComponent<TextMeshProUGUI>();
-    }
-
     public void Init(string key = null)
     {
+        if (text == null)
+            text = GetComponent<TextMeshProUGUI>();
+        
         if(key != null)
             SetLocalizeKey(key);
         

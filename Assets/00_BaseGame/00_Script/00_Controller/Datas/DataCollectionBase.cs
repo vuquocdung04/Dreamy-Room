@@ -9,6 +9,14 @@ public class DataCollectionBase : ScriptableObject
     public CollectionType GetCollectionType() => currentCollectionType;
     public void SetCollectionType(CollectionType collectionType) => currentCollectionType = collectionType;
 
+    
+    [ListDrawerSettings(
+        NumberOfItemsPerPage = 18,
+        ListElementLabelName = "GetElementLabel",
+        ShowPaging = true,
+        DraggableItems = false,
+        HideAddButton = false
+    )]
     public List<CollectionConflict> lstCollectionConflict;
 
     public int GetListCollectionCount() => lstCollectionConflict.Count;
@@ -32,23 +40,37 @@ public class CollectionConflict
 
     [BoxGroup("Split/Left/General Info"), Title("Total Amount"), HideLabel]
     public int totalAmount;
-
-    [BoxGroup("Split/Left/General Info"), Title("Title"), HideLabel]
-    public string txtTitle;
-
     [BoxGroup("Split/Left/General Info"), Title("Amount Reward"), HideLabel]
     public int amountReward;
 
-    [BoxGroup("Split/Left/General Info")] [TextArea]
-    public string txtDescription;
+    [BoxGroup("Split/Left/General Info"), Title("lcKeyTitle"), HideLabel]
+    public string lcKeyTitle;
+    [BoxGroup("Split/Left/General Info"),Title("lcKeyDesc"), HideLabel]
+    public string lcKeyDesc;
 
-    [BoxGroup("Split/Left/General Info")] [PreviewField(50, ObjectFieldAlignment.Center), HideLabel]
+    [HorizontalGroup("Split/Left/General Info/Sprites")] [PreviewField(50, ObjectFieldAlignment.Center), HideLabel]
+    [Title("SprTitle")]
+    public Sprite sprTitle;
+    [HorizontalGroup("Split/Left/General Info/Sprites")] [PreviewField(50, ObjectFieldAlignment.Center), HideLabel]
+    [Title("SprReward")]
     public Sprite sprReward;
 
     [HorizontalGroup("Split")] [BoxGroup("Split/Card IDs")]
     public List<int> lsIdCards;
 
     public int GetCount() => lsIdCards.Count;
+    
+    private string GetElementLabel
+    {
+        get
+        {
+            if (type == CollectionType.None)
+            {
+                return "New Collection";
+            }
+            return $"{type.ToString()} ({GetCount()} cards)";
+        }
+    }
 }
 
 

@@ -20,7 +20,6 @@ public class CollectionItem : MonoBehaviour
     
     public void Init()
     {
-        Debug.LogError(gameObject.name + "/" + type);
         var dataCollection = GameController.Instance.dataContains.dataCollection;
         var dataCollectionConfict = dataCollection.GetCollectionByType(type);
         var lsCollection = new List<int>(dataCollectionConfict.lsIdCards);

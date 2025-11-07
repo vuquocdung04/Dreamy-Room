@@ -14,23 +14,25 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     public CollectionType type;
     public Canvas canvas;
     [Header("Title")] public Image imgTitle;
-    public TextMeshProUGUI txtTitle;
     [Header("Progress")] public Image fill;
     public TextMeshProUGUI txtProgress;
     public Image imgReward;
     public TextMeshProUGUI txtReward;
-    [Header("Description")] public TextMeshProUGUI txtDescription;
     [Header("Sprite Card")] public Sprite sprCardOn;
     public Button btnClose;
+    [Header("Localization")]
+    public LocalizedText lcTitle;
+    public LocalizedText lcDescription;
     public List<CollectionDetailItem> lsItems;
+    
     private readonly List<CollectionDetailItem> lsItemClones = new();
 
     private int currentLevelCompleted;
+    private DataCollectionBase dataCollection;
     protected override void Init()
     {
         canvas.worldCamera = Camera.main;
-        var dataCollection = GameController.Instance.dataContains.dataCollection;
-        type = dataCollection.GetCollectionType();
+        dataCollection = GameController.Instance.dataContains.dataCollection;
         btnClose.onClick.AddListener(Close);
 
         OnClick(lsItems, (item) => HandleSelection(delegate
@@ -44,19 +46,25 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
 
     protected override void InitState()
     {
+        type = dataCollection.GetCollectionType();
+        
         UpdateStateItems();
         UpdateStateBox();
     }
 
+    private void InitLocalization(CollectionConflict collectionConflict)
+    {
+        lcTitle.Init(collectionConflict.lcKeyTitle);
+        lcDescription.Init(collectionConflict.lcKeyDesc);
+    }
+    
     private void UpdateStateBox()
     {
-        var dataCollection = GameController.Instance.dataContains.dataCollection;
+        
         var collectionConflict = dataCollection.GetCollectionByType(type);
         currentLevelCompleted = 0;
-        
         lsItemClones.Clear();
-        txtTitle.text = collectionConflict.txtTitle;
-        txtDescription.text = collectionConflict.txtDescription;
+        InitLocalization(collectionConflict);
         imgReward.sprite = collectionConflict.sprReward;
         txtReward.text = collectionConflict.amountReward.ToString();
         for (int i = 0; i < collectionConflict.GetCount(); i++)
@@ -64,13 +72,12 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
             if(collectionConflict.lsIdCards[i] > UseProfile.MaxUnlockedLevel) continue;
             currentLevelCompleted++;
         }
-        txtProgress.text = currentLevelCompleted.ToString() + "/" + collectionConflict.totalAmount;
+        txtProgress.text = currentLevelCompleted + "/" + collectionConflict.totalAmount;
         fill.fillAmount = (float) currentLevelCompleted/collectionConflict.totalAmount;
     }
 
     private void UpdateStateItems()
     {
-        var dataCollection = GameController.Instance.dataContains.dataCollection;
         var dataLevel = GameController.Instance.dataContains.dataLevel;
         var collectionConflict = dataCollection.GetCollectionByType(type);
         foreach (var item in this.lsItems) item.gameObject.SetActive(false);
@@ -81,8 +88,6 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
             lsItems[i].SetId(collectionConflict.lsIdCards[i]);
             lsItemClones.Add(lsItems[i]);
         }
-
-        
         for (int i = 0; i < lsItemClones.Count; i++)
         {
             var spriteThumb = dataLevel.GetLevelSpriteById(lsItemClones[i].GetId());

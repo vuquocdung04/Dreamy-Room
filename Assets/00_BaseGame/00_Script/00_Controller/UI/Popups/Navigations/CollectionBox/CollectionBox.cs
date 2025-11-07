@@ -28,12 +28,11 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
     protected override void InitState()
     {
-        HandleLocalization();
+        InitLocalization();
     }
 
-    private void HandleLocalization()
+    private void InitLocalization()
     {
-        Debug.Log("Check");
         title.Init();
         grandPrize.Init();
     }
