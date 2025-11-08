@@ -13,9 +13,12 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     public LocalizedText title;
     public LocalizedText grandPrize;
     public List<CollectionItem> lsItems;
+    public List<string> lsKeysTitle;
+    private DataPlayer dataPlayer;
     protected override void Init()
     {
         canvas.worldCamera = Camera.main;
+        dataPlayer = GameController.Instance.dataContains.dataPlayer;
         UpdateItemState();
     
         OnClick(lsItems, (item) => HanleSelection(delegate
@@ -23,11 +26,12 @@ public class CollectionBox : BoxSingleton<CollectionBox>
             GameController.Instance.dataContains.dataCollection.SetCollectionType(item.GetCollectionType());
             CollectionDetailBox.Setup().Show();
         }));
-        
+        InitLocalization();
     }
 
     protected override void InitState()
     {
+        if(!dataPlayer.IsLanguageChanged) return;
         InitLocalization();
     }
 
@@ -35,6 +39,10 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     {
         title.Init();
         grandPrize.Init();
+        foreach(var item in lsItems)
+            item.GetLocalizedText().Init();
+        
+        Debug.Log("ceqewqhe");
     }
 
     private void UpdateItemState()
@@ -62,12 +70,37 @@ public class CollectionBox : BoxSingleton<CollectionBox>
             t.AddClickListener(callback);
     }
 
-    [Button("Setup Item")]
-    void SetupItem()
+
+    [Button("Setup Item", ButtonSizes.Large)]
+    private void SetupItem()
     {
         for (int i = 0; i < lsItems.Count; i++)
         {
             lsItems[i].SetupOdin(i+1);
         }
     }
+
+    [Button("Setup Count lsKey", ButtonSizes.Large)]
+    private void SetCountLsKey()
+    {
+        lsKeysTitle.Clear();
+        while (lsKeysTitle.Count < lsItems.Count)
+        {
+            lsKeysTitle.Add(string.Empty);
+        }
+        while (lsKeysTitle.Count > lsItems.Count)
+        {
+            lsKeysTitle.RemoveAt(lsKeysTitle.Count - 1);
+        }
+
+    }
+    [Button("Setup Key Item", ButtonSizes.Large)]
+    private void SetupKeyItem()
+    {
+        for (int i = 0; i < lsItems.Count; i++)
+        {
+            lsItems[i].GetLocalizedText().SetKeyOnEdittor(lsKeysTitle[i]);
+        }
+    }
+
 }

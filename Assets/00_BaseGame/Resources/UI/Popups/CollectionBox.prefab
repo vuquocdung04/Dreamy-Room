@@ -58,6 +58,7 @@ MonoBehaviour:
   btn: {fileID: 9058263925546347772}
   fill: {fileID: 5834441850505565802}
   txtProgress: {fileID: 5507782564870907325}
+  localizedText: {fileID: 7154351449684111911}
 --- !u!222 &1452986563728347073
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -979,6 +980,7 @@ GameObject:
   - component: {fileID: 9201590123073586050}
   - component: {fileID: 3224654010937164229}
   - component: {fileID: 450544887426939945}
+  - component: {fileID: 5011819959204173648}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -1102,6 +1104,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5011819959204173648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385893877378411027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_wonderscape
 --- !u!1 &397953076459111419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1472,7 @@ GameObject:
   - component: {fileID: 7854507073264904089}
   - component: {fileID: 2837901789960470061}
   - component: {fileID: 713308879369077679}
+  - component: {fileID: 463780018825522146}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -1580,6 +1596,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &463780018825522146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543370308536306785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_starry_skies
 --- !u!1 &634436138622199777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,6 +2613,7 @@ GameObject:
   - component: {fileID: 2533397559763660616}
   - component: {fileID: 387541747970961733}
   - component: {fileID: 9206510117256974131}
+  - component: {fileID: 1153564778378879394}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -2707,6 +2737,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1153564778378879394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904699954516490730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_evermore
 --- !u!1 &914284044088747204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3465,7 @@ GameObject:
   - component: {fileID: 483385777933319264}
   - component: {fileID: 8303066896975533242}
   - component: {fileID: 4663238659194753360}
+  - component: {fileID: 8230608883916703373}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -3545,6 +3589,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8230608883916703373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167980859917044808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_show_time
 --- !u!1 &1218590137992440977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,7 +3987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 1
+  m_VerticalFit: 2
 --- !u!1 &1262166849028260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +5410,7 @@ MonoBehaviour:
   btn: {fileID: 6693197587311741599}
   fill: {fileID: 2304301465884587613}
   txtProgress: {fileID: 8732735163861136484}
+  localizedText: {fileID: 6994025629085777274}
 --- !u!222 &6040130977862934844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5912,6 +5970,7 @@ MonoBehaviour:
   btn: {fileID: 8433070685167033547}
   fill: {fileID: 2879710164957696408}
   txtProgress: {fileID: 5410624390749096090}
+  localizedText: {fileID: 8339598648278074553}
 --- !u!222 &8435811092890769896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6052,6 +6111,7 @@ MonoBehaviour:
   btn: {fileID: 5097232176796270939}
   fill: {fileID: 442470203279543721}
   txtProgress: {fileID: 3603987213508836843}
+  localizedText: {fileID: 1153564778378879394}
 --- !u!222 &8252180947707486838
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6268,6 +6328,7 @@ MonoBehaviour:
   btn: {fileID: 8105878697418300371}
   fill: {fileID: 5114677248598178391}
   txtProgress: {fileID: 2913100866166140151}
+  localizedText: {fileID: 1019659265871617625}
 --- !u!222 &8833808722457689013
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6591,6 +6652,7 @@ GameObject:
   - component: {fileID: 8550004478298726044}
   - component: {fileID: 7517636008767395259}
   - component: {fileID: 7356214693708754537}
+  - component: {fileID: 6501699184201421923}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -6714,6 +6776,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6501699184201421923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149131483937165152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_tasty_dream
 --- !u!1 &2198439043489866626
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,6 +6934,7 @@ GameObject:
   - component: {fileID: 717088797054938047}
   - component: {fileID: 4557380271871448648}
   - component: {fileID: 486503634353727950}
+  - component: {fileID: 2182842339976956023}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -6984,6 +7060,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2182842339976956023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202748807343930911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_grand
 --- !u!1 &2256653619630026346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7349,6 +7438,7 @@ MonoBehaviour:
   btn: {fileID: 5098315042258795297}
   fill: {fileID: 4356313117130876162}
   txtProgress: {fileID: 485786806256749606}
+  localizedText: {fileID: 463780018825522146}
 --- !u!222 &1433437348446419977
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8833,6 +8923,7 @@ MonoBehaviour:
   btn: {fileID: 8016720445033566844}
   fill: {fileID: 1990482931710487875}
   txtProgress: {fileID: 1612938632653581960}
+  localizedText: {fileID: 8670307878592275622}
 --- !u!222 &2835650523250259679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9453,6 +9544,7 @@ GameObject:
   - component: {fileID: 5006717379931776340}
   - component: {fileID: 8430095778504736867}
   - component: {fileID: 3664125910952195344}
+  - component: {fileID: 755553388349272431}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -9576,6 +9668,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &755553388349272431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3359233119274143689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_fabulous
 --- !u!1 &3361347851863631180
 GameObject:
   m_ObjectHideFlags: 0
@@ -9587,6 +9692,7 @@ GameObject:
   - component: {fileID: 8678533099290627178}
   - component: {fileID: 8922887207569939536}
   - component: {fileID: 3504121989646826816}
+  - component: {fileID: 7822531971325122831}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -9710,6 +9816,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7822531971325122831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3361347851863631180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_colection_poetic_muse
 --- !u!1 &3363291946732987715
 GameObject:
   m_ObjectHideFlags: 0
@@ -12129,6 +12248,7 @@ MonoBehaviour:
   btn: {fileID: 2914407908664615243}
   fill: {fileID: 4314383191147060236}
   txtProgress: {fileID: 7086082575451625518}
+  localizedText: {fileID: 3640134001959115207}
 --- !u!222 &7086001153686879645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12298,6 +12418,7 @@ GameObject:
   - component: {fileID: 9168894896310321796}
   - component: {fileID: 8355198454979747210}
   - component: {fileID: 3237410923665474350}
+  - component: {fileID: 979824825791591013}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -12421,6 +12542,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &979824825791591013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855475521989535336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_dreamscape
 --- !u!1 &3858427414778183557
 GameObject:
   m_ObjectHideFlags: 0
@@ -12555,6 +12689,7 @@ MonoBehaviour:
   btn: {fileID: 6713422995904070387}
   fill: {fileID: 8423402961401152646}
   txtProgress: {fileID: 677274084992056440}
+  localizedText: {fileID: 1263003258507770081}
 --- !u!222 &1816757555227907295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12933,6 +13068,7 @@ GameObject:
   - component: {fileID: 1393011409342062100}
   - component: {fileID: 4879110874116314738}
   - component: {fileID: 8309504030212144995}
+  - component: {fileID: 3640134001959115207}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -13056,6 +13192,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3640134001959115207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070933012057918434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_cloud_nine
 --- !u!1 &4099252198880939291
 GameObject:
   m_ObjectHideFlags: 0
@@ -13458,6 +13607,7 @@ MonoBehaviour:
   btn: {fileID: 6223466855622847394}
   fill: {fileID: 213113399147183822}
   txtProgress: {fileID: 646219503484727992}
+  localizedText: {fileID: 979824825791591013}
 --- !u!222 &8990419918886210258
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13674,6 +13824,7 @@ MonoBehaviour:
   btn: {fileID: 6130485453052965217}
   fill: {fileID: 3268844349885493810}
   txtProgress: {fileID: 4822803874673503578}
+  localizedText: {fileID: 4978373033706624993}
 --- !u!222 &6430495687980737313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13893,6 +14044,7 @@ MonoBehaviour:
   btn: {fileID: 5843120987922796915}
   fill: {fileID: 1487978862801703523}
   txtProgress: {fileID: 2289675350343485492}
+  localizedText: {fileID: 5011819959204173648}
 --- !u!222 &7600238732765718322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14287,6 +14439,7 @@ GameObject:
   - component: {fileID: 3470201467237801353}
   - component: {fileID: 2400860604911712511}
   - component: {fileID: 265335865179914169}
+  - component: {fileID: 1263003258507770081}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -14410,6 +14563,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1263003258507770081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619318538250417724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_sunny_days
 --- !u!1 &4625914196889796931
 GameObject:
   m_ObjectHideFlags: 0
@@ -14468,6 +14634,7 @@ MonoBehaviour:
   btn: {fileID: 7459599369067357284}
   fill: {fileID: 4474411181737193107}
   txtProgress: {fileID: 1643699232455349212}
+  localizedText: {fileID: 3651201895129010216}
 --- !u!222 &6369047080785929029
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15914,6 +16081,7 @@ MonoBehaviour:
   btn: {fileID: 5162722544071838002}
   fill: {fileID: 549816166039312828}
   txtProgress: {fileID: 5756809777654061448}
+  localizedText: {fileID: 2182842339976956023}
 --- !u!222 &572065126468139897
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16228,6 +16396,7 @@ GameObject:
   - component: {fileID: 8173035556015526752}
   - component: {fileID: 3139612838122450180}
   - component: {fileID: 9102201596622512857}
+  - component: {fileID: 1964349183415946023}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -16351,6 +16520,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1964349183415946023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359197117758063432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_ease_side
 --- !u!1 &5541018681190463673
 GameObject:
   m_ObjectHideFlags: 0
@@ -16849,6 +17031,7 @@ MonoBehaviour:
   btn: {fileID: 7765900131011431817}
   fill: {fileID: 6349322334817289065}
   txtProgress: {fileID: 3526216978525481541}
+  localizedText: {fileID: 6346165960340532326}
 --- !u!222 &7938783072848799321
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17361,6 +17544,7 @@ GameObject:
   - component: {fileID: 71347027493255671}
   - component: {fileID: 2556831587400101366}
   - component: {fileID: 6782582040302097436}
+  - component: {fileID: 8339598648278074553}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -17484,6 +17668,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8339598648278074553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792998297684180958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_future
 --- !u!1 &5834894713270395443
 GameObject:
   m_ObjectHideFlags: 0
@@ -17704,6 +17901,32 @@ MonoBehaviour:
   - {fileID: 2791311301320048043}
   - {fileID: 1350604793413355283}
   - {fileID: 2053267756240753060}
+  lsKeysTitle:
+  - ui_collection_dreamscape
+  - ui_collection_cloud_nine
+  - ui_colection_poetic_muse
+  - ui_collection_show_time
+  - ui_collection_cozy_corner
+  - ui_collection_ease_side
+  - ui_collection_chill_glow
+  - ui_collection_sunny_days
+  - ui_collection_wishful_heart
+  - ui_collection_tasty_dream
+  - ui_collection_fantasy
+  - ui_collection_evermore
+  - ui_collection_sea_breeze
+  - ui_collection_wonderscape
+  - ui_collection_dream
+  - ui_collection_future
+  - ui_collection_green_vibes
+  - ui_collection_grand
+  - ui_collection_fairytale_echo
+  - ui_collection_childhood
+  - ui_collection_fabulous
+  - ui_collection_souldmate
+  - ui_collection_true
+  - ui_collection_starry_skies
+  - ui_collection_game_on
 --- !u!223 &900719146394237838
 Canvas:
   m_ObjectHideFlags: 0
@@ -18896,6 +19119,7 @@ MonoBehaviour:
   btn: {fileID: 351165933122454116}
   fill: {fileID: 2681092349829947257}
   txtProgress: {fileID: 3476674399867593103}
+  localizedText: {fileID: 7822531971325122831}
 --- !u!222 &2951938287584397688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19111,6 +19335,7 @@ MonoBehaviour:
   btn: {fileID: 991366174949153096}
   fill: {fileID: 1443760381225744073}
   txtProgress: {fileID: 8184092331302826251}
+  localizedText: {fileID: 4340828015274555629}
 --- !u!222 &7901130653600012119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20577,6 +20802,7 @@ GameObject:
   - component: {fileID: 653371912052278215}
   - component: {fileID: 9108025555720126531}
   - component: {fileID: 973724040538710167}
+  - component: {fileID: 450176379131124672}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -20700,6 +20926,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &450176379131124672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728080158575716093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_chill_glow
 --- !u!1 &6732949906607909863
 GameObject:
   m_ObjectHideFlags: 0
@@ -21193,6 +21432,7 @@ MonoBehaviour:
   btn: {fileID: 6708302191121227365}
   fill: {fileID: 5960605974828686366}
   txtProgress: {fileID: 5935426314307292990}
+  localizedText: {fileID: 8754760450065826566}
 --- !u!222 &8539172861427314445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22276,6 +22516,7 @@ GameObject:
   - component: {fileID: 5037202180482838854}
   - component: {fileID: 5260066306635668921}
   - component: {fileID: 3386480406664953828}
+  - component: {fileID: 8754760450065826566}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -22399,6 +22640,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8754760450065826566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149989305920072251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_fantasy
 --- !u!1 &7193258829375722569
 GameObject:
   m_ObjectHideFlags: 0
@@ -22822,6 +23076,7 @@ MonoBehaviour:
   btn: {fileID: 7068700266769164732}
   fill: {fileID: 3700476596448595758}
   txtProgress: {fileID: 4759742425594903594}
+  localizedText: {fileID: 1964349183415946023}
 --- !u!222 &8206926350061235140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22915,6 +23170,7 @@ GameObject:
   - component: {fileID: 1639538408616425501}
   - component: {fileID: 494183848403785869}
   - component: {fileID: 1259966619228225236}
+  - component: {fileID: 8670307878592275622}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -23038,6 +23294,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8670307878592275622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386803812949490211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_green_vibes
 --- !u!1 &7425422878419679731
 GameObject:
   m_ObjectHideFlags: 0
@@ -24438,6 +24707,7 @@ MonoBehaviour:
   btn: {fileID: 7901026369264320089}
   fill: {fileID: 899464989912595810}
   txtProgress: {fileID: 2889382881219274688}
+  localizedText: {fileID: 6501699184201421923}
 --- !u!222 &1503973646352056229
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24606,6 +24876,7 @@ GameObject:
   - component: {fileID: 1207145992536561264}
   - component: {fileID: 8617332194937307481}
   - component: {fileID: 1383945216644045015}
+  - component: {fileID: 7154351449684111911}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -24729,6 +25000,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7154351449684111911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781705580810170261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_fairytale_echo
 --- !u!1 &7853435370865715024
 GameObject:
   m_ObjectHideFlags: 0
@@ -24740,6 +25024,7 @@ GameObject:
   - component: {fileID: 5787811451530360587}
   - component: {fileID: 2274518310937921567}
   - component: {fileID: 1584151836343221224}
+  - component: {fileID: 3614666879458170786}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -24863,6 +25148,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3614666879458170786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853435370865715024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_childhood
 --- !u!1 &7855745894937762381
 GameObject:
   m_ObjectHideFlags: 0
@@ -24874,6 +25172,7 @@ GameObject:
   - component: {fileID: 2659385631649183381}
   - component: {fileID: 1423590656974635503}
   - component: {fileID: 1354553466982516065}
+  - component: {fileID: 1019659265871617625}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -24997,6 +25296,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1019659265871617625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855745894937762381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_cozy_corner
 --- !u!1 &7875195456888547583
 GameObject:
   m_ObjectHideFlags: 0
@@ -25162,6 +25474,7 @@ GameObject:
   - component: {fileID: 6328848018604078879}
   - component: {fileID: 2245413645440840075}
   - component: {fileID: 2691744657944172666}
+  - component: {fileID: 6346165960340532326}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -25285,6 +25598,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6346165960340532326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991189786307663155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_sea_breeze
 --- !u!1 &8009264464608237557
 GameObject:
   m_ObjectHideFlags: 0
@@ -25296,6 +25622,7 @@ GameObject:
   - component: {fileID: 4595096592921779742}
   - component: {fileID: 4230102637628121843}
   - component: {fileID: 4653947957855143456}
+  - component: {fileID: 4340828015274555629}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -25419,6 +25746,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4340828015274555629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8009264464608237557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_game_on
 --- !u!1 &8044438474075044518
 GameObject:
   m_ObjectHideFlags: 0
@@ -25477,6 +25817,7 @@ MonoBehaviour:
   btn: {fileID: 6793831820502841996}
   fill: {fileID: 1111289877684129255}
   txtProgress: {fileID: 306910085861050666}
+  localizedText: {fileID: 3614666879458170786}
 --- !u!222 &8241397795695851526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25617,6 +25958,7 @@ MonoBehaviour:
   btn: {fileID: 7112966423628645198}
   fill: {fileID: 8449306671915246169}
   txtProgress: {fileID: 327027970968288355}
+  localizedText: {fileID: 8230608883916703373}
 --- !u!222 &4195044253907505113
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27106,6 +27448,7 @@ GameObject:
   - component: {fileID: 6235366994195908552}
   - component: {fileID: 5372237481215182727}
   - component: {fileID: 687393417463286293}
+  - component: {fileID: 3651201895129010216}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -27229,6 +27572,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3651201895129010216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579929764782843165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_dream
 --- !u!1 &8611708956043054433
 GameObject:
   m_ObjectHideFlags: 0
@@ -27529,6 +27885,7 @@ GameObject:
   - component: {fileID: 3371017776144157275}
   - component: {fileID: 3154342563683881004}
   - component: {fileID: 357809500765726799}
+  - component: {fileID: 4913828253969217440}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -27652,6 +28009,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4913828253969217440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752907858219590881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_souldmate
 --- !u!1 &8758164616541956309
 GameObject:
   m_ObjectHideFlags: 0
@@ -27710,6 +28080,7 @@ MonoBehaviour:
   btn: {fileID: 1151502790211155687}
   fill: {fileID: 8231574995872191874}
   txtProgress: {fileID: 3053322074310333067}
+  localizedText: {fileID: 755553388349272431}
 --- !u!222 &4608377329657339816
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27803,6 +28174,7 @@ GameObject:
   - component: {fileID: 6858928012775904414}
   - component: {fileID: 2481460578175507530}
   - component: {fileID: 4553882057676050374}
+  - component: {fileID: 6994025629085777274}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -27926,6 +28298,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6994025629085777274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778856962664341777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_wishful_heart
 --- !u!1 &8789851456912614008
 GameObject:
   m_ObjectHideFlags: 0
@@ -27984,6 +28369,7 @@ MonoBehaviour:
   btn: {fileID: 6221289923911459907}
   fill: {fileID: 2217470415258923417}
   txtProgress: {fileID: 9183362276868182908}
+  localizedText: {fileID: 450176379131124672}
 --- !u!222 &2179779433465948746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28647,6 +29033,7 @@ GameObject:
   - component: {fileID: 4945920717946700876}
   - component: {fileID: 1617840442266047997}
   - component: {fileID: 6917128450222062394}
+  - component: {fileID: 4978373033706624993}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -28770,6 +29157,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4978373033706624993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933640136344804448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_collection_true
 --- !u!1 &8992419245222578091
 GameObject:
   m_ObjectHideFlags: 0
@@ -29250,6 +29650,7 @@ MonoBehaviour:
   btn: {fileID: 4619753550172122212}
   fill: {fileID: 1830527960384120759}
   txtProgress: {fileID: 7138417714607459934}
+  localizedText: {fileID: 4913828253969217440}
 --- !u!222 &2653299407253074374
 CanvasRenderer:
   m_ObjectHideFlags: 0

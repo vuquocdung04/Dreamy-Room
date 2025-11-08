@@ -1,5 +1,12 @@
 using UnityEngine;
 
+/// <summary>
+/// Dung SO de debug trong luc code,
+/// Luc BUILD GAME => CHUYEN THANH C#
+/// </summary>
+
+
+
 [CreateAssetMenu(fileName = "Player", menuName = "DATA/DATA PLAYER", order = 0)]
 public class DataPlayer : ScriptableObject
 {
@@ -14,7 +21,20 @@ public class DataPlayer : ScriptableObject
     public bool isFreeClaimedToday;
     public int adRewardsClaimedCount;
     [Header("Localization")]
-    public Language currentLanguage;
+    [SerializeField] private Language currentLanguage;
+    [SerializeField] private Language previousLanguage;
+    [SerializeField] private bool isLanguageChanged;
+    public bool IsLanguageChanged => currentLanguage != previousLanguage;
+    public Language CurrentLanguage
+    {
+        get => currentLanguage;
+        set
+        {
+            previousLanguage = currentLanguage;
+            currentLanguage = value;
+            isLanguageChanged = currentLanguage != previousLanguage;
+        }
+    }
     public DataPlayer()
     {
         isUsedX2Star = false;

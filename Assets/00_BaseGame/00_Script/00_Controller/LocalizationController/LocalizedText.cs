@@ -18,7 +18,7 @@ public class LocalizedText : MonoBehaviour
         this.RegisterListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
         Refresh();
     }
-
+    
     private void OnDisable()
     {
         this.RemoveListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
@@ -38,5 +38,8 @@ public class LocalizedText : MonoBehaviour
     {
         text.SetText(GameController.Instance.localizationController.GetString(localizeKey));
     }
+    
+    public void SetKeyOnEdittor(string key) => localizeKey = key;
+    
     
 }

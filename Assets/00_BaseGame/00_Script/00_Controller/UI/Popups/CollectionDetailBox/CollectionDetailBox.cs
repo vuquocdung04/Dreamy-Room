@@ -18,7 +18,8 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     public TextMeshProUGUI txtProgress;
     public Image imgReward;
     public TextMeshProUGUI txtReward;
-    [Header("Sprite Card")] public Sprite sprCardOn;
+    [Header("Sprite Card")]
+    public Sprite sprCardOn;
     public Button btnClose;
     [Header("Localization")]
     public LocalizedText lcTitle;
@@ -60,13 +61,14 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
     
     private void UpdateStateBox()
     {
-        
         var collectionConflict = dataCollection.GetCollectionByType(type);
         currentLevelCompleted = 0;
         lsItemClones.Clear();
         InitLocalization(collectionConflict);
         imgReward.sprite = collectionConflict.sprReward;
         txtReward.text = collectionConflict.amountReward.ToString();
+        imgTitle.sprite = collectionConflict.sprTitle;
+        
         for (int i = 0; i < collectionConflict.GetCount(); i++)
         {
             if(collectionConflict.lsIdCards[i] > UseProfile.MaxUnlockedLevel) continue;
@@ -81,7 +83,7 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
         var dataLevel = GameController.Instance.dataContains.dataLevel;
         var collectionConflict = dataCollection.GetCollectionByType(type);
         foreach (var item in this.lsItems) item.gameObject.SetActive(false);
-
+        
         for (int i = 0; i < collectionConflict.GetCount(); i++)
         {
             lsItems[i].gameObject.SetActive(true);
@@ -91,7 +93,7 @@ public class CollectionDetailBox : BoxSingleton<CollectionDetailBox>
         for (int i = 0; i < lsItemClones.Count; i++)
         {
             var spriteThumb = dataLevel.GetLevelSpriteById(lsItemClones[i].GetId());
-            var isLevelUnlock = lsItemClones[i].GetId() <= UseProfile.MaxUnlockedLevel;
+            var isLevelUnlock = lsItemClones[i].GetId() < UseProfile.MaxUnlockedLevel;
             lsItemClones[i].Init(spriteThumb, sprCardOn, isLevelUnlock);
         }
     }

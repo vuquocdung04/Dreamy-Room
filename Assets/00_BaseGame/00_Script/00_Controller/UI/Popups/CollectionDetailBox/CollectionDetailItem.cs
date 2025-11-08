@@ -8,10 +8,8 @@ public class CollectionDetailItem : MonoBehaviour
     [SerializeField] private Image imgBg;
     [SerializeField] private Button btn;
 
-
     public void SetId(int id) => this.idItem = id;
     public int GetId() => idItem;
-
     public void AddClickListener(System.Action<CollectionDetailItem> callback = null)
     {
         btn.onClick.AddListener(delegate { callback?.Invoke(this); });
