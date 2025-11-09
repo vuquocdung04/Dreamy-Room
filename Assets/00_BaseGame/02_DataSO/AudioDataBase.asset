@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AudioDataBase
   m_EditorClassIdentifier: 
   audioConfigs:
-  - key: 0
+  - enumKey: 5
     variants:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: d0a15bd223ae6694591a38151db0f1fb, type: 3}
     minPitch: 0.9
     maxPitch: 1.1
     countLimit: 5

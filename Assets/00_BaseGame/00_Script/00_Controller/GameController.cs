@@ -12,6 +12,7 @@ public class GameController : Singleton<GameController>
     public EffectController effectController;
     public HeartGame heartGame;
     public LocalizationController localizationController;
+    public AudioController audioController;
     public string curSceneName;
     public string curGameModeName;
     protected override void OnAwake()
@@ -25,6 +26,7 @@ public class GameController : Singleton<GameController>
         admobController.Init();
         dataContains.Init();
         musicController.Init();
+        audioController.Init();
         effectChangeScene2.Init();
         heartGame.Init();
         localizationController.Init();
