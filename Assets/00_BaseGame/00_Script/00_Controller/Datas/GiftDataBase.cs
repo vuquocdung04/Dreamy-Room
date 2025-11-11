@@ -80,6 +80,10 @@ public class GiftDataBase : ScriptableObject
             case GiftType.BoosterX2Star:
                 UseProfile.Booster_X2Star += amount;
                 break;
+            case GiftType.HeartUnlimit:
+                GameController.Instance.heartGame.AddUnlimitedHeart(amount);
+                break;
+            
         }
     }
 }

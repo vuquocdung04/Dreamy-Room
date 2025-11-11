@@ -12,13 +12,16 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
 
     public Button btnClose;
     public Button btnFreeReward;
-    public Image imageFreeBtn;
     public Sprite claimedSprite;
     public Sprite adclaimableSprite;
     public List<DailyRewardItem> adRewardItems;
-    
+    public LocalizedText lcFreeBtn;
     protected override void Init()
     {
+        foreach (var item in adRewardItems)
+        {
+            item.InitLocalization();
+        }
         UpdateState();
         btnClose.onClick.AddListener(Close);
         btnFreeReward.onClick.AddListener(OnFreeClaim);
@@ -29,12 +32,11 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
             item.AddClickListener(OnAdRewardClaim);
         }
     }
-
     protected override void InitState()
     {
-        
+        UpdateState();
     }
-
+    
     private void OnAdRewardClaim()
     {
         GameController.Instance.dataContains.dataDaily.ClaimNextAdReward();
@@ -49,22 +51,27 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
     private void UpdateAdRewardsState()
     {
         var adsClaimedCount = GameController.Instance.dataContains.dataDaily.GetAdRewardsClaimedCount();
+        
         for (int i = 0; i < adRewardItems.Count; i++)
         {
             var item = adRewardItems[i];
+            
             if (i < adsClaimedCount)
             {
+                // Đã claimed
                 item.SetAsClaimed();
                 item.UpdateImageBtn(claimedSprite);
             }
             else if (i == adsClaimedCount)
             {
+                // Đang có thể claim
                 item.SetAsClaimable();
                 item.UpdateImageBtn(adclaimableSprite);
             }
             else
             {
-                item.InActiveBtn();
+                // Chưa tới lượt (Free)
+                item.SetAsFree();
             }
         }
     }
@@ -83,8 +90,16 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
         {
             btnFreeReward.image.sprite = claimedSprite;
         }
+        UpdateFreeRewardBtnText();
     }
-
+    private void UpdateFreeRewardBtnText()
+    {
+        var dataDaily = GameController.Instance.dataContains.dataDaily;
+        bool hasClaimed = dataDaily.IsFreeClaimedToday();
+        
+        // Nếu đã claimed thì hiện "Claimed", chưa thì hiện "Claim"
+        lcFreeBtn.Init(hasClaimed ? dataDaily.KeyClaimed : dataDaily.KeyClaim);
+    }
     [Button("Setup Item", ButtonSizes.Large)]
     void SetupItem()
     {

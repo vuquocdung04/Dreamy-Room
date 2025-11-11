@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f36dd9e0eb4914a3976984dcb5b54c, type: 3}
   m_Name: DataDaily
   m_EditorClassIdentifier: 
-  playerClaimedDay: 1
   totalDaysInCycle: 7
-  hasClaimedStreakToday: 1
   streakRewards:
   - day: 1
     amount: 50
@@ -37,12 +35,13 @@ MonoBehaviour:
   - day: 7
     amount: 500
     giftType: 2
-  isFreeClaimedToday: 1
+  KeyClaim: ui_button_claim
+  KeyClaimed: ui_button_calimed
+  KeyFree: ui_button_free
   freeDailyReward:
     day: 1
     amount: 50
     giftType: 2
-  adRewardsClaimedCount: 0
   adRewardsList:
   - day: 1
     amount: 150
@@ -55,4 +54,4 @@ MonoBehaviour:
     giftType: 2
   - day: 4
     amount: 20
-    giftType: 3
+    giftType: 5

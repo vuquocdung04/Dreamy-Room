@@ -10,8 +10,10 @@ public class DataDailyBase : ScriptableObject
     
     [Header("Conflic Gift Of The Week")]
     [SerializeField] private List<DataDailyReward> streakRewards;
-    
-    [Header("Conflic Gift Of The Day"), Space(15)]
+
+    public string KeyClaim;
+    public string KeyClaimed;
+    public string KeyFree;
     [SerializeField] private DataDailyReward freeDailyReward;
     [SerializeField] private List<DataDailyReward> adRewardsList;
     
