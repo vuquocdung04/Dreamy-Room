@@ -437,6 +437,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 8649070964903312629}
   rewardDisplayGroup: {fileID: 2168320725700674770}
   claimedCheckmark: {fileID: 6389471040185654366}
+  localizedText: {fileID: 1459987584914484139}
 --- !u!222 &6310180205292513636
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -981,6 +982,7 @@ GameObject:
   - component: {fileID: 7179244770909753948}
   - component: {fileID: 2281912106763014904}
   - component: {fileID: 8782410739448984475}
+  - component: {fileID: 797860416997613298}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -1004,8 +1006,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.89019775, y: 27}
+  m_SizeDelta: {x: -127.652, y: -65.012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2281912106763014904
 CanvasRenderer:
@@ -1062,15 +1064,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 65
   m_fontSizeBase: 70
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 65
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1078,7 +1080,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1098,12 +1100,25 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 37.659424, z: 0, w: -4.8801727}
+  m_margin: {x: 0, y: -0.43981934, z: 0, w: -4.8801727}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &797860416997613298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015272166336339898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_title
 --- !u!1 &3175266878950414390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1422,7 @@ GameObject:
   - component: {fileID: 8217586607612857804}
   - component: {fileID: 2468816327583907168}
   - component: {fileID: 4225534041719459239}
+  - component: {fileID: 7602552055212419169}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -1530,6 +1546,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7602552055212419169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609127507726635423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_button_claim
 --- !u!1 &3618314328268527701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1795,7 @@ GameObject:
   - component: {fileID: 4902801351334687984}
   - component: {fileID: 2128878680039615374}
   - component: {fileID: 4632227158175890051}
+  - component: {fileID: 3171650565646137182}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -1889,6 +1919,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3171650565646137182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300390830308745607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &4310465494291484226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,6 +2601,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 6149605671771005465}
   rewardDisplayGroup: {fileID: 7702812428668581711}
   claimedCheckmark: {fileID: 2993814863481799332}
+  localizedText: {fileID: 252848913172688065}
 --- !u!222 &2848278939437192056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2689,6 +2733,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 1023445560309278071}
   rewardDisplayGroup: {fileID: 1990932036491091527}
   claimedCheckmark: {fileID: 2025294991749746858}
+  localizedText: {fileID: 831916642717937326}
 --- !u!222 &4534928605302628303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2858,6 +2903,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 5618402696064729134}
   rewardDisplayGroup: {fileID: 1413650699288560256}
   claimedCheckmark: {fileID: 3403946480514411824}
+  localizedText: {fileID: 3171650565646137182}
 --- !u!222 &3274639469232806112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2907,6 +2953,7 @@ GameObject:
   - component: {fileID: 7804030250322288578}
   - component: {fileID: 3651908860823515293}
   - component: {fileID: 2762717254189960563}
+  - component: {fileID: 1459987584914484139}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -3030,6 +3077,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1459987584914484139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384007336782678226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &5407236258627121910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3176,7 @@ GameObject:
   - component: {fileID: 5711377625553023554}
   - component: {fileID: 4294152289455240280}
   - component: {fileID: 6372550071831412843}
+  - component: {fileID: 9032056317981604111}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -3239,6 +3300,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9032056317981604111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672303863195603896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &5875701310156136305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,7 +3412,6 @@ MonoBehaviour:
   claimableSprite: {fileID: 21300000, guid: 87c3167295a99034582cc8ef244a298a, type: 3}
   btnClose: {fileID: 2916208000553030142}
   btnClaim: {fileID: 2841298861060666450}
-  imgClaim: {fileID: 5236299227244303760}
   lsItems:
   - {fileID: 1519479266540577153}
   - {fileID: 4656845151381658062}
@@ -3347,6 +3420,8 @@ MonoBehaviour:
   - {fileID: 4738469933323231097}
   - {fileID: 6919718100953544397}
   - {fileID: 817289712321150189}
+  title: {fileID: 797860416997613298}
+  lcBtnClaim: {fileID: 7602552055212419169}
 --- !u!223 &6303602575590059669
 Canvas:
   m_ObjectHideFlags: 0
@@ -3466,6 +3541,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 2287930732188497894}
   rewardDisplayGroup: {fileID: 166594471790449519}
   claimedCheckmark: {fileID: 5348008528231755202}
+  localizedText: {fileID: 3975178529258983859}
 --- !u!222 &8056933177851084602
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3515,6 +3591,7 @@ GameObject:
   - component: {fileID: 3819752530835327040}
   - component: {fileID: 8912307803860671735}
   - component: {fileID: 5534795276096069611}
+  - component: {fileID: 3975178529258983859}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -3638,6 +3715,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3975178529258983859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345337449226568298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &6522695743557325876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3723,6 +3813,7 @@ GameObject:
   - component: {fileID: 618338424176876566}
   - component: {fileID: 7840236872529915707}
   - component: {fileID: 4654159685539014843}
+  - component: {fileID: 3780614609847842014}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -3846,6 +3937,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3780614609847842014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692216130603664164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &6821683024077077456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,6 +4006,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 4450865103073399024}
   rewardDisplayGroup: {fileID: 1572643274448984560}
   claimedCheckmark: {fileID: 4280300380035188700}
+  localizedText: {fileID: 9032056317981604111}
 --- !u!222 &5371816872152569793
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4280,6 +4385,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 943283330040899987}
   rewardDisplayGroup: {fileID: 4651638658796761836}
   claimedCheckmark: {fileID: 8199682816510102435}
+  localizedText: {fileID: 3780614609847842014}
 --- !u!222 &3812737500076116806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4329,6 +4435,7 @@ GameObject:
   - component: {fileID: 1657935822544702288}
   - component: {fileID: 8972916837924509347}
   - component: {fileID: 6180693384863407232}
+  - component: {fileID: 831916642717937326}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -4452,6 +4559,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &831916642717937326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053584208984461433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &8418216554073584556
 GameObject:
   m_ObjectHideFlags: 0
@@ -4634,6 +4754,7 @@ GameObject:
   - component: {fileID: 338096818472228851}
   - component: {fileID: 8695103568300656661}
   - component: {fileID: 8952043759054719397}
+  - component: {fileID: 252848913172688065}
   m_Layer: 5
   m_Name: txtDay
   m_TagString: Untagged
@@ -4757,6 +4878,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &252848913172688065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118478402681389481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_daily_login_day
 --- !u!1 &9141117302264143164
 GameObject:
   m_ObjectHideFlags: 0

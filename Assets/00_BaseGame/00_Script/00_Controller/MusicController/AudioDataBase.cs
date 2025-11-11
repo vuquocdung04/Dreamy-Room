@@ -51,24 +51,29 @@ public class AudioConfig
 public enum AudioKeyType
 {
     None = 0,
-    UIClick = 5,
-    PopupOpened = 6,
-    PopupClosed = 7,
+    // BGM
+    BGMHome = 5,
+    BGMPlay = 6,
     
-    //GamePlay
-    PickUpItem = 20,
-    DropItem = 21,
-    BoosterUsed = 21,
+    // UI
+    CurrentCollect = 20,
+    FreezeBegin = 21,
+    FreezeEnd = 22,
+    GiftboxOpen = 23,
+    PopupAppear= 24,
+    RewardGiftbox = 25,
+    
+    // UI Common
+    Click = 50,
+    CurrentFly = 51,
+    CurrentFlyDone = 52,
+    GetGold = 53,
+    GetStar = 54,
+    Lose = 55,
+    Win = 56,
+    TapChest = 57,
     
     
-    //Level
-    LevelComplete = 60,
-    LevelFailed = 61,
-    StarCollect = 62,
-    CoinCollect = 63,
-    
-    //Music
-    MusicBg = 100,
 }
 
 [CreateAssetMenu(fileName = "AudioDataBase", menuName = "AUDIO/AudioDataBase")]

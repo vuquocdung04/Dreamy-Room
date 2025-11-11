@@ -56,7 +56,7 @@ public class NavController : MonoBehaviour
     private void OnButtonSelected(NavButton clickedButton)
     {
         isBusy = true;
-        GameController.Instance.audioController.PlaySfx(AudioKeyType.UIClick);
+        GameController.Instance.audioController.PlaySfx(AudioKeyType.Click);
         HandleScreenTransition(clickedButton);
         UpdateNavButtonStates(clickedButton);
     }

@@ -90,8 +90,9 @@ public class AudioController : MonoBehaviour
         AudioSource source = GetAvailableSource();
         if (source == null) return;
 
+        source.clip = clipToPlay;
         source.pitch = config.GetRandomPitch();
-        source.PlayOneShot(clipToPlay);
+        source.Play();
     }
 
     public void PlayMusic(AudioKeyType key)

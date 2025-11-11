@@ -7,6 +7,8 @@ public class LocalizedText : MonoBehaviour
 {
     [SerializeField] private string localizeKey;
     private TextMeshProUGUI text;
+    private string dynamicSuffix;
+    private bool isInitialized;
     public void Init(string key = null)
     {
         if (text == null)
@@ -15,13 +17,21 @@ public class LocalizedText : MonoBehaviour
         if(key != null)
             SetLocalizeKey(key);
         
-        this.RegisterListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
+        if (!isInitialized)
+        {
+            this.RegisterListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
+            isInitialized = true;
+        }
         Refresh();
     }
     
     private void OnDisable()
     {
-        this.RemoveListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
+        if (isInitialized)
+        {
+            this.RemoveListener(EventID.CHANGE_LOCALIZATION, OnLanguageChanged);
+            isInitialized = false; // Reset flag khi disable
+        }
     }
 
     private void SetLocalizeKey(string key)
@@ -36,10 +46,17 @@ public class LocalizedText : MonoBehaviour
     
     private void Refresh()
     {
-        text.SetText(GameController.Instance.localizationController.GetString(localizeKey));
+        text.SetText(SetText(dynamicSuffix));
+    }
+
+    public string SetText(string txt = null)
+    {
+        if (txt != null)
+            dynamicSuffix = txt;
+        return GameController.Instance.localizationController.GetString(localizeKey) + dynamicSuffix;
     }
     
-    public void SetKeyOnEdittor(string key) => localizeKey = key;
+    public void SetKeyOnEditor(string key) => localizeKey = key;
     
     
 }

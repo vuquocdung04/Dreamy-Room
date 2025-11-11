@@ -16,6 +16,8 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
     public Button btnClose;
     public Button btnClaim;
     public List<DailyLoginItem> lsItems = new();
+    [Header("Localization")] public LocalizedText title;
+    public LocalizedText lcBtnClaim;
 
     protected override void Init()
     {
@@ -23,17 +25,30 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
 
         btnClose.onClick.AddListener(Close);
         btnClaim.onClick.AddListener(delegate { OnClaim(); });
+        InitLocalization();
+        
     }
 
     protected override void InitState()
     {
+        if (!GameController.Instance.dataContains.dataPlayer.IsLanguageChanged) return;
+
+        InitLocalization();
+    }
+
+    private void InitLocalization()
+    {
+        title.Init();
+        lcBtnClaim.Init();
+        for (int i = 0; i < lsItems.Count; i++)
+        {
+            lsItems[i].InitLocalization(i + 1);
+        }
     }
 
     private void UpdateState()
     {
-        Debug.LogError("DailyLoginBox");
         UpdateClaimButtonState();
-
         bool canClaimToDay = GameController.Instance.dataContains.dataDaily.HasClaimStreakToday();
         int nextDayToClaimIndex = GameController.Instance.dataContains.dataDaily.GetStreakDayIndex();
 
@@ -55,10 +70,8 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
                     item.UpdateBackground(claimableSprite);
                 item.SetAsClaimable();
             }
-            
         }
     }
-
 
     private void OnClaim()
     {

@@ -41,8 +41,6 @@ public class CollectionBox : BoxSingleton<CollectionBox>
         grandPrize.Init();
         foreach(var item in lsItems)
             item.GetLocalizedText().Init();
-        
-        Debug.Log("ceqewqhe");
     }
 
     private void UpdateItemState()
@@ -99,7 +97,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     {
         for (int i = 0; i < lsItems.Count; i++)
         {
-            lsItems[i].GetLocalizedText().SetKeyOnEdittor(lsKeysTitle[i]);
+            lsItems[i].GetLocalizedText().SetKeyOnEditor(lsKeysTitle[i]);
         }
     }
 

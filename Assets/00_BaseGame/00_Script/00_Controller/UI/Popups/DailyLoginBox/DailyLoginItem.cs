@@ -6,7 +6,12 @@ public class DailyLoginItem : MonoBehaviour
     [SerializeField] Image backgroundImage;
     [SerializeField] Transform rewardDisplayGroup;
     [SerializeField] Transform claimedCheckmark;
-    
+    [SerializeField] LocalizedText localizedText;
+    public void InitLocalization(int day)
+    {
+        localizedText.SetText(" " + day.ToString());
+        localizedText.Init();
+    }
     
     public void UpdateBackground(Sprite bgSprite)
     {
