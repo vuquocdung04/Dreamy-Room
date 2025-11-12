@@ -1,4 +1,5 @@
 using DG.Tweening;
+using UnityEngine;
 
 public class GamePlayController : Singleton<GamePlayController>
 {
@@ -34,6 +35,7 @@ public class GamePlayController : Singleton<GamePlayController>
 
     public void InitEffect()
     {
+        Debug.Log("InitEffect");
         var targetSize = playerContains.cameraController.GetLimitSize();
         playerContains.mainCamera.DOOrthoSize(targetSize, 0.5f).OnComplete(delegate
         {
@@ -48,7 +50,7 @@ public class GamePlayController : Singleton<GamePlayController>
     private void ConsumeUsedBoosters()
     {
         if (GameController.Instance.IsGameModeRelax()) return;
-        var dataPlayer = GameController.Instance.dataContains.dataPlayer;
+        var dataPlayer = GameController.Instance.dataContains.DataPlayer;
         dataPlayer.isUsedX2Star = false;
         dataPlayer.isUsedBoxBuffer = false;
         dataPlayer.isUsedTimeBuffer = false;

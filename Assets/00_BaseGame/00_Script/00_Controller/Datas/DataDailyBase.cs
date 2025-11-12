@@ -17,7 +17,7 @@ public class DataDailyBase : ScriptableObject
     [SerializeField] private DataDailyReward freeDailyReward;
     [SerializeField] private List<DataDailyReward> adRewardsList;
     
-    private DataPlayer PlayerData => GameController.Instance.dataContains.dataPlayer;
+    private DataPlayer PlayerData => GameController.Instance.dataContains.DataPlayer;
     public int GetStreakDayIndex() => PlayerData.playerClaimedDay;
     public bool HasClaimStreakToday() => PlayerData.hasClaimedStreakToday;
     

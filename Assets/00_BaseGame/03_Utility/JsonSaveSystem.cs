@@ -24,21 +24,6 @@ public class JsonSaveSystem
         }
         return new T();
     }
-
-    public static void LoadInto<T>(T objectToPopulate, string fileName) where T : ScriptableObject
-    {
-        string path = GetPath(fileName);
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            JsonConvert.PopulateObject(json, objectToPopulate);
-            Debug.Log($"Đã nạp (Populate) dữ liệu vào: {objectToPopulate.name} từ {path}");
-        }
-        else
-        {
-            Debug.Log($"Không tìm thấy file: {fileName}. Giữ nguyên giá trị mặc định của {objectToPopulate.name}.");
-        }
-    }
     
     public static void Delete(string fileName)
     {

@@ -24,8 +24,8 @@ public class LevelTut : LevelBase
         GamePlayController.Instance.playerContains.inputManager.enabled = false;
         mainCamera = GamePlayController.Instance.playerContains.mainCamera;
         UpdateBounds();
-        StartTween();
-        Phase1TutTween();
+        SleepTween();
+        DelayInitBox().Forget();
     }
 
 
@@ -34,6 +34,22 @@ public class LevelTut : LevelBase
     private Vector3 mouseDelta;
 
     private bool isDragging;
+
+    private async UniTask DelayInitBox()
+    {
+        try
+        {
+            var token = this.GetCancellationTokenOnDestroy();
+            await UniTask.Delay(TimeSpan.FromSeconds(0.25f), cancellationToken: token);
+            SetActiveBox();
+            Phase1TutTween();
+        }
+        catch (OperationCanceledException)
+        {
+            
+        }
+    }
+    
 
     private void Update()
     {
@@ -138,7 +154,7 @@ public class LevelTut : LevelBase
             : playerContains.bottom.transform.position.y + 2f;
     }
 
-    private void StartTween()
+    private void SleepTween()
     {
         sleepTween = charSleep.DOScale(Vector3.one * 0.7f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }

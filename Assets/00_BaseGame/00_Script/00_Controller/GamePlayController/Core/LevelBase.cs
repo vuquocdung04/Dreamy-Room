@@ -81,9 +81,9 @@ public abstract class LevelBase : MonoBehaviour
     private void ApplyPreGameBoosters()
     {
         if(isGameModeRelax) return;
-        if (gameController.dataContains.dataPlayer.isUsedBoxBuffer)
+        if (gameController.dataContains.DataPlayer.isUsedBoxBuffer)
             maxItemOutOfBox = 15;
-        if (gameController.dataContains.dataPlayer.isUsedX2Star)
+        if (gameController.dataContains.DataPlayer.isUsedX2Star)
             amountStarHit = 2;
 
     }

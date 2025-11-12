@@ -5,10 +5,7 @@ using UnityEngine;
 /// Luc BUILD GAME => CHUYEN THANH C#
 /// </summary>
 
-
-
-[CreateAssetMenu(fileName = "Player", menuName = "DATA/DATA PLAYER", order = 0)]
-public class DataPlayer : ScriptableObject
+public class DataPlayer 
 {
     [Header("Booster Used")]
     public bool isUsedX2Star;
@@ -45,15 +42,5 @@ public class DataPlayer : ScriptableObject
         isFreeClaimedToday = false;
         adRewardsClaimedCount = 0;
         currentLanguage = Language.En;
-    }
-
-    public void Save()
-    {
-        JsonSaveSystem.Save(this, "PlayerData");
-    }
-
-    public void Load()
-    {
-        JsonSaveSystem.LoadInto(this,"PlayerData");
     }
 }

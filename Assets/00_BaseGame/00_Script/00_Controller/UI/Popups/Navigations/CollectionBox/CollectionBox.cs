@@ -18,7 +18,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     protected override void Init()
     {
         canvas.worldCamera = Camera.main;
-        dataPlayer = GameController.Instance.dataContains.dataPlayer;
+        dataPlayer = GameController.Instance.dataContains.DataPlayer;
         UpdateItemState();
     
         OnClick(lsItems, (item) => HanleSelection(delegate

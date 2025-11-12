@@ -18,7 +18,7 @@ public class SGM_Item : MonoBehaviour
 
     public void Init()
     {
-        playerData = GameController.Instance.dataContains.dataPlayer;
+        playerData = GameController.Instance.dataContains.DataPlayer;
         curAmount = GetBoosterAmountFromProfile(type);
         isUsed = GetBoosterUsedState(type); 
         UpdateUI();

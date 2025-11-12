@@ -20,7 +20,7 @@ public class LocalizationController : MonoBehaviour
     public void Init()
     {
         var localizationData = GameController.Instance.dataContains.localizationData;
-        currentLanguage = GameController.Instance.dataContains.dataPlayer.CurrentLanguage;
+        currentLanguage = GameController.Instance.dataContains.DataPlayer.CurrentLanguage;
         
         var dataTable = localizationData.entries;
         foreach (var data in dataTable)
@@ -41,7 +41,7 @@ public class LocalizationController : MonoBehaviour
         }
 
         currentLanguage = language;
-        GameController.Instance.dataContains.dataPlayer.CurrentLanguage = language;
+        GameController.Instance.dataContains.DataPlayer.CurrentLanguage = language;
         this.PostEvent(EventID.CHANGE_LOCALIZATION);
     }
 

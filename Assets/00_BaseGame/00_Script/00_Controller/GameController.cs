@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -71,6 +72,12 @@ public class GameController : Singleton<GameController>
     public bool IsSceneGamePlay()
     {
         return curSceneName.Equals(SceneName.GAME_PLAY);
+    }
+
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        dataContains.SaveData();
     }
 }
 
