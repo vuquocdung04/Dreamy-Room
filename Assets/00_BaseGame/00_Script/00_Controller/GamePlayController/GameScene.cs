@@ -69,7 +69,7 @@ public class GameScene : MonoBehaviour
 
     private void ApplyPreGameBoosters()
     {
-        totalTime = GameController.Instance.dataContains.DataPlayer.isUsedTimeBuffer ? 600 : 300;
+        totalTime = GameController.Instance.dataContains.DataPlayer.IsUsedTimeBuffer ? 600 : 300;
         StartTimer(totalTime);
     }
     public RectTransform GetStarBar() => starBar;

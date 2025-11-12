@@ -31,9 +31,7 @@ public class DailyLoginBox : BoxSingleton<DailyLoginBox>
 
     protected override void InitState()
     {
-        if (!GameController.Instance.dataContains.DataPlayer.IsLanguageChanged) return;
-
-        InitLocalization();
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer, ()=>  InitLocalization());
     }
 
     private void InitLocalization()

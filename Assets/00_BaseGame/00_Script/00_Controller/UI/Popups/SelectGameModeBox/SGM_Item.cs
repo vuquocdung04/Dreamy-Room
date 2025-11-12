@@ -88,9 +88,9 @@ public class SGM_Item : MonoBehaviour
     {
         return giftType switch
         {
-            GiftType.BoosterX2Star => playerData.isUsedX2Star,
-            GiftType.BoosterTimeBuffer => playerData.isUsedTimeBuffer,
-            GiftType.BoosterBoxBuffet => playerData.isUsedBoxBuffer,
+            GiftType.BoosterX2Star => playerData.IsUsedX2Star,
+            GiftType.BoosterTimeBuffer => playerData.IsUsedTimeBuffer,
+            GiftType.BoosterBoxBuffet => playerData.IsUsedBoxBuffer,
             _ => false
         };
     }
@@ -99,13 +99,13 @@ public class SGM_Item : MonoBehaviour
         switch (giftType)
         {
             case GiftType.BoosterX2Star:
-                playerData.isUsedX2Star = state;
+                playerData.IsUsedX2Star = state;
                 break;
             case GiftType.BoosterTimeBuffer:
-                playerData.isUsedTimeBuffer = state;
+                playerData.IsUsedTimeBuffer = state;
                 break;
             case GiftType.BoosterBoxBuffet:
-                playerData.isUsedBoxBuffer = state;
+                playerData.IsUsedBoxBuffer = state;
                 break;
         }
     }

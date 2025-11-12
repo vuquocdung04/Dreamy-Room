@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class BoxSingleton<T> : BaseBox where T : BoxSingleton<T>
@@ -24,4 +25,13 @@ public abstract class BoxSingleton<T> : BaseBox where T : BoxSingleton<T>
     
     protected abstract void Init();
     protected abstract void InitState();
+
+    protected void RefreshLocalization(DataPlayer dataPlayer, Action callback = null)
+    {
+        if (dataPlayer.IsLanguageChanged)
+        {
+            Debug.Log("Call " + gameObject.name);
+            callback?.Invoke();
+        }
+    }
 }

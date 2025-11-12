@@ -25,6 +25,7 @@ public class LevelTut : LevelBase
         mainCamera = GamePlayController.Instance.playerContains.mainCamera;
         UpdateBounds();
         SleepTween();
+        GamePlayController.HandleUnlockCamera();
         DelayInitBox().Forget();
     }
 

@@ -31,8 +31,7 @@ public class CollectionBox : BoxSingleton<CollectionBox>
 
     protected override void InitState()
     {
-        if(!dataPlayer.IsLanguageChanged) return;
-        InitLocalization();
+        RefreshLocalization(dataPlayer,()=> InitLocalization());
     }
 
     private void InitLocalization()

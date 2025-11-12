@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -16,6 +15,7 @@ public class GameController : Singleton<GameController>
     public AudioController audioController;
     public string curSceneName;
     public string curGameModeName;
+
     protected override void OnAwake()
     {
         Init();
@@ -34,7 +34,7 @@ public class GameController : Singleton<GameController>
         startLoading.Init();
     }
 
-    public void SetTargetFrameRate(int  tgFrameRate)
+    public void SetTargetFrameRate(int tgFrameRate)
     {
         UseProfile.TargetFrameRate = tgFrameRate;
         Application.targetFrameRate = UseProfile.TargetFrameRate;
@@ -45,12 +45,14 @@ public class GameController : Singleton<GameController>
         effectChangeScene2.ChangeScene(sceneName);
         curSceneName = sceneName;
     }
+
     public void IncreaseLevel()
     {
         if (UseProfile.CurrentLevel == UseProfile.MaxUnlockedLevel)
         {
             UseProfile.MaxUnlockedLevel++;
         }
+
         UseProfile.CurrentLevel++;
     }
 
@@ -77,8 +79,18 @@ public class GameController : Singleton<GameController>
 
     private void OnApplicationPause(bool pauseStatus)
     {
-        dataContains.SaveData();
+        if (pauseStatus)
+        {
+            Debug.Log("OnApplicationPause: Game is pausing. Saving data...");
+            dataContains.SaveData();
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        Debug.Log("OnApplicationQuit: Game is quitting. Saving data...");
+        if (dataContains != null)
+        {
+            dataContains.SaveData();
+        }
     }
 }
-
-

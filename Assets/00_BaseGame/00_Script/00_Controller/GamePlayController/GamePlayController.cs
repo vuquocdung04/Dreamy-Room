@@ -51,12 +51,12 @@ public class GamePlayController : Singleton<GamePlayController>
     {
         if (GameController.Instance.IsGameModeRelax()) return;
         var dataPlayer = GameController.Instance.dataContains.DataPlayer;
-        dataPlayer.isUsedX2Star = false;
-        dataPlayer.isUsedBoxBuffer = false;
-        dataPlayer.isUsedTimeBuffer = false;
+        dataPlayer.IsUsedX2Star = false;
+        dataPlayer.IsUsedBoxBuffer = false;
+        dataPlayer.IsUsedTimeBuffer = false;
     }
 
-    private void HandleUnlockCamera()
+    public void HandleUnlockCamera()
     {
         var maxLevel = UseProfile.MaxUnlockedLevel;
         var currentLevel = UseProfile.CurrentLevel;

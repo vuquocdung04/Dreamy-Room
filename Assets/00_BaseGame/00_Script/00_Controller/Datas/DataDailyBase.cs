@@ -18,56 +18,56 @@ public class DataDailyBase : ScriptableObject
     [SerializeField] private List<DataDailyReward> adRewardsList;
     
     private DataPlayer PlayerData => GameController.Instance.dataContains.DataPlayer;
-    public int GetStreakDayIndex() => PlayerData.playerClaimedDay;
-    public bool HasClaimStreakToday() => PlayerData.hasClaimedStreakToday;
+    public int GetStreakDayIndex() => PlayerData.PlayerClaimedDay;
+    public bool HasClaimStreakToday() => PlayerData.HasClaimedStreakToday;
     
     public void HandleStreakClaimed()
     {
-        var reward = streakRewards[PlayerData.playerClaimedDay];
+        var reward = streakRewards[PlayerData.PlayerClaimedDay];
         GameController.Instance.dataContains.giftData.Claim(reward.giftType, reward.amount);
-        Debug.Log("Đã nhận quà STREAK Ngày: " + (PlayerData.playerClaimedDay + 1));
+        Debug.Log("Đã nhận quà STREAK Ngày: " + (PlayerData.PlayerClaimedDay + 1));
         
-        PlayerData.playerClaimedDay++;
-        PlayerData.hasClaimedStreakToday = true;
+        PlayerData.PlayerClaimedDay++;
+        PlayerData.HasClaimedStreakToday = true;
     }
 
     // ===== TIERED LOGIC =====
-    public bool IsFreeClaimedToday() => PlayerData.isFreeClaimedToday;
+    public bool IsFreeClaimedToday() => PlayerData.IsFreeClaimedToday;
 
     public void ClaimFreeReward()
     {
         GameController.Instance.dataContains.giftData.Claim(freeDailyReward.giftType, freeDailyReward.amount);
         Debug.Log($"Đã nhận quà FREE hàng ngày: {freeDailyReward.giftType} - {freeDailyReward.amount}");
-        PlayerData.isFreeClaimedToday = true;
+        PlayerData.IsFreeClaimedToday = true;
     }
 
-    public int GetAdRewardsClaimedCount() => PlayerData.adRewardsClaimedCount;
-    public bool AllAdRewardsClaimed() => PlayerData.adRewardsClaimedCount >= adRewardsList.Count;
+    public int GetAdRewardsClaimedCount() => PlayerData.ADRewardsClaimedCount;
+    public bool AllAdRewardsClaimed() => PlayerData.ADRewardsClaimedCount >= adRewardsList.Count;
 
     public DataDailyReward GetNextAdRewardInfo()
     {
         if (AllAdRewardsClaimed()) return null;
-        return adRewardsList[PlayerData.adRewardsClaimedCount];
+        return adRewardsList[PlayerData.ADRewardsClaimedCount];
     }
 
     public void ClaimNextAdReward()
     {
-        var reward = adRewardsList[PlayerData.adRewardsClaimedCount];
+        var reward = adRewardsList[PlayerData.ADRewardsClaimedCount];
         GameController.Instance.dataContains.giftData.Claim(reward.giftType, reward.amount);
-        PlayerData.adRewardsClaimedCount++;
+        PlayerData.ADRewardsClaimedCount++;
     }
     
     public void PrepareForNewDay()
     {
         // Kiểm tra và reset chu kỳ nếu cần
-        if (PlayerData.playerClaimedDay >= totalDaysInCycle)
+        if (PlayerData.PlayerClaimedDay >= totalDaysInCycle)
         {
-            PlayerData.playerClaimedDay = 0;
+            PlayerData.PlayerClaimedDay = 0;
         }
         // Luôn cho phép nhận quà vào ngày mới
-        PlayerData.hasClaimedStreakToday = false;
-        PlayerData.isFreeClaimedToday = false;
-        PlayerData.adRewardsClaimedCount = 0;
+        PlayerData.HasClaimedStreakToday = false;
+        PlayerData.IsFreeClaimedToday = false;
+        PlayerData.ADRewardsClaimedCount = 0;
     }
 }
 

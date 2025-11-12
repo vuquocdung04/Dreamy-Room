@@ -25,6 +25,8 @@ public class DataContains : MonoBehaviour
     private void LoadData()
     {
         dataPlayer = JsonSaveSystem.Load<DataPlayer>("PlayerData");
+        dataPlayer.ResetLanguageChangeFlag();
+        Debug.Log(dataPlayer.IsLanguageChanged);
         if (dataPlayer == null)
         {
             dataPlayer = new DataPlayer();

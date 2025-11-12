@@ -41,7 +41,7 @@ public class LocalizationController : MonoBehaviour
         }
 
         currentLanguage = language;
-        GameController.Instance.dataContains.DataPlayer.CurrentLanguage = language;
+        GameController.Instance.dataContains.DataPlayer.SetCurrentLanguage(language);
         this.PostEvent(EventID.CHANGE_LOCALIZATION);
     }
 

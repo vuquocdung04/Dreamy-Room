@@ -8,39 +8,40 @@ using UnityEngine;
 public class DataPlayer 
 {
     [Header("Booster Used")]
-    public bool isUsedX2Star;
-    public bool isUsedTimeBuffer;
-    public bool isUsedBoxBuffer;
+    public bool IsUsedX2Star;
+    public bool IsUsedTimeBuffer;
+    public bool IsUsedBoxBuffer;
     [Header("DAILY LOGIN STREAK")]
-    public int playerClaimedDay;
-    public bool hasClaimedStreakToday;
+    public int PlayerClaimedDay;
+    public bool HasClaimedStreakToday;
     [Header("DAILY TIERED REWARDS")]
-    public bool isFreeClaimedToday;
-    public int adRewardsClaimedCount;
-    [Header("Localization")]
-    [SerializeField] private Language currentLanguage;
-    [SerializeField] private Language previousLanguage;
-    [SerializeField] private bool isLanguageChanged;
-    public bool IsLanguageChanged => currentLanguage != previousLanguage;
-    public Language CurrentLanguage
-    {
-        get => currentLanguage;
-        set
-        {
-            previousLanguage = currentLanguage;
-            currentLanguage = value;
-            isLanguageChanged = currentLanguage != previousLanguage;
-        }
-    }
+    public bool IsFreeClaimedToday;
+    public int ADRewardsClaimedCount;
+    // Localization
+    public Language CurrentLanguage;
+    private Language previousLanguage;
+    public bool IsLanguageChanged => CurrentLanguage != previousLanguage;
     public DataPlayer()
     {
-        isUsedX2Star = false;
-        isUsedTimeBuffer = false;
-        isUsedBoxBuffer = false;
-        playerClaimedDay = 0;
-        hasClaimedStreakToday = false;
-        isFreeClaimedToday = false;
-        adRewardsClaimedCount = 0;
-        currentLanguage = Language.En;
+        IsUsedX2Star = false;
+        IsUsedTimeBuffer = false;
+        IsUsedBoxBuffer = false;
+        PlayerClaimedDay = 0;
+        HasClaimedStreakToday = false;
+        IsFreeClaimedToday = false;
+        ADRewardsClaimedCount = 0;
+        CurrentLanguage = Language.En;
+        previousLanguage = Language.En;
+    }
+    
+    public void SetCurrentLanguage(Language language)
+    {
+        previousLanguage = CurrentLanguage;
+        CurrentLanguage = language;
+    }
+    
+    public void ResetLanguageChangeFlag()
+    {
+        previousLanguage = CurrentLanguage;
     }
 }
