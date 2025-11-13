@@ -23,10 +23,16 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
     public Image imgSound;
     public Image imgMusic;
 
-
+    public LocalizedText lcTitle;
+    private GameController gameController;
+    private UseProfile useProfile;
+    private AudioController audioController;
     protected override void Init()
     {
         canvas.worldCamera = GamePlayController.Instance.playerContains.mainCamera;
+        gameController = GameController.Instance;
+        useProfile = GameController.Instance.useProfile;
+        audioController = GameController.Instance.audioController;
         UpdateStateVib_Music_Sound();
 
         ActionBtnClick(btnClose, delegate
@@ -36,31 +42,40 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         });
         ActionBtnClick(btnGoHome, delegate
         {
-            if (GameController.Instance.IsGameModeNormal())
+            if (gameController.IsGameModeNormal())
                 QuitLevelBox.Setup().Show();
             else
-                GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
+                gameController.ChangeScene2(SceneName.HOME_SCENE);
         });
-        ActionBtnClick(btnRetry, () => { GameController.Instance.ChangeScene2(SceneName.GAME_PLAY); });
+        ActionBtnClick(btnRetry, () => { gameController.ChangeScene2(SceneName.GAME_PLAY); });
         ActionBtnClick(btnVib, () =>
         {
-            bool newState = ToggleSetting(GameController.Instance.useProfile.OnVib, imgVib);
+            bool newState = ToggleSetting(useProfile.OnVib, imgVib);
             GameController.Instance.useProfile.OnVib = newState;
         });
         ActionBtnClick(btnMusic, () =>
         {
-            bool newState = ToggleSetting(GameController.Instance.useProfile.OnMusic, imgMusic);
-            GameController.Instance.useProfile.OnMusic = newState;
+            bool newState = ToggleSetting(useProfile.OnMusic, imgMusic);
+            useProfile.OnMusic = newState;
+            audioController.SetMusicVolume(newState ? 1f : 0f);
         });
         ActionBtnClick(btnSound, () =>
         {
-            bool newState = ToggleSetting(GameController.Instance.useProfile.OnSound, imgSound);
-            GameController.Instance.useProfile.OnSound = newState;
+            bool newState = ToggleSetting(useProfile.OnSound, imgSound);
+            useProfile.OnSound = newState;
+            audioController.SetSoundVolume(newState ? 1f : 0f);
         });
+        lcTitle.Init();
     }
 
     protected override void InitState()
     {
+        RefreshLocalization(gameController.dataContains.DataPlayer, InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        lcTitle.Init();
     }
 
     private void ActionBtnClick(Button btn, System.Action callback = null)
@@ -77,9 +92,9 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
 
     private void UpdateStateVib_Music_Sound()
     {
-        var onVib = GameController.Instance.useProfile.OnVib;
-        var onSound = GameController.Instance.useProfile.OnSound;
-        var onMusic = GameController.Instance.useProfile.OnMusic;
+        var onVib = useProfile.OnVib;
+        var onSound = useProfile.OnSound;
+        var onMusic = useProfile.OnMusic;
 
         imgVib.sprite = onVib ? spriteOn : spriteOff;
         imgMusic.sprite = onMusic ? spriteOn : spriteOff;

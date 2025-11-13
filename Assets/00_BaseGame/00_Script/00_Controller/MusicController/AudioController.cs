@@ -18,6 +18,8 @@ public class AudioController : MonoBehaviour
         
         BuildAudioLookup();
         SetInitVolumes();
+        if (UseProfile.HasCompletedLevelTutorial)
+            PlayMusic(AudioKeyType.BGMHome);
     }
 
     private void BuildAudioLookup()
