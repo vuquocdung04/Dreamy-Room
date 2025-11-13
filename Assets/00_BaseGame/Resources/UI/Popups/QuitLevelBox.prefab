@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 7854484104845675447}
   - component: {fileID: 9147799247807800967}
   - component: {fileID: 765177337553456299}
+  - component: {fileID: 8064900794033297810}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -210,6 +211,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8064900794033297810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435017428355293076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_button_quit
 --- !u!1 &568340345253043596
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +873,9 @@ MonoBehaviour:
   btnQuit: {fileID: 8870352440394749150}
   txtHeart: {fileID: 2348237513061163786}
   txtStar: {fileID: 4205632891946477666}
+  lcTitle: {fileID: 2514075922468733466}
+  lcDesc: {fileID: 8745769921820886627}
+  lcQuit: {fileID: 8064900794033297810}
 --- !u!223 &6553721416230936199
 Canvas:
   m_ObjectHideFlags: 0
@@ -933,6 +950,7 @@ GameObject:
   - component: {fileID: 2738400590662512370}
   - component: {fileID: 7314130867049738794}
   - component: {fileID: 3106997732793856342}
+  - component: {fileID: 2514075922468733466}
   m_Layer: 5
   m_Name: txt
   m_TagString: Untagged
@@ -1056,6 +1074,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2514075922468733466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448105487193785013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_quitlevel_title
 --- !u!1 &4255038392318336218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1442,7 @@ GameObject:
   - component: {fileID: 6297662914632878337}
   - component: {fileID: 3998905883151463897}
   - component: {fileID: 6247335568264357199}
+  - component: {fileID: 8745769921820886627}
   m_Layer: 5
   m_Name: description
   m_TagString: Untagged
@@ -1534,6 +1566,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8745769921820886627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503206190891447444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af9ca052e9d43f98856e8a131f1408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeKey: ui_quitlevel_desc
 --- !u!1 &6545090902700686801
 GameObject:
   m_ObjectHideFlags: 0

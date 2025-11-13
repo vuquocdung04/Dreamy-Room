@@ -25,6 +25,15 @@ public class EditProfileBox : BoxSingleton<EditProfileBox>
     public List<ProfileItem> lstProfileFrames;
     public List<ProfileItem> lstProfileAvatars;
 
+    [Header("Localization")]
+    public LocalizedText lcTitle;
+
+    public LocalizedText lcFrame;
+    public LocalizedText lcFrame1;
+    public LocalizedText lcAvatar;
+    public LocalizedText lcSave;
+    
+    
     private ProfileItem currentSelectedAvatar;
     private ProfileItem currentSelectedFrame;
 
@@ -53,6 +62,8 @@ public class EditProfileBox : BoxSingleton<EditProfileBox>
             UpdateFrameDisplay(item.GetId());
             UpdateSaveButtonState();
         }));
+
+        InitLocalization();
     }
 
     protected override void InitState()
@@ -62,7 +73,19 @@ public class EditProfileBox : BoxSingleton<EditProfileBox>
         initialAvatarId = UseProfile.ProfileAvatarDetail;
         initialFrameId = UseProfile.ProfileFrameDetail;
         initialName = UseProfile.UserName;
+        
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer,  InitLocalization);
     }
+
+    private void InitLocalization()
+    {
+        lcTitle.Init();
+        lcFrame.Init();
+        lcAvatar.Init();
+        lcSave.Init();
+        lcFrame1.Init();
+    }
+    
 
     private void UpdateSaveButtonState()
     {

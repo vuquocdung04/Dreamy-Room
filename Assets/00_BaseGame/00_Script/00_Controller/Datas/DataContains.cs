@@ -25,12 +25,16 @@ public class DataContains : MonoBehaviour
     private void LoadData()
     {
         dataPlayer = JsonSaveSystem.Load<DataPlayer>("PlayerData");
-        dataPlayer.ResetLanguageChangeFlag();
-        Debug.Log(dataPlayer.IsLanguageChanged);
         if (dataPlayer == null)
         {
+            Debug.LogWarning("Không tải được DataPlayer hoặc file bị lỗi. Tạo mới...");
             dataPlayer = new DataPlayer();
             SaveData(); 
+        }
+        else
+        {
+            Debug.Log(dataPlayer.IsLanguageChanged);
+            dataPlayer.ResetLanguageChangeFlag();
         }
     }
 

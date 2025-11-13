@@ -11,6 +11,8 @@ public class PigBankBox :BoxSingleton<PigBankBox>
     public Button btnClose;
     public Button btnPurchase;
     public Image fill;
+    public LocalizedText lcTitle;
+    public LocalizedText lcDesc;
 
     private int totalProgress = 2400;
     protected override void Init()
@@ -22,11 +24,19 @@ public class PigBankBox :BoxSingleton<PigBankBox>
             //NOTE: purchase logic
             Debug.Log("Purchase Pig Bank");
         });
+        
+        InitLocalization();
     }
 
     protected override void InitState()
     {
-        
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer, InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        lcDesc.Init();
+        lcTitle.Init();
     }
 
     private void UpdateFillState()

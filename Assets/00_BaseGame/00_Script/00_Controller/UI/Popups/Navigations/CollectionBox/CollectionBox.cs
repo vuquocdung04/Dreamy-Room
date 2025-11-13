@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,10 +16,12 @@ public class CollectionBox : BoxSingleton<CollectionBox>
     public List<CollectionItem> lsItems;
     public List<string> lsKeysTitle;
     private DataPlayer dataPlayer;
+    
     protected override void Init()
     {
         canvas.worldCamera = Camera.main;
         dataPlayer = GameController.Instance.dataContains.DataPlayer;
+        InitLocalization();
         UpdateItemState();
     
         OnClick(lsItems, (item) => HanleSelection(delegate
@@ -26,14 +29,13 @@ public class CollectionBox : BoxSingleton<CollectionBox>
             GameController.Instance.dataContains.dataCollection.SetCollectionType(item.GetCollectionType());
             CollectionDetailBox.Setup().Show();
         }));
-        InitLocalization();
     }
 
     protected override void InitState()
     {
         RefreshLocalization(dataPlayer,()=> InitLocalization());
     }
-
+    
     private void InitLocalization()
     {
         title.Init();

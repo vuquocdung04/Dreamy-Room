@@ -15,6 +15,10 @@ public class QuitLevelBox : BoxSingleton<QuitLevelBox>
 
     public TextMeshProUGUI txtHeart;
     public TextMeshProUGUI txtStar;
+
+    public LocalizedText lcTitle;
+    public LocalizedText lcDesc;
+    public LocalizedText lcQuit;
     
     protected override void Init()
     {
@@ -26,10 +30,20 @@ public class QuitLevelBox : BoxSingleton<QuitLevelBox>
             Debug.Log("GOTO HOME SCENE && DEDUCE HEART AND STAR");
             OnClickQuit();
         });
+        
+        InitLocalization();
     }
 
     protected override void InitState()
     {
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer, InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        lcDesc.Init();
+        lcQuit.Init();
+        lcTitle.Init();
     }
 
     private void OnClickQuit()

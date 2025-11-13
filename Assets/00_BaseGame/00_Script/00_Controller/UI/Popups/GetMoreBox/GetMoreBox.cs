@@ -20,7 +20,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
     [Header("Localization")]
     public LocalizedText LocalizedTextTitle;
     public LocalizedText localizedTextDesc;
-    
+    public LocalizedText lcFree;
     
     private GiftType currentBoosterType;
     private GameController gameController;
@@ -95,6 +95,7 @@ public class GetMoreBox : BoxSingleton<GetMoreBox>
         
         localizedTextDesc.Init(descKey);
         LocalizedTextTitle.Init();
+        lcFree.Init();
     }
 
     private bool IsNewBoosterSelected(GiftType newBoosterType)

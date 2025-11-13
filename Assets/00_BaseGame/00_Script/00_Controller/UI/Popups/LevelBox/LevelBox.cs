@@ -1,4 +1,4 @@
-using UnityEngine;
+
 using UnityEngine.UI;
 
 public class LevelBox : BoxSingleton<LevelBox>
@@ -11,9 +11,12 @@ public class LevelBox : BoxSingleton<LevelBox>
     public Button btnClose;
     public Button btnCloseByPanel;
     public Button btnOk;
+    public LocalizedText lcDesc;
+    public LocalizedText lcOk;
     
     protected override void Init()
     {
+        InitLocalization();
         btnClose.onClick.AddListener(Close);
         btnOk.onClick.AddListener(Close);
         btnCloseByPanel.onClick.AddListener(Close);
@@ -21,5 +24,12 @@ public class LevelBox : BoxSingleton<LevelBox>
 
     protected override void InitState()
     {
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer,InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        lcDesc.Init();
+        lcOk.Init();
     }
 }

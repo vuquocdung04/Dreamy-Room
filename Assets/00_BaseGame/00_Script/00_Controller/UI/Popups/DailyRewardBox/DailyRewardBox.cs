@@ -16,12 +16,9 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
     public Sprite adclaimableSprite;
     public List<DailyRewardItem> adRewardItems;
     public LocalizedText lcFreeBtn;
+    public LocalizedText title;
     protected override void Init()
     {
-        foreach (var item in adRewardItems)
-        {
-            item.InitLocalization();
-        }
         UpdateState();
         btnClose.onClick.AddListener(Close);
         btnFreeReward.onClick.AddListener(OnFreeClaim);
@@ -36,7 +33,6 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
     {
         UpdateState();
     }
-    
     private void OnAdRewardClaim()
     {
         GameController.Instance.dataContains.dataDaily.ClaimNextAdReward();
@@ -51,7 +47,8 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
     private void UpdateAdRewardsState()
     {
         var adsClaimedCount = GameController.Instance.dataContains.dataDaily.GetAdRewardsClaimedCount();
-        
+        var dataDaily = GameController.Instance.dataContains.dataDaily;
+        title.Init();
         for (int i = 0; i < adRewardItems.Count; i++)
         {
             var item = adRewardItems[i];
@@ -61,17 +58,20 @@ public class DailyRewardBox : BoxSingleton<DailyRewardBox>
                 // Đã claimed
                 item.SetAsClaimed();
                 item.UpdateImageBtn(claimedSprite);
+                item.UpdateLocalization(dataDaily.KeyClaimed);
             }
             else if (i == adsClaimedCount)
             {
                 // Đang có thể claim
                 item.SetAsClaimable();
                 item.UpdateImageBtn(adclaimableSprite);
+                item.UpdateLocalization(dataDaily.KeyClaim);
             }
             else
             {
                 // Chưa tới lượt (Free)
                 item.SetAsFree();
+                item.UpdateLocalization(dataDaily.KeyFree);
             }
         }
     }

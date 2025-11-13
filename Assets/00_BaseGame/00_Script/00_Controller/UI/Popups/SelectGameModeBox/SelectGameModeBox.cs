@@ -17,7 +17,9 @@ public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
     public Button btnClose;
     public Button btnCloseWithPanel;
     public List<SGM_Item> lsItems;
-    
+    [Header("Localization")]
+    public LocalizedText lcTitle;
+    public List<LocalizedText> lsLcs;
     protected override void Init()
     {
         canvas.worldCamera = Camera.main;
@@ -52,12 +54,22 @@ public class SelectGameModeBox : BoxSingleton<SelectGameModeBox>
             GameController.Instance.curGameModeName = GameMode.NORMAL;
             GameController.Instance.ChangeScene2(SceneName.GAME_PLAY);
         });
+        
+        InitLocalization();
     }
     
     protected override void InitState()
     {
         txtTitle.text = $"Level {UseProfile.CurrentLevel}";
         UpdateUI();
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer,InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        lcTitle.SetText(" " + UseProfile.CurrentLevel);
+        lcTitle.Init();
+        foreach(var t in lsLcs) t.Init();
     }
 
     private void AddOnClickListener(Button btn, System.Action callback =null)

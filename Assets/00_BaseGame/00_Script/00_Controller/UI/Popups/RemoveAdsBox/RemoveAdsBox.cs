@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class RemoveAdsBox : BoxSingleton<RemoveAdsBox>
     }
 
     public Button btnClose;
+    public List<LocalizedText> lsLcs;
     
     protected override void Init()
     {
@@ -21,9 +23,16 @@ public class RemoveAdsBox : BoxSingleton<RemoveAdsBox>
             else
                 Debug.LogError("GamePlayController is null");
         });
+        InitLocalization();
     }
 
     protected override void InitState()
     {
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer, InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        foreach(var t in lsLcs) t.Init();
     }
 }

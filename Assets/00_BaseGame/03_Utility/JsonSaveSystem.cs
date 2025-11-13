@@ -20,7 +20,16 @@ public class JsonSaveSystem
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<T>(json);
+            if (string.IsNullOrEmpty(json))
+            {
+                return new T();
+            }
+            T data = JsonConvert.DeserializeObject<T>(json);
+            if (data == null)
+            {
+                return new T();
+            }
+            return data;
         }
         return new T();
     }

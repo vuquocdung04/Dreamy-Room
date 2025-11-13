@@ -12,6 +12,8 @@ public class RateBox : BoxSingleton<RateBox>
     public List<Button> lsBtnStars;
     public List<Image> lsImgStars;
     private int currentStar;
+
+    public List<LocalizedText> lsLcs;
     protected override void Init()
     {
         btnClose.onClick.AddListener(Close);
@@ -25,13 +27,20 @@ public class RateBox : BoxSingleton<RateBox>
                 HandleStarClick(starIndex);
             });
         }
+        InitLocalization();
     }
 
     protected override void InitState()
     {
         UpdateStarVisuals(0);
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer, InitLocalization);
     }
-    
+
+    private void InitLocalization()
+    {
+        foreach(var lc in lsLcs) lc.Init();  
+    }
+
 
     private void HandleStarClick(int index)
     {

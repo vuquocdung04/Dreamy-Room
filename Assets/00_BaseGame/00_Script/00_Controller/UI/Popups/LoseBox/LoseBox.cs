@@ -1,4 +1,4 @@
-using UnityEngine;
+
 using UnityEngine.UI;
 
 public class LoseBox : BoxSingleton<LoseBox>
@@ -10,6 +10,9 @@ public class LoseBox : BoxSingleton<LoseBox>
 
     public Button btnRetry;
     public Button btnGoHome;
+    public LocalizedText lcTitle;
+    public LocalizedText lcRetry;
+    public LocalizedText lcNoThanks;
     protected override void Init()
     {
         btnRetry.onClick.AddListener(delegate
@@ -20,9 +23,19 @@ public class LoseBox : BoxSingleton<LoseBox>
         {
             GameController.Instance.ChangeScene2(SceneName.HOME_SCENE);
         });
+        
+        InitLocalization();
     }
 
     protected override void InitState()
     {
+        RefreshLocalization(GameController.Instance.dataContains.DataPlayer, InitLocalization);
+    }
+
+    private void InitLocalization()
+    {
+        lcTitle.Init();
+        lcRetry.Init();
+        lcNoThanks.Init();
     }
 }
