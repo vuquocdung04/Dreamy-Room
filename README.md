@@ -4,19 +4,21 @@
 
 # \## 👀Preview: 📄\[Docs](https://docs.google.com/spreadsheets/d/1QdVYWCZSUDpdcWH1JoGkIA7Svf1iWrXe4Rl06xYT-0g/edit?usp=sharing) | ▶️\[Demo](https://markdownlivepreview.com/)
 
-# 
+
+
+
 
 # \## ✨Features:
 
 # 1\. 🧩\*\*Game Logic\*\*:
 
-# &nbsp;   \* Multi-Snap \& Conditions: Items can snap to multiple positions with independent validation rules.
+# &nbsp;    \* Multi-Snap \& Conditions: Items can snap to multiple positions with independent validation rules.
 
-# &nbsp;   \* Mask-based cleaning (e.g., scrub paint with a broom via Sprite Mask).
+# &nbsp;    \* Mask-based cleaning (e.g., scrub paint with a broom via Sprite Mask).
 
-# &nbsp;   \* Multi-phase levels.
+# &nbsp;    \* Multi-phase levels.
 
-# &nbsp;   \* Blocks world interaction during popups, win/lose, etc.
+# &nbsp;    \* Blocks world interaction during popups, win/lose, etc.
 
 # 2\. 🚀\*\*Boosters\*\*: 
 
