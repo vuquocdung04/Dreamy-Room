@@ -39,6 +39,9 @@ public class ItemBase : MonoBehaviour
     private Vector3 newPosition;
     private bool toggleChangAnim;
     private PlayerContains playerContains;
+
+    private FxOutlineItem currentOutLine;
+    
     public int GetIndexLayer() => indexLayer;
     public bool GetPlacedByPlayer() => isPlacedByPlayer;
     public void SetPlacedByPlayer(bool state) => isPlacedByPlayer = state;
@@ -68,6 +71,22 @@ public class ItemBase : MonoBehaviour
     }
     public List<ItemSlot> GetTargetSlot() => slotsSnap;
 
+    #region OutLine
+
+    public void ShowOutline()
+    {
+        currentOutLine = GameController.Instance.effectController.FxOutline(this);
+    }
+
+    public void HideOutline()
+    {
+        if (currentOutLine == null) return;
+        SimplePool2.Despawn(currentOutLine.gameObject);
+        currentOutLine = null;
+    }
+
+    #endregion
+    
     #region Item Placement
 
     public void OutSideBox(Vector2 posSpawn)
@@ -144,13 +163,14 @@ public class ItemBase : MonoBehaviour
         
         // Tính duration dựa trên khoảng cách để có tốc độ đồng đều
         float distance = Vector3.Distance(transform.localPosition, targetSlot.transform.localPosition);
-        float duration = distance / 10f;
+        float duration = distance / 5f;
         duration = Mathf.Clamp(duration, 0.2f, 0.4f);
         
         transform.DORotate(Vector3.zero, 0.2f);
         transform.DOLocalMove(targetSlot.transform.localPosition, duration).OnComplete(delegate
         {
             isPlaced = true;
+            HideOutline();
             GameController.Instance.effectController.FxEffect(transform.localPosition);
             if (shadowItem)
                 shadowItem.gameObject.SetActive(true);
@@ -166,7 +186,6 @@ public class ItemBase : MonoBehaviour
             {
                 specialItem.HandlePostPlacementAction();
             }
-
             this.PostEvent(EventID.SPAWN_STAR, this);
         });
         this.PostEvent(EventID.ITEM_PLACED_CORRECTLY, this);

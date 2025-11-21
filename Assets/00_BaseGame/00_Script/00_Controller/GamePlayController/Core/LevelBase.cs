@@ -179,6 +179,7 @@ public abstract class LevelBase : MonoBehaviour
                 if (slot != null && !slot.isFullSlot && slot.isReadyShow)
                 {
                     item.SetPlacedByPlayer(false);
+                    item.ShowOutline();
                     item.OnDoneSnap(slot);
                     return;
                 }

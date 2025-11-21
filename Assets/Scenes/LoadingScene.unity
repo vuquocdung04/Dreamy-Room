@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cebcfca6b145eab1f7e8e968c34dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fxOutlineItem: {fileID: 7426795893482416226, guid: b85ca589cc7d5ff4c8e55f6885a1c3fd, type: 3}
   fxStarPrefab: {fileID: 161741918215636840, guid: c1ec78ac7d15c82499d99934a538eeda, type: 3}
   spawnCount: 10
   spawnRadius: 1
@@ -1595,8 +1596,9 @@ MonoBehaviour:
   imgBg: {fileID: 552431308}
   imgIcon: {fileID: 471154126}
   imgMask: {fileID: 471154127}
-  durationFadeIn: 1
-  durationFadeOut: 0.5
+  durationFadeIn: 0.7
+  durationFadeOut: 0.3
+  defaultOrthoSize: 10
   lsSpritesBg:
   - {fileID: 21300000, guid: a50fed70a8a63534ebe48e5b5714e52b, type: 3}
   - {fileID: 21300000, guid: 0e702bedb5df31845a5fa276e9296000, type: 3}
@@ -2057,7 +2059,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

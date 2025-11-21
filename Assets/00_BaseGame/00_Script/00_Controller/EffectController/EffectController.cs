@@ -8,6 +8,10 @@ using Random = UnityEngine.Random;
 
 public class EffectController : MonoBehaviour
 {
+    [Header("FxOutLine Item")]
+    public FxOutlineItem fxOutlineItem;
+    
+    
     [Header("Fx")]
     public FxStarPrefab fxStarPrefab;
 
@@ -32,6 +36,13 @@ public class EffectController : MonoBehaviour
     public CongratulationPrefab congratulationPrefab;
     public List<Sprite> lsCongratulations;
 
+    public FxOutlineItem FxOutline(ItemBase itemBase)
+    {
+        var fxOutline = SimplePool2.Spawn(fxOutlineItem);
+        fxOutline.Init(itemBase);
+        return fxOutline;
+    }
+    
     public void FxEffect(Vector3 centerPoint)
     {
         for (int i = 0; i < spawnCount; i++)
