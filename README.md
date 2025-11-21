@@ -13,6 +13,7 @@
 3. 🎨**UI & Feedback**:
     * 35+ Popups.
     * Effects: Scene/Popup transitions, celebrations, placement feedback, star rewards, etc.
+    * Spine Animations: Booster, Character reactions, etc.
 4. ⏳**Time Manager**:
     * Auto-reset daily quests & rewards.
     * Heart system: +1 every 30 min until full. Unlimited mode skips consumption.
@@ -25,4 +26,3 @@
 7. 📈**Performance Optimizations**:
     * Sprite Atlas: < 30 draw calls.
     * Addressable (load/unload level prefabs)
-## You can Preview 

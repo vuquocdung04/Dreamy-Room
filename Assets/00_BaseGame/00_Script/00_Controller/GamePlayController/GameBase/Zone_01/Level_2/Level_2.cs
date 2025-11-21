@@ -1,32 +1,42 @@
 
+using System;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
+using Spine.Unity;
 using UnityEngine;
 
 public class Level_2 : LevelBase
 {
-    public Transform duckTrans;
+    public SkeletonAnimation skeleton;
+    public Transform bathIdle;
+
+    public override void Init()
+    {
+        base.Init();
+        skeleton.gameObject.SetActive(false);
+    }
+
     protected override ItemSlot CreateItemSlotInstance(GameObject go)
     {
         return go.AddComponent<Slot_2>();
     }
-    
-
     protected override async UniTask OnBeforeWinCompleted()
     {
         await base.OnBeforeWinCompleted();
-        
-        var duckSpr = duckTrans.GetComponent<SpriteRenderer>();
-
-        duckTrans.localScale = Vector3.zero;
-        duckTrans.gameObject.SetActive(true);
-        
-        var seq = DOTween.Sequence();
-
-        await seq.Append(duckTrans.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutElastic))
-            .Append(duckTrans.DOLocalMoveY(-3.37f, 0.5f).SetEase(Ease.OutBack))
-            .AppendCallback(() => duckSpr.sortingLayerName = SortingLayerName.DEFAULT)
-            .Append(duckTrans.DOLocalJump(new Vector3(-0.74f, -0.41f), 2f, 1, 1.25f).SetEase(Ease.Linear));
-        
+        var trackEntry = skeleton.AnimationState.SetAnimation(0, "2-add-duck-capi", false);
+        float duration = trackEntry.Animation.Duration;
+        await UniTask.Delay(TimeSpan.FromSeconds(duration));
+        var trackEntry2 = skeleton.AnimationState.SetAnimation(0, "2-add-duck-loop", true);
+        float duration2 = trackEntry2.Animation.Duration;
+        await UniTask.Delay(TimeSpan.FromSeconds(duration2));
+    }
+    public void HandleBathFillWater()
+    {
+        bathIdle.gameObject.SetActive(false);
+        skeleton.gameObject.SetActive(true);
+        var trackEntry = skeleton.AnimationState.SetAnimation(0, "1-Bath-fill-water-anim", false);
+        trackEntry.Complete += (t) =>
+        {
+            skeleton.AnimationState.SetAnimation(0, "1-Bath-fill-water-idle", true);
+        };
     }
 }

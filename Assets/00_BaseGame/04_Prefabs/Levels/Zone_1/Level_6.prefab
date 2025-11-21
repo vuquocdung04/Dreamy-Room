@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8804168796738819949}
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 250661548287477704}
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1236459740995676027}
@@ -838,7 +838,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 14
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: a4de10ceba4005e468a2756f85a7ec59, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3}
   m_FlipX: 0
@@ -864,7 +864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 0
-  indexOrder: 14
+  indexOrder: 13
   spriteRenderer: {fileID: 8704479343720926079}
   conditionSlots:
   - {fileID: 2193395422315781612}
@@ -1045,7 +1045,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: ebec243ed7acadd47acb946135832259, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3}
   m_FlipX: 0
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 0
-  indexOrder: 15
+  indexOrder: 16
   spriteRenderer: {fileID: 6051628766834520545}
   conditionSlots:
   - {fileID: 1581024369854800701}
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 9208888358873784650}
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   - {fileID: 2207791969297660735}
   shadowItem: {fileID: 0}
   itemSize: 0
-  indexLayer: 16
+  indexLayer: 17
   angle: 0
   coll2D: {fileID: 847937948332524659}
   spriteRenderer: {fileID: 321728727846315790}
@@ -1179,7 +1179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 16
+  m_SortingOrder: 17
   m_Sprite: {fileID: 21300000, guid: ebec243ed7acadd47acb946135832259, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1600,7 +1600,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 13
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 86ae8c51f341afd42ab27f74fff7f2f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1624,13 +1624,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6202662032391039613}
   shadowItem: {fileID: 0}
   itemSize: 0
-  indexLayer: 13
+  indexLayer: 14
   angle: 0
   coll2D: {fileID: 5441020321307509601}
   spriteRenderer: {fileID: 7459595185502424170}
@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 81645767282901400}
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8560306105094999946}
@@ -2308,7 +2308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3483820373406056685}
@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 226638274307642659}
@@ -3021,7 +3021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3724870882640469206}
@@ -3194,7 +3194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6004880448677314662}
   - component: {fileID: 1210567453773738196}
-  - component: {fileID: 939170376170090764}
+  - component: {fileID: 6508826592854005834}
   - component: {fileID: 6444415706903081368}
   m_Layer: 6
   m_Name: gau
@@ -3268,9 +3268,9 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 2
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &939170376170090764
+--- !u!114 &6508826592854005834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3279,10 +3279,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2124708297160306039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9315c114e0f5418f8c9d0ac9daee6502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 4822558869090166884}
@@ -3440,7 +3440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5439667421139677834}
@@ -3575,7 +3575,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: 4f07dc80abd91d7488ba66d35668ef7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3599,7 +3599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3627290769059378901}
@@ -3607,7 +3607,7 @@ MonoBehaviour:
   - {fileID: 1581024369854800701}
   shadowItem: {fileID: 4786222162545730985}
   itemSize: 0
-  indexLayer: 15
+  indexLayer: 16
   angle: 0
   coll2D: {fileID: 8738172401627737571}
   spriteRenderer: {fileID: 7825176943193977848}
@@ -3735,7 +3735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 15
+  m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: a4de10ceba4005e468a2756f85a7ec59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3759,13 +3759,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5207994491374819645}
   shadowItem: {fileID: 0}
   itemSize: 0
-  indexLayer: 15
+  indexLayer: 14
   angle: 0
   coll2D: {fileID: 3591411708230556390}
   spriteRenderer: {fileID: 2532555273863874105}
@@ -3917,7 +3917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1088190502774021639}
@@ -4676,7 +4676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6839437560850589839}
@@ -4834,7 +4834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 340725195446518767}
@@ -4968,7 +4968,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 963605235
   m_SortingLayer: 1
-  m_SortingOrder: 14
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 31dba09c3d187e245805f7581eefdda8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4992,13 +4992,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2193395422315781612}
   shadowItem: {fileID: 0}
   itemSize: 0
-  indexLayer: 14
+  indexLayer: 13
   angle: 0
   coll2D: {fileID: 1374914497576736804}
   spriteRenderer: {fileID: 6054916652727574653}
@@ -5151,7 +5151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2555352445963677591}
@@ -5808,7 +5808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2133569979220934827}
@@ -5966,7 +5966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295a80c5a41346559aa721b4d0953ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1593618089102587193}
@@ -6228,7 +6228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2721171662646993104}
@@ -6387,7 +6387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5380872630840422500}
@@ -6648,7 +6648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8106103519862871806}
@@ -6881,7 +6881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6982248307990303789}
@@ -7128,6 +7128,128 @@ MonoBehaviour:
   spriteRenderer: {fileID: 9102141010681983259}
   conditionSlots: []
   isActive: 0
+--- !u!1 &4828757458954915893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7363575540960310904}
+  - component: {fileID: 1288750721833284293}
+  - component: {fileID: 8165812574661026145}
+  - component: {fileID: 3642855026618661206}
+  m_Layer: 0
+  m_Name: Spine GameObject (batman)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7363575540960310904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828757458954915893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.46, y: -1.2, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8429359141261480181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1288750721833284293
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828757458954915893}
+  m_Mesh: {fileID: 0}
+--- !u!23 &8165812574661026145
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828757458954915893}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2326d616816f8254bbd747c3ce0a566f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 14
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3642855026618661206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828757458954915893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonDataAsset: {fileID: 11400000, guid: a6e6a0fc562b12f42afe41bfaeee6636, type: 2}
+  initialSkinName: 
+  fixPrefabOverrideViaMeshFilter: 2
+  initialFlipX: 0
+  initialFlipY: 0
+  updateWhenInvisible: 3
+  separatorSlotNames: []
+  zSpacing: 0
+  useClipping: 1
+  immutableTriangles: 0
+  pmaVertexColors: 1
+  clearStateOnDisable: 0
+  tintBlack: 0
+  singleSubmesh: 0
+  fixDrawOrder: 0
+  addNormals: 0
+  calculateTangents: 0
+  maskInteraction: 0
+  maskMaterials:
+    materialsMaskDisabled: []
+    materialsInsideMask: []
+    materialsOutsideMask: []
+  disableRenderingOnOverride: 1
+  _animationName: 1
+  loop: 1
+  timeScale: 1
 --- !u!1 &4838743686845017162
 GameObject:
   m_ObjectHideFlags: 0
@@ -7201,7 +7323,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: 86ae8c51f341afd42ab27f74fff7f2f6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3}
   m_FlipX: 0
@@ -7227,7 +7349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
-  indexOrder: 12
+  indexOrder: 14
   spriteRenderer: {fileID: 8074097125250169657}
   conditionSlots: []
   isActive: 0
@@ -7330,7 +7452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3627290769059378901}
@@ -7799,7 +7921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 4481097498295726190}
@@ -7943,7 +8065,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 2
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4372141978212762427
 MonoBehaviour:
@@ -7957,7 +8079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 430638016731098192}
@@ -8115,7 +8237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8560306105094999946}
@@ -8429,7 +8551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 9208888358873784650}
@@ -8809,7 +8931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5965022297315848208}
@@ -9071,7 +9193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5976627476513945427}
@@ -9548,6 +9670,8 @@ Transform:
   - {fileID: 8851974148022477139}
   - {fileID: 3590371219796067798}
   - {fileID: 7629633998661723850}
+  - {fileID: 8566853433790397137}
+  - {fileID: 7363575540960310904}
   - {fileID: 7640741853964189769}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9563,9 +9687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff74515694945998a456687e22301d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 8851974148022477139}
   isBoxReadyForInteraction: 1
   maxItemOutOfBox: 10
+  amountStarHit: 1
   allShadows:
   - {fileID: 6839437560850589839}
   - {fileID: 5439667421139677834}
@@ -9624,7 +9748,7 @@ MonoBehaviour:
   - {fileID: 6940596341812389802}
   - {fileID: 5770158301107258475}
   - {fileID: 585353101016129572}
-  - {fileID: 939170376170090764}
+  - {fileID: 6508826592854005834}
   - {fileID: 4372141978212762427}
   - {fileID: 4832069388146308211}
   - {fileID: 2626570742122410863}
@@ -9685,6 +9809,9 @@ MonoBehaviour:
   totalItemsRequired: 44
   itemsPlacedCorrectly: 0
   comboThreshold: 2
+  cupCoffe: {fileID: 3158397805480396331}
+  bearSkeleton: {fileID: 1515634895743851124}
+  batmanSkeleton: {fileID: 3642855026618661206}
 --- !u!1 &7166583298179145919
 GameObject:
   m_ObjectHideFlags: 0
@@ -9887,7 +10014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8867692067511232632}
@@ -10235,7 +10362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3627290769059378901}
@@ -10395,7 +10522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8272461714590268160}
@@ -10846,7 +10973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 226638274307642659}
@@ -11005,7 +11132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8393263799015925829}
@@ -11111,7 +11238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 9208888358873784650}
@@ -11323,7 +11450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 991460543536653078}
@@ -11482,7 +11609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6241601569441001047}
@@ -11640,7 +11767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 5067373289313529974}
@@ -11857,7 +11984,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 14
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 4f07dc80abd91d7488ba66d35668ef7b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3}
   m_FlipX: 0
@@ -11883,7 +12010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFullSlot: 0
   isReadyShow: 1
-  indexOrder: 14
+  indexOrder: 15
   spriteRenderer: {fileID: 6966349678372628087}
   conditionSlots: []
   isActive: 0
@@ -11985,7 +12112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2123316750868958034}
@@ -12352,7 +12479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2555352445963677591}
@@ -12718,7 +12845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0308a3657bc246bbb9db366450de9bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 8560306105094999946}
@@ -12780,6 +12907,128 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 1.31}
   m_EdgeRadius: 0
+--- !u!1 &9185985543556545380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8566853433790397137}
+  - component: {fileID: 3845291089838206603}
+  - component: {fileID: 1283657660339042510}
+  - component: {fileID: 1515634895743851124}
+  m_Layer: 0
+  m_Name: Spine GameObject (gau-anim)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8566853433790397137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185985543556545380}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.8157, y: -0.2209, z: 0}
+  m_LocalScale: {x: 1.0156955, y: 0.9963367, z: 0.9627061}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8429359141261480181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3845291089838206603
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185985543556545380}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1283657660339042510
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185985543556545380}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a236ad851361e874c9a8a7ce9ae19844, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 11
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1515634895743851124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185985543556545380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonDataAsset: {fileID: 11400000, guid: 15f1f3a1e3854a64886945d70c3c39bc, type: 2}
+  initialSkinName: 
+  fixPrefabOverrideViaMeshFilter: 2
+  initialFlipX: 0
+  initialFlipY: 0
+  updateWhenInvisible: 3
+  separatorSlotNames: []
+  zSpacing: 0
+  useClipping: 1
+  immutableTriangles: 0
+  pmaVertexColors: 1
+  clearStateOnDisable: 0
+  tintBlack: 0
+  singleSubmesh: 0
+  fixDrawOrder: 0
+  addNormals: 0
+  calculateTangents: 0
+  maskInteraction: 0
+  maskMaterials:
+    materialsMaskDisabled: []
+    materialsInsideMask: []
+    materialsOutsideMask: []
+  disableRenderingOnOverride: 1
+  _animationName: 
+  loop: 1
+  timeScale: 1
 --- !u!1001 &843791573143284370
 PrefabInstance:
   m_ObjectHideFlags: 0

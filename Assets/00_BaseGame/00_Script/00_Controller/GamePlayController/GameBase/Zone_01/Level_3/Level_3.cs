@@ -1,11 +1,13 @@
 using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Spine.Unity;
 using UnityEngine;
 
 public class Level_3 : LevelBase
 {
-    public Transform character;
+    [Header("Animations")]
+    public SkeletonAnimation skeletonAnimation;
     protected override ItemSlot CreateItemSlotInstance(GameObject go)
     {
         return go.AddComponent<Slot_3>();
@@ -14,10 +16,14 @@ public class Level_3 : LevelBase
     protected override async UniTask OnBeforeWinCompleted()
     {
         await base.OnBeforeWinCompleted();
-        character.gameObject.SetActive(true);
-        character.localScale = Vector3.zero;
-        Tween charTween = character.DOScale(Vector3.one * 0.675f, 0.5f).SetEase(Ease.OutElastic);
-        await charTween.ToUniTask();
-        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+        skeletonAnimation.gameObject.SetActive(true);
+        var trackEntry = skeletonAnimation.AnimationState.SetAnimation(0,"action1",false);
+        float duration = trackEntry.Animation.Duration;
+        await UniTask.Delay(TimeSpan.FromSeconds(duration));
+        var trackEntry2 = skeletonAnimation.AnimationState.SetAnimation(0, "action2", true);
+        float duration2 = trackEntry2.Animation.Duration;
+        await UniTask.Delay(TimeSpan.FromSeconds(duration2));
     }
+
+
 }

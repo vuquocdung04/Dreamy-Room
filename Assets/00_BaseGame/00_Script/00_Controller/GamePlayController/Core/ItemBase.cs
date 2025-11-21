@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using EventDispatcher;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour
@@ -142,8 +141,14 @@ public class ItemBase : MonoBehaviour
             : indexLayer;
         spriteRenderer.sortingLayerName = SortingLayerName.DEFAULT;
         gameObject.layer = LayerMask.NameToLayer(LayerMaskName.DEFAULT);
+        
+        // Tính duration dựa trên khoảng cách để có tốc độ đồng đều
+        float distance = Vector3.Distance(transform.localPosition, targetSlot.transform.localPosition);
+        float duration = distance / 10f;
+        duration = Mathf.Clamp(duration, 0.2f, 0.4f);
+        
         transform.DORotate(Vector3.zero, 0.2f);
-        transform.DOLocalMove(targetSlot.transform.localPosition, 0.4f).OnComplete(delegate
+        transform.DOLocalMove(targetSlot.transform.localPosition, duration).OnComplete(delegate
         {
             isPlaced = true;
             GameController.Instance.effectController.FxEffect(transform.localPosition);

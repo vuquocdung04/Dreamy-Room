@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Item_2_Shower : ItemBase, IPostPlacementAction
 {
-    public List<SpriteRenderer> lsSpriteRenderers;
     public void HandlePostPlacementAction()
     {
-        foreach (var spr in lsSpriteRenderers)
-        {
-            spr.DOFade(1f, 0.75f).SetEase(Ease.Linear);
-        }
+        var level_2 =
+            (Level_2)GamePlayController.Instance.levelController.currentLevel;
+        level_2.HandleBathFillWater();
     }
-    
 }
