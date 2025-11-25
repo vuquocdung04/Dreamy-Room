@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6906026206634634598}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6924284952396446615}
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 391417614204429446}
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2880207777692639857}
@@ -988,7 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3896261576347635359}
@@ -1109,7 +1109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6614314255418536649}
-  - component: {fileID: 1072573311439531066}
+  - component: {fileID: 45047710217058816}
   - component: {fileID: 8805625689789773852}
   - component: {fileID: 4205509681796827275}
   m_Layer: 6
@@ -1134,7 +1134,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7070592618809712786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1072573311439531066
+--- !u!114 &45047710217058816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1143,10 +1143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2641402009983086415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fb5ffe96bc54607a0786dc5eb6c5fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2635981422418601230}
@@ -1161,6 +1161,7 @@ MonoBehaviour:
   sprPlaced: {fileID: 0}
   isInteractableAfterPlacement: 0
   isPlaced: 0
+  skeletonAnimation: {fileID: 4699217479689893991}
 --- !u!212 &8805625689789773852
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1353,7 +1354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 398207050155056537}
@@ -1511,7 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2510429444724013271}
@@ -1669,7 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2705754839575198572}
@@ -1827,7 +1828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2412361336148583895}
@@ -2088,7 +2089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5bb200f39a47c19899539cfe1b8031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 1445918821657206376}
@@ -2406,6 +2407,128 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5144296305123364037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6795457499212832740}
+  - component: {fileID: 1183156880675213702}
+  - component: {fileID: 4526876011677216510}
+  - component: {fileID: 4699217479689893991}
+  m_Layer: 0
+  m_Name: Spine GameObject (thubong)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6795457499212832740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144296305123364037}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.48, y: 2.29, z: 0}
+  m_LocalScale: {x: 0.43992054, y: 0.43992054, z: 0.43992054}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3313714706909602341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1183156880675213702
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144296305123364037}
+  m_Mesh: {fileID: 0}
+--- !u!23 &4526876011677216510
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144296305123364037}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3db5a266703018e40afe462ebb8e8217, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 9
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4699217479689893991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144296305123364037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonDataAsset: {fileID: 11400000, guid: bad198b19fa780d40abef8b3ea069aff, type: 2}
+  initialSkinName: 
+  fixPrefabOverrideViaMeshFilter: 2
+  initialFlipX: 0
+  initialFlipY: 0
+  updateWhenInvisible: 3
+  separatorSlotNames: []
+  zSpacing: 0
+  useClipping: 1
+  immutableTriangles: 0
+  pmaVertexColors: 1
+  clearStateOnDisable: 0
+  tintBlack: 0
+  singleSubmesh: 0
+  fixDrawOrder: 0
+  addNormals: 0
+  calculateTangents: 0
+  maskInteraction: 0
+  maskMaterials:
+    materialsMaskDisabled: []
+    materialsInsideMask: []
+    materialsOutsideMask: []
+  disableRenderingOnOverride: 1
+  _animationName: 
+  loop: 1
+  timeScale: 1
 --- !u!1 &5250855470625991766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,7 +2884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 554896512907254273}
@@ -2919,7 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3303764118460985397}
@@ -3180,7 +3303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 6679748641498000740}
@@ -3630,7 +3753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3317449355943046652}
@@ -4147,7 +4270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 391417614204429446}
@@ -4501,6 +4624,7 @@ Transform:
   - {fileID: 2020152293449338199}
   - {fileID: 8112446632983721667}
   - {fileID: 7070592618809712786}
+  - {fileID: 6795457499212832740}
   - {fileID: 7318556484430360964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4516,9 +4640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97d4a52ad274fb899481003a66d1c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 2020152293449338199}
   isBoxReadyForInteraction: 1
   maxItemOutOfBox: 10
+  amountStarHit: 1
   allShadows:
   - {fileID: 398207050155056537}
   - {fileID: 2705754839575198572}
@@ -4549,7 +4673,7 @@ MonoBehaviour:
   - {fileID: 6229654967089879560}
   - {fileID: 6263494264276554322}
   - {fileID: 3502190172640601378}
-  - {fileID: 1072573311439531066}
+  - {fileID: 45047710217058816}
   - {fileID: 7788847063068127305}
   - {fileID: 2223880423695685573}
   - {fileID: 518183081563980590}
@@ -4764,7 +4888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 2193428977159968716}
@@ -4922,7 +5046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3235402ec04484d89f9d6bfee6a852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isAvailableForHint: 1
   isPlacedByPlayer: 1
   slotsSnap:
   - {fileID: 3184537647969855427}

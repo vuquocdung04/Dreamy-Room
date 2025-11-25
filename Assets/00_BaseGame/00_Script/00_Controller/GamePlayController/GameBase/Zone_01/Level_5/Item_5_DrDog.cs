@@ -1,3 +1,4 @@
+
 using Spine.Unity;
 public class Item_5_DrDog : ItemBase, IPostPlacementAction
 {
@@ -10,3 +11,6 @@ public class Item_5_DrDog : ItemBase, IPostPlacementAction
         skeletonAnimation.AnimationState.SetAnimation(0, "idle2", true);
     }
 }
+
+
+

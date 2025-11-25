@@ -1,49 +1,70 @@
 
+
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class TestAsync : MonoBehaviour
 {
-    private async UniTask Awake()
+    public int currentLevel;
+    
+    [Header("Data Menu - May tinh")]
+    public HomeMenuData homeMenuData;
+    
+    [Header("Danh sach hoc sinh")]
+    public List<ItemHomeMenu> items;
+    private void Start()
     {
-        //MyFunc().Forget();
-        //await UniTask.WhenAll(MyFunc(), Pool());
-        //await UniTask.WhenAll(MyFunc(), Pool2());
-        await UniTask.WhenAll(MyFunc2(), MyFunc(), Pool());
+        bool isUnlock;
         
-        Debug.Log("End Awake");
-    }
-    private async UniTask MyFunc()
-    {
-        Debug.Log("MyFunc");
-        Debug.Log("Delay 5f");
-        await UniTask.Delay(TimeSpan.FromSeconds(5));
-        Debug.Log("Async End");
-    }
-
-    private async UniTask MyFunc2()
-    {
-        Debug.Log("MyFunc2");
-        await UniTask.Yield();
-    }
-    
-    private async UniTask Pool()
-    {
-        Debug.Log("Pool: Chuẩn bị giao việc cho luồng phụ...");
-        await UniTask.RunOnThreadPool(() =>
+        for (int i = 0; i < items.Count; i++)
         {
-            Console.WriteLine("Start Pool (from ThreadPool)");
-            //System.Threading.Thread.Sleep(TimeSpan.FromSeconds(2f));
+            isUnlock = items[i].level > currentLevel;
+            
+            items[i].Init(homeMenuData.lsData[i]);
+        }
+    }
+}
+
+public class ItemHomeMenu : MonoBehaviour
+{
+    [Header("Setup")]
+    public int level;
+    public Image ImgIcon;
+    
+    [Header("Events")]
+    public Button btnChoose;
+
+    private void Start()
+    {
+        btnChoose.onClick.AddListener(delegate
+        {
+            Debug.Log("Play level " + level);
         });
-        Debug.Log("Pool: Luồng phụ đã làm xong! Giờ log ra Unity Console.");
     }
 
-    private async UniTask Pool2()
+    public void Init(DanhSachData data)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        level = data.idLevel;
+        ImgIcon.sprite = data.iconLevel;
     }
-    
 }
+[CreateAssetMenu(fileName = "HomeMenuData", menuName = "DATA/HomeMenuData")]
+public class HomeMenuData : ScriptableObject
+{
+    public List<DanhSachData> lsData;
+}
+
+[System.Serializable]
+public class DanhSachData
+{
+    public int idLevel;
+    public GameObject levelPrefab;
+    public Sprite iconLevel;
+}
+
+
