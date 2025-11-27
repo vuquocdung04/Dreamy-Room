@@ -1,5 +1,8 @@
 
+using System;
+using Cysharp.Threading.Tasks;
 using EventDispatcher;
+using Spine.Unity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +15,8 @@ public class HomeBox : BoxSingleton<HomeBox>
     }
     public LevelHomeController levelHomeController;
     public Canvas canvas;
+
+    public SkeletonGraphic mainRoom;
     
     [Header("Avatar")]
     public AvatarHomeBox avatarHomeBox;
@@ -70,7 +75,15 @@ public class HomeBox : BoxSingleton<HomeBox>
 
     protected override void InitState()
     {
-        
+        MainRoomAnim().Forget();
+    }
+
+    private async UniTask MainRoomAnim()
+    {
+        var entryTrack = mainRoom.AnimationState.SetAnimation(0, "start-short", false);
+        float duration = entryTrack.Animation.Duration;
+        await UniTask.Delay(TimeSpan.FromSeconds(duration));
+        mainRoom.AnimationState.SetAnimation(0, "idle-no-custome", true);
     }
 
     private void SetupBtnOnClick(Button btn, System.Action callback = null)
