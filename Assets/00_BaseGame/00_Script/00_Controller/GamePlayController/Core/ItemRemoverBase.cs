@@ -1,266 +1,192 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-[Serializable]
+[System.Serializable]
 public class ItemRemoverStorage
 {
     public SpriteRenderer targetSprite;
     public Transform stainTrans;
     public SpriteMask maskDraw;
-    [NonSerialized] public Texture2D MaskTexture;
-    [NonSerialized] public Sprite MaskSprite;
-    [NonSerialized] public Color[] MaskPixelsBuffer;
-    [NonSerialized] public int DrawnPixelCount;
-    [NonSerialized] public int TextureWidth;
-    [NonSerialized] public int TextureHeight;
-    [NonSerialized] public bool IsPercentReached;
-    [NonSerialized] public float PixelsPerUnit;
-    [NonSerialized] public Rect SpriteRect;
+    
+    [HideInInspector] public Texture2D maskTex;
+    [HideInInspector] public Sprite maskSprite;
+    [HideInInspector] public Color[] pixels;
+    [HideInInspector] public int drawnPixels;
+    [HideInInspector] public int width, height;
+    [HideInInspector] public float ppu;
 }
 
 public class ItemRemoverBase : MonoBehaviour
 {
     [Header("Stages")]
-    [SerializeField] private List<ItemRemoverStorage> lsStages;
-    
-    [Header("Drawing Settings")]
-    [SerializeField] private Sprite brushSprite; // Sprite hình dạng brush để vẽ (kéo thả vào Inspector)
-    [SerializeField] private float brushScale = 1f; // Scale để tăng độ to của brush
-    [SerializeField] private Color drawColor = Color.white;
-    
-    [Header("Coverage Settings")]
-    [SerializeField] [Range(0f, 1f)] private float completePercent = 0.9f;
-    
-    private int currentStateIndex;
-    [NonSerialized] private Color[] brushPixels;
-    [NonSerialized] private int brushWidth;
-    [NonSerialized] private int brushHeight;
-    [NonSerialized] private int scaledBrushWidth;
-    [NonSerialized] private int scaledBrushHeight;
-    [NonSerialized] private Vector2 brushPivot;
+    [SerializeField] List<ItemRemoverStorage> stages;
+
+    [Header("Brush")]
+    [SerializeField] Sprite brushSprite;
+    [SerializeField] float brushScale = 1f;
+    [SerializeField] Color drawColor = Color.white;
+
+    [Header("Complete")]
+    [Range(0.01f, 1f)] [SerializeField] float completePercent = 0.9f;
+
+    int currentStage;
+    Color[] brushPixels;
+    int brushW, brushH;
+    Vector2 brushPivot;
+
+    private void Awake()
+    {
+        InitBrush();
+    }
+
+    private void InitBrush()
+    {
+        if (brushSprite == null) { Debug.LogError("Brush Sprite chưa assign!"); return; }
+
+        var tex = brushSprite.texture;
+        var rect = brushSprite.rect;
+        brushPixels = tex.GetPixels((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height);
+        brushW = (int)rect.width;
+        brushH = (int)rect.height;
+        brushPivot = brushSprite.pivot;
+    }
 
     public virtual void Init()
     {
-        // Preload brush pixels nếu có sprite
-        if (brushSprite != null)
+        foreach (var s in stages)
         {
-            brushWidth = (int)brushSprite.rect.width;
-            brushHeight = (int)brushSprite.rect.height;
-            brushPivot = brushSprite.pivot;
-            brushPixels = brushSprite.texture.GetPixels(
-                (int)brushSprite.rect.x, 
-                (int)brushSprite.rect.y, 
-                brushWidth, 
-                brushHeight
-            );
-            scaledBrushWidth = Mathf.CeilToInt(brushWidth * brushScale);
-            scaledBrushHeight = Mathf.CeilToInt(brushHeight * brushScale);
+            s.stainTrans?.gameObject.SetActive(false);
+            if (s.maskDraw) { s.maskDraw.enabled = false; s.maskDraw.sprite = null; }
         }
-        else
-        {
-            Debug.LogWarning("Brush sprite chưa được assign! Sẽ không vẽ được.");
-        }
-
-        foreach (var stage in lsStages)
-        {
-            if (stage.stainTrans != null)
-                stage.stainTrans.gameObject.SetActive(false);
-            if (stage.maskDraw != null)
-            {
-                stage.maskDraw.enabled = false;
-                stage.maskDraw.sprite = null;
-            }
-        }
-        InitCurrentState();
+        currentStage = 0;
+        SetupCurrentStage();
     }
 
-    private void InitCurrentState()
+    private void SetupCurrentStage()
     {
-        if (currentStateIndex >= lsStages.Count)
+        if (currentStage >= stages.Count)
         {
-            Debug.Log("Đã hoàn thành tất cả các stage!");
             OnAllStagesComplete();
             return;
         }
-        var currentStage = lsStages[currentStateIndex];
-        if (currentStage.stainTrans != null)
-        {
-            currentStage.stainTrans.gameObject.SetActive(true);
-        }
-       
-        if (currentStage.maskDraw != null && currentStage.targetSprite != null)
-        {
-            currentStage.maskDraw.transform.SetParent(currentStage.targetSprite.transform);
-            currentStage.maskDraw.transform.localPosition = Vector3.zero;
-            currentStage.maskDraw.transform.localRotation = Quaternion.identity;
-            currentStage.maskDraw.transform.localScale = Vector3.one;
-        }
-        Sprite targetSpriteRef = currentStage.targetSprite.sprite;
-       
-        currentStage.TextureWidth = (int)targetSpriteRef.rect.width;
-        currentStage.TextureHeight = (int)targetSpriteRef.rect.height;
-        currentStage.PixelsPerUnit = targetSpriteRef.pixelsPerUnit;
-        currentStage.SpriteRect = targetSpriteRef.rect;
-        if (currentStage.MaskTexture == null ||
-            currentStage.MaskTexture.width != currentStage.TextureWidth ||
-            currentStage.MaskTexture.height != currentStage.TextureHeight)
-        {
-            if (currentStage.MaskTexture != null) Destroy(currentStage.MaskTexture);
-            // Sử dụng Alpha8 để tiết kiệm bộ nhớ, vì chỉ cần kênh alpha
-            currentStage.MaskTexture = new Texture2D(currentStage.TextureWidth, currentStage.TextureHeight, TextureFormat.Alpha8, false);
-        }
-        ClearTexture(currentStage.MaskTexture, new Color(0, 0, 0, 0), currentStage.TextureWidth, currentStage.TextureHeight);
-       
-        if (currentStage.MaskSprite == null || currentStage.MaskSprite.texture != currentStage.MaskTexture)
-        {
-            if (currentStage.MaskSprite != null) Destroy(currentStage.MaskSprite);
-            currentStage.MaskSprite = Sprite.Create(
-                currentStage.MaskTexture,
-                new Rect(0, 0, currentStage.TextureWidth, currentStage.TextureHeight),
-                new Vector2(0.5f, 0.5f),
-                currentStage.PixelsPerUnit
-            );
-        }
-        currentStage.maskDraw.sprite = currentStage.MaskSprite;
-        currentStage.maskDraw.enabled = true;
-        // Lấy buffer pixel từ texture đã được clear
-        currentStage.MaskPixelsBuffer = currentStage.MaskTexture.GetPixels();
-        currentStage.DrawnPixelCount = 0;
-        currentStage.IsPercentReached = false;
-       
-        ApplyMaskChanges();
+
+        var s = stages[currentStage];
+        s.stainTrans?.gameObject.SetActive(true);
+
+        var target = s.targetSprite.sprite;
+        s.width = (int)target.rect.width;
+        s.height = (int)target.rect.height;
+        s.ppu = target.pixelsPerUnit;
+
+        // Tạo mask texture
+        if (s.maskTex) Destroy(s.maskTex);
+        s.maskTex = new Texture2D(s.width, s.height, TextureFormat.Alpha8, false);
+        s.maskTex.SetPixels32(new Color32[s.width * s.height]); // clear alpha = 0
+        s.maskTex.Apply();
+
+        if (s.maskSprite) Destroy(s.maskSprite);
+        s.maskSprite = Sprite.Create(s.maskTex, new Rect(0,0,s.width,s.height), Vector2.one*0.5f, s.ppu);
+
+        s.maskDraw.sprite = s.maskSprite;
+        s.maskDraw.enabled = true;
+        s.maskDraw.transform.SetParent(s.targetSprite.transform, false);
+
+        s.pixels = s.maskTex.GetPixels();
+        s.drawnPixels = 0;
     }
 
-    private void ClearTexture(Texture2D texture, Color color, int width, int height)
+    public void DrawAtPosition(Vector3 worldPos)
     {
-        Color[] clearColors = new Color[width * height];
-        for (int i = 0; i < clearColors.Length; i++) clearColors[i] = color;
-        texture.SetPixels(clearColors);
-        texture.Apply();
+        if (currentStage >= stages.Count) return;
+        var s = stages[currentStage];
+
+        Vector3 local = s.maskDraw.transform.InverseTransformPoint(worldPos);
+        Vector2 norm = new Vector2(
+            local.x / (s.targetSprite.sprite.rect.width / s.ppu) + 0.5f,
+            local.y / (s.targetSprite.sprite.rect.height / s.ppu) + 0.5f);
+
+        int cx = Mathf.RoundToInt(norm.x * s.width);
+        int cy = Mathf.RoundToInt(norm.y * s.height);
+
+        if (cx < 0 || cy < 0 || cx >= s.width || cy >= s.height) return;
+
+        DrawBrush(s, cx, cy);
+        ApplyIfNeeded();
     }
 
-    private void DrawBrush(ItemRemoverStorage stage, Vector2Int center, Color color)
+    private void DrawBrush(ItemRemoverStorage s, int centerX, int centerY)
     {
-        if (brushSprite == null || brushPixels == null) return;
+        int w = Mathf.RoundToInt(brushW * brushScale);
+        int h = Mathf.RoundToInt(brushH * brushScale);
+        Vector2 pivot = brushPivot * brushScale;
 
-        Vector2 scaledPivot = brushPivot * brushScale;
-        int offsetX = center.x - Mathf.RoundToInt(scaledPivot.x);
-        int offsetY = center.y - Mathf.RoundToInt(scaledPivot.y);
+        int startX = centerX - Mathf.RoundToInt(pivot.x);
+        int startY = centerY - Mathf.RoundToInt(pivot.y);
 
-        for (int sx = 0; sx < scaledBrushWidth; sx++)
+        for (int y = 0; y < h; y++)
         {
-            for (int sy = 0; sy < scaledBrushHeight; sy++)
+            int ty = startY + y;
+            if (ty < 0 || ty >= s.height) continue;
+
+            for (int x = 0; x < w; x++)
             {
-                // Nearest neighbor sampling
-                float origX = sx / brushScale;
-                float origY = sy / brushScale;
-                int bx = Mathf.FloorToInt(origX);
-                int by = Mathf.FloorToInt(origY);
+                int tx = startX + x;
+                if (tx < 0 || tx >= s.width) continue;
 
-                if (bx >= 0 && bx < brushWidth && by >= 0 && by < brushHeight)
-                {
-                    Color bCol = brushPixels[by * brushWidth + bx];
-                    if (bCol.a <= 0.01f) continue; // Bỏ qua pixel trong suốt trong brush
+                // Sample gốc bằng nearest neighbor
+                int bx = Mathf.Min((int)(x / brushScale), brushW - 1);
+                int by = Mathf.Min((int)(y / brushScale), brushH - 1);
+                if (brushPixels[by * brushW + bx].a < 0.01f) continue;
 
-                    int tx = offsetX + sx;
-                    int ty = offsetY + sy;
-
-                    if (tx >= 0 && tx < stage.TextureWidth && ty >= 0 && ty < stage.TextureHeight)
-                    {
-                        int index = ty * stage.TextureWidth + tx;
-                        // Chỉ tăng count nếu pixel trước đó trong suốt
-                        if (stage.MaskPixelsBuffer[index].a <= 0.01f && color.a > 0.01f)
-                        {
-                            stage.DrawnPixelCount++;
-                        }
-                        // Set hard như circle, không blend để giữ hiệu năng và giống logic cũ
-                        // Nếu muốn soft edge, có thể thay bằng: stage.MaskPixelsBuffer[index].a = Mathf.Max(stage.MaskPixelsBuffer[index].a, color.a * bCol.a);
-                        // Nhưng để giống circle (hard), set trực tiếp nếu brush alpha > threshold
-                        stage.MaskPixelsBuffer[index] = color;
-                    }
-                }
+                int i = ty * s.width + tx;
+                if (s.pixels[i].a < 0.01f) s.drawnPixels++;
+                s.pixels[i] = drawColor;
             }
         }
     }
-   
-    public void ApplyMaskChanges()
-    {
-        if (currentStateIndex >= lsStages.Count) return;
-        var currentStage = lsStages[currentStateIndex];
-        if (currentStage.MaskTexture != null)
-        {
-            currentStage.MaskTexture.SetPixels(currentStage.MaskPixelsBuffer);
-            currentStage.MaskTexture.Apply();
-        }
-    }
 
-    public bool CheckDrawingCoverage()
+    float lastApplyTime;
+    [SerializeField] float applyInterval = 0.05f;
+
+    private void ApplyIfNeeded()
     {
-        if (currentStateIndex >= lsStages.Count) return false;
-        var currentStage = lsStages[currentStateIndex];
-        if (currentStage.IsPercentReached) return false;
-        float totalPixels = (float)currentStage.TextureWidth * currentStage.TextureHeight;
-        if (totalPixels == 0) return false;
-        float coverage = currentStage.DrawnPixelCount / totalPixels;
+        if (Time.time - lastApplyTime < applyInterval) return;
+        lastApplyTime = Time.time;
+
+        var s = stages[currentStage];
+        s.maskTex.SetPixels(s.pixels);
+        s.maskTex.Apply();
+
+        // Check hoàn thành
+        float coverage = (float)s.drawnPixels / (s.width * s.height);
         if (coverage >= completePercent)
-        {
-            currentStage.IsPercentReached = true;
-            AdvanceToNextStage();
-            return true;
-        }
-        return false;
+            NextStage();
     }
 
-    private void AdvanceToNextStage()
+    public void ForceApplyAndCheck()
     {
-        if (currentStateIndex >= lsStages.Count) return;
-        var completedStage = lsStages[currentStateIndex];
-        if (completedStage.stainTrans != null)
-        {
-            completedStage.stainTrans.gameObject.SetActive(false);
-        }
-        if (completedStage.maskDraw != null)
-        {
-            completedStage.maskDraw.enabled = false;
-            completedStage.maskDraw.sprite = null;
-        }
-        currentStateIndex++;
-        InitCurrentState();
+        if (currentStage >= stages.Count) return;
+        var s = stages[currentStage];
+        s.maskTex.SetPixels(s.pixels);
+        s.maskTex.Apply();
+
+        float coverage = (float)s.drawnPixels / (s.width * s.height);
+        if (coverage >= completePercent)
+            NextStage();
     }
-   
-    public void DrawAtPosition(Vector3 worldPos)
+
+    void NextStage()
     {
-        if (currentStateIndex >= lsStages.Count) return;
-        var currentStage = lsStages[currentStateIndex];
-        if (currentStage.IsPercentReached) return;
-        Vector3 localPos = currentStage.maskDraw.transform.InverseTransformPoint(worldPos);
-        float texXNormalized = (localPos.x / (currentStage.SpriteRect.width / currentStage.PixelsPerUnit)) + 0.5f;
-        float texYNormalized = (localPos.y / (currentStage.SpriteRect.height / currentStage.PixelsPerUnit)) + 0.5f;
-        int texX = (int)(texXNormalized * currentStage.TextureWidth);
-        int texY = (int)(texYNormalized * currentStage.TextureHeight);
-        if (texX >= 0 && texX < currentStage.TextureWidth && texY >= 0 && texY < currentStage.TextureHeight)
-        {
-            DrawBrush(currentStage, new Vector2Int(texX, texY), drawColor);
-        }
+        var s = stages[currentStage];
+        s.stainTrans?.gameObject.SetActive(false);
+        s.maskDraw.enabled = false;
+
+        currentStage++;
+        SetupCurrentStage();
     }
-   
+
     protected virtual void OnAllStagesComplete()
     {
-        Debug.Log("All stages completed! Override this method for custom behavior.");
-        // Ví dụ: Gọi hàm Win ở đây
-    }
-}
-
-[Serializable]
-public struct Vector2Int
-{
-    public int x;
-    public int y;
-
-    public Vector2Int(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
+        Debug.Log("Hoàn thành tất cả stage!");
     }
 }

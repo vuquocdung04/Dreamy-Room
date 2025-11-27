@@ -19,9 +19,6 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private bool isWin, isLose, isPopupOpen, canMoveCamera;
     
-    [Header("Drawing Settings")]
-    [SerializeField] private float drawApplyInterval = 0.05f;
-    private float lastDrawApplyTime;
     [Header("Physics Layers")]
     [SerializeField] private LayerMask itemLayer;
     [SerializeField] private LayerMask boxLayer;
@@ -96,7 +93,6 @@ public class InputManager : MonoBehaviour
         if (drawingItem != null)
         {
             currentDrawingItem = drawingItem;
-            lastDrawApplyTime = Time.time;
             return true;
         }
         return false;
@@ -149,12 +145,6 @@ public class InputManager : MonoBehaviour
             if (distance > 0.02f) // Threshold ~2cm trong world space
             {
                 currentDrawingItem.DrawAtPosition(currentDrawingItem.transform.position);
-        
-                if (Time.time - lastDrawApplyTime >= drawApplyInterval)
-                {
-                    currentDrawingItem.ApplyMaskChanges();
-                    lastDrawApplyTime = Time.time;
-                }
             }
     
             prevMousePosition = currentMousePosition;
@@ -177,13 +167,7 @@ public class InputManager : MonoBehaviour
     {
         if (currentDrawingItem != null)
         {
-            currentDrawingItem.ApplyMaskChanges();
-            
-            if (currentDrawingItem.CheckDrawingCoverage())
-            {
-                OnDrawingStageComplete();
-            }
-            
+            currentDrawingItem.ForceApplyAndCheck();
             currentDrawingItem = null;
         }
         else if (currentDraggingItem != null)

@@ -7448,14 +7448,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb2356e0be4469091cfe3392aa05ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lsStages:
+  stages:
   - targetSprite: {fileID: 6817615578300497873}
     stainTrans: {fileID: 2502334257533265765}
     maskDraw: {fileID: 8342400545702572203}
+    maskTex: {fileID: 0}
+    maskSprite: {fileID: 0}
+    pixels: []
+    drawnPixels: 0
+    width: 0
+    height: 0
+    ppu: 0
   brushSprite: {fileID: 21300000, guid: fd43fd1f6fe563f40a16b3f640ae4353, type: 3}
   brushScale: 2
   drawColor: {r: 1, g: 1, b: 1, a: 1}
   completePercent: 0.75
+  applyInterval: 0.05
   coll: {fileID: 7696524382708888690}
 --- !u!212 &5089112134091373762
 SpriteRenderer:
