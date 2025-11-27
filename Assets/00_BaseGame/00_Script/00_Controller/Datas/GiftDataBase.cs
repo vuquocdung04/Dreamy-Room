@@ -51,7 +51,7 @@ public class GiftDataBase : ScriptableObject
                 EventDispatcher.EventDispatcher.Instance.PostEvent(EventID.CHANGE_STAR);
                 break;
             case GiftType.RemoveAds:
-                GameController.Instance.useProfile.IsRemoveAds = true;
+                UseProfile.IsRemoveAds = true;
                 break;
             case GiftType.BoosterBoxBuffet:
                 UseProfile.Booster_BoxBuffer += amount;

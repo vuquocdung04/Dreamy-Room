@@ -92,7 +92,7 @@ public class UseProfile : MonoBehaviour
         set
         {
             PlayerPrefs.SetInt(StringHelper.ONOFF_SOUND, value ? 1 : 0);
-            GameController.Instance.musicController.SetSoundVolume(value ? 1 : 0);
+            GameController.Instance.audioController.SetSoundVolume(value ? 1 : 0);
             PlayerPrefs.Save();
         }
     }
@@ -103,7 +103,7 @@ public class UseProfile : MonoBehaviour
         set
         {
             PlayerPrefs.SetInt(StringHelper.ONOFF_MUSIC, value ? 1 : 0);
-            GameController.Instance.musicController.SetMusicVolume(value ? 1 : 0);
+            GameController.Instance.audioController.SetMusicVolume(value ? 1 : 0);
             PlayerPrefs.Save();
         }
     }
@@ -118,7 +118,7 @@ public class UseProfile : MonoBehaviour
         }
     }
     
-    public bool IsRemoveAds
+    public static bool IsRemoveAds
     {
         get
         {

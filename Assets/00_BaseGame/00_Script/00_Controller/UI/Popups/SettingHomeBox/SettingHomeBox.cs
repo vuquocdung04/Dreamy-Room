@@ -46,13 +46,11 @@ public class SettingHomeBox : BoxSingleton<SettingHomeBox>
         {
             bool newState = ToggleSetting(GameController.Instance.useProfile.OnMusic, imgInactiveMusic);
             GameController.Instance.useProfile.OnMusic = newState;
-            GameController.Instance.audioController.SetMusicVolume(newState ? 1f : 0f);
         });
         btnSound.onClick.AddListener(delegate
         {
             bool newState = ToggleSetting(GameController.Instance.useProfile.OnSound, imgInactiveSound);
             GameController.Instance.useProfile.OnSound = newState;
-            GameController.Instance.audioController.SetSoundVolume(newState ? 1f : 0f);
         });
 
         btnChooseLanguage.onClick.AddListener(delegate { LocalizationBox.Setup().Show(); });

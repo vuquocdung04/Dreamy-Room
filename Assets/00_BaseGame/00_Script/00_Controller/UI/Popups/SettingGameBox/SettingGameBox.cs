@@ -26,13 +26,12 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
     public LocalizedText lcTitle;
     private GameController gameController;
     private UseProfile useProfile;
-    private AudioController audioController;
+    
     protected override void Init()
     {
         canvas.worldCamera = GamePlayController.Instance.playerContains.mainCamera;
         gameController = GameController.Instance;
         useProfile = GameController.Instance.useProfile;
-        audioController = GameController.Instance.audioController;
         UpdateStateVib_Music_Sound();
 
         ActionBtnClick(btnClose, delegate
@@ -57,13 +56,11 @@ public class SettingGameBox : BoxSingleton<SettingGameBox>
         {
             bool newState = ToggleSetting(useProfile.OnMusic, imgMusic);
             useProfile.OnMusic = newState;
-            audioController.SetMusicVolume(newState ? 1f : 0f);
         });
         ActionBtnClick(btnSound, () =>
         {
             bool newState = ToggleSetting(useProfile.OnSound, imgSound);
             useProfile.OnSound = newState;
-            audioController.SetSoundVolume(newState ? 1f : 0f);
         });
         lcTitle.Init();
     }

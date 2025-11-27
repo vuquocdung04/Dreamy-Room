@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Spine; 
+using Spine.Unity;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,11 +14,11 @@ public class WinBox : BoxSingleton<WinBox>
     }
 
     public RectTransform progressBar;
-    public RectTransform giftLid;
-    public RectTransform gift;
     public Image imgFill;
     public Button btnNext;
-    public Button btnOpenGift;
+    public SkeletonGraphic giftSkeleton;
+    public Button giftOpen; 
+    
     [Header("Rewards")]
     public Button btnClaimX2;
     public Button btnClaim;
@@ -25,6 +27,7 @@ public class WinBox : BoxSingleton<WinBox>
     public RectTransform rewards;
     public List<Image> lsRewards;
     public List<TextMeshProUGUI> txtRewards;
+    
     [Header("Reward Amounts")]
     public int boosterAmount = 1;
     public int coinAmount = 100;
@@ -33,10 +36,8 @@ public class WinBox : BoxSingleton<WinBox>
 
     protected override void Init()
     {
-        btnOpenGift.enabled = false;
         btnNext.onClick.AddListener(OnClickNext);
-        btnOpenGift.onClick.AddListener(OnClickGift);
-        HandleProgress();
+        
         btnClaim.onClick.AddListener(delegate
         {
             OnClickClaim();
@@ -47,96 +48,89 @@ public class WinBox : BoxSingleton<WinBox>
             OnClickClaim(true);
             Close();
         });
+
+        // Đăng ký sự kiện click mở hộp
+        giftOpen.onClick.AddListener(OnClickOpenGift);
+        // Ban đầu ẩn nút mở hộp đi, chưa cho bấm
+        giftOpen.enabled = false;
+        
+        PlayDropSequence();
+        HandleProgress();
     }
 
     protected override void InitState()
     {
     }
 
-    private void OnClickNext()
-    {
-        Close();
-        UseProfile.Star += GamePlayController.Instance.gameScene.GetStarAmount();
-        SelectGameModeBox.Setup().Show();
-    }
-    
+    // --- LOGIC ANIMATION SPINE ---
 
-    private void OnClickClaim(bool isX2 = false)
+    private void PlayDropSequence()
     {
-        var giftData = GameController.Instance.dataContains.giftData;
-        int multiplier = isX2 ? 2 : 1;
-        
-        giftData.Claim(_selectedBooster, boosterAmount * multiplier);
-        
-        giftData.Claim(GiftType.Coin, coinAmount * multiplier);
-        
-        giftData.Claim(GiftType.Heart, heartMinutes * multiplier);
-        SelectGameModeBox.Setup().Show();
+        giftSkeleton.AnimationState.SetAnimation(0, "0-drop", false);
+        giftSkeleton.AnimationState.AddAnimation(0, "1-loop", true, 0);
     }
-    
-    private void OnClickGift()
+
+    private void PlayOpenSequence()
     {
-        btnOpenGift.enabled = false;
-        description.gameObject.SetActive(false);
-        AnimationOpen(delegate
+        TrackEntry track = giftSkeleton.AnimationState.SetAnimation(0, "2-open", false);
+        giftSkeleton.AnimationState.AddAnimation(0, "3-open-loop", true, 0);
+        
+        // Đợi animation mở xong mới hiện UI nhận quà
+        track.Complete += (entry) =>
         {
-            btnClaim.gameObject.SetActive(true);
-            btnClaimX2.gameObject.SetActive(true);
-            HandleGiftRewards();
-        });
-        
+            ShowRewardUI();
+        };
     }
+
+    // -----------------------------
 
     private void HandleProgress()
     {
         btnNext.enabled = false;
-        imgFill.fillAmount = UseProfile.LevelWinBoxProgress / 5f;
-        UseProfile.LevelWinBoxProgress++;
-        var curFill = UseProfile.LevelWinBoxProgress / 5f;
-        imgFill.DOFillAmount(curFill, 1.5f).SetEase(Ease.OutBack).OnComplete(delegate
+        float oldProgressValue = UseProfile.LevelWinBoxProgress;
+        float oldFill = oldProgressValue / 5f;
+        UseProfile.LevelWinBoxProgress++; 
+        float newProgressValue = UseProfile.LevelWinBoxProgress;
+        float newFill = newProgressValue / 5f;
+        imgFill.fillAmount = oldFill; 
+        imgFill.DOFillAmount(newFill, 1.5f).SetEase(Ease.OutBack).OnComplete(delegate
         {
-            if (UseProfile.LevelWinBoxProgress >= 5)
+            if (newProgressValue >= 5)
             {
                 UseProfile.LevelWinBoxProgress = 0;
+                txtTitle.text = "Unlock Rewards";
                 HandlePhaseUnlockReward();
             }
             else
             {
-                btnNext.enabled = true;
+                btnNext.enabled = true; 
             }
         });
-    }
-    private void AnimationOpen(TweenCallback callback = null)
-    {
-        var seq = DOTween.Sequence();
-        
-        seq.Append(gift.DOScale(new Vector2(1.4f, 0.7f), 0.33f).SetEase(Ease.OutSine));
-        
-        Vector3 originalTopPos = giftLid.localPosition;
-    
-        seq.Append(DOTween.Sequence()
-            .Join(gift.DOScale(Vector2.one, 0.2f).SetEase(Ease.InSine))
-            .Join(giftLid.DOLocalMoveY(originalTopPos.y + 400f, 0.25f).SetEase(Ease.OutQuad))
-            .Join(giftLid.DOLocalRotate(new Vector3(0, 0, -30f), 0.3f).SetEase(Ease.OutQuad))
-        );
-
-        if (callback != null)
-            seq.OnComplete(callback);
-
-        seq.Play();
     }
 
     private void HandlePhaseUnlockReward()
     {
         progressBar.gameObject.SetActive(false);
         btnNext.gameObject.SetActive(false);
-        btnOpenGift.enabled = true;
-        txtTitle.text = "Unlock Rewards";
         description.gameObject.SetActive(true);
-        gift.DOAnchorPosY(-248f,0.2f).SetEase(Ease.OutBack);
+        giftSkeleton.rectTransform.DOLocalMoveY(-131f, 0.2f);
+        giftOpen.enabled = true;
+    }
+    private void OnClickOpenGift()
+    {
+        giftOpen.enabled = false;
+        HandleGiftRewardsData();
+        PlayOpenSequence();
+    }
+    private void ShowRewardUI()
+    {
+        rewards.gameObject.SetActive(true);
+        description.gameObject.SetActive(false);
+        btnClaim.gameObject.SetActive(true);
+        btnClaimX2.gameObject.SetActive(true);
     }
 
-    private void HandleGiftRewards()
+    private void HandleGiftRewardsData()
     {
         var dataGift = GameController.Instance.dataContains.giftData;
         
@@ -148,17 +142,15 @@ public class WinBox : BoxSingleton<WinBox>
         };
         GiftType selectedBooster = boosterTypes[Random.Range(0, boosterTypes.Length)];
         _selectedBooster = selectedBooster;
+        
         bool valid = true;
-
         valid &= dataGift.GetGift(selectedBooster, out Gift boosterGift);
         valid &= dataGift.GetGift(GiftType.Coin, out Gift coinGift);
         valid &= dataGift.GetGift(GiftType.HeartUnlimit, out Gift heartGift);
         
-        rewards.gameObject.SetActive(valid);
-
         if (!valid)
         {
-            Debug.LogError("Thiếu cấu hình gift trong GiftDataBase! Vui lòng kiểm tra.");
+            Debug.LogError("Thiếu cấu hình gift trong GiftDataBase!");
             return;
         }
         
@@ -167,10 +159,29 @@ public class WinBox : BoxSingleton<WinBox>
         lsRewards[2].sprite = heartGift.giftSprite;
         
         foreach(var reward in lsRewards)
-            UIImageUtils.FitToTargetHeight(reward,120);
+            UIImageUtils.FitToTargetHeight(reward, 120);
         
         txtRewards[0].text = $"x{boosterAmount}";
         txtRewards[1].text = $"x{coinAmount}";
         txtRewards[2].text = $"{heartMinutes}m";
+    }
+
+    private void OnClickNext()
+    {
+        Close();
+        UseProfile.Star += GamePlayController.Instance.gameScene.GetStarAmount();
+        SelectGameModeBox.Setup().Show();
+    }
+
+    private void OnClickClaim(bool isX2 = false)
+    {
+        var giftData = GameController.Instance.dataContains.giftData;
+        int multiplier = isX2 ? 2 : 1;
+        
+        giftData.Claim(_selectedBooster, boosterAmount * multiplier);
+        giftData.Claim(GiftType.Coin, coinAmount * multiplier);
+        giftData.Claim(GiftType.Heart, heartMinutes * multiplier);
+        
+        SelectGameModeBox.Setup().Show();
     }
 }

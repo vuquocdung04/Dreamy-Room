@@ -150,7 +150,7 @@ public class LevelTut : LevelBase
         left = playerContains.left.transform.position.x;
         top = playerContains.top.transform.position.y;
         right = playerContains.right.transform.position.x;
-        bottom = GameController.Instance.useProfile.IsRemoveAds
+        bottom = UseProfile.IsRemoveAds
             ? playerContains.bottom.transform.position.y
             : playerContains.bottom.transform.position.y + 2f;
     }

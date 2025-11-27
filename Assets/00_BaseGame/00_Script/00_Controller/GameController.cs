@@ -3,7 +3,6 @@ using UnityEngine;
 public class GameController : Singleton<GameController>
 {
     public StartLoading startLoading;
-    public MusicController musicController;
     public UseProfile useProfile;
     public DataContains dataContains;
     public AdmobController admobController;
@@ -26,7 +25,7 @@ public class GameController : Singleton<GameController>
         Application.targetFrameRate = UseProfile.TargetFrameRate;
         admobController.Init();
         dataContains.Init();
-        musicController.Init();
+        
         audioController.Init();
         effectChangeScene2.Init();
         heartGame.Init();

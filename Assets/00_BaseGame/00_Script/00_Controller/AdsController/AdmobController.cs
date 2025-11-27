@@ -36,7 +36,7 @@ public class AdmobController : MonoBehaviour
 
     public void ShowBanner()
     {
-        if(GameController.Instance.useProfile.IsRemoveAds) return;
+        if(UseProfile.IsRemoveAds) return;
         
         if (bannerView != null)
             bannerView.Show();
@@ -86,7 +86,7 @@ public class AdmobController : MonoBehaviour
 
     public void ShowInterstitial()
     {
-        if(GameController.Instance.useProfile.IsRemoveAds) return;
+        if(UseProfile.IsRemoveAds) return;
         
         if (interstitialAd != null)
         {
@@ -137,7 +137,7 @@ public class AdmobController : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        if (GameController.Instance.useProfile.IsRemoveAds)
+        if (UseProfile.IsRemoveAds)
         {
             var fakeReward = new Reward()
             {

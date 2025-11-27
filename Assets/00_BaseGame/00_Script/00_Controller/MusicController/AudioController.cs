@@ -15,7 +15,7 @@ public class AudioController : MonoBehaviour
         audioDataBase = GameController.Instance.dataContains.audioData;
         useProfile = GameController.Instance.useProfile;
 
-        
+
         BuildAudioLookup();
         SetInitVolumes();
         if (UseProfile.HasCompletedLevelTutorial)
@@ -35,6 +35,7 @@ public class AudioController : MonoBehaviour
                 Debug.LogWarning($"Tìm thấy AudioKey bị trùng: {config.enumKey}");
         }
     }
+
     private void SetInitVolumes()
     {
         SetMusicVolume(useProfile.OnMusic ? 1f : 0f);
@@ -50,7 +51,7 @@ public class AudioController : MonoBehaviour
         // Tìm source có thời gian còn lại ít nhất (gần hết)
         AudioSource nearestEnd = asOthers[0];
         float minTimeLeft = float.MaxValue;
-    
+
         foreach (var source in asOthers)
         {
             if (source.clip == null) continue;
@@ -61,6 +62,7 @@ public class AudioController : MonoBehaviour
                 nearestEnd = source;
             }
         }
+
         return nearestEnd;
     }
 
@@ -68,18 +70,19 @@ public class AudioController : MonoBehaviour
     /// Phát một SFX (âm thanh ngắn) dựa trên Key.
     /// </summary>
     private Dictionary<AudioKeyType, float> lastPlayTimes = new();
-    
+
     public void PlaySfx(AudioKeyType key)
     {
-        if(!useProfile.OnSound) return;
-        
+        if (!useProfile.OnSound) return;
+
         if (lastPlayTimes.TryGetValue(key, out float lastTime))
         {
             if (Time.time - lastTime < 0.1f)
                 return;
         }
+
         lastPlayTimes[key] = Time.time;
-        
+
         if (!audioLookup.TryGetValue(key, out var config))
         {
             Debug.LogWarning($"Không tìm thấy AudioKey: {key}");
@@ -99,7 +102,7 @@ public class AudioController : MonoBehaviour
 
     public void PlayMusic(AudioKeyType key)
     {
-        if(!useProfile.OnMusic) return;
+        if (!useProfile.OnMusic) return;
         if (!audioLookup.TryGetValue(key, out AudioConfig config))
         {
             Debug.LogWarning($"Không tìm thấy AudioKey nhạc: {key}");
@@ -115,15 +118,9 @@ public class AudioController : MonoBehaviour
         asBg.Play();
     }
 
-    public void StopMusic()
-    {
-        asBg.Stop();
-    }
+    public void StopMusic() => asBg.Stop();
 
-    public void SetMusicVolume(float volume)
-    {
-        asBg.volume = volume;
-    }
+    public void SetMusicVolume(float volume) => asBg.volume = volume;
 
     public void SetSoundVolume(float volume)
     {
