@@ -1,28 +1,30 @@
-# 🏡This is a *clone* of Dreamy Room! by ABI Studio.
+# Dreamy Room(clone)
 
-## 👀Preview: 📄[Docs](https://docs.google.com/spreadsheets/d/1QdVYWCZSUDpdcWH1JoGkIA7Svf1iWrXe4Rl06xYT-0g/edit?usp=sharing) | ▶️[Demo](https://markdownlivepreview.com/)
+### 👀Preview:
+[![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)](https://docs.google.com/spreadsheets/d/1QdVYWCZSUDpdcWH1JoGkIA7Svf1iWrXe4Rl06xYT-0g/edit?usp=sharing)
+ [![YouTube](https://img.shields.io/badge/YouTube-Demo-red?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/4ZYbHOiEdcs)
 
-## ✨Features:
-1. 🧩**Game Logic**:
-    * Multi-Snap & Conditions: Items can snap to multiple positions with independent validation rules.
-    * Mask-based cleaning (e.g., scrub paint with a broom via Sprite Mask).
-    * Multi-phase levels.
-    * Blocks world interaction during popups, win/lose, etc.
-2. 🚀**Boosters**: 
-    * Hint, Magnifier, Frozen, Box Buffer, Time Buffer, Double Star.
-3. 🎨**UI & Feedback**:
-    * 35+ Popups.
-    * Effects: Scene/Popup transitions, celebrations, placement feedback, star rewards, etc.
-    * Spine Animations: Booster, Character reactions, etc.
-4. ⏳**Time Manager**:
-    * Auto-reset daily quests & rewards.
-    * Heart system: +1 every 30 min until full. Unlimited mode skips consumption.
-5. 🌍**Localization**:
-    * Configurable via Google Sheets.
-    * Supports remote (online) and local (CSV) loading.
-6. 💾**Data Management**:
-    * Game Data: Scriptable Object.
-    * User Data: Saved as JSON and PlayerPrefs.
-7. 📈**Performance Optimizations**:
-    * Sprite Atlas: < 30 draw calls.
-    * Addressable (load/unload level prefabs)
+## Features:
+### 🧩**Game Logic**:
+    1. Multi-Snap & Conditions: Items can snap to multiple positions with independent validation rules.
+    2. Mask-based cleaning (e.g., scrub paint with a broom via Sprite Mask).
+    3. Multi-phase levels.
+    4. Blocks world interaction during popups, win/lose, etc.
+### 🚀**Boosters**: 
+     Hint, Magnifier, Frozen, Box Buffer, Time Buffer, Double Star.
+### 🎨**UI & Feedback**:
+    1. 35+ Popups.
+    2. Effects: Scene/Popup transitions, celebrations, placement feedback, star rewards, etc.
+    3. Spine Animations: Booster, Character reactions, etc.
+### ⏳**Time Manager**:
+    1. Auto-reset daily quests & rewards.
+    2. Heart system: +1 every 30 min until full. Unlimited mode skips consumption.
+### 🌍**Localization**:
+    1. Configurable via Google Sheets.
+    2. Supports remote (online) and local (CSV) loading.
+### 💾**Data Management**:
+    1. Game Data: Scriptable Object.
+    2. User Data: Saved as JSON and PlayerPrefs.
+### 📈**Performance Optimizations**:
+    1. Sprite Atlas: < 30 draw calls.
+    2. Addressable (load/unload level prefabs)
