@@ -1,4 +1,4 @@
-# Dreamy Room(clone)
+# Dreamy Room - Clone Version (Educational Project)
 
 ### 👀Preview:
 [![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)](https://docs.google.com/spreadsheets/d/1QdVYWCZSUDpdcWH1JoGkIA7Svf1iWrXe4Rl06xYT-0g/edit?usp=sharing)
