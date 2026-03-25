@@ -827,7 +827,7 @@ namespace CodeStage.AntiCheat.Detectors
 			rigidPlayer.rotation = Quaternion.identity;
 			rigidPlayer.angularVelocity = Vector3.zero;
 			rigidPlayer.transform.localPosition = new Vector3(0.75f, 0, -1f);
-			rigidPlayer.velocity = rigidPlayerVelocity;
+			rigidPlayer.linearVelocity = rigidPlayerVelocity;
 			Invoke(nameof(StartRigidModule), 4);
 		}
 
@@ -1034,7 +1034,7 @@ namespace CodeStage.AntiCheat.Detectors
 
 		private void StopRigidModule()
 		{
-			if (rigidPlayer) rigidPlayer.velocity = Vector3.zero;
+			if (rigidPlayer) rigidPlayer.linearVelocity = Vector3.zero;
 			CancelInvoke(nameof(StartRigidModule));
 		}
 
